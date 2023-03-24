@@ -1,0 +1,69 @@
+{
+    "header": {
+        "name": "MOHC"
+    },
+    "hero_banner": {
+        "title": "Managed online healthcare",
+        "subtitle": "We are a software consultancy specialising in designing, building and supporting complex online IT solutions in the health and medical sector."
+    },
+    "about": {
+        "description": "We are Shopify plus partners with a focus on complex system integrations, apps & replatforming to Shopify.",
+        "link_text": "See more services we offer ↓"
+    },
+    "services": {
+        "title": "Complex system integrations",
+        "subtitle": "If your business is relient on software or would like to use software that does not natively intigrate with Shopify in most cases we can offer a solution.",
+        "shopify": "Shopify",
+        "integration": "Our Integration solution",
+        "business": "Business reliant software",
+        "our_services": "Services we offer",
+        "theme_development_title": "Theme development & maintenance",
+        "theme_development_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean egestas magna sed justo congue porttitor. Etiam eget consequat ipsum.",
+        "app_development_title": "App development",
+        "app_development_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet.",
+        "replatforming_title": "Replatforming",
+        "replatforming_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed vulputate odio ut enim blandit volutpat maecenas volutpat. Magna etiam tempor orci eu lobortis elementum nibh tellus. Sed velit dignissim sodales ut eu sem integer vitae justo.",
+        "performance_title": "Performance & optimisation",
+        "performance_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Ac ut consequat semper viverra nam libero justo laoreet. Purus viverra accumsan in nisl.",
+        "internationalisation_title": "Internationalisation",
+        "internationalisation_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis nunc eget lorem dolor sed viverra. Senectus et netus et malesuada fames ac turpis egestas maecenas. Tellus in hac habitasse platea dictumst vestibulum. Elit sed vulputate mi sit.",
+        "maintenance_title": "Maintenance & support",
+        "maintenance_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed enim ut sem viverra aliquet eget sit amet tellus. Tincidunt vitae semper quis lectus nulla. Neque sodales ut etiam sit amet nisl purus in mollis. Lacinia quis vel eros donec ac odio tempor.",
+        "other": "Don't see what you need here? Contact us to see if we can help"
+    },
+    "accordion": {
+        "title": "What we do",
+        "software_engineering_header": "Software engineering",
+        "software_engineering_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus. Integer elementum egestas luctus. Maecenas quis felis quis tellus vestibulum imperdiet sit amet varius sapien. Cras tempus nibh ut mauris eleifend imperdiet.",
+        "system_design_header": "System design",
+        "system_design_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus. Integer elementum egestas luctus. Maecenas quis felis quis tellus vestibulum imperdiet sit amet varius sapien. Cras tempus nibh ut mauris eleifend imperdiet.",
+        "web_development_header": "Web development",
+        "web_development_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus. Integer elementum egestas luctus. Maecenas quis felis quis tellus vestibulum imperdiet sit amet varius sapien. Cras tempus nibh ut mauris eleifend imperdiet.",
+        "software_maintenance_header": "Software maintenance",
+        "software_maintenance_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus. Integer elementum egestas luctus. Maecenas quis felis quis tellus vestibulum imperdiet sit amet varius sapien. Cras tempus nibh ut mauris eleifend imperdiet.",
+        "user_interface_design_header": "User interface design",
+        "user_interface_design_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus. Integer elementum egestas luctus. Maecenas quis felis quis tellus vestibulum imperdiet sit amet varius sapien. Cras tempus nibh ut mauris eleifend imperdiet.",
+        "business_intelligence_header": "Business intelligence",
+        "business_intelligence_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus. Integer elementum egestas luctus. Maecenas quis felis quis tellus vestibulum imperdiet sit amet varius sapien. Cras tempus nibh ut mauris eleifend imperdiet.",
+        "consultancy_header": "Consultancy",
+        "consultancy_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus. Integer elementum egestas luctus. Maecenas quis felis quis tellus vestibulum imperdiet sit amet varius sapien. Cras tempus nibh ut mauris eleifend imperdiet."
+    },
+    "our_work": {
+        "title": "Our work",
+        "lloydspharmacy_replatform_title": "Lloydspharmacy Replatform",
+        "discount_campaign_title": "Discount campaign app",
+        "johnbell_and_croyden_title": "Johnbell & Croyden website",
+        "appointment_booking_title": "Appointment Booking & task manager app",
+        "video_gp_title": "VideoGP by LloydsPharmacy",
+        "online_doctor_title": "LloydsPharmacy OnlineDoctor",
+        "view_project": "View project"
+    },
+    "contact_us": {
+        "title": "Let's get the ball rolling.",
+        "subtitle": "Use the contact form or email us at enquiries@brsmail.com"
+    },
+    "footer": {
+        "name": "mohc 2023",
+        "email": "enquiries@brsmail.com"
+    }
+}

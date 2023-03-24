@@ -1,0 +1,7 @@
+{
+    "default": {
+        "defaultLocale": "en",
+        "locales": ["en"]
+    },
+    "localePath": "path.resolve('./public/locales')"
+}

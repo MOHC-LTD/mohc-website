@@ -1,0 +1,26 @@
+{
+    "general": {
+        "optional_label": "(optional)",
+        "required_error": "This field is mandatory"
+    },
+    "email": {
+        "label": "Email",
+        "required_error": "Enter a valid email"
+    },
+    "name": {
+        "label": "Name",
+        "required_error": "Enter your name"
+    },
+    "message": {
+        "label": "Message",
+        "required_error": "Enter a message"
+    },
+    "submit": "Submit",
+    "submit_error": "Error",
+    "text": {
+        "minimum_characters_error_one": "Enter at least 1 character",
+        "minimum_characters_error_other": "Enter at least {{ count, number }} characters",
+        "maximum_characters_error_one": "Enter at most 1 character",
+        "maximum_characters_error_other": "Enter at most {{ count, number }} characters"
+    }
+}

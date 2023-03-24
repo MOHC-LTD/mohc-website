@@ -1,0 +1,63 @@
+{
+    "lloydspharmacy_replatform": {
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque.",
+        "overview_title": "Overview",
+        "overview_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+        "technology_title": "Technology",
+        "challenges_title": "Challenges",
+        "challenges_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean egestas magna sed justo congue porttitor. Etiam eget consequat ipsum. Aenean eget metus et orci aliquam egestas.",
+        "solution_title": "Solution",
+        "solution_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean egestas magna sed justo congue porttitor.",
+        "results_title": "Results",
+        "results_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    },
+    "discount_campaign": {
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque."
+    },
+    "johnbell_and_croyden": {
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque.",
+        "overview_title": "Overview",
+        "overview_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+        "technology_title": "Technology",
+        "on_time_on_budget": "On time and on budget",
+        "on_time_on_budget_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean egestas magna sed justo congue porttitor.",
+        "extension_title": "An extension of their store",
+        "extension_description": "It was important for John Bell and Croyden that their new website feel like an extension of their London pharmacy. We were lucky enough to get a guided tour and learn about the pharmacies history and requirements.",
+        "maintained_and_supported_title": "Maintained and supported",
+        "maintained_and_supported_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean egestas magna sed justo congue porttitor."
+    },
+    "appointment_booking": {
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque.",
+        "tools_title": "All the tools you need",
+        "tools_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean egestas magna sed justo congue porttitor.",
+        "style_customisation": "You can customise the styling of the booking process your customers see so that it looks and feels like a completely native part of you website or app.",
+        "admin_system": "Team memebers can see appointments appear as they are booked by their customers in an intuative, easy to use admin system. They can also manage appointments and manually create them so every appointment is visible in one system.",
+        "questionnaire_builder_title": "Questionnaire builder",
+        "questionnaire_builder_subtitle": "Create questionnaires for your customers to fill out when they book so when they arrive you can get started straight away.",
+        "continually_updated_title": "Continually upated",
+        "continually_updated_description": "As we gather feedback and suggestions we continue to improve and expand our appointment booking app. From new features like service mapping to making it easier for both the people booking appointments and the people who have to manage the appointments."
+    },
+    "online_doctor": {
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere.",
+        "overview_title": "Intro",
+        "overview_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit. Nulla posuere velit vitae diam euismod ultrices. Donec gravida dui sed faucibus vulputate. In ut massa vestibulum, fringilla libero a, sagittis lacus.",
+        "sector_title": "Sector",
+        "bespoke_system_title": "Our bespoke system supports GPs in treating thousands of users every day",
+        "bespoke_system_subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit.",
+        "online_doctor_team": "We are continually working with the OnlineDoctor team on new features and exploring new technologies to ensure the best experience for both their users and the GPs that need to safely prescribe treatment.",
+        "patient_record_title": "Safe and secure patient record",
+        "patient_record_subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere. Pellentesque a turpis eleifend, pretium nunc ac, pretium diam. Phasellus massa libero, imperdiet at ullamcorper sed, volutpat ac tortor. Mauris vel tempor neque, sit amet porta velit."
+    },
+    "video_gp": {
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta odio non nisl interdum, et tempus erat posuere."
+    },
+    "device_view": {
+        "tablet": "Tablet",
+        "mobile": "Mobile"
+    },
+    "next_project": "Next project →",
+    "previous_project": "← Previous project",
+    "section_title_placeholder": "Section title",
+    "section_subtitle_placeholder": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est augue, aliquet ac porta vel, molestie quis neque. Vestibulum pellentesque vel arcu id venenatis.",
+    "section_button_text_placeholder": "Read more"
+}

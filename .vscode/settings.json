@@ -1,0 +1,27 @@
+{
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.ts": "${capture}.test.ts, ${capture}.test.tsx, ${capture}.stories.ts, ${capture}.stories.tsx",
+        "*.tsx": "${capture}.test.ts, ${capture}.test.tsx, ${capture}.stories.ts, ${capture}.stories.tsx",
+        "*.page.tsx": "${capture}.test.ts, ${capture}.test.tsx, ${capture}.stories.ts, ${capture}.stories.tsx",
+        ".env.example": ".env, .env.local, .env.development, .env.development.local, .env.test, .env.test.local, .env.production, .env.production.local"
+    },
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "jest.nodeEnv": {
+        // Enables support for ESM modules
+        "NODE_OPTIONS": "--experimental-vm-modules",
+        // Hides warning about enabling ESM modules
+        "NODE_NO_WARNINGS": 1
+    }
+}

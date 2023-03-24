@@ -1,0 +1,448 @@
+{
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true,
+                "project": "tsconfig.json"
+            }
+        },
+        "jsdoc": {
+            "mode": "typescript"
+        }
+    },
+    "env": {
+        "browser": true
+    },
+    "extends": [
+        "next/core-web-vitals",
+        "airbnb",
+        "airbnb/hooks",
+        "prettier",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:consistent-default-export-name/fixed",
+        "plugin:storybook/recommended",
+        "plugin:unicorn/all"
+    ],
+    "plugins": [
+        "import",
+        "simple-import-sort",
+        "sort-exports",
+        "unused-imports",
+        "jsdoc",
+        "prefer-arrow",
+        "@typescript-eslint",
+        "unicorn"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "reportUnusedDisableDirectives": true,
+    "rules": {
+        // Custom rules
+        "semi": ["error", "never"],
+        "max-len": ["error", 120],
+        "curly": ["error", "all"],
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectExpression": {
+                    "multiline": true,
+                    "minProperties": 1,
+                    "consistent": true
+                },
+                "ObjectPattern": {
+                    "consistent": true
+                },
+                "ImportDeclaration": {
+                    "consistent": true
+                },
+                "ExportDeclaration": {
+                    "consistent": true
+                }
+            }
+        ],
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "never"
+            }
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 1
+            }
+        ],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "*"
+            },
+            {
+                "blankLine": "any",
+                "prev": ["import"],
+                "next": ["import"]
+            }
+        ],
+        "quotes": [
+            "error",
+            "single",
+            {
+                "avoidEscape": true,
+                "allowTemplateLiterals": false
+            }
+        ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": true,
+                "ignorePropertyModificationsFor": ["accumulator", "draft", "ctx", "config", "child", "editor"]
+            }
+        ],
+        "no-console": "error",
+        "no-alert": "error",
+        "capitalized-comments": [
+            "error",
+            "always",
+            {
+                "ignoreConsecutiveComments": true
+            }
+        ],
+        "no-restricted-syntax": "off",
+        "camelcase": "error",
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": ["null_", "function_"]
+            }
+        ],
+
+        // Arrow functions!
+        "prefer-arrow/prefer-arrow-functions": [
+            "error",
+            {
+                "disallowPrototype": true,
+                "singleReturnOnly": false,
+                "classPropertiesAllowed": false
+            }
+        ],
+
+        // Import and export rules
+        "import/default": "error",
+        "import/group-exports": "error",
+        "import/no-cycle": "off",
+        "import/prefer-default-export": "off",
+        "import/no-anonymous-default-export": "error",
+        "import/no-unresolved": [
+            "error",
+            {
+                "ignore": ["SVG$"]
+            }
+        ],
+        "import/no-namespace": ["error"],
+        "import/extensions": [
+            "error",
+            "never",
+            {
+                "json": "always"
+            }
+        ],
+        "import/export": "error",
+        "import/exports-last": "error",
+        "import/no-deprecated": "error",
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    // React
+                    ["^react$"],
+                    // Side effect packages
+                    ["^\\u0000(?!\\.).+"],
+                    // Packages
+                    ["^@?(?!src|pages)\\w.+"],
+                    // Pages
+                    ["^pages/.+"],
+                    // Side effect local
+                    ["^\\u0000src/.+"],
+                    // Local
+                    ["^src/.+"]
+                ]
+            }
+        ],
+        "sort-exports/sort-exports": [
+            "error",
+            {
+                "sortDir": "asc",
+                "ignoreCase": false,
+                "sortExportKindFirst": "type"
+            }
+        ],
+        "no-restricted-imports": [
+            "error",
+            {
+                "paths": [
+                    {
+                        "name": "react",
+                        "importNames": ["default"],
+                        "message": "You do not need to import React."
+                    },
+                    {
+                        "name": "date-fns",
+                        "importNames": ["parse"],
+                        "message": "This function is too heavy, use the custom date parsers."
+                    },
+                    {
+                        "name": "i18next",
+                        "importNames": ["t"],
+                        "message": "Did you mean to import from 'react-i18next'?"
+                    },
+                    {
+                        "name": "next-i18next",
+                        "importNames": ["default", "useTranslation", "withTranslation", "Translation", "Trans", "i18n"],
+                        "message": "Did you mean to import from 'react-i18next'?"
+                    },
+                    {
+                        "name": "@mui/material",
+                        "importNames": ["Grid", "Icon", "Link"],
+                        "message": "[Grid] The Grid component is too heavy, use CSS grid or the Stack component. [Icon] Use the custom Icon component. [Link] Use the Next.js Link component or the ComposedLink component."
+                    },
+                    {
+                        "name": "lodash",
+                        "importNames": ["last"],
+                        "message": "[last] Use array.length - 1."
+                    },
+                    {
+                        "name": "material-ui-popup-state",
+                        "message": "Did you mean to import from 'material-ui-popup-state/hooks'?"
+                    },
+                    {
+                        "name": "material-ui-popup-state/core",
+                        "message": "Did you mean to import from 'material-ui-popup-state/hooks'?"
+                    },
+                    {
+                        "name": "material-ui-popup-state/hooks",
+                        "importNames": ["bindToggle"],
+                        "message": "Did you mean to import 'bindTrigger'?"
+                    },
+                    {
+                        "name": "ky-universal",
+                        "message": "This package is a polyfill for tests. Did you mean to import from 'ky'?"
+                    }
+                ],
+                "patterns": [
+                    // Only allow MUI imports from the main package, test utils, and hooks
+                    "@mui/*/*",
+                    "@mui/*/*/*",
+                    "!@mui/material",
+                    "!@mui/material/test-utils/*",
+                    "!@mui/material/use*",
+                    // Do not allow to import index files directly
+                    "**/index",
+                    // Do not allow to import tenant files directly
+                    "**/*.[a-z]*",
+                    // Allow to import certain files directly
+                    "!**/*.js",
+                    "!**/*.mjs",
+                    "!**/*.json",
+                    "!**/*.png",
+                    "!**/*.default",
+                    "!pages/**/index",
+                    // Do not allow to import stories and tests
+                    "**/*.stories",
+                    "**/*.test",
+                    // Do not allow relative imports
+                    "../**",
+                    "./**",
+                    // Do not allow to nest folders too deeply
+                    "src/*/*/*/**",
+                    // Translations need more nesting for tenants and languages
+                    "!src/translations/*/*/*"
+                ]
+            }
+        ],
+        "consistent-default-export-name/default-export-match-filename": ["error", null, "\\.\\w+$"],
+        "consistent-default-export-name/default-import-match-filename": "error",
+        "unused-imports/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+
+        // React and JSX rules
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "react/prefer-read-only-props": "error",
+        "react/function-component-definition": [
+            "error",
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "react/boolean-prop-naming": "off",
+        "react/jsx-filename-extension": [
+            "error",
+            {
+                "extensions": [".tsx"]
+            }
+        ],
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-key": "error",
+        "react/jsx-no-useless-fragment": "error",
+        "react/style-prop-object": "error",
+        "react/require-default-props": "off",
+        "react/jsx-no-leaked-render": [
+            "error",
+            {
+                "validStrategies": ["ternary"]
+            }
+        ],
+
+        // JSDoc rules
+        "jsdoc/check-alignment": "error",
+        "jsdoc/check-indentation": "error",
+        "jsdoc/check-syntax": "error",
+        "jsdoc/empty-tags": "error",
+        "jsdoc/match-description": "error",
+        "jsdoc/newline-after-description": "error",
+        "jsdoc/no-bad-blocks": "error",
+        "jsdoc/require-description": "error",
+        "jsdoc/require-description-complete-sentence": "error",
+
+        // Unicorn!
+        "unicorn/no-useless-undefined": "off",
+        "unicorn/no-null": "off",
+        "unicorn/filename-case": [
+            "error",
+            {
+                "cases": {
+                    "camelCase": true,
+                    "pascalCase": true
+                },
+                "ignore": ["ISO", "\\.d\\.ts$", "\\.config\\."]
+            }
+        ],
+        "unicorn/prevent-abbreviations": [
+            "error",
+            {
+                "replacements": {
+                    "prop": false,
+                    "props": false,
+                    "param": false,
+                    "params": false,
+                    "ref": false,
+                    "refs": false,
+                    "env": false,
+                    "docs": false,
+                    "args": {
+                        "params": true,
+                        "arguments": false
+                    },
+                    "arguments_": {
+                        "params": true
+                    }
+                },
+                "allowList": {
+                    "i18NextConfig": true,
+                    "lib.dom.d": true
+                }
+            }
+        ],
+        "unicorn/no-keyword-prefix": "off",
+        "unicorn/no-unsafe-regex": "off",
+        "unicorn/prefer-at": "off",
+
+        // Use the improved rule for nested ternaries
+        "no-nested-ternary": "off",
+        "unicorn/no-nested-ternary": "error"
+    },
+    "overrides": [
+        {
+            // TypeScript rules. For some rules, the regular ones need to be turned off to not interfere
+            // with the TypeScript version of them.
+            "files": ["*.ts", "*.tsx"],
+            "rules": {
+                "no-use-before-define": "off",
+                "@typescript-eslint/no-use-before-define": "error",
+
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": [
+                    "error",
+                    {
+                        "argsIgnorePattern": "^_+$",
+                        "varsIgnorePattern": "^_+$"
+                    }
+                ],
+
+                "no-shadow": "off",
+                "@typescript-eslint/no-shadow": "error",
+
+                "require-await": "off",
+                "@typescript-eslint/require-await": "error",
+
+                "@typescript-eslint/explicit-function-return-type": "error"
+            }
+        },
+        {
+            "files": ["*.js", "*.mjs"],
+            "parser": "espree",
+            "rules": {
+                "@typescript-eslint/no-var-requires": "off",
+                "unicorn/prefer-module": "off"
+            }
+        },
+        {
+            "files": ["*.mjs"],
+            "rules": {
+                "import/extensions": [
+                    "error",
+                    "never",
+                    {
+                        "js": "always",
+                        "mjs": "always"
+                    }
+                ],
+                "consistent-default-export-name/default-import-match-filename": "off"
+            }
+        },
+        {
+            "files": ["*.config.js", "*.config.mjs"],
+            "rules": {
+                "no-console": "off",
+                "no-restricted-imports": "off",
+                "jsdoc/require-jsdoc": "off",
+                "consistent-default-export-name/default-export-match-filename": "off"
+            }
+        },
+        {
+            "files": ["pages/**/*.ts", "pages/**/*.tsx"],
+            "rules": {
+                "no-restricted-exports": "off",
+                "consistent-default-export-name/default-export-match-filename": "off",
+                "consistent-default-export-name/default-import-match-filename": "off"
+            }
+        },
+        {
+            "files": ["src/tests/**/*", "**/*.test.ts", "**/*.test.tsx"],
+            "rules": {
+                "import/no-extraneous-dependencies": "off"
+            }
+        },
+        {
+            "files": ["**/*.stories.ts", "**/*.stories.tsx"],
+            "rules": {
+                "consistent-default-export-name/default-export-match-filename": "off",
+                "jsdoc/require-jsdoc": "off"
+            }
+        }
+    ]
+}
