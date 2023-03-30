@@ -2,15 +2,14 @@ import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
 import TriButton from 'src/interactive/buttons/TriButton'
 import Section from '../general/Section'
-import Image from 'next/future/image'
-import { StaticImageData } from 'next/dist/client/image'
 import { theme } from 'src/theme/theme.default'
 import { useResizeDetector } from 'react-resize-detector'
+import { Asset } from 'contentful'
 
 interface MobileImagesAndTextProps {
     title: string
     description: string
-    images: StaticImageData[]
+    images: Asset[]
     buttonText?: string
     sectionId?: string
 }
@@ -54,9 +53,11 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 },
                             }}
                         >
-                            <Image
-                                alt={title}
-                                src={images[0]}
+                            <img
+                                alt={images[0].fields.title}
+                                src={images[0].fields.file.url}
+                                width={images[0].fields.file.details.image?.width}
+                                height={images[0].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
@@ -65,9 +66,11 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                     borderRadius: '14px',
                                 }}
                             />
-                            <Image
-                                alt="general health"
-                                src={images[1]}
+                            <img
+                                alt={images[1].fields.title}
+                                src={images[1].fields.file.url}
+                                width={images[1].fields.file.details.image?.width}
+                                height={images[1].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
@@ -87,9 +90,11 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 },
                             }}
                         >
-                            <Image
-                                alt={title}
-                                src={images[2]}
+                            <img
+                                alt={images[2].fields.title}
+                                src={images[2].fields.file.url}
+                                width={images[2].fields.file.details.image?.width}
+                                height={images[2].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
@@ -98,9 +103,11 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                     borderRadius: '14px',
                                 }}
                             />
-                            <Image
-                                alt="general health"
-                                src={images[3]}
+                            <img
+                                alt={images[3].fields.title}
+                                src={images[3].fields.file.url}
+                                width={images[3].fields.file.details.image?.width}
+                                height={images[3].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',

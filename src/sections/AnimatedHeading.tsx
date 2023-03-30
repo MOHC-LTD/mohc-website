@@ -3,13 +3,13 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import Image from 'next/future/image'
 import Section from '../general/Section'
 import { theme } from 'src/theme/theme.default'
-import { StaticImageData } from 'next/dist/client/image'
 import { useResizeDetector } from 'react-resize-detector'
 import { motion } from 'framer-motion'
+import { Asset } from 'contentful'
 
 interface AnimatedHeaderProps {
     title: string
-    image: StaticImageData
+    image: Asset
 }
 
 const container = {
@@ -134,15 +134,16 @@ const AnimatedHeader: FunctionComponent<PropsWithChildren<AnimatedHeaderProps>> 
                         }}
                     >
                         <MotionImage variants={imageItem}>
-                            <Image
-                                alt={title}
-                                src={image}
+                            <img
+                                alt={image.fields.title}
+                                src={image.fields.file.url}
+                                width={image.fields.file.details.image?.width}
+                                height={image.fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     width: 'auto',
                                     height: 'auto',
                                 }}
-                                priority
                             />
                         </MotionImage>
                         <Box

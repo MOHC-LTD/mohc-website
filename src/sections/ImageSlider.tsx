@@ -1,15 +1,10 @@
 import React, { useRef, useState, useEffect, FunctionComponent, PropsWithChildren } from 'react'
 import { motion } from 'framer-motion'
-import { StaticImageData } from 'next/dist/client/image'
 import { Box, styled } from '@mui/material'
-
-interface imageSlide {
-    id: number
-    imageSrc: StaticImageData
-}
+import { Asset } from 'contentful'
 
 interface ImageSliderProps {
-    images: imageSlide[]
+    images: Asset[]
 }
 
 const ImageList = styled(motion.ul, {
@@ -128,8 +123,8 @@ const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ i
                     }}
                 >
                     {images.map((image) => (
-                        <li key={image.id}>
-                            <div style={{ backgroundImage: `url(${image.imageSrc.src})` }} />
+                        <li key={image.fields.title}>
+                            <div style={{ backgroundImage: `url(${image.fields.file.url})`, borderRadius: '14px' }} />
                         </li>
                     ))}
                 </ImageList>

@@ -1,15 +1,14 @@
 import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren, useEffect } from 'react'
-import Image from 'next/future/image'
 import Section from '../general/Section'
 import { theme } from 'src/theme/theme.default'
-import { StaticImageData } from 'next/dist/client/image'
 import { useResizeDetector } from 'react-resize-detector'
+import { Asset } from 'contentful'
 
 interface HeadingWithImageProps {
-    title: string
-    subtitle: string
-    image: StaticImageData
+    title?: string
+    subtitle?: string
+    image?: Asset
 }
 
 /**
@@ -68,9 +67,11 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                             },
                         }}
                     >
-                        <Image
+                        <img
                             alt={title}
-                            src={image}
+                            src={`https:${image?.fields.file.url}`}
+                            width={image?.fields.file.details.image?.width}
+                            height={image?.fields.file.details.image?.height}
                             style={{
                                 maxWidth: '100%',
                                 width: 'auto',
@@ -78,7 +79,6 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                                 height: 'auto',
                                 zIndex: 'modal',
                             }}
-                            priority
                         />
                     </Box>
                     <Box

@@ -2,15 +2,14 @@ import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
 import TriButton from 'src/interactive/buttons/TriButton'
 import Section from '../general/Section'
-import Image from 'next/future/image'
-import { StaticImageData } from 'next/dist/client/image'
 import { theme } from 'src/theme/theme.default'
 import { useResizeDetector } from 'react-resize-detector'
+import { Asset } from 'contentful'
 
 interface ImageAndTextProps {
     title: string
     description: string
-    image: StaticImageData
+    image: Asset
     buttonText?: string
     sectionId?: string
 }
@@ -45,7 +44,13 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         </Typography>
                     )}
                     <Box sx={{ maxWidth: '100%', [theme.breakpoints.up('md')]: { maxWidth: '50%' } }}>
-                        <Image alt={title} src={image} style={{ maxWidth: '100%', height: 'auto' }} />
+                        <img
+                            alt={image.fields.title}
+                            src={image.fields.file.url}
+                            width={image.fields.file.details.image?.width}
+                            height={image.fields.file.details.image?.height}
+                            style={{ maxWidth: '100%', height: 'auto' }}
+                        />
                     </Box>
                     <Box
                         sx={{
