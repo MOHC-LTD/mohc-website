@@ -14,7 +14,7 @@ interface IconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'size'> {
 }
 
 // TODO: change to sm/md/lg/xl
-type IconSize = 'inherit' | 'small' | 'medium' | 'large' | 'extra-large'
+type IconSize = number | 'inherit' | 'small' | 'medium' | 'large' | 'extra-large'
 
 interface FontSizes {
     fontSize: number | string

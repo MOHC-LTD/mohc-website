@@ -1,17 +1,17 @@
 import { FunctionComponent } from 'react'
 
-import { QueryClientProvider, QueryClient } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { AnimatePresence, motion } from 'framer-motion'
+import i18n from 'i18next'
 import { enableMapSet } from 'immer'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { appWithTranslation } from 'next-i18next'
-import i18n from 'i18next'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
+import { QueryClient,QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
-import { NextPageWithLayout } from 'src/types'
 import { resources } from 'src/translations/resources'
-import { AnimatePresence, motion } from 'framer-motion'
+import { NextPageWithLayout } from 'src/types'
 
 interface CustomAppProps extends AppProps {
     Component: NextPageWithLayout
@@ -37,10 +37,18 @@ const CustomApp: FunctionComponent<CustomAppProps> = ({ Component, pageProps, ro
             <ReactQueryDevtools initialIsOpen={false} />
             <AnimatePresence mode={'wait'}>
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.75 }}
-                    exit={{ opacity: 0 }}
+                    initial={{
+ opacity: 0, 
+}}
+                    animate={{
+ opacity: 1, 
+}}
+                    transition={{
+ duration: 0.75, 
+}}
+                    exit={{
+ opacity: 0, 
+}}
                 >
                     {Component.getLayout ? (
                         Component.getLayout(<Component key={router.pathname} {...pageProps} />, pageProps)

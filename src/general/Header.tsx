@@ -3,13 +3,14 @@ import { FunctionComponent, PropsWithChildren, ReactNode, useId } from 'react'
 import isPropValid from '@emotion/is-prop-valid'
 import { Box, Link, ListItemButton, Stack, styled, Typography } from '@mui/material'
 import { usePopupState } from 'material-ui-popup-state/hooks'
+import { useResizeDetector } from 'react-resize-detector'
 
 import StuckSentinel from 'src/general/StuckSentinel'
 import { GeneralConfig, Spacing } from 'src/general/utils/config'
 import { stickyBoxShadow } from 'src/interactive/styles/stickyBoxShadow'
-import AppName from './AppName'
-import { useResizeDetector } from 'react-resize-detector'
 import { theme } from 'src/theme/theme.default'
+
+import AppName from './AppName'
 
 interface HeaderProps {
     disableStickyShadow?: boolean
@@ -52,8 +53,7 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ disableStic
         <div ref={ref}>
             <StuckSentinel position="absolute" top={0}>
                 {({ stuck }): ReactNode => (
-                    <>
-                        <HeaderRoot order={order} stuck={!!(stuck && !disableStickyShadow)}>
+                    <HeaderRoot order={order} stuck={!!(stuck && !disableStickyShadow)}>
                             <Box
                                 display="grid"
                                 gap={Spacing.Header}
@@ -69,23 +69,24 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ disableStic
                                 {/* Empty <div> required so that the last section of the grid for
                             location and account can align itself to the right */}
                                 <div />
-                                {!sm && (
-                                    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                                {!sm ? <Box sx={{
+ display: 'flex', flexDirection: 'row', 
+}}>
                                         {menuOptions.map((option) => (
                                             <ListItemButton
                                                 key={option}
                                                 href={`#${option}`}
                                                 onClick={popupState.close}
-                                                sx={{ display: 'flex', justifyContent: 'center' }}
+                                                sx={{
+ display: 'flex', justifyContent: 'center', 
+}}
                                             >
                                                 <Typography>{option}</Typography>
                                             </ListItemButton>
                                         ))}
-                                    </Box>
-                                )}
+                                    </Box> : null}
                             </Box>
                         </HeaderRoot>
-                    </>
                 )}
             </StuckSentinel>
         </div>

@@ -1,10 +1,12 @@
-import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import TriButton from 'src/interactive/buttons/TriButton'
-import Section from '../general/Section'
-import { theme } from 'src/theme/theme.default'
-import { useResizeDetector } from 'react-resize-detector'
+
+import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
+import { useResizeDetector } from 'react-resize-detector'
+
+import Section from 'src/general/Section'
+import TriButton from 'src/interactive/buttons/TriButton'
+import { theme } from 'src/theme/theme.default'
 
 interface ImageAndTextProps {
     title: string
@@ -35,21 +37,33 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        [theme.breakpoints.up('md')]: { flexDirection: 'row' },
+                        [theme.breakpoints.up('md')]: {
+                            flexDirection: 'row',
+                        },
                     }}
                 >
-                    {sm && (
+                    {sm ? (
                         <Typography variant="h3" align="center">
                             {title}
                         </Typography>
-                    )}
-                    <Box sx={{ maxWidth: '100%', [theme.breakpoints.up('md')]: { maxWidth: '50%' } }}>
+                    ) : null}
+                    <Box
+                        sx={{
+                            maxWidth: '100%',
+                            [theme.breakpoints.up('md')]: {
+                                maxWidth: '50%',
+                            },
+                        }}
+                    >
                         <img
                             alt={image.fields.title}
                             src={image.fields.file.url}
                             width={image.fields.file.details.image?.width}
                             height={image.fields.file.details.image?.height}
-                            style={{ maxWidth: '100%', height: 'auto' }}
+                            style={{
+                                maxWidth: '100%',
+                                height: 'auto',
+                            }}
                         />
                     </Box>
                     <Box
@@ -58,12 +72,15 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'center',
-                            [theme.breakpoints.up('md')]: { maxWidth: '50%', padding: '80px' },
+                            [theme.breakpoints.up('md')]: {
+                                maxWidth: '50%',
+                                padding: '80px',
+                            },
                         }}
                     >
-                        {!sm && <Typography variant="h3">{title}</Typography>}
+                        {!sm ? <Typography variant="h3">{title}</Typography> : null}
                         <Typography variant="body1">{description}</Typography>
-                        {buttonText && <TriButton variant="secondary">{buttonText}</TriButton>}
+                        {buttonText ? <TriButton variant="secondary">{buttonText}</TriButton> : null}
                     </Box>
                 </Box>
             </Section>

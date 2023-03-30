@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, ReactNode, useState } from 'react'
+import { FunctionComponent, PropsWithChildren, useState } from 'react'
 
 import { ButtonBase, Collapse, collapseClasses, Stack, styled, Typography } from '@mui/material'
 

@@ -1,5 +1,6 @@
 import { createClient } from 'contentful'
 import { config } from 'dotenv'
+
 import {
     IAccordionFields,
     IHeroBannerFields,

@@ -1,4 +1,6 @@
 import { Box, CSSObject } from '@mui/material'
+ 
+const ReactEmptyRender = null
 
 /**
  * Reusable theme spacing value for all elements.
@@ -70,4 +72,4 @@ const transComponents = {
     time: <Box component="span" sx={numericTypography} />,
 } as const
 
-export { GeneralConfig, PopoverWidth, Spacing, numericTypography, transComponents }
+export { GeneralConfig, PopoverWidth, ReactEmptyRender, Spacing, numericTypography, transComponents }

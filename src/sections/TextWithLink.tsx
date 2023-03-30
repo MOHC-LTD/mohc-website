@@ -1,6 +1,9 @@
-import { Box, Link, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import Section from '../general/Section'
+
+import { Box, Typography } from '@mui/material'
+import Link from 'next/link'
+
+import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
 interface TextWithLinkProps {
@@ -21,7 +24,10 @@ const TextWithLink: FunctionComponent<PropsWithChildren<TextWithLinkProps>> = ({
                 flexDirection="row"
                 alignItems="center"
                 justifyContent="flex-end"
-                sx={{ background: 'secondary', marginBottom: '20px' }}
+                sx={{
+                    background: 'secondary',
+                    marginBottom: '20px',
+                }}
             >
                 <Typography variant="h3" color={theme.palette.text.secondary}>
                     {text}

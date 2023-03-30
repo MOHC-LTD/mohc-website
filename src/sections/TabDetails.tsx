@@ -1,8 +1,10 @@
 import { FunctionComponent, PropsWithChildren, useState } from 'react'
-import Section from 'src/general/Section'
+
 import { Box, Button, Typography } from '@mui/material'
-import { theme } from 'src/theme/theme.default'
 import { useResizeDetector } from 'react-resize-detector'
+
+import Section from 'src/general/Section'
+import { theme } from 'src/theme/theme.default'
 
 interface tabItem {
     title: string
@@ -67,8 +69,8 @@ const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
                     >
                         {tabItems.map((item) => (
                             <Button
-                                onClick={() => setActiveListItem(item)}
-                                variant="primary"
+                                onClick={(): void => setActiveListItem(item)}
+                                variant="contained"
                                 sx={{
                                     marginBottom: '20px',
                                     padding: 0,
@@ -103,7 +105,7 @@ const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
                                 >
                                     {item.title === activeListItem.title && !sm ? `${item.title} →` : item.title}
                                 </Typography>
-                                {item.title === activeListItem.title && sm && (
+                                {item.title === activeListItem.title && sm ? (
                                     <Box
                                         sx={{
                                             position: 'absolute',
@@ -115,15 +117,27 @@ const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
                                             borderTop: '20px solid #101010',
                                         }}
                                     />
-                                )}
+                                ) : null}
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{ marginBottom: '20px', [theme.breakpoints.up('md')]: { maxWidth: '40%' } }}>
+                    <Box
+                        sx={{
+                            marginBottom: '20px',
+                            [theme.breakpoints.up('md')]: {
+                                maxWidth: '40%',
+                            },
+                        }}
+                    >
                         <Typography variant="body1">{activeListItem.description}</Typography>
                     </Box>
                 </Box>
-                <Typography variant="body1" sx={{ fontWeight: 700 }}>
+                <Typography
+                    variant="body1"
+                    sx={{
+                        fontWeight: 700,
+                    }}
+                >
                     {subtitle}
                 </Typography>
             </Section>

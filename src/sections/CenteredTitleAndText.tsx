@@ -1,14 +1,17 @@
-import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import Section from '../general/Section'
+
+import { Box, Typography } from '@mui/material'
+
+import Section from 'src/general/Section'
+import { RichTextTypographyVariant } from 'src/rich-text/RichText'
 import { theme } from 'src/theme/theme.default'
 
 interface CenteredTitleAndTextProps {
     title: string
     text?: string
     backgroundColor?: string
-    titleVariant?: string
-    textVariant?: string
+    titleVariant?: RichTextTypographyVariant
+    textVariant?: RichTextTypographyVariant
     sectionId?: string
 }
 
@@ -35,11 +38,11 @@ const CenteredTitleAndText: FunctionComponent<PropsWithChildren<CenteredTitleAnd
                 <Typography variant={titleVariant} align="center">
                     {title}
                 </Typography>
-                {text && (
+                {text ? (
                     <Typography variant={textVariant} align="center">
                         {text}
                     </Typography>
-                )}
+                ) : null}
             </Box>
         </Section>
     )

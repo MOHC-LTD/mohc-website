@@ -1,13 +1,13 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Container, ContainerProps } from '@mui/material'
+import ellipse from 'assets/ellipse.png'
+import ellipseDarkMode from 'assets/ellipse-darkmode.png'
+import Image from 'next/future/image'
 import { Except } from 'type-fest'
 
 import { Spacing } from 'src/general/utils/config'
 import { theme } from 'src/theme/theme.default'
-import ellipse from 'assets/ellipse.png'
-import ellipseDarkMode from 'assets/ellipse-darkmode.png'
-import Image from 'next/future/image'
 
 interface SectionProps extends Except<ContainerProps, 'sx'> {
     backgroundColor?: string
@@ -41,12 +41,14 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                         sm: Spacing.Body / 3,
                         md: Spacing.Body,
                     },
-                    [theme.breakpoints.up('md')]: { height: isFullScreen && 'calc(100vh - 72px)' },
+                    [theme.breakpoints.up('md')]: {
+                        height: isFullScreen && 'calc(100vh - 72px)',
+                    },
                 }}
                 maxWidth={maxWidth}
                 {...props}
             >
-                {hasEllipse && (
+                {hasEllipse ? (
                     <Image
                         alt="Ellipse"
                         src={isDarkMode ? ellipseDarkMode : ellipse}
@@ -59,7 +61,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                             height: 'auto',
                         }}
                     />
-                )}
+                ) : null}
                 {children}
             </Container>
         </Box>

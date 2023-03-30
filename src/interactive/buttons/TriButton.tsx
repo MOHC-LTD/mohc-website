@@ -5,19 +5,22 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 import ButtonLoadingView from 'src/interactive/buttons/ButtonLoadingView'
+import { CustomNextLinkProps } from 'src/interactive/ComposedLink'
 import { Color } from 'src/theme/types'
 
 type TriButtonVariant = 'primary' | 'secondary' | 'tertiary'
 
-interface TriButtonButtonProps
-    extends Omit<MUIButtonProps, 'component' | 'href' | 'LinkComponent' | 'ref' | 'variant'> {
+interface BaseProps extends Omit<MUIButtonProps, 'component' | 'href' | 'LinkComponent' | 'ref' | 'variant'> {
     destructive?: boolean
     loading?: boolean
     variant?: TriButtonVariant
 }
 
+interface TriButtonButtonProps extends BaseProps, Partial<Record<keyof CustomNextLinkProps, never>> {}
+
 interface TriButtonLinkProps
-    extends TriButtonButtonProps,
+    extends BaseProps,
+        CustomNextLinkProps,
         Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'rel' | 'target'> {}
 
 type TriButtonProps = TriButtonButtonProps | TriButtonLinkProps
@@ -70,7 +73,9 @@ const TriButton = forwardRef<HTMLButtonElement, TriButtonProps>((props, ref) => 
             color={destructive ? 'error' : color}
             disabled={disabled || loading}
             variant={buttonVariant[variant]}
-            sx={{ color: textColor[variant] }}
+            sx={{
+                color: textColor[variant],
+            }}
         >
             {loading ? <ButtonLoadingView /> : undefined}
             {children}

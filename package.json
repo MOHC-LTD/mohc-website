@@ -1,5 +1,5 @@
 {
-  "name": "appointment-booking-ui",
+  "name": "mohc",
   "version": "1.1.2",
   "private": true,
   "scripts": {
@@ -9,14 +9,12 @@
     "commit-msg": "commitlint",
     "predev": "npm run translations:compile",
     "dev": "next dev",
-    "prebuild": "npm run bootstrap",
     "build": "next build",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "translations:lint": "ts-node -r tsconfig-paths/register src/translations --lint",
     "translations:compile": "ts-node -r tsconfig-paths/register src/translations --compile",
     "generate:types": "contentful-typescript-codegen --output src/@types/contentful.d.ts",
-    "bootstrap": "cd src/bootstrap && webpack --progress",
     "lint": "tsc && eslint \"**/*.{js,mjs,ts,tsx}\" && prettier --check \"**/*.{js,mjs,ts,tsx,json,yml}\"",
     "format": "tsc && eslint \"**/*.{js,mjs,ts,tsx}\" --fix && prettier --write --loglevel warn \"**/*.{js,mjs,ts,tsx,json,yml}\" && npm run translations:lint",
     "clean": "del-cli tsconfig.tsbuildinfo .next .swc public/bootstrap.js public/locales"

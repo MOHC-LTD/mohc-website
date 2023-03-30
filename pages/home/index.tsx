@@ -1,17 +1,18 @@
-import { Grid, Typography } from '@mui/material'
-import React, { ReactNode } from 'react'
-import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
-import Section from 'src/general/Section'
-import { useTranslation } from 'react-i18next'
-import type { GetStaticProps } from 'next'
+import { ReactNode } from 'react'
 
-import { NextPageWithLayout } from 'src/types'
-import ProjectDrawer from 'src/general/ProjectDrawer'
-import ContactUs from 'src/sections/ContactUs'
-import PageLayout from 'src/general/PageLayout'
-import ContentService from 'src/util/content-service'
+import { Grid, Typography } from '@mui/material'
+import type { GetStaticProps } from 'next'
+import { useTranslation } from 'react-i18next'
+
 import { IHomePageFields, IProjectNavigationFields } from 'src/@types/contentful'
+import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
+import PageLayout from 'src/general/PageLayout'
+import ProjectDrawer from 'src/general/ProjectDrawer'
+import Section from 'src/general/Section'
+import ContactUs from 'src/sections/ContactUs'
 import { getSection } from 'src/sections/getSection'
+import { NextPageWithLayout } from 'src/types'
+import ContentService from 'src/util/ContentService'
 
 interface Props {
     props: IHomePageFields
@@ -26,6 +27,7 @@ const Page: NextPageWithLayout<Props> = ({ props, pages }) => {
             if (section.fields.sectionId) {
                 return section.fields.sectionId as string
             }
+
             return undefined
         })
         .filter((notUndefined) => notUndefined !== undefined) as string[]
@@ -39,10 +41,10 @@ const Page: NextPageWithLayout<Props> = ({ props, pages }) => {
                 </Typography>
                 <Grid container spacing={4}>
                     {pages.project?.map((page) => {
-                        let navigationImage: any = page.fields.navigationImage
+                        const navigationImage: any = page.fields.navigationImage
 
                         return (
-                            <Grid item md={6}>
+                            <Grid item md={6} key={navigationImage?.fields.title}>
                                 <ProjectDrawer
                                     image={navigationImage?.fields.file.url}
                                     width={navigationImage?.fields.file.details.image?.width}
@@ -64,10 +66,13 @@ Page.getLayout = (page): ReactNode => <DefaultThemeProvider>{page}</DefaultTheme
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const props = await ContentService.instance.getHomePageBySlug('home')
+
     const pages = await ContentService.instance.getProjectNavigation()
 
     if (!props) {
-        return { notFound: true }
+        return {
+            notFound: true,
+        }
     }
 
     return {

@@ -1,13 +1,13 @@
-import { Box, Typography, styled } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import Image from 'next/future/image'
-import Section from '../general/Section'
-import { theme } from 'src/theme/theme.default'
-import { useResizeDetector } from 'react-resize-detector'
-import { motion } from 'framer-motion'
-import { Asset } from 'contentful'
 
-interface AnimatedHeaderProps {
+import { Box, styled, Typography } from '@mui/material'
+import { Asset } from 'contentful'
+import { motion } from 'framer-motion'
+
+import Section from 'src/general/Section'
+import { theme } from 'src/theme/theme.default'
+
+interface AnimatedHeadingProps {
     title: string
     image: Asset
 }
@@ -89,8 +89,12 @@ const MotionImage = styled(motion.div, {
 })({
     maxWidth: '100%',
     margin: '10px',
-    [theme.breakpoints.up('md')]: { maxWidth: '50%' },
-    [theme.breakpoints.up('lg')]: { maxWidth: '55%' },
+    [theme.breakpoints.up('md')]: {
+        maxWidth: '50%',
+    },
+    [theme.breakpoints.up('lg')]: {
+        maxWidth: '55%',
+    },
 })
 
 const BlueRectangle = styled(motion.div, {
@@ -101,7 +105,11 @@ const BlueRectangle = styled(motion.div, {
     height: '80px',
     backgroundColor: 'blue',
     margin: '10px',
-    [theme.breakpoints.up('md')]: { maxWidth: '10%', width: '100%', height: '500px' },
+    [theme.breakpoints.up('md')]: {
+        maxWidth: '10%',
+        width: '100%',
+        height: '500px',
+    },
 })
 
 const BlackRectangle = styled(motion.div, {
@@ -111,66 +119,86 @@ const BlackRectangle = styled(motion.div, {
     height: '150px',
     backgroundColor: 'black',
     margin: '10px',
-    [theme.breakpoints.up('md')]: { width: 'auto', height: '300px' },
+    [theme.breakpoints.up('md')]: {
+        width: 'auto',
+        height: '300px',
+    },
 })
 
 /**
- *
+ * Animated heading section.
  */
-const AnimatedHeader: FunctionComponent<PropsWithChildren<AnimatedHeaderProps>> = ({ title, image }) => {
-    const { width, ref } = useResizeDetector()
-
-    const lg = width && width > theme.breakpoints.values.lg
-
+const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>> = ({ title, image }) => {
     return (
-        <div ref={ref}>
-            <Section maxWidth="xl" isFullScreen>
-                <motion.div variants={container} initial="hidden" animate="show" exit="exit">
+        <Section maxWidth="xl" isFullScreen>
+            <motion.div variants={container} initial="hidden" animate="show" exit="exit">
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        [theme.breakpoints.up('md')]: {
+                            flexDirection: 'row',
+                            justifyContent: 'flex-start',
+                        },
+                    }}
+                >
+                    <MotionImage variants={imageItem}>
+                        <img
+                            alt={image.fields.title}
+                            src={image.fields.file.url}
+                            width={image.fields.file.details.image?.width}
+                            height={image.fields.file.details.image?.height}
+                            style={{
+                                maxWidth: '100%',
+                                width: 'auto',
+                                height: 'auto',
+                            }}
+                        />
+                    </MotionImage>
                     <Box
                         sx={{
                             display: 'flex',
-                            flexDirection: 'column',
-                            [theme.breakpoints.up('md')]: { flexDirection: 'row', justifyContent: 'flex-start' },
+                            maxWidth: '50%',
+                            [theme.breakpoints.up('md')]: {
+                                flexDirection: 'column',
+                                maxWidth: '45%',
+                            },
+                            [theme.breakpoints.up('lg')]: {
+                                flexDirection: 'column',
+                                maxWidth: '40%',
+                            },
                         }}
                     >
-                        <MotionImage variants={imageItem}>
-                            <img
-                                alt={image.fields.title}
-                                src={image.fields.file.url}
-                                width={image.fields.file.details.image?.width}
-                                height={image.fields.file.details.image?.height}
-                                style={{
-                                    maxWidth: '100%',
-                                    width: 'auto',
-                                    height: 'auto',
-                                }}
-                            />
-                        </MotionImage>
                         <Box
                             sx={{
-                                display: 'flex',
-                                maxWidth: '50%',
-                                [theme.breakpoints.up('md')]: { flexDirection: 'column', maxWidth: '45%' },
-                                [theme.breakpoints.up('lg')]: { flexDirection: 'column', maxWidth: '40%' },
+                                order: 2,
+                                [theme.breakpoints.up('md')]: {
+                                    order: 1,
+                                },
                             }}
                         >
-                            <Box sx={{ order: 2, [theme.breakpoints.up('md')]: { order: 1 } }}>
-                                <motion.div variants={itemAbove} initial="hidden" animate="show" exit="exit">
-                                    <Typography variant="h3" margin="20px">
-                                        {title}
-                                    </Typography>
-                                </motion.div>
-                            </Box>
-                            <Box sx={{ order: 1, [theme.breakpoints.up('md')]: { order: 2 } }}>
-                                <BlackRectangle variants={itemBelow} initial="hidden" animate="show" exit="exit" />
-                            </Box>
+                            <motion.div variants={itemAbove} initial="hidden" animate="show" exit="exit">
+                                <Typography variant="h3" margin="20px">
+                                    {title}
+                                </Typography>
+                            </motion.div>
                         </Box>
-                        <BlueRectangle variants={itemAbove} initial="hidden" animate="show" exit="exit" />
+                        <Box
+                            sx={{
+                                order: 1,
+                                [theme.breakpoints.up('md')]: {
+                                    order: 2,
+                                },
+                            }}
+                        >
+                            <BlackRectangle variants={itemBelow} initial="hidden" animate="show" exit="exit" />
+                        </Box>
                     </Box>
-                </motion.div>
-            </Section>
-        </div>
+                    <BlueRectangle variants={itemAbove} initial="hidden" animate="show" exit="exit" />
+                </Box>
+            </motion.div>
+        </Section>
     )
 }
 
-export default AnimatedHeader
+export default AnimatedHeading

@@ -2,8 +2,9 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 
 import isPropValid from '@emotion/is-prop-valid'
 import { Box, Stack, styled, Typography } from '@mui/material'
-import { GeneralConfig, Spacing } from 'src/general/utils/config'
 import { useTranslation } from 'react-i18next'
+
+import { GeneralConfig, Spacing } from 'src/general/utils/config'
 
 interface FooterProps {
     disableStickyShadow?: boolean

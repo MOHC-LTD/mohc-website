@@ -1,15 +1,15 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
-import Section from 'src/general/Section'
-import { Alert, Box, Typography } from '@mui/material'
-import { theme } from 'src/theme/theme.default'
+
+import { Box, Typography } from '@mui/material'
+import { FormProvider, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+
 import EmailField from 'src/form/fields/EmailField'
 import NameField from 'src/form/fields/NameField'
 import TextareaField from 'src/form/fields/TextareaField'
-import { FormProvider, useForm } from 'react-hook-form'
-import { useMutation } from 'react-query'
+import Section from 'src/general/Section'
 import TriButton from 'src/interactive/buttons/TriButton'
-import axios from 'axios'
+import { theme } from 'src/theme/theme.default'
 
 interface ContactUsProps {
     sectionId?: string
@@ -17,10 +17,6 @@ interface ContactUsProps {
 
 const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ sectionId }) => {
     const { t } = useTranslation()
-
-    const { handleSubmit } = useForm()
-
-    const { mutate, isLoading, isError } = useMutation(async (data) => axios.post('url', data))
 
     const form = useForm()
 
@@ -37,10 +33,19 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    [theme.breakpoints.up('md')]: { flexDirection: 'row', justifyContent: 'space-between' },
+                    [theme.breakpoints.up('md')]: {
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                    },
                 }}
             >
-                <Box sx={{ [theme.breakpoints.up('md')]: { maxWidth: '40%' } }}>
+                <Box
+                    sx={{
+                        [theme.breakpoints.up('md')]: {
+                            maxWidth: '40%',
+                        },
+                    }}
+                >
                     <Typography variant="h3" color={theme.palette.text.secondary} marginBottom="20px">
                         {t('home:contact_us.title')}
                     </Typography>
@@ -48,10 +53,15 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                         {t('home:contact_us.title')}
                     </Typography>
                 </Box>
-                <Box sx={{ [theme.breakpoints.up('md')]: { maxWidth: '50%' } }}>
+                <Box
+                    sx={{
+                        [theme.breakpoints.up('md')]: {
+                            maxWidth: '50%',
+                        },
+                    }}
+                >
                     <FormProvider {...form}>
-                        {/* @ts-ignore */}
-                        <form onSubmit={handleSubmit(mutate)}>
+                        <form>
                             <NameField
                                 field={{
                                     label: t('forms:name.label') || undefined,
@@ -79,10 +89,7 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                                 }}
                                 minRows={10}
                             />
-                            {isError ? <Alert severity="error">{t('forms:submit_error')}</Alert> : undefined}
-                            <TriButton loading={isLoading} type="submit">
-                                {t('forms:submit')}
-                            </TriButton>
+                            <TriButton type="submit">{t('forms:submit')}</TriButton>
                         </form>
                     </FormProvider>
                 </Box>

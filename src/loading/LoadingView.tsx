@@ -66,7 +66,7 @@ const LoadingView: FunctionComponent<LoadingViewProps> = ({
 
     const children = (
         <Stack alignItems="center" overflow="hidden">
-            <CircularProgress aria-label={t('general:loading.label')} size={sizes[size].progressSize} />
+            <CircularProgress size={sizes[size].progressSize} />
             <DelayedRender timeout={5000} visible={longLoadingHint}>
                 <Box pt={Spacing.TypographyGutter}>
                     <Typography variant={sizes[size].typographyVariant}>

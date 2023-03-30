@@ -1,9 +1,12 @@
-import { Box, Link, Typography } from '@mui/material'
 import { FunctionComponent, useEffect, useState } from 'react'
+
+import { Box, Typography } from '@mui/material'
+import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+
+import { IProjectNavigationFields } from 'src/@types/contentful'
+import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
-import Section from '../general/Section'
-import { IPageFields, IProjectNavigationFields } from 'src/@types/contentful'
 
 interface Props {
     pages: IProjectNavigationFields
@@ -17,11 +20,12 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
 
     const [currentProject, setCurrentProject] = useState(0)
 
+    const projects = pages.project || []
+
     useEffect(() => {
         setCurrentProject(() => {
-            const index = pages.project?.indexOf(
-                pages.project.find((page) => `/project/${page.fields.slug}` === window.location.pathname) ||
-                    pages.project[0]
+            const index = projects?.indexOf(
+                projects.find((page) => `/project/${page.fields.slug}` === window.location.pathname) || projects[0]
             )
 
             return index
@@ -34,10 +38,13 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    [theme.breakpoints.up('md')]: { flexDirection: 'row', justifyContent: 'center' },
+                    [theme.breakpoints.up('md')]: {
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                    },
                 }}
             >
-                {currentProject !== 0 && (
+                {currentProject !== 0 ? (
                     <Box
                         sx={{
                             display: 'flex',
@@ -45,18 +52,21 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                             alignItems: 'center',
                             margin: '20px 0',
                             order: 2,
-                            [theme.breakpoints.up('md')]: { order: 1, margin: '20px 80px' },
+                            [theme.breakpoints.up('md')]: {
+                                order: 1,
+                                margin: '20px 80px',
+                            },
                         }}
                     >
-                        <Link href={`/project/${pages.project[currentProject - 1].fields.slug}`}>
+                        <Link href={`/project/${projects[currentProject - 1].fields.slug}`}>
                             <Typography variant="h5">{t('project:previous_project')}</Typography>
                         </Link>
                         <Typography variant="body1">
-                            {pages.project[currentProject - 1].fields.navigationTitle}
+                            {projects[currentProject - 1].fields.navigationTitle as string}
                         </Typography>
                     </Box>
-                )}
-                {currentProject !== pages.project.length - 1 && (
+                ) : null}
+                {currentProject !== projects.length - 1 ? (
                     <Box
                         sx={{
                             display: 'flex',
@@ -64,17 +74,20 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                             alignItems: 'center',
                             margin: '20px 0',
                             order: 1,
-                            [theme.breakpoints.up('md')]: { order: 2, margin: '20px 80px' },
+                            [theme.breakpoints.up('md')]: {
+                                order: 2,
+                                margin: '20px 80px',
+                            },
                         }}
                     >
-                        <Link href={`/project/${pages.project[currentProject + 1].fields.slug}`}>
+                        <Link href={`/project/${projects[currentProject + 1].fields.slug}`}>
                             <Typography variant="h5">{t('project:next_project')}</Typography>
                         </Link>
                         <Typography variant="body1">
-                            {pages.project[currentProject + 1].fields.navigationTitle}
+                            {projects[currentProject + 1].fields.navigationTitle as string}
                         </Typography>
                     </Box>
-                )}
+                ) : null}
             </Box>
         </Section>
     )

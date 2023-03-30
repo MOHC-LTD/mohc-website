@@ -1,5 +1,7 @@
-import { Box, Link, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
+
+import { Box, Typography } from '@mui/material'
+import Link from 'next/link'
 
 interface ProjectDrawerProps {
     image: string
@@ -24,7 +26,12 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
 }) => {
     return (
         <>
-            <Link href={`/project/${page}`} sx={{ marginBottom: '20px' }}>
+            <Link
+                href={`/project/${page}`}
+                style={{
+                    marginBottom: '20px',
+                }}
+            >
                 <Box
                     sx={{
                         maxWidth: '100%',
@@ -51,11 +58,11 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                     />
                 </Box>
             </Link>
-            {title && (
+            {title ? (
                 <Typography variant="h5" mt={2}>
                     {title}
                 </Typography>
-            )}
+            ) : null}
         </>
     )
 }

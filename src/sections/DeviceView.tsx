@@ -1,11 +1,13 @@
 import { FunctionComponent, PropsWithChildren, useState } from 'react'
-import Section from 'src/general/Section'
+
 import { Box, Button, Typography } from '@mui/material'
-import Icon from 'src/general/Icon'
-import { theme } from 'src/theme/theme.default'
-import { useTranslation } from 'react-i18next'
 import { Asset } from 'contentful'
+import { useTranslation } from 'react-i18next'
 import { useResizeDetector } from 'react-resize-detector'
+
+import Icon from 'src/general/Icon'
+import Section from 'src/general/Section'
+import { theme } from 'src/theme/theme.default'
 
 interface DeviceViewProps {
     desktopImage?: Asset
@@ -49,7 +51,13 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                         },
                     }}
                 >
-                    <Box sx={{ [theme.breakpoints.up('md')]: { width: '10%' } }}>
+                    <Box
+                        sx={{
+                            [theme.breakpoints.up('md')]: {
+                                width: '10%',
+                            },
+                        }}
+                    >
                         <Typography
                             variant="h1"
                             sx={{
@@ -97,21 +105,26 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                         }}
                     />
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    {desktopImage && (
-                        <Button onClick={() => setDeviceType('tablet')}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                >
+                    {desktopImage ? (
+                        <Button onClick={(): void => setDeviceType('tablet')}>
                             <Icon name="tablet" color={deviceType === 'mobile' ? '#595959' : '#fff'} size="medium" />
                         </Button>
-                    )}
-                    {mobileImage && (
-                        <Button onClick={() => setDeviceType('mobile')}>
+                    ) : null}
+                    {mobileImage ? (
+                        <Button onClick={(): void => setDeviceType('mobile')}>
                             <Icon
                                 name="smartphone"
                                 color={deviceType === 'mobile' ? '#fff' : '#595959'}
                                 size="medium"
                             />
                         </Button>
-                    )}
+                    ) : null}
                 </Box>
             </Section>
         </div>

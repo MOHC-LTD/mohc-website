@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect, FunctionComponent, PropsWithChildren } from 'react'
-import { motion } from 'framer-motion'
+import { FunctionComponent, PropsWithChildren, useEffect, useRef, useState } from 'react'
+
 import { Box, styled } from '@mui/material'
 import { Asset } from 'contentful'
+import { motion } from 'framer-motion'
 
 interface ImageSliderProps {
     images: Asset[]
@@ -39,41 +40,53 @@ const ImageList = styled(motion.ul, {
 })
 
 const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ images }) => {
-    const sliderRef = useRef(null)
-    const slidesRef = useRef(null)
+    const sliderRef = useRef<any>(null)
+
+    const slidesRef = useRef<any>(null)
 
     const [sliderWidth, setSliderWidths] = useState(0)
+
     const [slidesWidth, setSlidesWidths] = useState(0)
 
     const slideMarginRight = 15
+
     const totalSlidesMarginRight = slideMarginRight * images.length
 
     let slides: HTMLElement | null
 
     useEffect(() => {
-        slides = document.getElementById('slides') || null
+        slides = document.querySelector('#slides') || null
     })
 
     useEffect(() => {
-        const measureSliderWidth = () => {
+        const measureSliderWidth = (): void => {
             setSliderWidths(sliderRef.current.clientWidth)
         }
 
-        const measureSlidesWidth = () => {
+        const measureSlidesWidth = (): void => {
             const slidesNode = slidesRef.current.childNodes
-            const slidesArr = Array.from(slidesNode)
-            const slidesSumWidth = slidesArr.reduce((acc, node) => acc + node.clientWidth, 0)
+
+            const slidesArray = [...slidesNode]
+
+            const slidesSumWidth: any = slidesArray.reduce(
+                (accumulator, node: any) => accumulator + node.clientWidth,
+                0
+            )
+
             setSlidesWidths(slidesSumWidth)
         }
 
         measureSliderWidth()
+
         measureSlidesWidth()
 
         window.addEventListener('resize', measureSliderWidth)
+
         window.addEventListener('resize', measureSlidesWidth)
 
         return () => {
             window.removeEventListener('resize', measureSliderWidth)
+
             window.removeEventListener('resize', measureSlidesWidth)
         }
     }, [sliderWidth, slidesWidth])
@@ -106,9 +119,14 @@ const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ i
                         right: 0,
                     }}
                     dragElastic={0.2}
-                    dragTransition={{ bounceDamping: 18, timeConstant: 200, power: 0.1 }}
-                    onDrag={(event, info) => {
+                    dragTransition={{
+                        bounceDamping: 18,
+                        timeConstant: 200,
+                        power: 0.1,
+                    }}
+                    onDrag={(_event, info): void => {
                         slides ? (slides.style.transition = '0.4s ease-out transform') : null
+
                         if (info.delta.x < 0) {
                             slides ? (slides.style.transform = 'skewX(10deg)') : null
                         } else if (info.delta.x > 0) {
@@ -117,14 +135,20 @@ const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ i
                             slides ? (slides.style.transform = 'skewX(0)') : null
                         }
                     }}
-                    onDragEnd={() => {
+                    onDragEnd={(): void => {
                         slides ? (slides.style.transition = '0.4s ease-out transform') : null
+
                         slides ? (slides.style.transform = 'skewX(0)') : null
                     }}
                 >
                     {images.map((image) => (
                         <li key={image.fields.title}>
-                            <div style={{ backgroundImage: `url(${image.fields.file.url})`, borderRadius: '14px' }} />
+                            <div
+                                style={{
+                                    backgroundImage: `url(${image.fields.file.url})`,
+                                    borderRadius: '14px',
+                                }}
+                            />
                         </li>
                     ))}
                 </ImageList>

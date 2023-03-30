@@ -1,14 +1,15 @@
 import { ReactNode } from 'react'
-import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
-import type { GetStaticProps, GetStaticPaths } from 'next'
 
-import { NextPageWithLayout } from 'src/types'
-import PageLayout from 'src/general/PageLayout'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+
 import { IPageFields, IProjectNavigationFields } from 'src/@types/contentful'
-import ContentService from 'src/util/content-service'
+import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
+import PageLayout from 'src/general/PageLayout'
+import ContactUs from 'src/sections/ContactUs'
 import { getSection } from 'src/sections/getSection'
 import ProjectNavigation from 'src/sections/ProjectNavigation'
-import ContactUs from 'src/sections/ContactUs'
+import { NextPageWithLayout } from 'src/types'
+import ContentService from 'src/util/ContentService'
 
 interface Props {
     page: IPageFields
@@ -21,6 +22,7 @@ const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
             if (section.fields.sectionId) {
                 return section.fields.sectionId
             }
+
             return undefined
         })
         .filter((notUndefined) => notUndefined !== undefined) as string[]
@@ -36,24 +38,7 @@ const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
 
 Page.getLayout = (page): ReactNode => <DefaultThemeProvider>{page}</DefaultThemeProvider>
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = async (ctx) => {
-    const { slug } = ctx.params!
-    const page = await ContentService.instance.getPageBySlug(slug)
-    const pages = await ContentService.instance.getProjectNavigation()
-
-    if (!page) {
-        return { notFound: true }
-    }
-
-    return {
-        props: {
-            page: page.fields,
-            pages: pages.fields,
-        },
-    }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
+const getStaticPaths: GetStaticPaths = async () => {
     const pages = await ContentService.instance.getEntriesByType<IPageFields>('page')
 
     return {
@@ -65,5 +50,28 @@ export const getStaticPaths: GetStaticPaths = async () => {
         fallback: false,
     }
 }
+
+const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) => {
+    const { slug } = context.params!
+
+    const page = await ContentService.instance.getPageBySlug(slug)
+
+    const pages = await ContentService.instance.getProjectNavigation()
+
+    if (!page) {
+        return {
+            notFound: true,
+        }
+    }
+
+    return {
+        props: {
+            page: page.fields,
+            pages: pages.fields,
+        },
+    }
+}
+
+export { getStaticPaths, getStaticProps }
 
 export default Page
