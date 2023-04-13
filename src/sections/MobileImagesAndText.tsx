@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Typography } from '@mui/material'
-import { Asset } from 'contentful'
 import { useResizeDetector } from 'react-resize-detector'
 
 import Section from 'src/general/Section'
@@ -11,7 +10,7 @@ import { theme } from 'src/theme/theme.default'
 interface MobileImagesAndTextProps {
     title: string
     description: string
-    images: Asset[]
+    imageURLs: string[]
     buttonText?: string
     sectionId?: string
 }
@@ -22,7 +21,7 @@ interface MobileImagesAndTextProps {
 const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTextProps>> = ({
     title,
     description,
-    images,
+    imageURLs,
     buttonText,
     sectionId,
 }) => {
@@ -62,10 +61,8 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             }}
                         >
                             <img
-                                alt={images[0].fields.title}
-                                src={images[0].fields.file.url}
-                                width={images[0].fields.file.details.image?.width}
-                                height={images[0].fields.file.details.image?.height}
+                                alt={imageURLs[0]}
+                                src={imageURLs[0]}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
@@ -75,10 +72,8 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 }}
                             />
                             <img
-                                alt={images[1].fields.title}
-                                src={images[1].fields.file.url}
-                                width={images[1].fields.file.details.image?.width}
-                                height={images[1].fields.file.details.image?.height}
+                                alt={imageURLs[1]}
+                                src={imageURLs[1]}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
@@ -99,10 +94,8 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             }}
                         >
                             <img
-                                alt={images[2].fields.title}
-                                src={images[2].fields.file.url}
-                                width={images[2].fields.file.details.image?.width}
-                                height={images[2].fields.file.details.image?.height}
+                                alt={imageURLs[2]}
+                                src={imageURLs[2]}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
@@ -112,10 +105,8 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 }}
                             />
                             <img
-                                alt={images[3].fields.title}
-                                src={images[3].fields.file.url}
-                                width={images[3].fields.file.details.image?.width}
-                                height={images[3].fields.file.details.image?.height}
+                                alt={imageURLs[3]}
+                                src={imageURLs[3]}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',

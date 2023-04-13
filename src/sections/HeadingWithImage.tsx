@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren, useEffect } from 'react'
 
 import { Box, Typography } from '@mui/material'
-import { Asset } from 'contentful'
 import { useResizeDetector } from 'react-resize-detector'
 
 import Section from 'src/general/Section'
@@ -10,13 +9,17 @@ import { theme } from 'src/theme/theme.default'
 interface HeadingWithImageProps {
     title?: string
     subtitle?: string
-    image?: Asset
+    imageURL?: string
 }
 
 /**
  * Heading with image section.
  */
-const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProps>> = ({ title, subtitle, image }) => {
+const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProps>> = ({
+    title,
+    subtitle,
+    imageURL,
+}) => {
     useEffect(() => {
         const setMargin = (): void => {
             const container = document.querySelector('#container')
@@ -71,9 +74,7 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                     >
                         <img
                             alt={title}
-                            src={`https:${image?.fields.file.url}`}
-                            width={image?.fields.file.details.image?.width}
-                            height={image?.fields.file.details.image?.height}
+                            src={imageURL}
                             style={{
                                 maxWidth: '100%',
                                 width: 'auto',

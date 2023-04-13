@@ -5,8 +5,6 @@ import Link from 'next/link'
 
 interface ProjectDrawerProps {
     image: string
-    width: number
-    height: number
     page: string
     title?: string
     detailsList?: string[]
@@ -17,13 +15,7 @@ interface ProjectDrawerProps {
  * Component to display a project image with a title and description that links to a project page.
  * A drawer animation effect is shown on hover for desktop.
  */
-const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = ({
-    image,
-    width,
-    height,
-    page,
-    title,
-}) => {
+const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = ({ image, page, title }) => {
     return (
         <>
             <Link
@@ -43,8 +35,6 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                 >
                     <img
                         src={image}
-                        width={width}
-                        height={height}
                         alt={title || ''}
                         style={{
                             display: 'inline-block',

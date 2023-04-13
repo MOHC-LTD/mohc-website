@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Typography } from '@mui/material'
-import { Asset } from 'contentful'
 import { useResizeDetector } from 'react-resize-detector'
 
 import Section from 'src/general/Section'
@@ -11,7 +10,7 @@ import { theme } from 'src/theme/theme.default'
 interface ImageAndTextProps {
     title: string
     description: string
-    image: Asset
+    imageURL: string
     buttonText?: string
     sectionId?: string
 }
@@ -22,7 +21,7 @@ interface ImageAndTextProps {
 const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
     title,
     description,
-    image,
+    imageURL,
     buttonText,
     sectionId,
 }) => {
@@ -56,10 +55,8 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         }}
                     >
                         <img
-                            alt={image.fields.title}
-                            src={image.fields.file.url}
-                            width={image.fields.file.details.image?.width}
-                            height={image.fields.file.details.image?.height}
+                            alt={title}
+                            src={imageURL}
                             style={{
                                 maxWidth: '100%',
                                 height: 'auto',

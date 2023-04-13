@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren, useState } from 'react'
 
 import { Box, Button, Typography } from '@mui/material'
-import { Asset } from 'contentful'
 import { useTranslation } from 'react-i18next'
 import { useResizeDetector } from 'react-resize-detector'
 
@@ -10,9 +9,9 @@ import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
 interface DeviceViewProps {
-    desktopImage?: Asset
+    desktopImageURL?: string
     desktopAlt?: string
-    mobileImage?: Asset
+    mobileImageURL?: string
     mobileAlt?: string
     sectionId?: string
     backgroundColor?: string
@@ -22,14 +21,14 @@ interface DeviceViewProps {
  * Section to display device frame options for images. Toggle between tablet and mobile.
  */
 const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
-    desktopImage,
-    mobileImage,
+    desktopImageURL,
+    mobileImageURL,
     sectionId,
     backgroundColor = theme.palette.text.primary,
 }) => {
     const { t } = useTranslation()
 
-    const [deviceType, setDeviceType] = useState(desktopImage ? 'tablet' : 'mobile')
+    const [deviceType, setDeviceType] = useState(desktopImageURL ? 'tablet' : 'mobile')
 
     const { width, ref } = useResizeDetector()
 
@@ -76,24 +75,8 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                         </Typography>
                     </Box>
                     <img
-                        alt={
-                            deviceType === 'mobile' ? mobileImage?.fields.title || '' : desktopImage?.fields.title || ''
-                        }
-                        src={
-                            deviceType === 'mobile'
-                                ? mobileImage?.fields.file.url || ''
-                                : desktopImage?.fields.file.url || ''
-                        }
-                        width={
-                            deviceType === 'mobile'
-                                ? mobileImage?.fields.file.details.image?.width || ''
-                                : desktopImage?.fields.file.details.image?.width || ''
-                        }
-                        height={
-                            deviceType === 'mobile'
-                                ? mobileImage?.fields.file.details.image?.height || ''
-                                : desktopImage?.fields.file.details.image?.height || ''
-                        }
+                        alt={deviceType === 'mobile' ? mobileImageURL || '' : desktopImageURL || ''}
+                        src={deviceType === 'mobile' ? mobileImageURL || '' : desktopImageURL || ''}
                         style={{
                             maxWidth: sm ? '100%' : '90%',
                             maxHeight: '680px',
@@ -111,12 +94,12 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                         justifyContent: 'center',
                     }}
                 >
-                    {desktopImage ? (
+                    {desktopImageURL ? (
                         <Button onClick={(): void => setDeviceType('tablet')}>
                             <Icon name="tablet" color={deviceType === 'mobile' ? '#595959' : '#fff'} size="medium" />
                         </Button>
                     ) : null}
-                    {mobileImage ? (
+                    {mobileImageURL ? (
                         <Button onClick={(): void => setDeviceType('mobile')}>
                             <Icon
                                 name="smartphone"

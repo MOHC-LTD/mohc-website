@@ -1,7 +1,6 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, styled, Typography } from '@mui/material'
-import { Asset } from 'contentful'
 import { motion } from 'framer-motion'
 
 import Section from 'src/general/Section'
@@ -9,7 +8,7 @@ import { theme } from 'src/theme/theme.default'
 
 interface AnimatedHeadingProps {
     title: string
-    image: Asset
+    imageURL: string
 }
 
 const container = {
@@ -128,7 +127,7 @@ const BlackRectangle = styled(motion.div, {
 /**
  * Animated heading section.
  */
-const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>> = ({ title, image }) => {
+const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>> = ({ title, imageURL }) => {
     return (
         <Section maxWidth="xl" isFullScreen>
             <motion.div variants={container} initial="hidden" animate="show" exit="exit">
@@ -144,10 +143,8 @@ const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>
                 >
                     <MotionImage variants={imageItem}>
                         <img
-                            alt={image.fields.title}
-                            src={image.fields.file.url}
-                            width={image.fields.file.details.image?.width}
-                            height={image.fields.file.details.image?.height}
+                            alt={title}
+                            src={imageURL}
                             style={{
                                 maxWidth: '100%',
                                 width: 'auto',

@@ -30,61 +30,63 @@ export default class ContentService {
         return new ContentService()
     }
 
-    client = createClient({
-        space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    })
+    client = process.env.CONTENTFUL_SPACE_ID
+        ? createClient({
+              space: process.env.CONTENTFUL_SPACE_ID,
+              accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+          })
+        : null
 
     async getEntriesByType<T>(type: string) {
         return (
-            await this.client.getEntries<T>({
+            await this.client?.getEntries<T>({
                 content_type: type,
             })
-        ).items
+        )?.items
     }
 
     async getHeroBannerBySlug(slug: string) {
         return (
-            await this.client.getEntries<IHeroBannerFields>({
+            await this.client?.getEntries<IHeroBannerFields>({
                 content_type: 'heroBanner',
                 'fields.slug': slug,
             })
-        ).items[0]
+        )?.items[0]
     }
 
     async getAccordionBySlug(slug: string) {
         return (
-            await this.client.getEntries<IAccordionFields>({
+            await this.client?.getEntries<IAccordionFields>({
                 content_type: 'accordion',
                 'fields.slug': slug,
             })
-        ).items[0]
+        )?.items[0]
     }
 
     async getPageBySlug(slug: string) {
         return (
-            await this.client.getEntries<IPageFields>({
+            await this.client?.getEntries<IPageFields>({
                 content_type: 'page',
                 'fields.slug': slug,
             })
-        ).items[0]
+        )?.items[0]
     }
 
     async getHomePageBySlug(slug: string) {
         return (
-            await this.client.getEntries<IHomePageFields>({
+            await this.client?.getEntries<IHomePageFields>({
                 content_type: 'homePage',
                 'fields.slug': slug,
                 include: 3,
             })
-        ).items[0]
+        )?.items[0]
     }
 
     async getProjectNavigation() {
         return (
-            await this.client.getEntries<IProjectNavigationFields>({
+            await this.client?.getEntries<IProjectNavigationFields>({
                 content_type: 'projectNavigation',
             })
-        ).items[0]
+        )?.items[0]
     }
 }

@@ -1,11 +1,10 @@
 import { FunctionComponent, PropsWithChildren, useEffect, useRef, useState } from 'react'
 
 import { Box, styled } from '@mui/material'
-import { Asset } from 'contentful'
 import { motion } from 'framer-motion'
 
 interface ImageSliderProps {
-    images: Asset[]
+    imageURLs: string[]
 }
 
 const ImageList = styled(motion.ul, {
@@ -39,7 +38,7 @@ const ImageList = styled(motion.ul, {
     },
 })
 
-const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ images }) => {
+const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ imageURLs }) => {
     const sliderRef = useRef<any>(null)
 
     const slidesRef = useRef<any>(null)
@@ -50,7 +49,7 @@ const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ i
 
     const slideMarginRight = 15
 
-    const totalSlidesMarginRight = slideMarginRight * images.length
+    const totalSlidesMarginRight = slideMarginRight * imageURLs.length
 
     let slides: HTMLElement | null
 
@@ -141,11 +140,11 @@ const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ i
                         slides ? (slides.style.transform = 'skewX(0)') : null
                     }}
                 >
-                    {images.map((image) => (
-                        <li key={image.fields.title}>
+                    {imageURLs.map((image) => (
+                        <li key={image}>
                             <div
                                 style={{
-                                    backgroundImage: `url(${image.fields.file.url})`,
+                                    backgroundImage: `url(${image})`,
                                     borderRadius: '14px',
                                 }}
                             />

@@ -4,28 +4,30 @@ import { Box, Typography } from '@mui/material'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
-import { IProjectNavigationFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
+interface ProjectProps {
+    slug: string
+    navigationTitle: string
+}
+
 interface Props {
-    pages: IProjectNavigationFields
+    projects: ProjectProps[]
 }
 
 /**
  * Section to display a component to link to the next and previous project.
  */
-const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
+const ProjectNavigation: FunctionComponent<Props> = ({ projects }) => {
     const { t } = useTranslation()
 
     const [currentProject, setCurrentProject] = useState(0)
 
-    const projects = pages.project || []
-
     useEffect(() => {
         setCurrentProject(() => {
             const index = projects?.indexOf(
-                projects.find((page) => `/project/${page.fields.slug}` === window.location.pathname) || projects[0]
+                projects.find((page) => `/project/${page.slug}` === window.location.pathname) || projects[0]
             )
 
             return index
@@ -58,11 +60,11 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                             },
                         }}
                     >
-                        <Link href={`/project/${projects[currentProject - 1].fields.slug}`}>
+                        <Link href={`/project/${projects[currentProject - 1].slug}`}>
                             <Typography variant="h5">{t('project:previous_project')}</Typography>
                         </Link>
                         <Typography variant="body1">
-                            {projects[currentProject - 1].fields.navigationTitle as string}
+                            {projects[currentProject - 1].navigationTitle as string}
                         </Typography>
                     </Box>
                 ) : null}
@@ -80,11 +82,11 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                             },
                         }}
                     >
-                        <Link href={`/project/${projects[currentProject + 1].fields.slug}`}>
+                        <Link href={`/project/${projects[currentProject + 1].slug}`}>
                             <Typography variant="h5">{t('project:next_project')}</Typography>
                         </Link>
                         <Typography variant="body1">
-                            {projects[currentProject + 1].fields.navigationTitle as string}
+                            {projects[currentProject + 1].navigationTitle as string}
                         </Typography>
                     </Box>
                 ) : null}

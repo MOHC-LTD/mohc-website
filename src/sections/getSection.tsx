@@ -30,17 +30,21 @@ const Accordion = styled('div', {
 const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode => {
     switch (section.sys.contentType.sys.id) {
         case 'heroBanner': {
+            const image: Asset = section.fields.image as Asset
+
             return (
                 <HeadingWithImage
                     title={section.fields.title as string}
                     subtitle={section.fields.subtitle as string}
-                    image={section.fields.image as Asset}
+                    imageURL={image.fields.file.url as string}
                 />
             )
         }
 
         case 'animatedHeading': {
-            return <AnimatedHeading title={section.fields.title as string} image={section.fields.image as Asset} />
+            const image: Asset = section.fields.image as Asset
+
+            return <AnimatedHeading title={section.fields.title as string} imageURL={image.fields.file.url as string} />
         }
 
         case 'accordion': {
@@ -106,10 +110,8 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             return (
                 <Section maxWidth="xl">
                     <img
-                        alt="Online doctor"
+                        alt={image.fields.title}
                         src={`https:${image?.fields.file.url}`}
-                        width={image?.fields.file.details.image?.width}
-                        height={image?.fields.file.details.image?.height}
                         style={{
                             maxWidth: '100%',
                             height: 'auto',
@@ -120,11 +122,17 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         }
 
         case 'mobileImagesAndText': {
+            const images: Asset[] = section.fields.images as Asset[]
+
+            const imageURLs: string[] = images.map((image: any) => {
+                return image.fields.file.url as string
+            })
+
             return (
                 <MobileImagesAndText
                     title={section.fields.title as string}
                     description={section.fields.description as string}
-                    images={section.fields.images as Asset[]}
+                    imageURLs={imageURLs}
                     sectionId={section.fields.sectionId as string}
                 />
             )
@@ -143,9 +151,11 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         }
 
         case 'imageAndText': {
+            const image: Asset = section.fields.image as Asset
+
             return (
                 <ImageAndText
-                    image={section.fields.image as Asset}
+                    imageURL={image.fields.file.url}
                     title={section.fields.title as string}
                     description={section.fields.description as string}
                     sectionId={section.fields.sectionId as string}
@@ -154,17 +164,24 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         }
 
         case 'deviceView': {
+            const image: Asset = section.fields.desktopImage as Asset
+
             return (
                 <DeviceView
-                    desktopImage={section.fields.desktopImage as Asset}
-                    desktopAlt="Asthma treatments"
+                    desktopImageURL={image.fields.file.url}
                     backgroundColor={section.fields.backgroundColor as string}
                 />
             )
         }
 
         case 'imageSlider': {
-            return <ImageSlider images={section.fields.images as Asset[]} />
+            const images: Asset[] = section.fields.images as Asset[]
+
+            const imageURLs: string[] = images.map((image: any) => {
+                return image.fields.file.url as string
+            })
+
+            return <ImageSlider imageURLs={imageURLs} />
         }
 
         default: {
