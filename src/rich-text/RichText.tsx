@@ -18,7 +18,13 @@ interface RichTextProps {
 }
 
 const RichText: FunctionComponent<PropsWithChildren<RichTextProps>> = ({ value, variant = 'body1' }) => {
-    const key = useMemo(() => JSON.stringify(value), [value])
+    const key = useMemo(() => {
+        if (value === null) {
+            return ''
+        }
+
+        return JSON.stringify(value)
+    }, [value])
 
     const [editor] = useState(() => withInlines(withHistory(withReact(createEditor()))))
 

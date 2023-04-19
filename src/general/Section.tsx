@@ -3,7 +3,6 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import { Box, Container, ContainerProps } from '@mui/material'
 import ellipse from 'assets/ellipse.png'
 import ellipseDarkMode from 'assets/ellipse-darkmode.png'
-import Image from 'next/future/image'
 import { Except } from 'type-fest'
 
 import { Spacing } from 'src/general/utils/config'
@@ -49,9 +48,9 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                 {...props}
             >
                 {hasEllipse ? (
-                    <Image
+                    <img
                         alt="Ellipse"
-                        src={isDarkMode ? ellipseDarkMode : ellipse}
+                        src={isDarkMode ? ellipseDarkMode.src : ellipse.src}
                         style={{
                             position: 'absolute',
                             right: isDarkMode ? 'none' : 0,

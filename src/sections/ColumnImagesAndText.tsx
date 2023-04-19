@@ -2,7 +2,6 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { StaticImageData } from 'next/dist/client/image'
-import Image from 'next/future/image'
 
 import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
@@ -58,9 +57,9 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                             },
                         }}
                     >
-                        <Image
+                        <img
                             alt={details[0].alt}
-                            src={details[0].image}
+                            src={details[0].image.src}
                             style={{
                                 maxWidth: '100%',
                                 height: 'auto',
@@ -80,9 +79,9 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                             },
                         }}
                     >
-                        <Image
+                        <img
                             alt={details[1].alt}
-                            src={details[1].image}
+                            src={details[1].image.src}
                             style={{
                                 maxWidth: '100%',
                                 height: 'auto',

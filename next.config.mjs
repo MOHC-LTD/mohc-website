@@ -1,11 +1,9 @@
 import nextBundleAnalyzer from '@next/bundle-analyzer'
 
-import i18NextConfig from './next-i18next.config.js'
 import { configureWebpack } from './src/webpack.js'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    i18n: i18NextConfig.i18n,
     swcMinify: true,
     compiler: {
         reactRemoveProperties: {
@@ -27,16 +25,13 @@ const nextConfig = {
         },
     },
     webpack: configureWebpack,
-    rewrites: async () => ({
-        beforeFiles: [],
-        afterFiles: [],
-        fallback: [],
-    }),
     eslint: {
         // Warning: This allows production builds to successfully complete even if
         // your project has ESLint errors.
         ignoreDuringBuilds: true,
     },
+    output: 'export',
+    reactMode: 'legacy',
 }
 
 export default nextBundleAnalyzer({
