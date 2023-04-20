@@ -2,6 +2,20 @@ import nextBundleAnalyzer from '@next/bundle-analyzer'
 
 import { configureWebpack } from './src/webpack.js'
 
+const isGithubActions = process.env.GITHUB_ACTIONS || false
+
+let assetPrefix = ''
+
+let basePath = ''
+
+if (isGithubActions) {
+    const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+
+    assetPrefix = `/${repo}/`
+
+    basePath = `/${repo}`
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     swcMinify: true,
@@ -32,6 +46,8 @@ const nextConfig = {
     },
     output: 'export',
     reactMode: 'legacy',
+    assetPrefix: assetPrefix,
+    basePath: basePath,
 }
 
 export default nextBundleAnalyzer({
