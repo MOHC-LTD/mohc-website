@@ -43,8 +43,11 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                     [theme.breakpoints.up('md')]: {
                         height: isFullScreen && 'calc(100vh - 72px)',
                     },
+                    px: {
+                        xl: '140px',
+                    },
                 }}
-                maxWidth={maxWidth}
+                maxWidth={maxWidth === 'xl' ? false : maxWidth}
                 {...props}
             >
                 {hasEllipse ? (

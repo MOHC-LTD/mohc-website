@@ -1,5 +1,5 @@
 import { Box, CSSObject } from '@mui/material'
- 
+
 const ReactEmptyRender = null
 
 /**

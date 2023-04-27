@@ -94,11 +94,12 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                         }}
                     >
                         <Typography
-                            variant={lg ? 'h1' : 'h3'}
+                            variant={lg ? 'h3' : 'h3'}
                             margin="20px 0"
                             sx={{
                                 [theme.breakpoints.up('md')]: {
-                                    width: '65%',
+                                    width: '50%',
+                                    marginLeft: '50px',
                                 },
                             }}
                         >

@@ -35,10 +35,7 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                 <Box
                     sx={{
                         maxWidth: '100%',
-                        maxHeight: '390px',
                         position: 'relative',
-                        overflow: 'hidden',
-                        borderRadius: '14px',
                     }}
                 >
                     <img

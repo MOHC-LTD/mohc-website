@@ -21,8 +21,8 @@ const FooterRoot = styled('footer', {
 })<FooterRootProps>(({ theme, order }) => ({
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: theme.palette.background.default,
-    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.text.primary,
+    color: theme.palette.text.secondary,
     position: 'sticky',
     padding: theme.spacing(0, Spacing.Header),
     height: theme.spacing(GeneralConfig.ToolbarHeight),
@@ -45,14 +45,6 @@ const Footer: FunctionComponent<PropsWithChildren<FooterProps>> = ({ order = 0 }
                 <Stack spacing={Spacing.Header} direction="row" alignItems="center">
                     <Typography variant="body2" marginBottom={0}>
                         {t('home:footer.name')}
-                    </Typography>
-                </Stack>
-                {/* Empty <div> required so that the last section of the grid for
-                            location and account can align itself to the right */}
-                <div />
-                <Stack spacing={Spacing.Header} direction="row" alignItems="center">
-                    <Typography variant="body2" marginBottom={0}>
-                        {t('home:footer.email')}
                     </Typography>
                 </Stack>
             </Box>

@@ -5,16 +5,22 @@ import { Document } from '@contentful/rich-text-types'
 import { Box, styled, Typography } from '@mui/material'
 import { Asset, Entry } from 'contentful'
 
+import { IIconBox, IProjectNavigationFields } from 'src/@types/contentful'
 import AccordionItem from 'src/general/AccordionItem'
 import Section from 'src/general/Section'
 import { RichTextTypographyVariant } from 'src/rich-text/RichText'
 import AnimatedHeading from 'src/sections/AnimatedHeading'
 import CenteredTitleAndText from 'src/sections/CenteredTitleAndText'
 import DeviceView from 'src/sections/DeviceView'
+import Heading from 'src/sections/Heading'
 import HeadingWithImage from 'src/sections/HeadingWithImage'
+import IconBoxes from 'src/sections/IconBoxes'
 import ImageAndText from 'src/sections/ImageAndText'
 import ImageSlider from 'src/sections/ImageSlider'
 import MobileImagesAndText from 'src/sections/MobileImagesAndText'
+import OverflowImage from 'src/sections/OverflowImage'
+import ProjectDisplay from 'src/sections/ProjectDisplay'
+import SmallImageBanner from 'src/sections/SmallImageBanner'
 import { theme } from 'src/theme/theme.default'
 
 const Accordion = styled('div', {
@@ -148,6 +154,21 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     image={section.fields.image as Asset}
                     title={section.fields.title as string}
                     description={section.fields.description as string}
+                    backgroundColor={section.fields.color as string}
+                    isDarkMode={section.fields.isDarkMode as boolean}
+                    sectionId={section.fields.sectionId as string}
+                />
+            )
+        }
+
+        case 'overflowImage': {
+            return (
+                <OverflowImage
+                    image={section.fields.image as Asset}
+                    title={section.fields.title as string}
+                    description={section.fields.description as string}
+                    backgroundColor={section.fields.backgroundColor as string}
+                    isDarkMode={section.fields.isDarkMode as boolean}
                     sectionId={section.fields.sectionId as string}
                 />
             )
@@ -165,6 +186,35 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
 
         case 'imageSlider': {
             return <ImageSlider images={section.fields.images as Asset[]} />
+        }
+
+        case 'iconBoxes': {
+            return (
+                <IconBoxes
+                    title={section.fields.title as string}
+                    color={section.fields.color as string}
+                    boxDetails={section.fields.iconBox as IIconBox[]}
+                />
+            )
+        }
+
+        case 'heading': {
+            return (
+                <Heading
+                    title={section.fields.title as string}
+                    subtitle={section.fields.subtitle as string}
+                    sector={section.fields.sector as string}
+                    color={section.fields.color as string}
+                />
+            )
+        }
+
+        case 'smallImageBanner': {
+            return <SmallImageBanner images={section.fields.images as Asset[]} />
+        }
+
+        case 'projectNavigation': {
+            return <ProjectDisplay project={section.fields as IProjectNavigationFields} />
         }
 
         default: {

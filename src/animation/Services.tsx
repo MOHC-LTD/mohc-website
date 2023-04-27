@@ -21,61 +21,63 @@ const Services: FunctionComponent = () => {
     const springLeft = useSpring({
         loop: true,
         from: {
- left: '120%', 
-},
+            left: '120%',
+        },
         to: {
- left: '-20%', 
-},
+            left: '-20%',
+        },
         config: {
- duration: 3000, 
-},
+            duration: 3000,
+        },
     })
 
     const springRight = useSpring({
         loop: true,
         from: {
- left: '-20%', 
-},
+            left: '-20%',
+        },
         to: {
- left: '120%', 
-},
+            left: '120%',
+        },
         config: {
- duration: 3000, 
-},
+            duration: 3000,
+        },
     })
 
     const springDown = useSpring({
         loop: true,
         from: {
- top: '120%', 
-},
+            top: '120%',
+        },
         to: {
- top: '-20%', 
-},
+            top: '-20%',
+        },
         config: {
- duration: 3000, 
-},
+            duration: 3000,
+        },
     })
 
     const springUp = useSpring({
         loop: true,
         from: {
- top: '-20%', 
-},
+            top: '-20%',
+        },
         to: {
- top: '120%', 
-},
+            top: '120%',
+        },
         config: {
- duration: 3000, 
-},
+            duration: 3000,
+        },
     })
 
     return (
         <div ref={ref}>
             <Section maxWidth="xl" id="Services">
-                <Box sx={{
- marginBottom: '50px', 
-}}>
+                <Box
+                    sx={{
+                        marginBottom: '50px',
+                    }}
+                >
                     <Typography variant="h2" marginBottom="20px">
                         {t('home:services.title')}
                     </Typography>
@@ -117,9 +119,12 @@ const Services: FunctionComponent = () => {
                             },
                         }}
                     >
-                        <Typography variant="h5" sx={{
- textAlign: 'center', 
-}}>
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                textAlign: 'center',
+                            }}
+                        >
                             {t('home:services.shopify')}
                         </Typography>
                     </Box>
@@ -197,9 +202,13 @@ const Services: FunctionComponent = () => {
                             },
                         }}
                     >
-                        <Typography variant="h5" sx={{
- textAlign: 'center', 
-}} color={theme.palette.text.secondary}>
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                textAlign: 'center',
+                            }}
+                            color={theme.palette.text.secondary}
+                        >
                             {t('home:services.integration')}
                         </Typography>
                     </Box>
@@ -281,9 +290,12 @@ const Services: FunctionComponent = () => {
                             },
                         }}
                     >
-                        <Typography variant="h5" sx={{
- textAlign: 'center', 
-}}>
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                textAlign: 'center',
+                            }}
+                        >
                             {t('home:services.business')}
                         </Typography>
                     </Box>

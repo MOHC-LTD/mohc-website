@@ -6,14 +6,12 @@ import { motion, Variants } from 'framer-motion'
 import { useResizeDetector } from 'react-resize-detector'
 
 import Section from 'src/general/Section'
-import TriButton from 'src/interactive/buttons/TriButton'
 import { theme } from 'src/theme/theme.default'
 
-interface ImageAndTextProps {
+interface OverflowImageProps {
     title: string
     description: string
     image: Asset
-    buttonText?: string
     backgroundColor?: string
     isDarkMode?: boolean
     sectionId?: string
@@ -22,11 +20,10 @@ interface ImageAndTextProps {
 /**
  * Section to display an image and text component.
  */
-const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
+const OverflowImage: FunctionComponent<PropsWithChildren<OverflowImageProps>> = ({
     title,
     description,
     image,
-    buttonText,
     backgroundColor,
     isDarkMode,
     sectionId,
@@ -86,6 +83,34 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         <Box
                             sx={{
                                 maxWidth: '100%',
+                                height: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                [theme.breakpoints.up('md')]: {
+                                    maxWidth: '50%',
+                                    padding: '80px',
+                                },
+                            }}
+                        >
+                            {!sm ? (
+                                <Typography
+                                    variant="h3"
+                                    color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                                >
+                                    {title}
+                                </Typography>
+                            ) : null}
+                            <Typography
+                                variant="body1"
+                                color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                            >
+                                {description}
+                            </Typography>
+                        </Box>
+                        <Box
+                            sx={{
+                                maxWidth: '100%',
                                 [theme.breakpoints.up('md')]: {
                                     maxWidth: '50%',
                                 },
@@ -116,36 +141,6 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                                 />
                             )}
                         </Box>
-                        <Box
-                            ref={scrollRef}
-                            sx={{
-                                maxWidth: '100%',
-                                height: '100%',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                [theme.breakpoints.up('md')]: {
-                                    maxWidth: '50%',
-                                    padding: '80px',
-                                },
-                            }}
-                        >
-                            {!sm ? (
-                                <Typography
-                                    variant="h3"
-                                    color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
-                                >
-                                    {title}
-                                </Typography>
-                            ) : null}
-                            <Typography
-                                variant="body1"
-                                color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
-                            >
-                                {description}
-                            </Typography>
-                            {buttonText ? <TriButton variant="secondary">{buttonText}</TriButton> : null}
-                        </Box>
                     </Box>
                 </Section>
             </motion.div>
@@ -153,4 +148,4 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
     )
 }
 
-export default ImageAndText
+export default OverflowImage

@@ -35,6 +35,8 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
             <Section maxWidth="xl" id={sectionId}>
                 <Box
                     sx={{
+                        position: 'relative',
+                        overflow: 'visible',
                         display: 'flex',
                         flexDirection: 'column',
                         [theme.breakpoints.up('md')]: {
@@ -70,8 +72,6 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                     maxWidth: '100%',
                                     height: 'auto',
                                     marginBottom: '20px',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
                             <img
@@ -82,8 +82,6 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
                         </Box>
@@ -107,8 +105,6 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                     maxWidth: '100%',
                                     height: 'auto',
                                     marginBottom: '20px',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
                             <img
@@ -119,8 +115,6 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
                         </Box>
@@ -131,6 +125,9 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             display: 'flex',
                             flexDirection: 'column',
                             [theme.breakpoints.up('md')]: {
+                                position: 'sticky',
+                                top: 0,
+                                height: '100%',
                                 maxWidth: '50%',
                                 padding: '0 80px',
                             },

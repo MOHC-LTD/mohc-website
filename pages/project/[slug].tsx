@@ -28,7 +28,12 @@ const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
         .filter((notUndefined) => notUndefined !== undefined) as string[]
 
     return (
-        <PageLayout title={page.navigationTitle} menuOptions={[...menuOptions, 'Contact us']}>
+        <PageLayout
+            title={page.navigationTitle}
+            menuOptions={[...menuOptions, 'Contact us']}
+            color={page?.color}
+            isDarkMode={page?.isDarkMode}
+        >
             {page.section?.map((section) => getSection(section))}
             <ProjectNavigation pages={pages} />
             <ContactUs sectionId="Contact us" />
