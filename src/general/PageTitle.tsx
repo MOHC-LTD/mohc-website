@@ -11,7 +11,7 @@ const PageTitle: FunctionComponent<PageTitleProps> = ({ children }) => {
         <Head>
             <title>
                 {/* Character: &ndash; */}
-                {children ? children : null}
+                {children ?? null}
             </title>
         </Head>
     )

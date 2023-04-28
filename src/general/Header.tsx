@@ -1,16 +1,16 @@
 import { FunctionComponent, PropsWithChildren, ReactNode, useId } from 'react'
 
 import isPropValid from '@emotion/is-prop-valid'
-import { Box, Link, ListItemButton, Stack, styled, Typography } from '@mui/material'
+import { Box, ListItemButton, Stack, styled, Typography } from '@mui/material'
 import { usePopupState } from 'material-ui-popup-state/hooks'
+import Link from 'next/link'
 import { useResizeDetector } from 'react-resize-detector'
 
+import AppName from 'src/general/AppName'
 import StuckSentinel from 'src/general/StuckSentinel'
 import { GeneralConfig, Spacing } from 'src/general/utils/config'
 import { stickyBoxShadow } from 'src/interactive/styles/stickyBoxShadow'
 import { theme } from 'src/theme/theme.default'
-
-import AppName from './AppName'
 
 interface HeaderProps {
     disableStickyShadow?: boolean
@@ -28,7 +28,7 @@ interface HeaderRootProps {
 const HeaderRoot = styled('header', {
     name: 'HeaderRoot',
     shouldForwardProp: isPropValid,
-})<HeaderRootProps>(({ theme, order, stuck, color = theme.palette.background.default }) => ({
+})<HeaderRootProps>(({ order, stuck, color = theme.palette.background.default }) => ({
     display: 'flex',
     alignItems: 'center',
     backgroundColor: color,
@@ -70,7 +70,12 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                             width={1}
                         >
                             <Stack spacing={Spacing.Header} direction="row" alignItems="center">
-                                <Link href="/home">
+                                <Link
+                                    href="/home"
+                                    style={{
+                                        textDecoration: 'none',
+                                    }}
+                                >
                                     <AppName isDarkMode={isDarkMode} />
                                 </Link>
                             </Stack>

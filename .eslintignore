@@ -13,3 +13,7 @@
 /public/bootstrap*
 /public/storybook/
 /public/coverage/
+
+#auto-generated
+contentful.d.ts
+material-symbols.ts

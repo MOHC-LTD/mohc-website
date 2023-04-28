@@ -57,7 +57,7 @@ const OverflowImage: FunctionComponent<PropsWithChildren<OverflowImageProps>> = 
                 whileInView="onscreen"
                 viewport={{
                     once: true,
-                    amount: 0.8,
+                    amount: 0.5,
                 }}
                 ref={scrollRef}
             >

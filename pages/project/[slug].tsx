@@ -57,9 +57,9 @@ const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) => {
-    const { slug } = context.params!
+    const slug = context.params?.slug
 
-    const page = await ContentService.instance.getPageBySlug(slug)
+    const page = await ContentService.instance.getPageBySlug(slug || '')
 
     const pages = await ContentService.instance.getProjectNavigation()
 

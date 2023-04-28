@@ -20,8 +20,8 @@ const AppName: FunctionComponent<PropsWithChildren<AppNameProps>> = ({ isDarkMod
             whiteSpace="nowrap"
             color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
             sx={{
- marginBottom: 0, 
-}}
+                marginBottom: 0,
+            }}
         >
             {t('home:header.name')}
         </Typography>

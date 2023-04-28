@@ -12,7 +12,6 @@ const enum Spacing {
     Header = 4,
     Dialog = 2,
     DialogHeader = 4,
-    Box = 3,
     Card = 2,
     Icons = 0.5,
     FieldLabel = 0.75,

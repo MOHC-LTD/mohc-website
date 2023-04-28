@@ -363,7 +363,12 @@
 
         // Use the improved rule for nested ternaries
         "no-nested-ternary": "off",
-        "unicorn/no-nested-ternary": "error"
+        "unicorn/no-nested-ternary": "error",
+
+        "react/display-name": "off",
+
+        // img required for vercel
+        "@next/next/no-img-element": "off"
     },
     "overrides": [
         {

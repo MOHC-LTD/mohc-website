@@ -2,8 +2,8 @@ import { FunctionComponent } from 'react'
 
 import { useTranslation } from 'react-i18next'
 
-import { EmailFieldConfig } from '../types'
-import TextField, { InheritedTextFieldProps } from './TextField'
+import TextField, { InheritedTextFieldProps } from 'src/form/fields/TextField'
+import { EmailFieldConfig } from 'src/form/types'
 
 const EmailField: FunctionComponent<InheritedTextFieldProps<EmailFieldConfig>> = (props) => {
     const { t } = useTranslation()
