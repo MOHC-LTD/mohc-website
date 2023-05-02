@@ -81,8 +81,8 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                         }
                         src={
                             deviceType === 'mobile'
-                                ? mobileImage?.fields.file.url || ''
-                                : desktopImage?.fields.file.url || ''
+                                ? `https:${mobileImage?.fields.file.url}` || ''
+                                : `https:${desktopImage?.fields.file.url}` || ''
                         }
                         width={
                             deviceType === 'mobile'

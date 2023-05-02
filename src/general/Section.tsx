@@ -37,7 +37,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                 id="container"
                 sx={{
                     py: {
-                        sm: Spacing.Body / 3,
+                        sm: Spacing.Body / 5,
                         md: Spacing.Body,
                     },
                     [theme.breakpoints.up('md')]: {

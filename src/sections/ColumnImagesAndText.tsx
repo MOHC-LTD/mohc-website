@@ -59,7 +59,7 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                     >
                         <img
                             alt={details[0].alt}
-                            src={details[0].image.src}
+                            src={`https:${details[0].image.src}`}
                             style={{
                                 maxWidth: '100%',
                                 height: 'auto',
@@ -81,7 +81,7 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                     >
                         <img
                             alt={details[1].alt}
-                            src={details[1].image.src}
+                            src={`https:${details[1].image.src}`}
                             style={{
                                 maxWidth: '100%',
                                 height: 'auto',

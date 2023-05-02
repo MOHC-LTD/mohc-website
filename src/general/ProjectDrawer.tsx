@@ -35,24 +35,35 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                 <Box
                     sx={{
                         maxWidth: '100%',
+                        margin: 'auto',
                         position: 'relative',
+                        overflow: 'hidden',
                     }}
                 >
-                    <img
-                        src={image}
-                        width={width}
-                        height={height}
-                        alt={title || ''}
-                        style={{
-                            display: 'inline-block',
-                            position: 'relative',
-                            width: '100%',
-                            height: 'auto',
-                            minWidth: 0,
-                            objectFit: 'contain',
+                    <Box
+                        sx={{
+                            transition: 'all 0.3s',
+                            '&:hover': {
+                                transform: 'scale(1.02)',
+                            },
                         }}
-                        loading="lazy"
-                    />
+                    >
+                        <img
+                            src={`https:${image}`}
+                            width={width}
+                            height={height}
+                            alt={title || ''}
+                            style={{
+                                display: 'block',
+                                position: 'relative',
+                                width: '100%',
+                                height: 'auto',
+                                minWidth: 0,
+                                objectFit: 'contain',
+                            }}
+                            loading="lazy"
+                        />
+                    </Box>
                 </Box>
             </Link>
             {title ? (

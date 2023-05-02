@@ -119,7 +119,7 @@ const OverflowImage: FunctionComponent<PropsWithChildren<OverflowImageProps>> = 
                             {sm ? (
                                 <img
                                     alt={image.fields.title}
-                                    src={image.fields.file.url}
+                                    src={`https:${image.fields.file.url}`}
                                     width={image.fields.file.details.image?.width}
                                     height={image.fields.file.details.image?.height}
                                     style={{
@@ -131,7 +131,7 @@ const OverflowImage: FunctionComponent<PropsWithChildren<OverflowImageProps>> = 
                                 <motion.img
                                     variants={cardVariants}
                                     alt={image.fields.title}
-                                    src={image.fields.file.url}
+                                    src={`https:${image.fields.file.url}`}
                                     width={image.fields.file.details.image?.width}
                                     height={image.fields.file.details.image?.height}
                                     style={{

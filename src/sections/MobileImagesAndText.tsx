@@ -65,7 +65,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                         >
                             <img
                                 alt={images[0].fields.title}
-                                src={images[0].fields.file.url}
+                                src={`https:${images[0].fields.file.url}`}
                                 width={images[0].fields.file.details.image?.width}
                                 height={images[0].fields.file.details.image?.height}
                                 style={{
@@ -76,7 +76,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             />
                             <img
                                 alt={images[1].fields.title}
-                                src={images[1].fields.file.url}
+                                src={`https:${images[1].fields.file.url}`}
                                 width={images[1].fields.file.details.image?.width}
                                 height={images[1].fields.file.details.image?.height}
                                 style={{
@@ -98,7 +98,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                         >
                             <img
                                 alt={images[2].fields.title}
-                                src={images[2].fields.file.url}
+                                src={`https:${images[2].fields.file.url}`}
                                 width={images[2].fields.file.details.image?.width}
                                 height={images[2].fields.file.details.image?.height}
                                 style={{
@@ -109,7 +109,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             />
                             <img
                                 alt={images[3].fields.title}
-                                src={images[3].fields.file.url}
+                                src={`https:${images[3].fields.file.url}`}
                                 width={images[3].fields.file.details.image?.width}
                                 height={images[3].fields.file.details.image?.height}
                                 style={{

@@ -26,7 +26,7 @@ const SmallImageBanner: FunctionComponent<PropsWithChildren<SmallImageBannerProp
                     <img
                         key={image.fields.title}
                         alt={image.fields.title}
-                        src={image.fields.file.url}
+                        src={`https:${image.fields.file.url}`}
                         width={image.fields.file.details.image?.width}
                         height={image.fields.file.details.image?.height}
                         style={{

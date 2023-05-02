@@ -94,7 +94,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                             {sm ? (
                                 <img
                                     alt={image.fields.title}
-                                    src={image.fields.file.url}
+                                    src={`https:${image.fields.file.url}`}
                                     width={image.fields.file.details.image?.width}
                                     height={image.fields.file.details.image?.height}
                                     style={{
@@ -106,7 +106,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                                 <motion.img
                                     variants={cardVariants}
                                     alt={image.fields.title}
-                                    src={image.fields.file.url}
+                                    src={`https:${image.fields.file.url}`}
                                     width={image.fields.file.details.image?.width}
                                     height={image.fields.file.details.image?.height}
                                     style={{
