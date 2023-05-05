@@ -4,7 +4,7 @@ import { configureWebpack } from './src/webpack.js'
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
-let assetPrefix = '' // /Users/Amy/Documents/GitHub/mohc/out/
+let assetPrefix = ''
 
 let basePath = ''
 
