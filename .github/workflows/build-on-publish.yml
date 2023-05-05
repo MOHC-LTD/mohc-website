@@ -3,8 +3,8 @@
 name: Contentful Publish
 
 on:
-	repository_dispatch:
-    	types: [publish-event]
+  repository_dispatch:
+    types: [publish-event]
 
 jobs:
   build:
