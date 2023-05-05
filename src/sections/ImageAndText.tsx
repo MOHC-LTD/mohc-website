@@ -29,6 +29,7 @@ const ImageBox = styled(motion.div, {
 })<ImageBoxProps>(({ isInverted }) => ({
     position: 'relative',
     maxWidth: '100%',
+    order: 1,
     [theme.breakpoints.up('md')]: {
         order: isInverted ? 1 : 2,
         display: 'flex',
@@ -100,6 +101,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
+                        order: 2,
                         [theme.breakpoints.up('md')]: {
                             order: isInverted ? 2 : 1,
                             maxWidth: '50%',
