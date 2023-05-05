@@ -26,12 +26,11 @@ jobs:
         run: |
           npm ci
           npm run build
-          env:
-            CONTENTFUL_SPACE_ID={{ secrets.SPACE_ID }}
-            CONTENTFUL_ACCESS_TOKEN={{ secrets.ACCESS_TOKEN }}
-            CONTENTFUL_MANAGEMENT_TOKEN={{ secrets.MANAGEMENT_TOKEN }}
-            CONTENTFUL_ENVIRONMENT=master
           touch out/.nojekyll
+        env: CONTENTFUL_SPACE_ID={{ secrets.SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN={{ secrets.ACCESS_TOKEN }}
+          CONTENTFUL_MANAGEMENT_TOKEN={{ secrets.MANAGEMENT_TOKEN }}
+          CONTENTFUL_ENVIRONMENT=master
 
       - name: Deploy
         # https://github.com/JamesIves/github-pages-deploy-action
