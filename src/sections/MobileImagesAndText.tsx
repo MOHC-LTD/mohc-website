@@ -129,7 +129,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 top: 0,
                                 height: '100%',
                                 maxWidth: '50%',
-                                padding: '0 80px',
+                                padding: '40px 80px',
                             },
                         }}
                     >

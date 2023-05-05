@@ -1,23 +1,41 @@
 import { FunctionComponent, PropsWithChildren, useRef } from 'react'
 
-import { Box, Typography } from '@mui/material'
-import { Asset } from 'contentful'
+import { Box, styled, Typography } from '@mui/material'
 import { motion, Variants } from 'framer-motion'
 import { useResizeDetector } from 'react-resize-detector'
 
+import { IImage } from 'src/@types/contentful'
 import Section from 'src/general/Section'
-import TriButton from 'src/interactive/buttons/TriButton'
+import CustomImage from 'src/sections/CustomImage'
 import { theme } from 'src/theme/theme.default'
 
 interface ImageAndTextProps {
     title: string
     description: string
-    image: Asset
-    buttonText?: string
+    image: IImage
     backgroundColor?: string
     isDarkMode?: boolean
+    isAnimated?: boolean
+    isInverted?: boolean
     sectionId?: string
 }
+
+interface ImageBoxProps {
+    isInverted?: boolean
+}
+
+const ImageBox = styled(motion.div, {
+    name: 'ImageBox',
+})<ImageBoxProps>(({ isInverted }) => ({
+    position: 'relative',
+    maxWidth: '100%',
+    [theme.breakpoints.up('md')]: {
+        order: isInverted ? 1 : 2,
+        display: 'flex',
+        height: 'fit-content',
+        maxWidth: '50%',
+    },
+}))
 
 /**
  * Section to display an image and text component.
@@ -26,9 +44,10 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
     title,
     description,
     image,
-    buttonText,
     backgroundColor,
     isDarkMode,
+    isAnimated,
+    isInverted,
     sectionId,
 }) => {
     const { width, ref } = useResizeDetector()
@@ -53,102 +72,83 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
         },
     }
 
+    const content = (
+        <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    [theme.breakpoints.up('md')]: {
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                    },
+                }}
+            >
+                {sm ? (
+                    <Typography
+                        variant="h3"
+                        align="center"
+                        color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                    >
+                        {title}
+                    </Typography>
+                ) : null}
+                <Box
+                    sx={{
+                        maxWidth: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        [theme.breakpoints.up('md')]: {
+                            order: isInverted ? 2 : 1,
+                            maxWidth: '50%',
+                            padding: '80px',
+                        },
+                    }}
+                >
+                    {!sm ? (
+                        <Typography
+                            variant="h3"
+                            color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                        >
+                            {title}
+                        </Typography>
+                    ) : null}
+                    <Typography
+                        variant="body1"
+                        color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                    >
+                        {description}
+                    </Typography>
+                </Box>
+                <ImageBox variants={cardVariants} isInverted={isInverted}>
+                    <CustomImage image={image} ref={scrollRef} />
+                </ImageBox>
+            </Box>
+        </Section>
+    )
+
     return (
         <div ref={ref}>
-            <motion.div
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{
-                    once: true,
-                    amount: 0.5,
-                }}
-                ref={scrollRef}
-            >
-                <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            [theme.breakpoints.up('md')]: {
-                                flexDirection: 'row',
-                            },
-                        }}
-                    >
-                        {sm ? (
-                            <Typography
-                                variant="h3"
-                                align="center"
-                                color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
-                            >
-                                {title}
-                            </Typography>
-                        ) : null}
-                        <Box
-                            sx={{
-                                maxWidth: '100%',
-                                [theme.breakpoints.up('md')]: {
-                                    maxWidth: '50%',
-                                },
-                            }}
-                        >
-                            {sm ? (
-                                <img
-                                    alt={image.fields.title}
-                                    src={`https:${image.fields.file.url}`}
-                                    width={image.fields.file.details.image?.width}
-                                    height={image.fields.file.details.image?.height}
-                                    style={{
-                                        maxWidth: '100%',
-                                        height: 'auto',
-                                    }}
-                                />
-                            ) : (
-                                <motion.img
-                                    variants={cardVariants}
-                                    alt={image.fields.title}
-                                    src={`https:${image.fields.file.url}`}
-                                    width={image.fields.file.details.image?.width}
-                                    height={image.fields.file.details.image?.height}
-                                    style={{
-                                        maxWidth: '100%',
-                                        height: 'auto',
-                                    }}
-                                />
-                            )}
-                        </Box>
-                        <Box
-                            ref={scrollRef}
-                            sx={{
-                                maxWidth: '100%',
-                                height: '100%',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                [theme.breakpoints.up('md')]: {
-                                    maxWidth: '50%',
-                                    padding: '80px',
-                                },
-                            }}
-                        >
-                            {!sm ? (
-                                <Typography
-                                    variant="h3"
-                                    color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
-                                >
-                                    {title}
-                                </Typography>
-                            ) : null}
-                            <Typography
-                                variant="body1"
-                                color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
-                            >
-                                {description}
-                            </Typography>
-                            {buttonText ? <TriButton variant="secondary">{buttonText}</TriButton> : null}
-                        </Box>
-                    </Box>
-                </Section>
-            </motion.div>
+            {isAnimated && !sm ? (
+                <motion.div
+                    id="ref"
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{
+                        once: true,
+                        amount: 0.5,
+                    }}
+                    ref={scrollRef}
+                >
+                    {content}
+                </motion.div>
+            ) : (
+                <div ref={scrollRef} id="ref">
+                    {content}
+                </div>
+            )}
         </div>
     )
 }

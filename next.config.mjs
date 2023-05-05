@@ -4,9 +4,11 @@ import { configureWebpack } from './src/webpack.js'
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
-let assetPrefix = ''
+let assetPrefix = '' // /Users/Amy/Documents/GitHub/mohc/out/
 
 let basePath = ''
+
+let isProduction = process.env.ENV === 'dev' ? false : true
 
 if (isGithubActions) {
     const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
@@ -43,6 +45,7 @@ const nextConfig = {
     reactMode: 'legacy',
     assetPrefix: assetPrefix,
     basePath: basePath,
+    trailingSlash: isProduction,
 }
 
 export default nextBundleAnalyzer({

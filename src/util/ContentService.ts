@@ -40,6 +40,7 @@ export default class ContentService {
         const entries = await this.client.getEntries<IPageFields>({
             content_type: 'page',
             'fields.slug': slug,
+            include: 3,
         })
 
         return entries.items[0]

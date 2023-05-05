@@ -116,6 +116,9 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                                                 boxShadow: 'none',
                                             },
                                         }}
+                                        sx={{
+                                            zIndex: 5000,
+                                        }}
                                     >
                                         <DrawerHeader>
                                             <Button
@@ -144,15 +147,7 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                                                         justifyContent: 'center',
                                                     }}
                                                 >
-                                                    <Typography
-                                                        color={
-                                                            isDarkMode
-                                                                ? theme.palette.text.secondary
-                                                                : theme.palette.text.primary
-                                                        }
-                                                    >
-                                                        {option}
-                                                    </Typography>
+                                                    <Typography color={theme.palette.text.primary}>{option}</Typography>
                                                 </ListItemButton>
                                             ))}
                                         </Box>
