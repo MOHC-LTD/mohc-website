@@ -1,8 +1,9 @@
-import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import Section from '../general/Section'
-import Image from 'next/future/image'
+
+import { Box, Typography } from '@mui/material'
 import { StaticImageData } from 'next/dist/client/image'
+
+import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
 interface ImageWithDescription {
@@ -34,12 +35,14 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                     alignItems: 'center',
                 }}
             >
-                {title && <Typography variant="h3">{title}</Typography>}
+                {title ? <Typography variant="h3">{title}</Typography> : null}
                 <Box
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        [theme.breakpoints.up('md')]: { flexDirection: 'row' },
+                        [theme.breakpoints.up('md')]: {
+                            flexDirection: 'row',
+                        },
                     }}
                 >
                     <Box
@@ -48,13 +51,20 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                             flexDirection: 'column',
                             width: '100%',
                             marginBottom: '20px',
-                            [theme.breakpoints.up('md')]: { width: '50%', marginRight: '10px' },
+                            [theme.breakpoints.up('md')]: {
+                                width: '50%',
+                                marginRight: '10px',
+                            },
                         }}
                     >
-                        <Image
+                        <img
                             alt={details[0].alt}
-                            src={details[0].image}
-                            style={{ maxWidth: '100%', height: 'auto', marginBottom: '20px' }}
+                            src={`https:${details[0].image.src}`}
+                            style={{
+                                maxWidth: '100%',
+                                height: 'auto',
+                                marginBottom: '20px',
+                            }}
                         />
                         <Typography variant="body1">{details[0].description}</Typography>
                     </Box>
@@ -63,13 +73,20 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                             display: 'flex',
                             flexDirection: 'column',
                             width: '100%',
-                            [theme.breakpoints.up('md')]: { width: '50%', marginLeft: '10px' },
+                            [theme.breakpoints.up('md')]: {
+                                width: '50%',
+                                marginLeft: '10px',
+                            },
                         }}
                     >
-                        <Image
+                        <img
                             alt={details[1].alt}
-                            src={details[1].image}
-                            style={{ maxWidth: '100%', height: 'auto', marginBottom: '20px' }}
+                            src={`https:${details[1].image.src}`}
+                            style={{
+                                maxWidth: '100%',
+                                height: 'auto',
+                                marginBottom: '20px',
+                            }}
                         />
                         <Typography variant="body1">{details[0].description}</Typography>
                     </Box>

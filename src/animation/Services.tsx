@@ -1,11 +1,12 @@
+import { FunctionComponent } from 'react'
+
 import { Box, Typography } from '@mui/material'
-import React, { FunctionComponent } from 'react'
-import Section from 'src/general/Section'
-import { theme } from 'src/theme/theme.default'
+import { useTranslation } from 'react-i18next'
+import { useResizeDetector } from 'react-resize-detector'
 import { animated, useSpring } from 'react-spring'
 
-import { useResizeDetector } from 'react-resize-detector'
-import { useTranslation } from 'react-i18next'
+import Section from 'src/general/Section'
+import { theme } from 'src/theme/theme.default'
 
 /**
  * TODO.
@@ -19,36 +20,64 @@ const Services: FunctionComponent = () => {
 
     const springLeft = useSpring({
         loop: true,
-        from: { left: '120%' },
-        to: { left: '-20%' },
-        config: { duration: 3000 },
+        from: {
+            left: '120%',
+        },
+        to: {
+            left: '-20%',
+        },
+        config: {
+            duration: 3000,
+        },
     })
 
     const springRight = useSpring({
         loop: true,
-        from: { left: '-20%' },
-        to: { left: '120%' },
-        config: { duration: 3000 },
+        from: {
+            left: '-20%',
+        },
+        to: {
+            left: '120%',
+        },
+        config: {
+            duration: 3000,
+        },
     })
 
     const springDown = useSpring({
         loop: true,
-        from: { top: '120%' },
-        to: { top: '-20%' },
-        config: { duration: 3000 },
+        from: {
+            top: '120%',
+        },
+        to: {
+            top: '-20%',
+        },
+        config: {
+            duration: 3000,
+        },
     })
 
     const springUp = useSpring({
         loop: true,
-        from: { top: '-20%' },
-        to: { top: '120%' },
-        config: { duration: 3000 },
+        from: {
+            top: '-20%',
+        },
+        to: {
+            top: '120%',
+        },
+        config: {
+            duration: 3000,
+        },
     })
 
     return (
         <div ref={ref}>
             <Section maxWidth="xl" id="Services">
-                <Box sx={{ marginBottom: '50px' }}>
+                <Box
+                    sx={{
+                        marginBottom: '50px',
+                    }}
+                >
                     <Typography variant="h2" marginBottom="20px">
                         {t('home:services.title')}
                     </Typography>
@@ -90,7 +119,12 @@ const Services: FunctionComponent = () => {
                             },
                         }}
                     >
-                        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                textAlign: 'center',
+                            }}
+                        >
                             {t('home:services.shopify')}
                         </Typography>
                     </Box>
@@ -168,7 +202,13 @@ const Services: FunctionComponent = () => {
                             },
                         }}
                     >
-                        <Typography variant="h5" sx={{ textAlign: 'center' }} color={theme.palette.text.secondary}>
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                textAlign: 'center',
+                            }}
+                            color={theme.palette.text.secondary}
+                        >
                             {t('home:services.integration')}
                         </Typography>
                     </Box>
@@ -250,7 +290,12 @@ const Services: FunctionComponent = () => {
                             },
                         }}
                     >
-                        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                textAlign: 'center',
+                            }}
+                        >
                             {t('home:services.business')}
                         </Typography>
                     </Box>

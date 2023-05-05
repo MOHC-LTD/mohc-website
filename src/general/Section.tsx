@@ -1,13 +1,12 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Container, ContainerProps } from '@mui/material'
+import ellipse from 'assets/ellipse.png'
+import ellipseDarkMode from 'assets/ellipse-darkmode.png'
 import { Except } from 'type-fest'
 
 import { Spacing } from 'src/general/utils/config'
 import { theme } from 'src/theme/theme.default'
-import ellipse from 'assets/ellipse.png'
-import ellipseDarkMode from 'assets/ellipse-darkmode.png'
-import Image from 'next/future/image'
 
 interface SectionProps extends Except<ContainerProps, 'sx'> {
     backgroundColor?: string
@@ -38,18 +37,23 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                 id="container"
                 sx={{
                     py: {
-                        sm: Spacing.Body / 3,
+                        sm: Spacing.Body / 5,
                         md: Spacing.Body,
                     },
-                    [theme.breakpoints.up('md')]: { height: isFullScreen && 'calc(100vh - 72px)' },
+                    [theme.breakpoints.up('md')]: {
+                        height: isFullScreen && 'calc(100vh - 72px)',
+                    },
+                    px: {
+                        xl: '140px',
+                    },
                 }}
-                maxWidth={maxWidth}
+                maxWidth={maxWidth === 'xl' ? false : maxWidth}
                 {...props}
             >
-                {hasEllipse && (
-                    <Image
+                {hasEllipse ? (
+                    <img
                         alt="Ellipse"
-                        src={isDarkMode ? ellipseDarkMode : ellipse}
+                        src={isDarkMode ? ellipseDarkMode.src : ellipse.src}
                         style={{
                             position: 'absolute',
                             right: isDarkMode ? 'none' : 0,
@@ -59,7 +63,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                             height: 'auto',
                         }}
                     />
-                )}
+                ) : null}
                 {children}
             </Container>
         </Box>

@@ -1,29 +1,30 @@
-import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren, useEffect } from 'react'
-import Image from 'next/future/image'
-import Section from '../general/Section'
-import { theme } from 'src/theme/theme.default'
-import { StaticImageData } from 'next/dist/client/image'
+
+import { Box, Typography } from '@mui/material'
+import { Asset } from 'contentful'
 import { useResizeDetector } from 'react-resize-detector'
 
+import Section from 'src/general/Section'
+import { theme } from 'src/theme/theme.default'
+
 interface HeadingWithImageProps {
-    title: string
-    subtitle: string
-    image: StaticImageData
+    title?: string
+    subtitle?: string
+    image?: Asset
 }
 
 /**
- *
+ * Heading with image section.
  */
 const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProps>> = ({ title, subtitle, image }) => {
     useEffect(() => {
-        const setMargin = () => {
-            const container = document.getElementById('container')
+        const setMargin = (): void => {
+            const container = document.querySelector('#container')
 
-            const title = document.getElementById('title')
+            const queryTitle = document.querySelector('#title') as any
 
-            if (title && container) {
-                title.style.marginLeft = window.getComputedStyle(container).marginLeft
+            if (queryTitle && container) {
+                queryTitle.style.marginLeft = window.getComputedStyle(container).marginLeft
             }
         }
 
@@ -68,9 +69,11 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                             },
                         }}
                     >
-                        <Image
+                        <img
                             alt={title}
-                            src={image}
+                            src={`https:${image?.fields.file.url}`}
+                            width={image?.fields.file.details.image?.width}
+                            height={image?.fields.file.details.image?.height}
                             style={{
                                 maxWidth: '100%',
                                 width: 'auto',
@@ -78,24 +81,38 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                                 height: 'auto',
                                 zIndex: 'modal',
                             }}
-                            priority
                         />
                     </Box>
                     <Box
                         id="title"
                         sx={{
                             zIndex: 'snackbar',
-                            [theme.breakpoints.up('md')]: { position: 'absolute', padding: '24px' },
+                            [theme.breakpoints.up('md')]: {
+                                position: 'absolute',
+                                padding: '24px',
+                            },
                         }}
                     >
                         <Typography
-                            variant={lg ? 'h1' : 'h3'}
+                            variant={lg ? 'h3' : 'h3'}
                             margin="20px 0"
-                            sx={{ [theme.breakpoints.up('md')]: { width: '65%' } }}
+                            sx={{
+                                [theme.breakpoints.up('md')]: {
+                                    width: '50%',
+                                    marginLeft: '50px',
+                                },
+                            }}
                         >
                             {title}
                         </Typography>
-                        <Typography variant="body1" sx={{ [theme.breakpoints.up('md')]: { width: '40%' } }}>
+                        <Typography
+                            variant="body1"
+                            sx={{
+                                [theme.breakpoints.up('md')]: {
+                                    width: '40%',
+                                },
+                            }}
+                        >
                             {subtitle}
                         </Typography>
                     </Box>

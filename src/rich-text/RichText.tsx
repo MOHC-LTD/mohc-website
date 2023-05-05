@@ -10,7 +10,7 @@ import Element from 'src/rich-text/Element'
 import Leaf from 'src/rich-text/Leaf'
 import { withInlines } from 'src/rich-text/utils/withInlines'
 
-type RichTextTypographyVariant = 'body1' | 'body2' | 'overline'
+type RichTextTypographyVariant = 'body1' | 'body2' | 'overline' | 'h1' | 'h2' | 'h3'
 
 interface RichTextProps {
     value: Descendant[]
@@ -18,7 +18,13 @@ interface RichTextProps {
 }
 
 const RichText: FunctionComponent<PropsWithChildren<RichTextProps>> = ({ value, variant = 'body1' }) => {
-    const key = useMemo(() => JSON.stringify(value), [value])
+    const key = useMemo(() => {
+        if (value === null) {
+            return ''
+        }
+
+        return JSON.stringify(value)
+    }, [value])
 
     const [editor] = useState(() => withInlines(withHistory(withReact(createEditor()))))
 
@@ -37,6 +43,6 @@ const RichText: FunctionComponent<PropsWithChildren<RichTextProps>> = ({ value, 
     )
 }
 
-export type { RichTextProps }
+export type { RichTextProps, RichTextTypographyVariant }
 
 export default RichText

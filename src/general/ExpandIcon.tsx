@@ -27,7 +27,7 @@ const ExpandIcon = styled(
         }),
     }),
     ...(variant === 'select' && {
-        color: theme.vars.palette.text.primary,
+        color: theme.palette.text.primary,
         pointerEvents: 'none',
         transform: 'rotate(0deg)',
         ...(expanded && {
@@ -37,7 +37,7 @@ const ExpandIcon = styled(
             transform: 'rotate(180deg)',
         },
         [`.${selectClasses.disabled} &`]: {
-            opacity: theme.vars.palette.action.disabledOpacity,
+            opacity: theme.palette.action.disabledOpacity,
         },
     }),
 }))

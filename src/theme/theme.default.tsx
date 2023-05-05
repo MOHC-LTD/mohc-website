@@ -10,8 +10,8 @@ import {
     ThemeOptions,
 } from '@mui/material'
 import { rem } from 'polished'
-import { GeneralConfig, Spacing } from 'src/general/utils/config'
 
+import { GeneralConfig, Spacing } from 'src/general/utils/config'
 import { FontFamilyConfig, Palette, ThemeOptionsComponents } from 'src/theme/types'
 import { assertColor } from 'src/theme/utils/assertColor'
 

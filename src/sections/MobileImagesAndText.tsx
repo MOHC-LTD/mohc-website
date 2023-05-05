@@ -1,16 +1,17 @@
-import { Box, Typography } from '@mui/material'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import TriButton from 'src/interactive/buttons/TriButton'
-import Section from '../general/Section'
-import Image from 'next/future/image'
-import { StaticImageData } from 'next/dist/client/image'
-import { theme } from 'src/theme/theme.default'
+
+import { Box, Typography } from '@mui/material'
+import { Asset } from 'contentful'
 import { useResizeDetector } from 'react-resize-detector'
+
+import Section from 'src/general/Section'
+import TriButton from 'src/interactive/buttons/TriButton'
+import { theme } from 'src/theme/theme.default'
 
 interface MobileImagesAndTextProps {
     title: string
     description: string
-    images: StaticImageData[]
+    images: Asset[]
     buttonText?: string
     sectionId?: string
 }
@@ -34,17 +35,25 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
             <Section maxWidth="xl" id={sectionId}>
                 <Box
                     sx={{
+                        position: 'relative',
+                        overflow: 'visible',
                         display: 'flex',
                         flexDirection: 'column',
-                        [theme.breakpoints.up('md')]: { flexDirection: 'row' },
+                        [theme.breakpoints.up('md')]: {
+                            flexDirection: 'row',
+                        },
                     }}
                 >
-                    {sm && (
+                    {sm ? (
                         <Typography variant="h3" mb={2}>
                             {title}
                         </Typography>
-                    )}
-                    <Box sx={{ display: 'flex' }}>
+                    ) : null}
+                    <Box
+                        sx={{
+                            display: 'flex',
+                        }}
+                    >
                         <Box
                             sx={{
                                 maxWidth: '50%',
@@ -54,25 +63,25 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 },
                             }}
                         >
-                            <Image
-                                alt={title}
-                                src={images[0]}
+                            <img
+                                alt={images[0].fields.title}
+                                src={`https:${images[0].fields.file.url}`}
+                                width={images[0].fields.file.details.image?.width}
+                                height={images[0].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
                                     marginBottom: '20px',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
-                            <Image
-                                alt="general health"
-                                src={images[1]}
+                            <img
+                                alt={images[1].fields.title}
+                                src={`https:${images[1].fields.file.url}`}
+                                width={images[1].fields.file.details.image?.width}
+                                height={images[1].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
                         </Box>
@@ -87,25 +96,25 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 },
                             }}
                         >
-                            <Image
-                                alt={title}
-                                src={images[2]}
+                            <img
+                                alt={images[2].fields.title}
+                                src={`https:${images[2].fields.file.url}`}
+                                width={images[2].fields.file.details.image?.width}
+                                height={images[2].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
                                     marginBottom: '20px',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
-                            <Image
-                                alt="general health"
-                                src={images[3]}
+                            <img
+                                alt={images[3].fields.title}
+                                src={`https:${images[3].fields.file.url}`}
+                                width={images[3].fields.file.details.image?.width}
+                                height={images[3].fields.file.details.image?.height}
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
-                                    border: '2px solid lightgrey',
-                                    borderRadius: '14px',
                                 }}
                             />
                         </Box>
@@ -115,12 +124,18 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             maxWidth: '100%',
                             display: 'flex',
                             flexDirection: 'column',
-                            [theme.breakpoints.up('md')]: { maxWidth: '50%', padding: '0 80px' },
+                            [theme.breakpoints.up('md')]: {
+                                position: 'sticky',
+                                top: 0,
+                                height: '100%',
+                                maxWidth: '50%',
+                                padding: '40px 80px',
+                            },
                         }}
                     >
-                        {!sm && <Typography variant="h3">{title}</Typography>}
+                        {!sm ? <Typography variant="h3">{title}</Typography> : null}
                         <Typography variant="body1">{description}</Typography>
-                        {buttonText && <TriButton variant="secondary">{buttonText}</TriButton>}
+                        {buttonText ? <TriButton variant="secondary">{buttonText}</TriButton> : null}
                     </Box>
                 </Box>
             </Section>

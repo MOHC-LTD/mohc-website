@@ -7,14 +7,14 @@ import { MaterialSymbol } from 'src/materialSymbolsTypes'
 import { Color } from 'src/theme/types'
 
 interface IconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'size'> {
-    name: MaterialSymbol
+    name: MaterialSymbol | string
     filled?: boolean
     color?: Color | 'inherit' | string
     size?: IconSize
 }
 
 // TODO: change to sm/md/lg/xl
-type IconSize = 'inherit' | 'small' | 'medium' | 'large' | 'extra-large'
+type IconSize = number | 'inherit' | 'small' | 'medium' | 'large' | 'extra-large'
 
 interface FontSizes {
     fontSize: number | string

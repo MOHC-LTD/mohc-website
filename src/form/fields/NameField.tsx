@@ -2,8 +2,8 @@ import { FunctionComponent } from 'react'
 
 import { useTranslation } from 'react-i18next'
 
-import TextField, { InheritedTextFieldProps } from './TextField'
-import { NameFieldConfig } from '../types'
+import TextField, { InheritedTextFieldProps } from 'src/form/fields/TextField'
+import { NameFieldConfig } from 'src/form/types'
 
 const NameField: FunctionComponent<InheritedTextFieldProps<NameFieldConfig>> = (props) => {
     const { t } = useTranslation()

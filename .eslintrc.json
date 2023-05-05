@@ -18,12 +18,9 @@
     },
     "extends": [
         "next/core-web-vitals",
-        "airbnb",
-        "airbnb/hooks",
         "prettier",
         "plugin:@typescript-eslint/recommended",
         "plugin:consistent-default-export-name/fixed",
-        "plugin:storybook/recommended",
         "plugin:unicorn/all"
     ],
     "plugins": [
@@ -215,8 +212,8 @@
                     },
                     {
                         "name": "@mui/material",
-                        "importNames": ["Grid", "Icon", "Link"],
-                        "message": "[Grid] The Grid component is too heavy, use CSS grid or the Stack component. [Icon] Use the custom Icon component. [Link] Use the Next.js Link component or the ComposedLink component."
+                        "importNames": ["Icon", "Link"],
+                        "message": "[Icon] Use the custom Icon component. [Link] Use the Next.js Link component or the ComposedLink component."
                     },
                     {
                         "name": "lodash",
@@ -243,11 +240,14 @@
                 ],
                 "patterns": [
                     // Only allow MUI imports from the main package, test utils, and hooks
+                    "@mui/*",
                     "@mui/*/*",
                     "@mui/*/*/*",
                     "!@mui/material",
                     "!@mui/material/test-utils/*",
                     "!@mui/material/use*",
+                    "!@mui/utils",
+                    "!@mui/lab",
                     // Do not allow to import index files directly
                     "**/index",
                     // Do not allow to import tenant files directly
@@ -363,7 +363,12 @@
 
         // Use the improved rule for nested ternaries
         "no-nested-ternary": "off",
-        "unicorn/no-nested-ternary": "error"
+        "unicorn/no-nested-ternary": "error",
+
+        "react/display-name": "off",
+
+        // img required for vercel
+        "@next/next/no-img-element": "off"
     },
     "overrides": [
         {

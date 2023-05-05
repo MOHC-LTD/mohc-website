@@ -7,9 +7,6 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.ts": "${capture}.test.ts, ${capture}.test.tsx, ${capture}.stories.ts, ${capture}.stories.tsx",
@@ -23,5 +20,9 @@
         "NODE_OPTIONS": "--experimental-vm-modules",
         // Hides warning about enabling ESM modules
         "NODE_NO_WARNINGS": 1
-    }
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "eslint.validate": ["typescript"]
 }
