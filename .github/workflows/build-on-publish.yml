@@ -1,10 +1,10 @@
-# .github/workflows/build-and-deploy.yml
+# .github/workflows/build-on-publish.yml
 
-name: Build & Deploy
+name: Contentful Publish
 
 on:
-  push:
-    branches: [main]
+	repository_dispatch:
+    	types: [publish-event]
 
 jobs:
   build:
