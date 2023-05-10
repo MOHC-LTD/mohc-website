@@ -16,7 +16,7 @@ import { FontFamilyConfig, Palette, ThemeOptionsComponents } from 'src/theme/typ
 import { assertColor } from 'src/theme/utils/assertColor'
 
 const fontFamilyConfig: FontFamilyConfig = {
-    name: 'roc-grotesk',
+    name: 'sofia-pro',
     weights: {
         light: 300,
         regular: 400,
