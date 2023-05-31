@@ -54,7 +54,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
 
             return (
                 <Section maxWidth="xl">
-                    <Typography variant="h3">{section.fields.title as string}</Typography>
+                    <Typography py={2} variant="h3">
+                        {section.fields.title as string}
+                    </Typography>
                     <Accordion>
                         {accordionItem?.map((item: any) => (
                             <AccordionItem key={item.fields?.header as string} heading={item.fields?.header as string}>
