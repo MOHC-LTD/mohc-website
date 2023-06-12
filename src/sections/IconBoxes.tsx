@@ -26,11 +26,11 @@ const IconBox: FunctionComponent<IconBoxProps> = ({ box, color }) => (
     <Box
         sx={{
             backgroundColor: color,
-            margin: '10px',
             padding: '20px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            height: '100%',
         }}
     >
         <Icon
@@ -41,7 +41,7 @@ const IconBox: FunctionComponent<IconBoxProps> = ({ box, color }) => (
                 margin: '40px',
             }}
         />
-        <Typography variant="body1" color="white" mb={2}>
+        <Typography variant="body1" color="white" mb={2} align="center">
             {box?.fields.title}
         </Typography>
         <Typography variant="body2" align="center" color="white">
@@ -87,6 +87,7 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({ title
                     <Box
                         sx={{
                             display: 'grid',
+                            gridAutoRows: '1fr',
                             gridTemplateColumns: 'repeat(1, 1fr)',
                             [theme.breakpoints.up('md')]: {
                                 gridTemplateColumns: 'repeat(2, 1fr)',
@@ -104,6 +105,7 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({ title
                                     key={box.fields.title}
                                     style={{
                                         listStyleType: 'none',
+                                        margin: '10px',
                                     }}
                                     variants={cardVariants}
                                     transition={{
