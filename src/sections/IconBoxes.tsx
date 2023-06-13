@@ -132,7 +132,7 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({
                                         delay: index * 0.05,
                                     }}
                                 >
-                                    <IconBox box={box} color={color} />
+                                    <IconBox box={box} color={color} isDarkMode={isDarkMode} />
                                 </motion.li>
                             )
                         })}

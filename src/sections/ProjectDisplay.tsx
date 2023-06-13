@@ -45,7 +45,7 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<ProjectDisplayProps>> 
                                 width={navigationImage?.fields.file.details.image?.width}
                                 height={navigationImage?.fields.file.details.image?.height}
                                 title={page.fields.navigationTitle as string}
-                                description={page.fields.navigationDescription}
+                                description={page.fields.navigationDescription as string}
                                 page={page.fields.slug as string}
                                 isInverted={index % 2 == 0 ? true : false}
                             />

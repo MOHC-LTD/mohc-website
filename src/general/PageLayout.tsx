@@ -25,7 +25,7 @@ const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({
     isDarkMode,
     children,
 }) => (
-    <Box width={1} position="relative">
+    <Box component="div" width={1} position="relative">
         {title ? <PageTitle>{title}</PageTitle> : null}
         <Header menuOptions={menuOptions} color={color} isDarkMode={isDarkMode} />
         {children}

@@ -16,6 +16,7 @@ const Banner3D: FunctionComponent = () => {
     return (
         <Section maxWidth="xl" isFullScreen backgroundColor="#E7F2FF" fadeType="bottom">
             <Box
+                component="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -29,6 +30,7 @@ const Banner3D: FunctionComponent = () => {
                 }}
             >
                 <Box
+                    component="div"
                     sx={{
                         order: 2,
                         [theme.breakpoints.up('md')]: {
@@ -40,6 +42,7 @@ const Banner3D: FunctionComponent = () => {
                     <Typography variant="h3">{t('home:hero_banner.subtitle')}</Typography>
                 </Box>
                 <Box
+                    component="div"
                     sx={{
                         order: 1,
                         [theme.breakpoints.up('md')]: {

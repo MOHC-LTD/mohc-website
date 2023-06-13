@@ -5,10 +5,11 @@ import { useFrame } from '@react-three/fiber'
 import { useSpring, useTransform } from 'framer-motion'
 import { Euler, Group } from 'three'
 
+import { GLTFResult } from 'src/general/types'
 import { useWindowDimensions } from 'src/general/utils/useWindowDimensions'
 
 const Phone3D: FunctionComponent = (props) => {
-    const { nodes, materials } = useGLTF('/jbc_iphone_hero-v2.glb')
+    const { nodes, materials } = useGLTF('/jbc_iphone_hero-v2.glb') as GLTFResult
 
     // Keep track of deltas, smoothly interpolate using springs
     const x = useSpring(0.5, {
