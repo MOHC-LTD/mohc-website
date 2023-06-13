@@ -300,7 +300,7 @@ const options: ThemeOptions = {
     palette: {
         ...palette,
         background: {
-            default: '#FBF7F4',
+            default: '#F5F5F5',
             paper: '#FBF0E8',
         },
         text: {
@@ -384,7 +384,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.bold,
             lineHeight: 1.3,
             fontSize: rem(38),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(84),
             },
         },
@@ -393,7 +393,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 0.9,
             fontSize: rem(38),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(84),
             },
         },
@@ -402,7 +402,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.bold,
             lineHeight: 1.3,
             fontSize: rem(32),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(54),
             },
         },
@@ -411,7 +411,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.medium,
             lineHeight: 1.3,
             fontSize: rem(32),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(54),
             },
         },
@@ -420,7 +420,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.bold,
             lineHeight: 1.2,
             fontSize: rem(22),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(28),
             },
         },
@@ -429,7 +429,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.medium,
             lineHeight: 1.3,
             fontSize: rem(22),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(28),
             },
         },
@@ -450,7 +450,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 1.5,
             fontSize: rem(18),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(20),
             },
         },
@@ -459,7 +459,7 @@ theme = createTheme(theme, {
             fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 1.4,
             fontSize: rem(14),
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('lg')]: {
                 fontSize: rem(16),
             },
         },

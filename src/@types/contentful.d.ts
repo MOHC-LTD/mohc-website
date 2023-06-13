@@ -160,7 +160,7 @@ export interface IFullWidthImageFields {
     backgroundColor?: string | undefined
 
     /** Image */
-    image?: Asset | undefined
+    image?: IImage | undefined
 }
 
 export interface IFullWidthImage extends Entry<IFullWidthImageFields> {
@@ -305,6 +305,9 @@ export interface IIconBoxesFields {
     /** Color */
     color?: string | undefined
 
+    /** Is dark mode */
+    isDarkMode?: boolean | undefined
+
     /** Icon box */
     iconBox?: IIconBox[] | undefined
 }
@@ -372,6 +375,9 @@ export interface IImageAndTextFields {
 
     /** Is inverted */
     isInverted?: boolean | undefined
+
+    /** Fade type */
+    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
 
     /** Section ID */
     sectionId?: string | undefined
@@ -456,6 +462,9 @@ export interface IPageFields {
 
     /** Navigation image */
     navigationImage?: Asset | undefined
+
+    /** Navigation description */
+    navigationDescription?: string | undefined
 
     /** slug */
     slug?: string | undefined

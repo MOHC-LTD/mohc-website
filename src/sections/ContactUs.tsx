@@ -21,7 +21,7 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
     const form = useForm()
 
     return (
-        <Section maxWidth="xl" isFullScreen isDarkMode backgroundColor="#4642FF" id={sectionId}>
+        <Section maxWidth="xl" isFullScreen backgroundColor="#E7F2FF" id={sectionId}>
             <Box
                 sx={{
                     display: 'flex',
@@ -43,10 +43,10 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                         },
                     }}
                 >
-                    <Typography variant="h4" color={theme.palette.text.secondary} marginBottom="20px">
+                    <Typography variant="h4" color={theme.palette.text.primary} marginBottom="20px">
                         {t('home:contact_us.title')}
                     </Typography>
-                    <Typography variant="body1" color={theme.palette.text.secondary}>
+                    <Typography variant="body1" color={theme.palette.text.primary}>
                         {t('home:contact_us.title')}
                     </Typography>
                 </Box>

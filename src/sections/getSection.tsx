@@ -14,7 +14,6 @@ import CenteredTitleAndText from 'src/sections/CenteredTitleAndText'
 import CustomImage from 'src/sections/CustomImage'
 import DeviceView from 'src/sections/DeviceView'
 import Heading from 'src/sections/Heading'
-import HeadingWithImage from 'src/sections/HeadingWithImage'
 import IconBoxes from 'src/sections/IconBoxes'
 import ImageAndText from 'src/sections/ImageAndText'
 import ImageSlider from 'src/sections/ImageSlider'
@@ -35,16 +34,6 @@ const Accordion = styled('div', {
 
 const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode => {
     switch (section.sys.contentType.sys.id) {
-        case 'heroBanner': {
-            return (
-                <HeadingWithImage
-                    title={section.fields.title as string}
-                    subtitle={section.fields.subtitle as string}
-                    image={section.fields.image as Asset}
-                />
-            )
-        }
-
         case 'animatedHeading': {
             return <AnimatedHeading title={section.fields.title as string} image={section.fields.image as Asset} />
         }
@@ -151,6 +140,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     isDarkMode={section.fields.isDarkMode as boolean}
                     isAnimated={section.fields.isAnimated as boolean}
                     isInverted={section.fields.isInverted as boolean}
+                    fadeType={section.fields.fadeType as string}
                     sectionId={section.fields.sectionId as string}
                 />
             )
@@ -175,6 +165,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                 <IconBoxes
                     title={section.fields.title as string}
                     color={section.fields.color as string}
+                    isDarkMode={section.fields.isDarkMode as boolean}
                     boxDetails={section.fields.iconBox as IIconBox[]}
                 />
             )

@@ -5,6 +5,7 @@ import type { GetStaticProps } from 'next'
 import { IHomePageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
 import PageLayout from 'src/general/PageLayout'
+import Banner3D from 'src/sections/Banner3D'
 import ContactUs from 'src/sections/ContactUs'
 import { getSection } from 'src/sections/getSection'
 import { NextPageWithLayout } from 'src/types'
@@ -26,7 +27,8 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
         .filter((notUndefined) => notUndefined !== undefined) as string[]
 
     return (
-        <PageLayout title="Home" menuOptions={[...menuOptions, 'Our work', 'Contact us']}>
+        <PageLayout title="Home" color="#E7F2FF" menuOptions={[...menuOptions, 'Our work', 'Contact us']}>
+            <Banner3D />
             {props?.section?.map((section) => getSection(section))}
             <ContactUs sectionId="Contact us" />
         </PageLayout>
