@@ -13,6 +13,7 @@ import { theme } from 'src/theme/theme.default'
 interface IconBoxesProps {
     title: string
     color: string
+    isDarkMode: boolean
     boxDetails: IIconBox[]
     sectionId?: string
 }
@@ -20,31 +21,43 @@ interface IconBoxesProps {
 interface IconBoxProps {
     box: IIconBox
     color: string
+    isDarkMode: boolean
 }
 
-const IconBox: FunctionComponent<IconBoxProps> = ({ box, color }) => (
+const IconBox: FunctionComponent<IconBoxProps> = ({ box, color, isDarkMode }) => (
     <Box
         sx={{
             backgroundColor: color,
-            margin: '10px',
+            border: `1px solid ${theme.palette.divider}`,
+            borderRadius: '10px',
             padding: '20px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            height: '100%',
         }}
     >
         <Icon
             name={box?.fields.iconName || 'square'}
             size="large"
-            color="white"
+            color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
             sx={{
                 margin: '40px',
             }}
         />
-        <Typography variant="body1" color="white" mb={2}>
+        <Typography
+            variant="body1"
+            color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+            mb={2}
+            align="center"
+        >
             {box?.fields.title}
         </Typography>
-        <Typography variant="body2" align="center" color="white">
+        <Typography
+            variant="body2"
+            align="center"
+            color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+        >
             {box?.fields.description}
         </Typography>
     </Box>
@@ -53,7 +66,13 @@ const IconBox: FunctionComponent<IconBoxProps> = ({ box, color }) => (
 /**
  * Section to display an image and text component.
  */
-const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({ title, color, boxDetails, sectionId }) => {
+const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({
+    title,
+    color,
+    isDarkMode,
+    boxDetails,
+    sectionId,
+}) => {
     const { width, ref } = useResizeDetector()
 
     const sm = width && width < theme.breakpoints.values.md
@@ -87,6 +106,7 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({ title
                     <Box
                         sx={{
                             display: 'grid',
+                            gridAutoRows: '1fr',
                             gridTemplateColumns: 'repeat(1, 1fr)',
                             [theme.breakpoints.up('md')]: {
                                 gridTemplateColumns: 'repeat(2, 1fr)',
@@ -98,12 +118,13 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({ title
                     >
                         {boxDetails?.map((box, index) => {
                             return sm ? (
-                                <IconBox box={box} color={color} />
+                                <IconBox box={box} color={color} isDarkMode={isDarkMode} />
                             ) : (
                                 <motion.li
                                     key={box.fields.title}
                                     style={{
                                         listStyleType: 'none',
+                                        margin: '10px',
                                     }}
                                     variants={cardVariants}
                                     transition={{

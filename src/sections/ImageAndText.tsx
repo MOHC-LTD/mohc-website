@@ -17,6 +17,7 @@ interface ImageAndTextProps {
     isDarkMode?: boolean
     isAnimated?: boolean
     isInverted?: boolean
+    fadeType?: string
     sectionId?: string
 }
 
@@ -49,6 +50,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
     isDarkMode,
     isAnimated,
     isInverted,
+    fadeType,
     sectionId,
 }) => {
     const { width, ref } = useResizeDetector()
@@ -74,7 +76,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
     }
 
     const content = (
-        <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor}>
+        <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor} fadeType={fadeType}>
             <Box
                 sx={{
                     display: 'flex',
@@ -87,6 +89,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
             >
                 {sm ? (
                     <Typography
+                        mb={2}
                         variant="h3"
                         align="center"
                         color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
@@ -105,7 +108,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         [theme.breakpoints.up('md')]: {
                             order: isInverted ? 2 : 1,
                             maxWidth: '50%',
-                            padding: '80px',
+                            padding: '40px',
                         },
                     }}
                 >
@@ -118,6 +121,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         </Typography>
                     ) : null}
                     <Typography
+                        mt={2}
                         variant="body1"
                         color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
                     >
