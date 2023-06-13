@@ -4,7 +4,7 @@
     },
     "hero_banner": {
         "title": "Managed online healthcare",
-        "subtitle": "We are a software consultancy specialising in designing, building and supporting complex online IT solutions in the health and medical sector."
+        "subtitle": "We are a software consultancy specialising in designing, building and supporting IT solutions of all shapes and sizes."
     },
     "about": {
         "description": "We are Shopify plus partners with a focus on complex system integrations, apps & replatforming to Shopify.",
@@ -56,7 +56,8 @@
         "appointment_booking_title": "Appointment Booking & task manager app",
         "video_gp_title": "VideoGP by LloydsPharmacy",
         "online_doctor_title": "LloydsPharmacy OnlineDoctor",
-        "view_project": "View project"
+        "view_project": "View project",
+        "footer": "Want to work with us?"
     },
     "contact_us": {
         "title": "If you’d like to work with us or have a project you’d like to discuss feel free to contact us.",

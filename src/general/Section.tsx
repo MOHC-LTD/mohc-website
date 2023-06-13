@@ -10,6 +10,7 @@ import { theme } from 'src/theme/theme.default'
 
 interface SectionProps extends Except<ContainerProps, 'sx'> {
     backgroundColor?: string
+    fadeType?: string
     isFullScreen?: boolean
     isDarkMode?: boolean
     hasEllipse?: boolean
