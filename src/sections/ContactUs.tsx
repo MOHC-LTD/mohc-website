@@ -69,9 +69,6 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                                         maxLength: 30,
                                     },
                                 }}
-                                style={{
-                                    color: theme.palette.text.primary,
-                                }}
                             />
                             <EmailField
                                 field={{

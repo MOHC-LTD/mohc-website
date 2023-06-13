@@ -165,6 +165,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                 <IconBoxes
                     title={section.fields.title as string}
                     color={section.fields.color as string}
+                    isDarkMode={section.fields.isDarkMode as boolean}
                     boxDetails={section.fields.iconBox as IIconBox[]}
                 />
             )
