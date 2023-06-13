@@ -24,13 +24,42 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
     isFullScreen = false,
     isDarkMode = false,
     hasEllipse = false,
+    fadeType = 'none',
     backgroundColor = theme.palette.background.default,
     ...props
 }) => {
+    let background = backgroundColor
+
+    switch (fadeType) {
+        case 'both': {
+            background = `linear-gradient(
+                    180deg,
+                    ${theme.palette.background.default} 0%,
+                    ${backgroundColor} 18.9%,
+                    ${backgroundColor} 79.07%,
+                    ${theme.palette.background.default} 100%
+                )`
+
+            break
+        }
+
+        case 'top': {
+            background = `linear-gradient(to bottom, transparent, ${backgroundColor})`
+
+            break
+        }
+
+        case 'bottom': {
+            background = `linear-gradient(to top, transparent, ${backgroundColor})`
+
+            break
+        }
+    }
+
     return (
         <Box
             sx={{
-                background: backgroundColor,
+                background: background,
             }}
         >
             <Container
