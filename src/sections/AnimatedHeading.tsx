@@ -133,6 +133,7 @@ const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>
         <Section maxWidth="xl" isFullScreen>
             <motion.div variants={container} initial="hidden" animate="show" exit="exit">
                 <Box
+                    componenet="div"
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -156,6 +157,7 @@ const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>
                         />
                     </MotionImage>
                     <Box
+                        componenet="div"
                         sx={{
                             display: 'flex',
                             maxWidth: '50%',
@@ -170,6 +172,7 @@ const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>
                         }}
                     >
                         <Box
+                            componenet="div"
                             sx={{
                                 order: 2,
                                 [theme.breakpoints.up('md')]: {
@@ -184,6 +187,7 @@ const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>
                             </motion.div>
                         </Box>
                         <Box
+                            componenet="div"
                             sx={{
                                 order: 1,
                                 [theme.breakpoints.up('md')]: {

@@ -16,6 +16,7 @@ const SmallImageBanner: FunctionComponent<PropsWithChildren<SmallImageBannerProp
     return (
         <Section maxWidth="xl">
             <Box
+                componenet="div"
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-between',

@@ -39,6 +39,7 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
         <div ref={ref}>
             <Section maxWidth="xl" backgroundColor={backgroundColor} id={sectionId}>
                 <Box
+                    componenet="div"
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -52,6 +53,7 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                     }}
                 >
                     <Box
+                        componenet="div"
                         sx={{
                             [theme.breakpoints.up('md')]: {
                                 width: '10%',
@@ -106,6 +108,7 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                     />
                 </Box>
                 <Box
+                    componenet="div"
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',

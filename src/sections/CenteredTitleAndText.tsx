@@ -29,6 +29,7 @@ const CenteredTitleAndText: FunctionComponent<PropsWithChildren<CenteredTitleAnd
     return (
         <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor}>
             <Box
+                componenet="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',

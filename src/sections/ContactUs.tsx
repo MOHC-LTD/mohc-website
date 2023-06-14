@@ -23,6 +23,7 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
     return (
         <Section maxWidth="xl" isFullScreen backgroundColor="#E7F2FF" id={sectionId}>
             <Box
+                componenet="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -33,6 +34,7 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                 }}
             >
                 <Box
+                    componenet="div"
                     mb={2}
                     sx={{
                         [theme.breakpoints.up('md')]: {
@@ -51,6 +53,7 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                     </Typography>
                 </Box>
                 <Box
+                    componenet="div"
                     sx={{
                         [theme.breakpoints.up('md')]: {
                             maxWidth: '50%',

@@ -29,6 +29,7 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
     return (
         <Section maxWidth="xl" id={sectionId}>
             <Box
+                componenet="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -37,6 +38,7 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
             >
                 {title ? <Typography variant="h3">{title}</Typography> : null}
                 <Box
+                    componenet="div"
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -46,6 +48,7 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                     }}
                 >
                     <Box
+                        componenet="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -69,6 +72,7 @@ const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTe
                         <Typography variant="body1">{details[0].description}</Typography>
                     </Box>
                     <Box
+                        componenet="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',

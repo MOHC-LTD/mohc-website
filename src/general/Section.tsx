@@ -59,6 +59,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
 
     return (
         <Box
+            component="div"
             sx={{
                 background: background,
             }}

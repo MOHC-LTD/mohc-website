@@ -93,11 +93,13 @@ const ImageSlider: FunctionComponent<PropsWithChildren<ImageSliderProps>> = ({ i
 
     return (
         <Box
+            componenet="div"
             sx={{
                 background: 'black',
             }}
         >
             <Box
+                componenet="div"
                 ref={sliderRef}
                 id="slides"
                 sx={{

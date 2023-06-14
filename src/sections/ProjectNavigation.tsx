@@ -35,6 +35,7 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
     return (
         <Section maxWidth="xl">
             <Box
+                componenet="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -46,6 +47,7 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
             >
                 {currentProject !== 0 ? (
                     <Box
+                        componenet="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -68,6 +70,7 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                 ) : null}
                 {currentProject !== projects.length - 1 ? (
                     <Box
+                        componenet="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',

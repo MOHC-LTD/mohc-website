@@ -45,6 +45,7 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
         <div ref={ref}>
             <Section maxWidth="xl" isFullScreen>
                 <Box
+                    componenet="div"
                     sx={{
                         maxHeight: '100%',
                         height: '100%',
@@ -58,6 +59,7 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                     }}
                 >
                     <Box
+                        componenet="div"
                         sx={{
                             width: '100%',
                             [theme.breakpoints.up('md')]: {
@@ -84,6 +86,7 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                         />
                     </Box>
                     <Box
+                        componenet="div"
                         id="title"
                         sx={{
                             zIndex: 'snackbar',

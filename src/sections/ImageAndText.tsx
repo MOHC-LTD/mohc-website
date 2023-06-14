@@ -78,6 +78,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
     const content = (
         <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor} fadeType={fadeType}>
             <Box
+                componenet="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -98,6 +99,7 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                     </Typography>
                 ) : null}
                 <Box
+                    componenet="div"
                     sx={{
                         maxWidth: '100%',
                         height: '100%',

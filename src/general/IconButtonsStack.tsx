@@ -27,7 +27,7 @@ const IconButtonsStack: FunctionComponent<PropsWithChildren<IconButtonsStackProp
     }
 
     return (
-        <Box display="flex">
+        <Box component="div" display="flex">
             <Stack
                 spacing={Spacing.Icons}
                 direction="row"
