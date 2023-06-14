@@ -11,10 +11,10 @@ import { useWindowDimensions } from 'src/general/utils/useWindowDimensions'
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
 const Phone3D: FunctionComponent = (props) => {
-    window.createImageBitmap = undefined
-
     const { nodes, materials } = useGLTF(
-        isGithubActions ? 'https://mohc-ltd.github.io/mohc-website/jbc_iphone_hero-v2.glb' : '/jbc_iphone_hero-v2.glb'
+        isGithubActions
+            ? 'https://github.com/MOHC-LTD/mohc-website/blob/gh-pages/jbc_iphone_hero-v2.glb'
+            : '/jbc_iphone_hero-v2.glb'
     ) as GLTFResult
 
     // Keep track of deltas, smoothly interpolate using springs
@@ -202,7 +202,9 @@ const Phone3D: FunctionComponent = (props) => {
 }
 
 useGLTF.preload(
-    isGithubActions ? 'https://mohc-ltd.github.io/mohc-website/jbc_iphone_hero-v2.glb' : '/jbc_iphone_hero-v2.glb'
+    isGithubActions
+        ? 'https://github.com/MOHC-LTD/mohc-website/blob/gh-pages/jbc_iphone_hero-v2.glb'
+        : '/jbc_iphone_hero-v2.glb'
 )
 
 export default Phone3D
