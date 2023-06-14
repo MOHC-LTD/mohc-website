@@ -39,7 +39,7 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<ProjectDisplayProps>> 
                     const navigationImage: any = page.fields.navigationImage
 
                     return (
-                        <Box componenet="div" key={navigationImage?.fields.title}>
+                        <Box component="div" key={navigationImage?.fields.title}>
                             <ProjectDrawer
                                 image={navigationImage?.fields.file.url}
                                 width={navigationImage?.fields.file.details.image?.width}

@@ -61,7 +61,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             return (
                 <Section maxWidth="xl" id={section.fields.sectionId as string}>
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -72,7 +72,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         }}
                     >
                         <Box
-                            componenet="div"
+                            component="div"
                             sx={{
                                 marginBottom: '20px',
                                 [theme.breakpoints.up('md')]: {
@@ -84,7 +84,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                             {documentToReactComponents(section.fields.column1Content as Document)}
                         </Box>
                         <Box
-                            componenet="div"
+                            component="div"
                             sx={{
                                 marginBottom: '20px',
                                 [theme.breakpoints.up('md')]: {

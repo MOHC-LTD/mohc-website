@@ -34,7 +34,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
         <div ref={ref}>
             <Section maxWidth="xl" id={sectionId}>
                 <Box
-                    componenet="div"
+                    component="div"
                     sx={{
                         position: 'relative',
                         overflow: 'visible',
@@ -51,13 +51,13 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                         </Typography>
                     ) : null}
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             display: 'flex',
                         }}
                     >
                         <Box
-                            componenet="div"
+                            component="div"
                             sx={{
                                 maxWidth: '50%',
                                 [theme.breakpoints.up('md')]: {
@@ -89,7 +89,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             />
                         </Box>
                         <Box
-                            componenet="div"
+                            component="div"
                             sx={{
                                 maxWidth: '50%',
                                 marginLeft: '20px',
@@ -124,7 +124,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                         </Box>
                     </Box>
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             maxWidth: '100%',
                             display: 'flex',

@@ -46,7 +46,7 @@ const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
                     {title}
                 </Typography>
                 <Box
-                    componenet="div"
+                    component="div"
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -58,7 +58,7 @@ const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
                     }}
                 >
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             overflow: 'auto',
                             whiteSpace: 'nowrap',
@@ -109,7 +109,7 @@ const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
                                 </Typography>
                                 {item.title === activeListItem.title && sm ? (
                                     <Box
-                                        componenet="div"
+                                        component="div"
                                         sx={{
                                             position: 'absolute',
                                             bottom: -15,
@@ -125,7 +125,7 @@ const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
                         ))}
                     </Box>
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             marginBottom: '20px',
                             [theme.breakpoints.up('md')]: {

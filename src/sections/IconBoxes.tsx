@@ -26,7 +26,7 @@ interface IconBoxProps {
 
 const IconBox: FunctionComponent<IconBoxProps> = ({ box, color, isDarkMode }) => (
     <Box
-        componenet="div"
+        component="div"
         sx={{
             backgroundColor: color,
             border: `1px solid ${theme.palette.divider}`,
@@ -105,7 +105,7 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({
                 <Section maxWidth="xl" id={sectionId}>
                     <Typography variant="h3">{title}</Typography>
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             display: 'grid',
                             gridAutoRows: '1fr',

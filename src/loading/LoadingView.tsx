@@ -68,7 +68,7 @@ const LoadingView: FunctionComponent<LoadingViewProps> = ({
         <Stack alignItems="center" overflow="hidden">
             <CircularProgress size={sizes[size].progressSize} />
             <DelayedRender timeout={5000} visible={longLoadingHint}>
-                <Box componenet="div" pt={Spacing.TypographyGutter}>
+                <Box component="div" pt={Spacing.TypographyGutter}>
                     <Typography variant={sizes[size].typographyVariant}>
                         {t('general:loading.long_loading_hint')}
                     </Typography>
@@ -118,7 +118,7 @@ const LoadingView: FunctionComponent<LoadingViewProps> = ({
         case 'button': {
             return (
                 <Box
-                    componenet="div"
+                    component="div"
                     left="50%"
                     position="absolute"
                     sx={{

@@ -35,7 +35,7 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
 
     return (
         <Box
-            componenet="div"
+            component="div"
             my={4}
             sx={{
                 display: 'flex',
@@ -48,7 +48,7 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
             }}
         >
             <Box
-                componenet="div"
+                component="div"
                 sx={{
                     maxWidth: '100%',
                     height: '100%',
@@ -81,7 +81,7 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                 </Link>
             </Box>
             <Box
-                componenet="div"
+                component="div"
                 sx={{
                     position: 'relative',
                     maxWidth: '100%',

@@ -74,7 +74,7 @@ const Services: FunctionComponent = () => {
         <div ref={ref}>
             <Section maxWidth="xl" id="Services">
                 <Box
-                    componenet="div"
+                    component="div"
                     sx={{
                         marginBottom: '50px',
                     }}
@@ -132,7 +132,7 @@ const Services: FunctionComponent = () => {
                         </Typography>
                     </Box>
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             border: '1px black',
                             borderStyle: 'none solid',

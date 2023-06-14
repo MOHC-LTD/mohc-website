@@ -22,7 +22,7 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({ title, su
     return (
         <Section maxWidth="xl" backgroundColor={color}>
             <Box
-                componenet="div"
+                component="div"
                 sx={{
                     minHeight: '300px',
                     maxHeight: '100%',
@@ -37,7 +37,7 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({ title, su
                 }}
             >
                 <Box
-                    componenet="div"
+                    component="div"
                     id="title"
                     sx={{
                         zIndex: 'snackbar',
@@ -53,7 +53,7 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({ title, su
                         {subtitle}
                     </Typography>
                     <Box
-                        componenet="div"
+                        component="div"
                         sx={{
                             display: 'flex',
                             alignItems: 'center',

@@ -20,7 +20,7 @@ const TextWithLink: FunctionComponent<PropsWithChildren<TextWithLinkProps>> = ({
     return (
         <Section maxWidth="xl" backgroundColor={theme.palette.primary.main} id={sectionId}>
             <Box
-                componenet="div"
+                component="div"
                 display="flex"
                 flexDirection="row"
                 alignItems="center"
