@@ -72,6 +72,7 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                 {({ stuck }): ReactNode => (
                     <HeaderRoot order={order} stuck={!!(stuck && !disableStickyShadow)} color={color}>
                         <Box
+                            component="div"
                             display="grid"
                             gap={Spacing.Header}
                             gridTemplateColumns="max-content 1fr max-content"
@@ -131,6 +132,7 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                                             </Button>
                                         </DrawerHeader>
                                         <Box
+                                            component="div"
                                             m={3}
                                             sx={{
                                                 display: 'flex',
@@ -156,6 +158,7 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                             ) : null}
                             {!sm ? (
                                 <Box
+                                    component="div"
                                     sx={{
                                         display: 'flex',
                                         flexDirection: 'row',
