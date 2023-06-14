@@ -10,7 +10,7 @@ import { useWindowDimensions } from 'src/general/utils/useWindowDimensions'
 
 const Phone3D: FunctionComponent = (props) => {
     const { nodes, materials } = useGLTF(
-        'https://mohc-ltd.github.io/mohc-website/public/jbc_iphone_hero-v2.glb'
+        'https://github.com/MOHC-LTD/mohc-website/blob/main/public/jbc_iphone_hero-v2.glb'
     ) as GLTFResult
 
     // Keep track of deltas, smoothly interpolate using springs
@@ -197,6 +197,6 @@ const Phone3D: FunctionComponent = (props) => {
     )
 }
 
-useGLTF.preload('https://mohc-ltd.github.io/mohc-website/public/jbc_iphone_hero-v2.glb')
+useGLTF.preload('https://github.com/MOHC-LTD/mohc-website/blob/main/public/jbc_iphone_hero-v2.glb')
 
 export default Phone3D
