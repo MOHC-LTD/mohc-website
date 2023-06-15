@@ -13,6 +13,9 @@ interface MobileImagesAndTextProps {
     description: string
     images: Asset[]
     buttonText?: string
+    backgroundColor?: string
+    fadeType?: string
+    isInverted?: boolean
     sectionId?: string
 }
 
@@ -24,6 +27,9 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
     description,
     images,
     buttonText,
+    backgroundColor,
+    fadeType,
+    isInverted = false,
     sectionId,
 }) => {
     const { width, ref } = useResizeDetector()
@@ -32,7 +38,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
 
     return (
         <div ref={ref}>
-            <Section maxWidth="xl" id={sectionId}>
+            <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor} fadeType={fadeType}>
                 <Box
                     component="div"
                     sx={{
@@ -54,6 +60,9 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                         component="div"
                         sx={{
                             display: 'flex',
+                            [theme.breakpoints.up('md')]: {
+                                order: 2,
+                            },
                         }}
                     >
                         <Box
@@ -134,7 +143,8 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 top: 0,
                                 height: '100%',
                                 maxWidth: '50%',
-                                padding: '40px 80px',
+                                padding: isInverted ? '40px 80px 40px 0' : '40px 0 40px 80px',
+                                order: isInverted ? 1 : 2,
                             },
                         }}
                     >
