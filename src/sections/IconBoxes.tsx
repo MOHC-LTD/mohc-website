@@ -103,7 +103,9 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({
                 ref={scrollRef}
             >
                 <Section maxWidth="xl" id={sectionId}>
-                    <Typography variant="h3">{title}</Typography>
+                    <Typography mb={2} variant="h3">
+                        {title}
+                    </Typography>
                     <Box
                         component="div"
                         sx={{
@@ -115,6 +117,9 @@ const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({
                             },
                             [theme.breakpoints.up('xl')]: {
                                 gridTemplateColumns: 'repeat(4, 1fr)',
+                            },
+                            [theme.breakpoints.down('md')]: {
+                                gridRowGap: '20px',
                             },
                         }}
                     >
