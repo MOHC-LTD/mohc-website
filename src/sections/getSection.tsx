@@ -104,7 +104,11 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             const image: any = section.fields.image
 
             return (
-                <Section maxWidth="xl">
+                <Section
+                    maxWidth="xl"
+                    backgroundColor={section.fields.backgroundColor as string}
+                    fadeType={section.fields.fadeType as string}
+                >
                     <CustomImage image={image} />
                 </Section>
             )
@@ -117,6 +121,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     description={section.fields.description as string}
                     images={section.fields.images as Asset[]}
                     sectionId={section.fields.sectionId as string}
+                    backgroundColor={section.fields.backgroundColor as string}
+                    fadeType={section.fields.fadeType as string}
+                    isInverted={section.fields.isInverted as boolean}
                 />
             )
         }
@@ -180,7 +187,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     title={section.fields.title as string}
                     subtitle={section.fields.subtitle as string}
                     sector={section.fields.sector as string}
+                    image={section.fields.image as Asset}
                     color={section.fields.color as string}
+                    fadeType={section.fields.fadeType as string}
                 />
             )
         }

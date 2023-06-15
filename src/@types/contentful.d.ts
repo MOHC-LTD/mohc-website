@@ -159,6 +159,9 @@ export interface IFullWidthImageFields {
     /** Background color */
     backgroundColor?: string | undefined
 
+    /** Fade type */
+    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
+
     /** Image */
     image?: IImage | undefined
 }
@@ -190,8 +193,17 @@ export interface IHeadingFields {
     /** Sector */
     sector?: string | undefined
 
+    /** Image */
+    image?: Asset | undefined
+
     /** Color */
     color?: string | undefined
+
+    /** Fade type */
+    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
+
+    /** Is dark mode */
+    isDarkMode?: boolean | undefined
 }
 
 export interface IHeading extends Entry<IHeadingFields> {
@@ -437,6 +449,15 @@ export interface IMobileImagesAndTextFields {
 
     /** Images */
     images?: Asset[] | undefined
+
+    /** Background color */
+    backgroundColor?: string | undefined
+
+    /** Fade type */
+    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
+
+    /** Is inverted */
+    isInverted?: boolean | undefined
 }
 
 export interface IMobileImagesAndText extends Entry<IMobileImagesAndTextFields> {

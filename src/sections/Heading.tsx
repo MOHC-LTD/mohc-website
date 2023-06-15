@@ -1,6 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Typography } from '@mui/material'
+import { Asset } from 'contentful'
 import { useTranslation } from 'react-i18next'
 
 import Section from 'src/general/Section'
@@ -10,17 +11,28 @@ interface HeadingProps {
     title?: string
     subtitle?: string
     sector?: string
+    image?: Asset
     color?: string
+    fadeType?: string
+    isDarkMode?: string
 }
 
 /**
  * Heading section.
  */
-const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({ title, subtitle, sector, color }) => {
+const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
+    title,
+    subtitle,
+    sector,
+    image,
+    color,
+    fadeType = 'none',
+    isDarkMode = false,
+}) => {
     const { t } = useTranslation()
 
     return (
-        <Section maxWidth="xl" backgroundColor={color}>
+        <Section maxWidth="xl" backgroundColor={color} fadeType={fadeType}>
             <Box
                 component="div"
                 sx={{
@@ -39,17 +51,28 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({ title, su
                 <Box
                     component="div"
                     id="title"
+                    mr={2}
                     sx={{
                         zIndex: 'snackbar',
+                        order: 2,
                         [theme.breakpoints.up('md')]: {
                             maxWidth: '75%',
+                            order: 1,
                         },
                     }}
                 >
-                    <Typography variant="body1" color="#F8F2EA">
+                    <Typography
+                        mb={1}
+                        variant="h3"
+                        color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                    >
                         {title}
                     </Typography>
-                    <Typography variant="h3" color="#F8F2EA">
+                    <Typography
+                        mb={1}
+                        variant="body1"
+                        color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                    >
                         {subtitle}
                     </Typography>
                     <Box
@@ -59,14 +82,17 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({ title, su
                             alignItems: 'center',
                         }}
                     >
-                        <Typography variant="body1" color="#F8F2EA">
+                        <Typography
+                            variant="body1"
+                            color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                        >
                             {t('general:sector')}
                         </Typography>
                         <Typography
                             variant="body1"
-                            color={color}
+                            color={isDarkMode ? color : theme.palette.text.primary}
                             sx={{
-                                backgroundColor: '#F8F2EA',
+                                backgroundColor: isDarkMode ? theme.palette.background.default : theme.palette.divider,
                                 padding: '8px',
                                 margin: '8px',
                             }}
@@ -75,6 +101,34 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({ title, su
                         </Typography>
                     </Box>
                 </Box>
+                {image ? (
+                    <Box
+                        component="div"
+                        sx={{
+                            position: 'relative',
+                            maxWidth: '100%',
+                            order: 1,
+                            [theme.breakpoints.up('md')]: {
+                                display: 'flex',
+                                height: 'fit-content',
+                                maxWidth: '50%',
+                                order: 2,
+                            },
+                        }}
+                    >
+                        <img
+                            alt={image.fields.title}
+                            src={`https:${image.fields.file.url}`}
+                            width={image.fields.file.details.image?.width}
+                            height={image.fields.file.details.image?.height}
+                            style={{
+                                maxWidth: '100%',
+                                width: 'auto',
+                                height: 'auto',
+                            }}
+                        />
+                    </Box>
+                ) : null}
             </Box>
         </Section>
     )
