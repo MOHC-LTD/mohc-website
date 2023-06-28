@@ -110,14 +110,14 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                         }}
                                     >
                                         <Box component="div">
-                                            {textColumn?.fields.listItems.map((item) => (
+                                            {textColumn?.fields.listItems.map((item: any) => (
                                                 <Typography mb={2} key={item}>
                                                     {item}
                                                 </Typography>
                                             ))}
                                         </Box>
                                         <Box component="div">
-                                            {textColumn?.fields.listItems2.map((item) => (
+                                            {textColumn?.fields.listItems2.map((item: any) => (
                                                 <Typography mb={2} key={item}>
                                                     {item}
                                                 </Typography>
