@@ -41,16 +41,7 @@ const nextConfig = {
         },
     },
     webpack: configureWebpack,
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'images.ctfassets.net',
-                port: '',
-                pathname: '/**',
-            },
-        ],
-    },
+    output: 'export',
     reactMode: 'legacy',
     assetPrefix: assetPrefix,
     basePath: basePath,
