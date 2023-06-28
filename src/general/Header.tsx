@@ -101,15 +101,11 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                                         transitionDuration={500}
                                         {...bindPopover(drawerPopupState)}
                                         PaperProps={{
-                                            transitionDuration: 1500,
                                             sx: {
                                                 boxShadow: 'none',
                                                 height: '100%',
                                                 backgroundColor: '#3F69FF',
                                             },
-                                        }}
-                                        ModalProps={{
-                                            transitionDuration: 1500,
                                         }}
                                         sx={{
                                             zIndex: 5000,

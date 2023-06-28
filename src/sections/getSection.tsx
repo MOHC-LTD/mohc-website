@@ -72,7 +72,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         }}
                     >
                         {[1, 2].map((number) => {
-                            return section.fields[`textColumn${number}Content`]?.fields.textBlock ? (
+                            const textColumn: any = section.fields[`textColumn${number}Content`]
+
+                            return textColumn?.fields.textBlock ? (
                                 <Box
                                     component="div"
                                     key={number}
@@ -86,9 +88,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                     <Typography variant="h3">
                                         {section.fields[`column${number}Title`] as string}
                                     </Typography>
-                                    {documentToReactComponents(
-                                        section.fields[`textColumn${number}Content`].fields.textBlock as Document
-                                    )}
+                                    {documentToReactComponents(textColumn?.fields.textBlock as Document)}
                                 </Box>
                             ) : (
                                 <Box
@@ -102,29 +102,26 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                 >
                                     <Typography variant="h3">{section.fields.column2Title as string}</Typography>
                                     <Box
+                                        component="div"
                                         mt={2}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'space-between',
                                         }}
                                     >
-                                        <Box>
-                                            {section.fields[`textColumn${number}Content`]?.fields.listItems.map(
-                                                (item) => (
-                                                    <Typography mb={2} key={item}>
-                                                        {item}
-                                                    </Typography>
-                                                )
-                                            )}
+                                        <Box component="div">
+                                            {textColumn?.fields.listItems.map((item) => (
+                                                <Typography mb={2} key={item}>
+                                                    {item}
+                                                </Typography>
+                                            ))}
                                         </Box>
-                                        <Box>
-                                            {section.fields[`textColumn${number}Content`]?.fields.listItems2.map(
-                                                (item) => (
-                                                    <Typography mb={2} key={item}>
-                                                        {item}
-                                                    </Typography>
-                                                )
-                                            )}
+                                        <Box component="div">
+                                            {textColumn?.fields.listItems2.map((item) => (
+                                                <Typography mb={2} key={item}>
+                                                    {item}
+                                                </Typography>
+                                            ))}
                                         </Box>
                                     </Box>
                                 </Box>
