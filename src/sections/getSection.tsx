@@ -100,7 +100,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                         },
                                     }}
                                 >
-                                    <Typography variant="h3">{section.fields.column2Title as string}</Typography>
+                                    <Typography variant="h3">
+                                        {section.fields[`column${number}Title`] as string}
+                                    </Typography>
                                     <Box
                                         component="div"
                                         mt={2}
