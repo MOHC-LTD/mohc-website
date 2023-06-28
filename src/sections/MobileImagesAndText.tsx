@@ -1,5 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { Document } from '@contentful/rich-text-types'
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
 import { useResizeDetector } from 'react-resize-detector'
@@ -10,7 +12,7 @@ import { theme } from 'src/theme/theme.default'
 
 interface MobileImagesAndTextProps {
     title: string
-    description: string
+    description: Document
     images: Asset[]
     buttonText?: string
     backgroundColor?: string
@@ -149,7 +151,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                         }}
                     >
                         {!sm ? <Typography variant="h3">{title}</Typography> : null}
-                        <Typography variant="body1">{description}</Typography>
+                        {documentToReactComponents(description)}
                         {buttonText ? <TriButton variant="secondary">{buttonText}</TriButton> : null}
                     </Box>
                 </Box>

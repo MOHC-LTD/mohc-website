@@ -445,7 +445,7 @@ export interface IMobileImagesAndTextFields {
     title?: string | undefined
 
     /** Description */
-    description?: string | undefined
+    description?: Document | undefined
 
     /** Images */
     images?: Asset[] | undefined
@@ -578,6 +578,12 @@ export interface ITextColumnFields {
 
     /** Column 2 content */
     column2Content?: Document | undefined
+
+    /** Text Column 1 Content */
+    textColumn1Content?: ITextColumnTextBlock | ITextColumnList | undefined
+
+    /** Text Column 2 Content */
+    textColumn2Content?: ITextColumnTextBlock | ITextColumnList | undefined
 }
 
 export interface ITextColumn extends Entry<ITextColumnFields> {
@@ -590,6 +596,53 @@ export interface ITextColumn extends Entry<ITextColumnFields> {
         contentType: {
             sys: {
                 id: 'textColumn'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
+export interface ITextColumnListFields {
+    /** List Items */
+    listItems?: string[] | undefined
+
+    /** List Items 2 */
+    listItems2?: string[] | undefined
+}
+
+export interface ITextColumnList extends Entry<ITextColumnListFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'textColumnList'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
+export interface ITextColumnTextBlockFields {
+    /** Text Block */
+    textBlock?: Document | undefined
+}
+
+export interface ITextColumnTextBlock extends Entry<ITextColumnTextBlockFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'textColumnTextBlock'
                 linkType: 'ContentType'
                 type: 'Link'
             }
@@ -617,6 +670,8 @@ export type CONTENT_TYPE =
     | 'projectNavigation'
     | 'smallImageBanner'
     | 'textColumn'
+    | 'textColumnList'
+    | 'textColumnTextBlock'
 
 export type IEntry =
     | IAccordion
@@ -638,6 +693,8 @@ export type IEntry =
     | IProjectNavigation
     | ISmallImageBanner
     | ITextColumn
+    | ITextColumnList
+    | ITextColumnTextBlock
 
 export type LOCALE_CODE = 'en-US'
 

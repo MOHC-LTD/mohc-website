@@ -2,10 +2,11 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
+import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 
 import Section from 'src/general/Section'
-import { theme } from 'src/theme/theme.default'
+import { fontFamilyConfig, theme } from 'src/theme/theme.default'
 
 interface HeadingProps {
     title?: string
@@ -15,6 +16,7 @@ interface HeadingProps {
     color?: string
     fadeType?: string
     isDarkMode?: string
+    font?: boolean
 }
 
 /**
@@ -26,6 +28,7 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
     sector,
     image,
     color,
+    font = false,
     fadeType = 'none',
     isDarkMode = false,
 }) => {
@@ -65,6 +68,34 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                         mb={1}
                         variant="h3"
                         color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                        sx={{
+                            '@keyframes fonts': {
+                                '0%': {
+                                    fontFamily: 'baskerville-pt',
+                                    fontStyle: 'italic',
+                                    width: '100%',
+                                },
+                                '33%': {
+                                    width: 0,
+                                },
+                                '66%': {
+                                    width: 0,
+                                },
+                                '100%': {
+                                    fontFamily: fontFamilyConfig.name,
+                                    fontStyle: 'normal',
+                                    width: '100%',
+                                },
+                            },
+                            fontFamily: font ? 'baskerville-pt' : fontFamilyConfig.name,
+                            fontStyle: font ? 'italic' : 'normal',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            animationName: font ? 'fonts' : null,
+                            animationDuration: '1.5s',
+                            animationDelay: '1.5s',
+                            animationFillMode: 'forwards',
+                        }}
                     >
                         {title}
                     </Typography>
@@ -116,11 +147,13 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                             },
                         }}
                     >
-                        <img
+                        <Image
                             alt={image.fields.title}
                             src={`https:${image.fields.file.url}`}
                             width={image.fields.file.details.image?.width}
                             height={image.fields.file.details.image?.height}
+                            placeholder="blur"
+                            blurDataURL={`https:${image.fields.file.url}`}
                             style={{
                                 maxWidth: '100%',
                                 width: 'auto',

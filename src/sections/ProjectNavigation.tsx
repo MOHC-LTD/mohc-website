@@ -41,56 +41,53 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                     flexDirection: 'column',
                     [theme.breakpoints.up('md')]: {
                         flexDirection: 'row',
-                        justifyContent: 'center',
+                        justifyContent: 'flex-start',
                     },
                 }}
             >
-                {currentProject !== 0 ? (
-                    <Box
-                        component="div"
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            margin: '20px 0',
+                <Box
+                    component="div"
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        margin: '20px 0',
+                        order: 1,
+                        [theme.breakpoints.up('md')]: {
                             order: 2,
-                            [theme.breakpoints.up('md')]: {
-                                order: 1,
-                                margin: '20px 80px',
-                            },
-                        }}
-                    >
-                        <Link href={`/project/${projects[currentProject - 1].fields.slug}`}>
-                            <Typography variant="h5">{t('project:previous_project')}</Typography>
-                        </Link>
-                        <Typography variant="body1">
-                            {projects[currentProject - 1].fields.navigationTitle as string}
-                        </Typography>
-                    </Box>
-                ) : null}
-                {currentProject !== projects.length - 1 ? (
-                    <Box
-                        component="div"
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            margin: '20px 0',
-                            order: 1,
-                            [theme.breakpoints.up('md')]: {
-                                order: 2,
-                                margin: '20px 80px',
-                            },
-                        }}
-                    >
-                        <Link href={`/project/${projects[currentProject + 1].fields.slug}`}>
-                            <Typography variant="h5">{t('project:next_project')}</Typography>
-                        </Link>
-                        <Typography variant="body1">
-                            {projects[currentProject + 1].fields.navigationTitle as string}
-                        </Typography>
-                    </Box>
-                ) : null}
+                            margin: '20px 80px',
+                        },
+                    }}
+                >
+                    {currentProject !== projects.length - 1 ? (
+                        <>
+                            <Link
+                                href={`/project/${projects[currentProject + 1].fields.slug}`}
+                                style={{
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                <Typography variant="h5">{t('project:next_project')}</Typography>
+                            </Link>
+                            <Typography variant="body1">
+                                {projects[currentProject + 1].fields.navigationTitle as string}
+                            </Typography>
+                        </>
+                    ) : null}
+                    {currentProject === projects.length - 1 ? (
+                        <>
+                            <Link
+                                href={`/project/${projects[0].fields.slug}`}
+                                style={{
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                <Typography variant="h5">{t('project:next_project')}</Typography>
+                            </Link>
+                            <Typography variant="body1">{projects[0].fields.navigationTitle as string}</Typography>
+                        </>
+                    ) : null}
+                </Box>
             </Box>
         </Section>
     )

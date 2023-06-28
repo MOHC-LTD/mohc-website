@@ -71,30 +71,65 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                             },
                         }}
                     >
-                        <Box
-                            component="div"
-                            sx={{
-                                marginBottom: '20px',
-                                [theme.breakpoints.up('md')]: {
-                                    width: '40%',
-                                },
-                            }}
-                        >
-                            <Typography variant="h3">{section.fields.column1Title as string}</Typography>
-                            {documentToReactComponents(section.fields.column1Content as Document)}
-                        </Box>
-                        <Box
-                            component="div"
-                            sx={{
-                                marginBottom: '20px',
-                                [theme.breakpoints.up('md')]: {
-                                    width: '40%',
-                                },
-                            }}
-                        >
-                            <Typography variant="h3">{section.fields.column2Title as string}</Typography>
-                            {documentToReactComponents(section.fields.column2Content as Document)}
-                        </Box>
+                        {[1, 2].map((number) => {
+                            return section.fields[`textColumn${number}Content`]?.fields.textBlock ? (
+                                <Box
+                                    component="div"
+                                    key={number}
+                                    sx={{
+                                        marginBottom: '20px',
+                                        [theme.breakpoints.up('md')]: {
+                                            width: '40%',
+                                        },
+                                    }}
+                                >
+                                    <Typography variant="h3">
+                                        {section.fields[`column${number}Title`] as string}
+                                    </Typography>
+                                    {documentToReactComponents(
+                                        section.fields[`textColumn${number}Content`].fields.textBlock as Document
+                                    )}
+                                </Box>
+                            ) : (
+                                <Box
+                                    component="div"
+                                    sx={{
+                                        marginBottom: '20px',
+                                        [theme.breakpoints.up('md')]: {
+                                            width: '40%',
+                                        },
+                                    }}
+                                >
+                                    <Typography variant="h3">{section.fields.column2Title as string}</Typography>
+                                    <Box
+                                        mt={2}
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                        }}
+                                    >
+                                        <Box>
+                                            {section.fields[`textColumn${number}Content`]?.fields.listItems.map(
+                                                (item) => (
+                                                    <Typography mb={2} key={item}>
+                                                        {item}
+                                                    </Typography>
+                                                )
+                                            )}
+                                        </Box>
+                                        <Box>
+                                            {section.fields[`textColumn${number}Content`]?.fields.listItems2.map(
+                                                (item) => (
+                                                    <Typography mb={2} key={item}>
+                                                        {item}
+                                                    </Typography>
+                                                )
+                                            )}
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            )
+                        })}
                     </Box>
                 </Section>
             )
@@ -118,7 +153,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             return (
                 <MobileImagesAndText
                     title={section.fields.title as string}
-                    description={section.fields.description as string}
+                    description={section.fields.description as Document}
                     images={section.fields.images as Asset[]}
                     sectionId={section.fields.sectionId as string}
                     backgroundColor={section.fields.backgroundColor as string}
@@ -190,6 +225,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     image={section.fields.image as Asset}
                     color={section.fields.color as string}
                     fadeType={section.fields.fadeType as string}
+                    font={section.fields.title === 'John Bell & Croyden' ? true : false}
                 />
             )
         }

@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren, ReactNode, useId } from 'react'
 
 import isPropValid from '@emotion/is-prop-valid'
-import { Box, Button, Drawer, ListItemButton, Stack, styled, Typography } from '@mui/material'
+import { Box, Button, Drawer, ListItemButton, Slide, Stack, styled, Typography } from '@mui/material'
 import { bindPopover, usePopupState } from 'material-ui-popup-state/hooks'
 import Link from 'next/link'
 import { useResizeDetector } from 'react-resize-detector'
@@ -46,8 +46,8 @@ const DrawerHeader = styled('div', {
     name: 'DrawerHeader',
 })(() => ({
     display: 'flex',
-    alignItems: 'flex-start',
-    padding: theme.spacing(0, 1),
+    alignItems: 'center',
+    padding: theme.spacing(2.5, 1),
 }))
 
 const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
@@ -79,19 +79,6 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                             alignItems="center"
                             width={1}
                         >
-                            <Stack spacing={Spacing.Header} direction="row" alignItems="center">
-                                <Link
-                                    href="/home"
-                                    style={{
-                                        textDecoration: 'none',
-                                    }}
-                                >
-                                    <AppName isDarkMode={isDarkMode} />
-                                </Link>
-                            </Stack>
-                            {/* Empty <div> required so that the last section of the grid for
-                            location and account can align itself to the right */}
-                            <div />
                             {sm ? (
                                 <>
                                     <Button
@@ -110,12 +97,19 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                                         />
                                     </Button>
                                     <Drawer
-                                        anchor="right"
+                                        anchor="top"
+                                        transitionDuration={500}
                                         {...bindPopover(drawerPopupState)}
                                         PaperProps={{
+                                            transitionDuration: 1500,
                                             sx: {
                                                 boxShadow: 'none',
+                                                height: '100%',
+                                                backgroundColor: '#3F69FF',
                                             },
+                                        }}
+                                        ModalProps={{
+                                            transitionDuration: 1500,
                                         }}
                                         sx={{
                                             zIndex: 5000,
@@ -125,66 +119,118 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                                             <Button
                                                 onClick={drawerPopupState.close}
                                                 sx={{
-                                                    padding: '0 !important',
+                                                    padding: '0 26px !important',
                                                 }}
                                             >
-                                                <Icon color={theme.palette.text.primary} name="close" />
+                                                <Icon color={theme.palette.text.secondary} name="close" />
                                             </Button>
+                                            <Link
+                                                href="/home"
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
+                                            >
+                                                <AppName isDarkMode={true} />
+                                            </Link>
                                         </DrawerHeader>
-                                        <Box
-                                            component="div"
-                                            m={3}
-                                            sx={{
-                                                display: 'flex',
-                                                flexDirection: 'column',
+                                        <Slide
+                                            direction="down"
+                                            in={drawerPopupState.isOpen}
+                                            mountOnEnter
+                                            unmountOnExit
+                                            timeout={{
+                                                enter: 1500,
+                                                exit: 300,
                                             }}
                                         >
-                                            {menuOptions.map((option) => (
-                                                <ListItemButton
-                                                    key={option}
-                                                    href={`#${option}`}
-                                                    onClick={drawerPopupState.close}
-                                                    sx={{
-                                                        display: 'flex',
-                                                        justifyContent: 'center',
-                                                    }}
-                                                >
-                                                    <Typography color={theme.palette.text.primary}>{option}</Typography>
-                                                </ListItemButton>
-                                            ))}
-                                        </Box>
+                                            <Box
+                                                component="div"
+                                                m={3}
+                                                sx={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                }}
+                                            >
+                                                {menuOptions.map((option) => (
+                                                    <Typography
+                                                        variant="h4"
+                                                        color={theme.palette.text.secondary}
+                                                        key={option}
+                                                    >
+                                                        <ListItemButton
+                                                            href={`#${option}`}
+                                                            onClick={drawerPopupState.close}
+                                                            sx={{
+                                                                display: 'flex',
+                                                                justifyContent: 'center',
+                                                            }}
+                                                        >
+                                                            {option}
+                                                        </ListItemButton>
+                                                    </Typography>
+                                                ))}
+                                            </Box>
+                                        </Slide>
                                     </Drawer>
+                                    <Stack spacing={Spacing.Header} direction="row" alignItems="center">
+                                        <Link
+                                            href="/home"
+                                            style={{
+                                                textDecoration: 'none',
+                                            }}
+                                        >
+                                            <AppName isDarkMode={isDarkMode} />
+                                        </Link>
+                                    </Stack>
+                                    {/* Empty <div> required so that the last section of the grid for
+                                        location and account can align itself to the right */}
+                                    <div />
                                 </>
                             ) : null}
                             {!sm ? (
-                                <Box
-                                    component="div"
-                                    sx={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                    }}
-                                >
-                                    {menuOptions.map((option) => (
-                                        <ListItemButton
-                                            key={option}
-                                            href={`#${option}`}
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'center',
+                                <>
+                                    <Stack spacing={Spacing.Header} direction="row" alignItems="center">
+                                        <Link
+                                            href="/home"
+                                            style={{
+                                                textDecoration: 'none',
                                             }}
                                         >
-                                            <Typography
-                                                color={
-                                                    isDarkMode
-                                                        ? theme.palette.text.secondary
-                                                        : theme.palette.text.primary
-                                                }
+                                            <AppName isDarkMode={isDarkMode} />
+                                        </Link>
+                                    </Stack>
+                                    {/* Empty <div> required so that the last section of the grid for
+                                location and account can align itself to the right */}
+                                    <div />
+                                    <Box
+                                        component="div"
+                                        sx={{
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                        }}
+                                    >
+                                        {menuOptions.map((option) => (
+                                            <ListItemButton
+                                                key={option}
+                                                href={`#${option}`}
+                                                sx={{
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                }}
                                             >
-                                                {option}
-                                            </Typography>
-                                        </ListItemButton>
-                                    ))}
-                                </Box>
+                                                <Typography
+                                                    color={
+                                                        isDarkMode
+                                                            ? theme.palette.text.secondary
+                                                            : theme.palette.text.primary
+                                                    }
+                                                >
+                                                    {option}
+                                                </Typography>
+                                            </ListItemButton>
+                                        ))}
+                                    </Box>
+                                </>
                             ) : null}
                         </Box>
                     </HeaderRoot>
