@@ -39,7 +39,9 @@ const nextConfig = {
     assetPrefix: assetPrefix,
     basePath: basePath,
     trailingSlash: isProduction,
+    output: 'export',
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',
