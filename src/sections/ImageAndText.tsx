@@ -27,6 +27,7 @@ interface ImageBoxProps {
 
 const ImageBox = styled(motion.div, {
     name: 'ImageBox',
+    shouldForwardProp: (prop) => prop !== 'isInverted',
 })<ImageBoxProps>(({ isInverted }) => ({
     position: 'relative',
     maxWidth: '100%',
