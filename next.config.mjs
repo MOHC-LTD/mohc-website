@@ -42,7 +42,6 @@ const nextConfig = {
     },
     webpack: configureWebpack,
     output: 'export',
-    reactMode: 'legacy',
     assetPrefix: assetPrefix,
     basePath: basePath,
     trailingSlash: isProduction,
