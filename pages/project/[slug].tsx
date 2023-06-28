@@ -84,7 +84,6 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
             if (
                 section.fields.image &&
                 is.plainObject(section.fields.image) &&
-                'fields' in section.fields.image &&
                 is.plainObject(section.fields.image.fields) &&
                 is.plainObject(section.fields.image.fields.file)
             ) {
