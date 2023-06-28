@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
@@ -34,7 +34,9 @@ const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
             color={page?.color}
             isDarkMode={page?.isDarkMode}
         >
-            {page.section?.map((section) => getSection(section))}
+            {page.section?.map((section) => (
+                <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
+            ))}
             <ProjectNavigation pages={pages} />
             <ContactUs sectionId="Contact us" />
         </PageLayout>
