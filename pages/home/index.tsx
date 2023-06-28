@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 
 import type { GetStaticProps } from 'next'
 
@@ -29,7 +29,9 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
     return (
         <PageLayout title="Home" color="#E7F2FF" menuOptions={[...menuOptions, 'Our work', 'Contact us']}>
             <Banner3D />
-            {props?.section?.map((section) => getSection(section))}
+            {props?.section?.map((section) => (
+                <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
+            ))}
             <ContactUs sectionId="Contact us" />
         </PageLayout>
     )
