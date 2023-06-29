@@ -2,6 +2,7 @@ import { FunctionComponent, PropsWithChildren, useState } from 'react'
 
 import { Box, Button, Typography } from '@mui/material'
 import { Asset } from 'contentful'
+import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 import { useResizeDetector } from 'react-resize-detector'
 
@@ -77,7 +78,7 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                                 : t('project:device_view.tablet')}
                         </Typography>
                     </Box>
-                    <img
+                    <Image
                         alt={
                             deviceType === 'mobile' ? mobileImage?.fields.title || '' : desktopImage?.fields.title || ''
                         }
@@ -88,13 +89,13 @@ const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
                         }
                         width={
                             deviceType === 'mobile'
-                                ? mobileImage?.fields.file.details.image?.width || ''
-                                : desktopImage?.fields.file.details.image?.width || ''
+                                ? mobileImage?.fields.file.details.image?.width || undefined
+                                : desktopImage?.fields.file.details.image?.width || undefined
                         }
                         height={
                             deviceType === 'mobile'
-                                ? mobileImage?.fields.file.details.image?.height || ''
-                                : desktopImage?.fields.file.details.image?.height || ''
+                                ? mobileImage?.fields.file.details.image?.height || undefined
+                                : desktopImage?.fields.file.details.image?.height || undefined
                         }
                         style={{
                             maxWidth: sm ? '100%' : '90%',

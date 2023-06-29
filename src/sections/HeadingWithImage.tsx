@@ -2,6 +2,7 @@ import { FunctionComponent, PropsWithChildren, useEffect } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
+import Image from 'next/image'
 import { useResizeDetector } from 'react-resize-detector'
 
 import Section from 'src/general/Section'
@@ -71,8 +72,8 @@ const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProp
                             },
                         }}
                     >
-                        <img
-                            alt={title}
+                        <Image
+                            alt={title || ''}
                             src={`https:${image?.fields.file.url}`}
                             width={image?.fields.file.details.image?.width}
                             height={image?.fields.file.details.image?.height}

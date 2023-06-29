@@ -3,6 +3,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import { Box, styled, Typography } from '@mui/material'
 import { Asset } from 'contentful'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
@@ -144,7 +145,7 @@ const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>
                     }}
                 >
                     <MotionImage variants={imageItem}>
-                        <img
+                        <Image
                             alt={image.fields.title}
                             src={`https:${image.fields.file.url}`}
                             width={image.fields.file.details.image?.width}

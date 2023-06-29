@@ -4,6 +4,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Document } from '@contentful/rich-text-types'
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
+import Image from 'next/image'
 import { useResizeDetector } from 'react-resize-detector'
 
 import Section from 'src/general/Section'
@@ -77,7 +78,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 },
                             }}
                         >
-                            <img
+                            <Image
                                 alt={images[0].fields.title}
                                 src={`https:${images[0].fields.file.url}`}
                                 width={images[0].fields.file.details.image?.width}
@@ -88,7 +89,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                     marginBottom: '20px',
                                 }}
                             />
-                            <img
+                            <Image
                                 alt={images[1].fields.title}
                                 src={`https:${images[1].fields.file.url}`}
                                 width={images[1].fields.file.details.image?.width}
@@ -111,7 +112,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                 },
                             }}
                         >
-                            <img
+                            <Image
                                 alt={images[2].fields.title}
                                 src={`https:${images[2].fields.file.url}`}
                                 width={images[2].fields.file.details.image?.width}
@@ -122,7 +123,7 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                                     marginBottom: '20px',
                                 }}
                             />
-                            <img
+                            <Image
                                 alt={images[3].fields.title}
                                 src={`https:${images[3].fields.file.url}`}
                                 width={images[3].fields.file.details.image?.width}

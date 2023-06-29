@@ -2,6 +2,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box } from '@mui/material'
 import { Asset } from 'contentful'
+import Image from 'next/image'
 
 import Section from 'src/general/Section'
 
@@ -24,7 +25,7 @@ const SmallImageBanner: FunctionComponent<PropsWithChildren<SmallImageBannerProp
                 }}
             >
                 {images.map((image) => (
-                    <img
+                    <Image
                         key={image.fields.title}
                         alt={image.fields.title}
                         src={`https:${image.fields.file.url}`}

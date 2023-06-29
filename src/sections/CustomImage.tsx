@@ -1,6 +1,7 @@
 import { forwardRef, RefObject } from 'react'
 
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
 
 import { IImage } from 'src/@types/contentful'
 
@@ -39,7 +40,7 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
     return (
         <>
             {image.fields.staticImage ? (
-                <img
+                <Image
                     alt={image?.fields.staticImage.fields.title}
                     src={`https:${image?.fields.staticImage.fields.file.url}`}
                     width={image?.fields.staticImage.fields.file.details.image?.width}

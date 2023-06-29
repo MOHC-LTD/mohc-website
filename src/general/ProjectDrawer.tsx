@@ -1,6 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Typography } from '@mui/material'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
@@ -94,7 +95,7 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                     },
                 }}
             >
-                <img
+                <Image
                     src={`https:${image}`}
                     width={width}
                     height={height}
