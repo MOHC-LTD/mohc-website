@@ -1,4 +1,5 @@
 import nextBundleAnalyzer from '@next/bundle-analyzer'
+import withPlaiceholder from '@plaiceholder/next'
 
 import { configureWebpack } from './src/webpack.js'
 
@@ -32,21 +33,26 @@ const nextConfig = {
         esmExternals: true,
         // TODO: remove `legacyBehavior` prop everywhere when this is the default (right now it is required for tests)
         newNextLinkBehavior: true,
-        browsersListForSwc: true,
         legacyBrowsers: false,
-        modularizeImports: {
-            lodash: {
-                transform: 'lodash/{{member}}',
-            },
-        },
     },
     webpack: configureWebpack,
-    output: 'export',
     assetPrefix: assetPrefix,
     basePath: basePath,
     trailingSlash: isProduction,
+    output: 'export',
+    images: {
+        unoptimized: true,
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.ctfassets.net',
+                port: '',
+                pathname: '/**',
+            },
+        ],
+    },
 }
 
 export default nextBundleAnalyzer({
     enabled: process.env.ANALYZE === 'true',
-})(nextConfig)
+})(withPlaiceholder(nextConfig))

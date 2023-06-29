@@ -1,6 +1,8 @@
 import { Fragment, ReactNode } from 'react'
 
+import is from '@sindresorhus/is'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+import { getPlaiceholder } from 'plaiceholder'
 
 import { IPageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
@@ -19,6 +21,14 @@ interface Pages {
 interface Props {
     page: IPageFields
     pages: Pages[] | undefined
+}
+
+const getImagePlaceholderBase64 = async (url: string): Promise<string> => {
+    const response = await fetch(url)
+
+    const { base64 } = await getPlaiceholder(Buffer.from(await response.arrayBuffer()))
+
+    return base64
 }
 
 const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
@@ -73,6 +83,21 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
     if (!page) {
         return {
             notFound: true,
+        }
+    }
+
+    if (page.fields.section) {
+        for await (const section of page.fields.section) {
+            if (
+                section.fields.image &&
+                is.plainObject(section.fields.image) &&
+                is.plainObject(section.fields.image.fields) &&
+                is.plainObject(section.fields.image.fields.file)
+            ) {
+                const url = `https://${section.fields.image.fields.file.url}`
+
+                section.fields.image.fields.file.placeholder = await getImagePlaceholderBase64(url)
+            }
         }
     }
 

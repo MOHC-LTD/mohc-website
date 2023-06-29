@@ -2,6 +2,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
+import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 
 import Section from 'src/general/Section'
@@ -147,7 +148,11 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                             },
                         }}
                     >
-                        <img
+                        <Image
+                            {...('placeholder' in image.fields.file && {
+                                blurDataURL: image.fields.file.placeholder as string,
+                                placeholder: 'blur',
+                            })}
                             alt={image.fields.title}
                             src={`https:${image.fields.file.url}`}
                             width={image.fields.file.details.image?.width}
