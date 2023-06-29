@@ -13,7 +13,7 @@ interface Pages {
 }
 
 interface Props {
-    pages: Pages
+    pages?: Pages[]
 }
 
 /**
@@ -24,10 +24,12 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
 
     const [currentProject, setCurrentProject] = useState(0)
 
+    const projects = pages || []
+
     useEffect(() => {
         setCurrentProject(() => {
-            const index = pages?.indexOf(
-                pages.find((page) => `/project/${page.slug}` === window.location.pathname) || pages[0]
+            const index = projects?.indexOf(
+                projects.find((page) => `/project/${page.slug}` === window.location.pathname) || projects[0]
             )
 
             return index
@@ -61,10 +63,10 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                         },
                     }}
                 >
-                    {currentProject !== pages.length - 1 ? (
+                    {currentProject !== projects?.length - 1 ? (
                         <>
                             <Link
-                                href={`/project/${pages[currentProject + 1].slug}`}
+                                href={`/project/${projects[currentProject + 1].slug}`}
                                 style={{
                                     textDecoration: 'none',
                                 }}
@@ -72,21 +74,21 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                                 <Typography variant="h5">{t('project:next_project')}</Typography>
                             </Link>
                             <Typography variant="body1">
-                                {pages[currentProject + 1].navigationTitle as string}
+                                {projects[currentProject + 1].navigationTitle as string}
                             </Typography>
                         </>
                     ) : null}
-                    {currentProject === pages.length - 1 ? (
+                    {currentProject === projects.length - 1 ? (
                         <>
                             <Link
-                                href={`/project/${pages[0].slug}`}
+                                href={`/project/${projects[0].slug}`}
                                 style={{
                                     textDecoration: 'none',
                                 }}
                             >
                                 <Typography variant="h5">{t('project:next_project')}</Typography>
                             </Link>
-                            <Typography variant="body1">{pages[0].navigationTitle as string}</Typography>
+                            <Typography variant="body1">{projects[0].navigationTitle as string}</Typography>
                         </>
                     ) : null}
                 </Box>

@@ -1,24 +1,28 @@
-import { FunctionComponent, lazy, Suspense } from 'react'
+import { FunctionComponent, lazy, PropsWithChildren, Suspense } from 'react'
 
 import { Canvas } from '@react-three/fiber'
 
-const Phone3D = lazy(() => import('src/general/Phone3D'))
+const JbcPhone2 = lazy(() => import('src/general/JbcPhone2'))
 
-const PhoneCanvas: FunctionComponent = () => {
+interface PhoneCanvasProps {
+    lg?: boolean
+}
+
+const PhoneCanvas: FunctionComponent<PropsWithChildren<PhoneCanvasProps>> = ({ lg }) => {
     return (
         <Canvas
             camera={{
-                zoom: 2.2,
+                zoom: 1,
             }}
             style={{
-                height: '600px',
-                width: '380px',
+                height: lg ? '800px' : '600px',
+                width: lg ? '500px' : '360px',
                 margin: '-24px',
             }}
         >
             <Suspense fallback={null}>
                 <ambientLight />
-                <Phone3D />
+                <JbcPhone2 />
             </Suspense>
         </Canvas>
     )
