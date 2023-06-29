@@ -16,7 +16,9 @@ interface HeadingProps {
     color?: string
     fadeType?: string
     isDarkMode?: string
-    font?: boolean
+    fontFamily?: string
+    fontStyle?: string
+    fontWeight?: string
 }
 
 /**
@@ -28,7 +30,9 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
     sector,
     image,
     color,
-    font = false,
+    fontFamily,
+    fontStyle,
+    fontWeight,
     fadeType = 'none',
     isDarkMode = false,
 }) => {
@@ -88,11 +92,12 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                                     width: '100%',
                                 },
                             },
-                            fontFamily: font ? 'baskerville-pt' : fontFamilyConfig.name,
-                            fontStyle: font ? 'italic' : 'normal',
-                            whiteSpace: font ? 'nowrap' : 'normal',
-                            overflow: font ? 'hidden' : 'visible',
-                            animationName: font ? 'fonts' : null,
+                            fontFamily: fontFamily ?? fontFamilyConfig.name,
+                            fontStyle: fontFamily && fontStyle ? fontStyle : 'normal',
+                            fontWeight: fontFamily && fontWeight ? fontWeight : '700',
+                            whiteSpace: fontFamily ? 'nowrap' : 'normal',
+                            overflow: fontFamily ? 'hidden' : 'visible',
+                            animationName: fontFamily ? 'fonts' : null,
                             animationDuration: '1.5s',
                             animationDelay: '1.5s',
                             animationFillMode: 'forwards',

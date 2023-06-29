@@ -224,7 +224,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     image={section.fields.image as Asset}
                     color={section.fields.color as string}
                     fadeType={section.fields.fadeType as string}
-                    font={section.fields.title === 'John Bell & Croyden' ? true : false}
+                    fontFamily={section.fields.fontFamily as string}
+                    fontStyle={section.fields.fontStyle as string}
+                    fontWeight={section.fields.fontWeight as string}
                 />
             )
         }

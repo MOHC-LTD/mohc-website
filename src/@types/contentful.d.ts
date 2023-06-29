@@ -204,6 +204,29 @@ export interface IHeadingFields {
 
     /** Is dark mode */
     isDarkMode?: boolean | undefined
+
+    /** Font family */
+    fontFamily?: string | undefined
+
+    /** Font style */
+    fontStyle?: 'normal' | 'italic' | undefined
+
+    /** Font weight */
+    fontWeight?:
+        | 'normal'
+        | 'bold'
+        | 'bolder'
+        | 'lighter'
+        | '100'
+        | '200'
+        | '300'
+        | '400'
+        | '500'
+        | '600'
+        | '700'
+        | '800'
+        | '900'
+        | undefined
 }
 
 export interface IHeading extends Entry<IHeadingFields> {
