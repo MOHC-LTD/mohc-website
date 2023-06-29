@@ -1,8 +1,6 @@
 const contentfulManagement = require('contentful-management')
 
-import { loadEnvConfig } from '@next/env'
-
-loadEnvConfig(process.cwd())
+require('dotenv').config()
 
 module.exports = async () => {
     const contentfulClient = contentfulManagement.createClient({
