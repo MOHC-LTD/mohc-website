@@ -43,6 +43,7 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
+                    justifyContent: 'space-between',
                     [theme.breakpoints.up('md')]: {
                         flexDirection: 'row',
                         alignItems: 'center',
@@ -58,7 +59,7 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                         zIndex: 'snackbar',
                         order: 2,
                         [theme.breakpoints.up('md')]: {
-                            maxWidth: '75%',
+                            maxWidth: '50%',
                             order: 1,
                         },
                     }}
@@ -88,8 +89,8 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                             },
                             fontFamily: font ? 'baskerville-pt' : fontFamilyConfig.name,
                             fontStyle: font ? 'italic' : 'normal',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
+                            whiteSpace: font ? 'nowrap' : 'normal',
+                            overflow: font ? 'hidden' : 'visible',
                             animationName: font ? 'fonts' : null,
                             animationDuration: '1.5s',
                             animationDelay: '1.5s',
@@ -141,7 +142,7 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                             [theme.breakpoints.up('md')]: {
                                 display: 'flex',
                                 height: 'fit-content',
-                                maxWidth: '50%',
+                                maxWidth: '45%',
                                 order: 2,
                             },
                         }}

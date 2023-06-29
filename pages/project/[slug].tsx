@@ -2,7 +2,7 @@ import { Fragment, ReactNode } from 'react'
 
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
-import { IPageFields, IProjectNavigationFields } from 'src/@types/contentful'
+import { IPageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
 import PageLayout from 'src/general/PageLayout'
 import ContactUs from 'src/sections/ContactUs'
@@ -11,9 +11,14 @@ import ProjectNavigation from 'src/sections/ProjectNavigation'
 import { NextPageWithLayout } from 'src/types'
 import ContentService from 'src/util/ContentService'
 
+interface Pages {
+    navigationTitle: string
+    slug: string
+}
+
 interface Props {
     page: IPageFields
-    pages: IProjectNavigationFields
+    pages: Pages[] | undefined
 }
 
 const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
@@ -74,7 +79,10 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
     return {
         props: {
             page: page.fields,
-            pages: pages.fields,
+            pages: pages.fields.project?.map((project) => ({
+                navigationTitle: project.fields.navigationTitle as string,
+                slug: project.fields.slug as string,
+            })),
         },
     }
 }

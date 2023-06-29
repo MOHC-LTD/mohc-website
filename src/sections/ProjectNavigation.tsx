@@ -4,12 +4,16 @@ import { Box, Typography } from '@mui/material'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
-import { IProjectNavigationFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
+interface Pages {
+    navigationTitle: string
+    slug: string
+}
+
 interface Props {
-    pages: IProjectNavigationFields
+    pages: Pages
 }
 
 /**
@@ -20,12 +24,10 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
 
     const [currentProject, setCurrentProject] = useState(0)
 
-    const projects = pages.project || []
-
     useEffect(() => {
         setCurrentProject(() => {
-            const index = projects?.indexOf(
-                projects.find((page) => `/project/${page.fields.slug}` === window.location.pathname) || projects[0]
+            const index = pages?.indexOf(
+                pages.find((page) => `/project/${page.slug}` === window.location.pathname) || pages[0]
             )
 
             return index
@@ -59,10 +61,10 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                         },
                     }}
                 >
-                    {currentProject !== projects.length - 1 ? (
+                    {currentProject !== pages.length - 1 ? (
                         <>
                             <Link
-                                href={`/project/${projects[currentProject + 1].fields.slug}`}
+                                href={`/project/${pages[currentProject + 1].slug}`}
                                 style={{
                                     textDecoration: 'none',
                                 }}
@@ -70,21 +72,21 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                                 <Typography variant="h5">{t('project:next_project')}</Typography>
                             </Link>
                             <Typography variant="body1">
-                                {projects[currentProject + 1].fields.navigationTitle as string}
+                                {pages[currentProject + 1].navigationTitle as string}
                             </Typography>
                         </>
                     ) : null}
-                    {currentProject === projects.length - 1 ? (
+                    {currentProject === pages.length - 1 ? (
                         <>
                             <Link
-                                href={`/project/${projects[0].fields.slug}`}
+                                href={`/project/${pages[0].slug}`}
                                 style={{
                                     textDecoration: 'none',
                                 }}
                             >
                                 <Typography variant="h5">{t('project:next_project')}</Typography>
                             </Link>
-                            <Typography variant="body1">{projects[0].fields.navigationTitle as string}</Typography>
+                            <Typography variant="body1">{pages[0].navigationTitle as string}</Typography>
                         </>
                     ) : null}
                 </Box>
