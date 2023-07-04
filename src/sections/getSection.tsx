@@ -238,7 +238,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         case 'projectNavigation': {
             return (
                 <ProjectDisplay
-                    project={section.fields.project as Entry[]}
+                    project={section.fields.project as Entry<{ [fieldId: string]: unknown }>[]}
                     title={section.fields.title as string}
                     footer={section.fields.footer as string}
                     sectionId={section.fields.sectionId as string}
