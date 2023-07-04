@@ -543,6 +543,15 @@ export interface IPage extends Entry<IPageFields> {
 export interface IProjectNavigationFields {
     /** Project */
     project?: Entry<{ [fieldId: string]: unknown }>[] | undefined
+
+    /** Title */
+    title?: string | undefined
+
+    /** Footer */
+    footer?: string | undefined
+
+    /** Section ID */
+    sectionId?: string | undefined
 }
 
 /** Add project pages in the order you would like them to appear in the navigation. */

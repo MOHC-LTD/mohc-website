@@ -5,7 +5,7 @@ import { Document } from '@contentful/rich-text-types'
 import { Box, styled, Typography } from '@mui/material'
 import { Asset, Entry } from 'contentful'
 
-import { IIconBox, IImage, IProjectNavigationFields } from 'src/@types/contentful'
+import { IIconBox, IImage } from 'src/@types/contentful'
 import AccordionItem from 'src/general/AccordionItem'
 import Section from 'src/general/Section'
 import { RichTextTypographyVariant } from 'src/rich-text/RichText'
@@ -236,7 +236,14 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         }
 
         case 'projectNavigation': {
-            return <ProjectDisplay project={section.fields as IProjectNavigationFields} />
+            return (
+                <ProjectDisplay
+                    project={section.fields.project as Entry[]}
+                    title={section.fields.title as string}
+                    footer={section.fields.footer as string}
+                    sectionId={section.fields.sectionId as string}
+                />
+            )
         }
 
         default: {

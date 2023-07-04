@@ -1,29 +1,27 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
 import { Box, Divider, Typography } from '@mui/material'
-import { useTranslation } from 'react-i18next'
 import { useResizeDetector } from 'react-resize-detector'
 
 import { IProjectNavigationFields } from 'src/@types/contentful'
 import ProjectDrawer from 'src/general/ProjectDrawer'
 import Section from 'src/general/Section'
 
-interface ProjectDisplayProps {
-    project?: IProjectNavigationFields
-}
-
 /**
  * Small image banner.
  */
-const ProjectDisplay: FunctionComponent<PropsWithChildren<ProjectDisplayProps>> = ({ project }) => {
-    const { t } = useTranslation()
-
+const ProjectDisplay: FunctionComponent<PropsWithChildren<IProjectNavigationFields>> = ({
+    project,
+    title,
+    footer,
+    sectionId,
+}) => {
     const { height, ref } = useResizeDetector()
 
     return (
-        <Section maxWidth="xl" id="Our work">
+        <Section maxWidth="xl" id={sectionId}>
             <Typography marginBottom="10px" align="center">
-                {t('home:our_work.title')}
+                {title}
             </Typography>
             <Divider
                 orientation="vertical"
@@ -35,7 +33,7 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<ProjectDisplayProps>> 
                 }}
             />
             <div ref={ref}>
-                {project?.project?.map((page, index) => {
+                {project?.map((page, index) => {
                     const navigationImage: any = page.fields.navigationImage
 
                     return (
@@ -54,7 +52,7 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<ProjectDisplayProps>> 
                 })}
             </div>
             <Typography marginTop="40px" align="center">
-                {t('home:our_work.footer')}
+                {footer}
             </Typography>
         </Section>
     )
