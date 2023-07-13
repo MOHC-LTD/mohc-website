@@ -86,11 +86,11 @@ const components: ThemeOptionsComponents = {
                     position: 'relative',
                     [`&:hover, &:active, &.${buttonClasses.focusVisible}`]: {
                         border: 'none',
-                        backgroundColor: '#nnn',
+                        backgroundColor: theme.palette[color].main,
                     },
                     [`&:active, &.${buttonClasses.focusVisible}`]: {
                         border: 'none',
-                        backgroundColor: '#nnn',
+                        backgroundColor: theme.palette[color].main,
                     },
                     [`&.${buttonClasses.sizeSmall}`]: {
                         fontSize: theme.typography.overline.fontSize,
@@ -103,6 +103,7 @@ const components: ThemeOptionsComponents = {
                         opacity: theme.palette.action.disabledOpacity,
                     },
                     [`&.${buttonClasses.contained}`]: {
+                        backgroundColor: theme.palette[color].main,
                         color: theme.palette[color].contrastText,
                         [`&.${buttonClasses.disabled}`]: {
                             backgroundColor: theme.palette[color].main,
@@ -153,6 +154,13 @@ const components: ThemeOptionsComponents = {
             }),
         },
     },
+    MuiFormLabel: {
+        styleOverrides: {
+            root: ({ theme }) => ({
+                color: theme.palette.text.primary,
+            }),
+        },
+    },
     MuiOutlinedInput: {
         styleOverrides: {
             adornedEnd: ({ theme }) => ({
@@ -166,11 +174,12 @@ const components: ThemeOptionsComponents = {
                     fontFamily: 'Verdana',
                     letterSpacing: theme.spacing(0.25),
                 },
+                border: 'none',
                 boxSizing: 'border-box',
                 height: theme.spacing(GeneralConfig.InputHeight),
                 padding: theme.spacing(Spacing.InputVertical, Spacing.InputHorizontal),
                 textOverflow: 'ellipsis',
-                color: theme.palette.common.white,
+                color: theme.palette.text.primary,
                 [`&.${outlinedInputClasses.disabled}`]: {
                     WebkitTextFillColor: 'unset',
                     color: alpha(theme.palette.text.primary, theme.palette.action.disabledOpacity),
@@ -187,39 +196,39 @@ const components: ThemeOptionsComponents = {
             }),
             notchedOutline: ({ theme }) => ({
                 border: 'none',
-                boxShadow: `inset 0 0 0 1px ${theme.palette.common.white}`,
+                borderBottom: '1px solid black',
                 borderRadius: 0,
                 // Default hover
                 [`.${inputBaseClasses.root}.${outlinedInputClasses.root}:hover &`]: {
-                    boxShadow: `inset 0 0 0 1px ${theme.palette.secondary.main}`,
+                    borderBottom: `2px solid ${theme.palette.text.primary}`,
                 },
                 // Default focused
                 [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.focused} &`]: {
-                    boxShadow: `inset 0 0 0 2px ${theme.palette.secondary.main}`,
+                    borderBottom: `2px solid ${theme.palette.text.primary}`,
                 },
                 // Default disabled
                 [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.disabled} &`]: {
                     backgroundColor: theme.palette.action.hover,
-                    boxShadow: 'none',
+                    borderBottom: 'none',
                 },
                 // Error
                 [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.error} &`]: {
-                    boxShadow: `inset 0 0 0 1px ${theme.palette.error.main}`,
+                    borderBottom: `2px solid ${theme.palette.error.main}`,
                 },
                 // Error hover
                 [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.error}:hover &`]: {
-                    boxShadow: `inset 0 0 0 1px ${theme.palette.error.main}`,
+                    borderBottom: `2px solid ${theme.palette.error.main}`,
                 },
                 // Error focused
                 [`.${inputBaseClasses.root}.${outlinedInputClasses.root}` +
                 `.${outlinedInputClasses.error}.${outlinedInputClasses.focused} &`]: {
-                    boxShadow: `inset 0 0 0 2px ${theme.palette.error.main}`,
+                    borderBottom: `2px solid ${theme.palette.error.main}`,
                 },
                 // Error disabled
                 [`.${inputBaseClasses.root}.${outlinedInputClasses.root}` +
                 `.${outlinedInputClasses.error}.${outlinedInputClasses.disabled} &`]: {
                     backgroundColor: theme.palette.action.disabledBackground,
-                    boxShadow: 'none',
+                    borderBottom: 'none',
                 },
             }),
             root: ({ theme }) => ({
@@ -248,7 +257,7 @@ const opacity = {
 const colors = {
     primary: '#101010',
     secondary: '#fff',
-    info: '#9B37FF',
+    info: '#3F69FF', //#9B37FF
     error: '#FA391F',
     warning: '#FFB321',
     success: '#01AF85',

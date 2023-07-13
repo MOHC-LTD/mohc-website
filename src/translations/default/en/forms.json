@@ -7,20 +7,36 @@
         "label": "Email",
         "required_error": "Enter a valid email"
     },
-    "name": {
-        "label": "Name",
-        "required_error": "Enter your name"
+    "first_name": {
+        "label": "First name",
+        "required_error": "Enter your first name"
+    },
+    "last_name": {
+        "label": "Last name",
+        "required_error": "Enter your last name"
     },
     "message": {
         "label": "Message",
         "required_error": "Enter a message"
     },
     "submit": "Submit",
+    "next": "Next",
+    "close": "Close",
     "submit_error": "Error",
     "text": {
         "minimum_characters_error_one": "Enter at least 1 character",
         "minimum_characters_error_other": "Enter at least {{ count, number }} characters",
         "maximum_characters_error_one": "Enter at most 1 character",
         "maximum_characters_error_other": "Enter at most {{ count, number }} characters"
+    },
+    "contact_us": {
+        "name": "Contact Us",
+        "subtitle": "If you’d like to work with us or have a project you’d like to discuss feel free to contact us.",
+        "project_label": "Tell us about your ideas/project",
+        "budget_label": "Enter your budget",
+        "budget_checkbox": "I'm not sure about my budget",
+        "thank_you_title": "Thank you!",
+        "thank_you_subtitle": "Thank you for considering us for you next project or IT solution.",
+        "email": "enquiries@mohc.net"
     }
 }

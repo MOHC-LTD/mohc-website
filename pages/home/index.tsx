@@ -27,7 +27,7 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
         .filter((notUndefined) => notUndefined !== undefined) as string[]
 
     return (
-        <PageLayout title="Home" color="#E7F2FF" menuOptions={[...menuOptions, 'Contact us']}>
+        <PageLayout title="Home" menuOptions={[...menuOptions]}>
             <Banner3D />
             {props?.section?.map((section) => (
                 <Fragment key={section.sys.id}>{getSection(section)}</Fragment>

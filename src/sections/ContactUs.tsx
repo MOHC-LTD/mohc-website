@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 
 import EmailField from 'src/form/fields/EmailField'
 import NameField from 'src/form/fields/NameField'
-import TextareaField from 'src/form/fields/TextareaField'
 import Section from 'src/general/Section'
 import TriButton from 'src/interactive/buttons/TriButton'
 import { theme } from 'src/theme/theme.default'
@@ -21,9 +20,10 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
     const form = useForm()
 
     return (
-        <Section maxWidth="xl" isFullScreen backgroundColor="#E7F2FF" id={sectionId}>
+        <Section maxWidth="xl" backgroundColor="#E7F2FF" id={sectionId}>
             <Box
                 component="div"
+                my={4}
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -45,11 +45,11 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                         },
                     }}
                 >
-                    <Typography variant="h4" color={theme.palette.text.primary} marginBottom="20px">
+                    <Typography variant="h5" color={theme.palette.text.primary} marginBottom="20px">
                         {t('home:contact_us.title')}
                     </Typography>
                     <Typography variant="body1" color={theme.palette.text.primary}>
-                        {t('home:contact_us.title')}
+                        {t('home:contact_us.subtitle')}
                     </Typography>
                 </Box>
                 <Box
@@ -64,9 +64,20 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                         <form>
                             <NameField
                                 field={{
-                                    label: t('forms:name.label') || undefined,
-                                    name: 'name',
-                                    required: t('forms:name.required_error') || undefined,
+                                    label: t('forms:first_name.label') || undefined,
+                                    name: 'first_name',
+                                    required: t('forms:first_name.required_error') || undefined,
+                                    type: 'name',
+                                    validation: {
+                                        maxLength: 30,
+                                    },
+                                }}
+                            />
+                            <NameField
+                                field={{
+                                    label: t('forms:last_name.label') || undefined,
+                                    name: 'last_name',
+                                    required: t('forms:last_name.required_error') || undefined,
                                     type: 'name',
                                     validation: {
                                         maxLength: 30,
@@ -79,15 +90,6 @@ const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ secti
                                     name: 'email',
                                     type: 'email',
                                 }}
-                            />
-                            <TextareaField
-                                field={{
-                                    label: t('forms:message.label') || undefined,
-                                    name: 'message',
-                                    required: t('forms:message.required_error') || undefined,
-                                    type: 'textarea',
-                                }}
-                                minRows={10}
                             />
                             <TriButton type="submit">{t('forms:submit')}</TriButton>
                         </form>
