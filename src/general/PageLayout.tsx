@@ -17,7 +17,19 @@ interface PageLayoutProps {
  * Automatically sets the browser's tab title to the page title.
  */
 const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({ title, menuOptions, children }) => (
-    <Box component="div" width={1} position="relative">
+    <Box
+        component="div"
+        id="pageLayout"
+        width={1}
+        position="relative"
+        sx={{
+            height: 'calc(100vh - 70px)',
+            top: '70px',
+            overflowY: 'scroll',
+            scrollSnapType: 'y mandatory',
+            scrollBehavior: 'smooth',
+        }}
+    >
         {title ? <PageTitle>{title}</PageTitle> : null}
         <Header menuOptions={menuOptions} />
         {children}

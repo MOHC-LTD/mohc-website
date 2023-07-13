@@ -8,13 +8,7 @@ import { NameFieldConfig } from 'src/form/types'
 const NameField: FunctionComponent<InheritedTextFieldProps<NameFieldConfig>> = (props) => {
     const { t } = useTranslation()
 
-    return (
-        <TextField
-            {...props}
-            defaultRequiredMessage={t('forms:name.required_error') || undefined}
-            autoComplete="given-name"
-        />
-    )
+    return <TextField {...props} defaultRequiredMessage={t('forms:name.required_error') || undefined} />
 }
 
 export default NameField

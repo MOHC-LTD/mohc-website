@@ -1,11 +1,14 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent, PropsWithChildren, useRef } from 'react'
 
 import { Box, Divider, Typography } from '@mui/material'
+import { motion, Variants } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 import { useResizeDetector } from 'react-resize-detector'
 
 import { IProjectNavigationFields } from 'src/@types/contentful'
 import ProjectDrawer from 'src/general/ProjectDrawer'
 import Section from 'src/general/Section'
+import { fontFamilyConfig } from 'src/theme/theme.default'
 
 /**
  * Small image banner.
@@ -17,6 +20,26 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<IProjectNavigationFiel
     sectionId,
 }) => {
     const { height, ref } = useResizeDetector()
+
+    const { ref: inViewRef, inView } = useInView()
+
+    const scrollRef = useRef(null)
+
+    const cardVariants: Variants = {
+        offscreen: {
+            y: 500,
+            opacity: 0,
+        },
+        onscreen: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: 'spring',
+                bounce: 0.2,
+                duration: 1.5,
+            },
+        },
+    }
 
     return (
         <Section maxWidth="xl" id={sectionId}>
@@ -37,23 +60,79 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<IProjectNavigationFiel
                     const navigationImage: any = page.fields.navigationImage
 
                     return (
-                        <Box component="div" key={navigationImage?.fields.title}>
-                            <ProjectDrawer
-                                image={navigationImage?.fields.file.url}
-                                width={navigationImage?.fields.file.details.image?.width}
-                                height={navigationImage?.fields.file.details.image?.height}
-                                title={page.fields.navigationTitle as string}
-                                description={page.fields.navigationDescription as string}
-                                page={page.fields.slug as string}
-                                isInverted={index % 2 == 0 ? true : false}
-                            />
-                        </Box>
+                        <motion.div
+                            id="ref"
+                            key={page.fields.navigationTitle as string}
+                            initial="offscreen"
+                            whileInView="onscreen"
+                            viewport={{
+                                once: true,
+                                amount: 0.5,
+                            }}
+                            ref={scrollRef}
+                        >
+                            <motion.div variants={cardVariants}>
+                                <ProjectDrawer
+                                    image={navigationImage?.fields.file.url}
+                                    width={navigationImage?.fields.file.details.image?.width}
+                                    height={navigationImage?.fields.file.details.image?.height}
+                                    title={page.fields.navigationTitle as string}
+                                    description={page.fields.navigationDescription as string}
+                                    page={page.fields.slug as string}
+                                    isInverted={index % 2 == 0 ? true : false}
+                                />
+                            </motion.div>
+                        </motion.div>
                     )
                 })}
             </div>
-            <Typography marginTop="40px" align="center">
-                {footer}
-            </Typography>
+            <div ref={inViewRef}>
+                <Box
+                    component="div"
+                    sx={{
+                        display: 'grid',
+                        placeItems: 'center',
+                    }}
+                >
+                    <Typography
+                        mt={4}
+                        align="center"
+                        sx={{
+                            '@keyframes code': {
+                                '0%': {
+                                    fontFamily: 'monospace',
+                                    width: '22ch',
+                                },
+                                '33%': {
+                                    width: 0,
+                                },
+                                '66%': {
+                                    width: 0,
+                                },
+                                '100%': {
+                                    fontFamily: fontFamilyConfig.name,
+                                    width: '18ch',
+                                },
+                            },
+                            '@keyframes blink3': {
+                                '50%': {
+                                    borderColor: 'transparent',
+                                },
+                            },
+                            fontFamily: 'monospace',
+                            width: '22ch',
+                            animation: inView
+                                ? 'code 4s steps(18) 2s forwards, blink3 .5s step-end 10s infinite alternate'
+                                : 'none',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            borderRight: '3px solid',
+                        }}
+                    >
+                        {footer}
+                    </Typography>
+                </Box>
+            </div>
         </Section>
     )
 }

@@ -10,6 +10,10 @@
         "description": "We are Shopify plus partners with a focus on complex system integrations, apps & replatforming to Shopify.",
         "link_text": "See more services we offer ↓"
     },
+    "typing": {
+        "start": "mohc := website.Start()",
+        "list": "mohc.Projects.List()"
+    },
     "services": {
         "title": "Complex system integrations",
         "subtitle": "If your business is relient on software or would like to use software that does not natively intigrate with Shopify in most cases we can offer a solution.",

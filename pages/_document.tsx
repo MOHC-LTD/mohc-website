@@ -18,7 +18,11 @@ const CustomDocument = (): ReactElement => (
                 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..40,400,0..1,0&display=block"
             />
         </Head>
-        <body>
+        <body
+            style={{
+                overflow: 'hidden',
+            }}
+        >
             <Main />
             <NextScript />
         </body>

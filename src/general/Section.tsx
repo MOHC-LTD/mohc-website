@@ -15,6 +15,7 @@ interface SectionProps extends Except<ContainerProps, 'sx'> {
     isFullScreen?: boolean
     isDarkMode?: boolean
     hasEllipse?: boolean
+    snap?: boolean
 }
 
 /**
@@ -27,6 +28,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
     isDarkMode = false,
     hasEllipse = false,
     fadeType = 'none',
+    snap = false,
     backgroundColor = theme.palette.background.default,
     ...props
 }) => {
@@ -63,6 +65,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
             component="div"
             sx={{
                 background: background,
+                scrollSnapAlign: snap ? 'start' : 'none',
             }}
         >
             <Container
@@ -73,7 +76,10 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                         md: Spacing.Body,
                     },
                     [theme.breakpoints.up('md')]: {
-                        height: isFullScreen && 'calc(100vh - 72px)',
+                        height: isFullScreen && 'calc(100vh - 69px)',
+                    },
+                    [theme.breakpoints.down('md')]: {
+                        height: isFullScreen && 'calc(100vh - 69px)',
                     },
                     px: {
                         xl: '140px',

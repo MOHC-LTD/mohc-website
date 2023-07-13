@@ -1,5 +1,6 @@
 import { Fragment, ReactNode } from 'react'
 
+import { Box } from '@mui/material'
 import is from '@sindresorhus/is'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
@@ -7,7 +8,6 @@ import { getPlaiceholder } from 'plaiceholder'
 import { IPageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
 import PageLayout from 'src/general/PageLayout'
-import ContactUs from 'src/sections/ContactUs'
 import { getSection } from 'src/sections/getSection'
 import ProjectNavigation from 'src/sections/ProjectNavigation'
 import { NextPageWithLayout } from 'src/types'
@@ -44,11 +44,17 @@ const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
 
     return (
         <PageLayout title={page.navigationTitle} menuOptions={[...menuOptions]}>
-            {page.section?.map((section) => (
-                <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
-            ))}
+            <Box
+                component="div"
+                sx={{
+                    scrollSnapAlign: 'start',
+                }}
+            >
+                {page.section?.map((section) => (
+                    <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
+                ))}
+            </Box>
             <ProjectNavigation pages={pages} />
-            <ContactUs sectionId="Contact us" />
         </PageLayout>
     )
 }

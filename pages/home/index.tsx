@@ -1,13 +1,14 @@
 import { Fragment, ReactNode } from 'react'
 
+import { Box } from '@mui/material'
 import type { GetStaticProps } from 'next'
 
 import { IHomePageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
 import PageLayout from 'src/general/PageLayout'
 import Banner3D from 'src/sections/Banner3D'
-import ContactUs from 'src/sections/ContactUs'
 import { getSection } from 'src/sections/getSection'
+import TypingAnimation from 'src/sections/TypingAnimation'
 import { NextPageWithLayout } from 'src/types'
 import ContentService from 'src/util/ContentService'
 
@@ -29,10 +30,17 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
     return (
         <PageLayout title="Home" menuOptions={[...menuOptions]}>
             <Banner3D />
-            {props?.section?.map((section) => (
-                <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
-            ))}
-            <ContactUs sectionId="Contact us" />
+            <TypingAnimation />
+            <Box
+                component="div"
+                sx={{
+                    scrollSnapAlign: 'start',
+                }}
+            >
+                {props?.section?.map((section) => (
+                    <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
+                ))}
+            </Box>
         </PageLayout>
     )
 }

@@ -61,7 +61,6 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                     id="title"
                     mr={2}
                     sx={{
-                        zIndex: 'snackbar',
                         order: 2,
                         [theme.breakpoints.up('md')]: {
                             maxWidth: '50%',

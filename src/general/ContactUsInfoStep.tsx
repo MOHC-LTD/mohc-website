@@ -22,29 +22,31 @@ const ContactUsInfoStep: FunctionComponent = () => {
             </Typography>
             <NameField
                 field={{
-                    label: t('forms:first_name.label') || undefined,
+                    label: t('forms:first_name.label') as string,
                     name: 'first_name',
-                    required: t('forms:first_name.required_error') || undefined,
+                    required: t('forms:first_name.required_error') as string,
                     type: 'name',
                     validation: {
                         maxLength: 30,
                     },
                 }}
+                autoComplete="given-name"
             />
             <NameField
                 field={{
-                    label: t('forms:last_name.label') || undefined,
+                    label: t('forms:last_name.label') as string,
                     name: 'last_name',
-                    required: t('forms:last_name.required_error') || undefined,
+                    required: t('forms:last_name.required_error') as string,
                     type: 'name',
                     validation: {
                         maxLength: 30,
                     },
                 }}
+                autoComplete="family-name"
             />
             <EmailField
                 field={{
-                    label: t('forms:email.label') || undefined,
+                    label: t('forms:email.label') as string,
                     name: 'email',
                     type: 'email',
                 }}
@@ -56,7 +58,7 @@ const ContactUsInfoStep: FunctionComponent = () => {
                     justifyContent: 'center',
                 }}
             >
-                <Button onClick={(): void => gotoStep('Project')} variant="contained" color="info">
+                <Button type="submit" onClick={(): void => gotoStep('Project')} variant="contained" color="info">
                     {t('forms:next')}
                 </Button>
             </Box>

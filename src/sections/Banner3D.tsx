@@ -18,9 +18,17 @@ const Banner3D: FunctionComponent = () => {
 
     const lg = width && width > theme.breakpoints.values.lg
 
+    const sm = width && width < theme.breakpoints.values.md
+
     return (
         <div ref={ref}>
-            <Section maxWidth="xl" isFullScreen backgroundColor="#E7F2FF" fadeType="bottom">
+            <Section
+                maxWidth="xl"
+                isFullScreen={sm ? false : true}
+                backgroundColor="#E7F2FF"
+                fadeType="bottom"
+                snap={true}
+            >
                 <Box
                     component="div"
                     sx={{

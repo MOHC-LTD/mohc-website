@@ -155,241 +155,260 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ order = 0, 
     )
 
     return (
-        <div ref={ref}>
-            <AppBar
-                sx={{
-                    boxShadow: theme.shadows[2],
-                    height: theme.spacing(GeneralConfig.ToolbarHeight),
-                }}
-            >
-                <HeaderRoot order={order}>
-                    <Box
-                        component="div"
-                        display="grid"
-                        gap={Spacing.Header}
-                        gridTemplateColumns="max-content 1fr max-content"
-                        alignItems="center"
-                        width={1}
-                    >
-                        {sm ? (
-                            <>
-                                <Button
-                                    onClick={drawerPopupState.open}
-                                    sx={{
-                                        padding: '0 !important',
-                                    }}
-                                >
-                                    <Icon
-                                        name="menu"
+        <Box
+            component="div"
+            sx={{
+                scrollSnapAlign: 'start',
+            }}
+        >
+            <div ref={ref}>
+                <AppBar
+                    sx={{
+                        boxShadow: theme.shadows[2],
+                        height: theme.spacing(GeneralConfig.ToolbarHeight),
+                    }}
+                >
+                    <HeaderRoot order={order}>
+                        <Box
+                            component="div"
+                            display="grid"
+                            gap={Spacing.Header}
+                            gridTemplateColumns="max-content 1fr max-content"
+                            alignItems="center"
+                            width={1}
+                        >
+                            {sm ? (
+                                <>
+                                    <Button
+                                        onClick={drawerPopupState.open}
                                         sx={{
-                                            color: isDarkMode
-                                                ? theme.palette.text.secondary
-                                                : theme.palette.text.primary,
+                                            padding: '0 !important',
                                         }}
-                                    />
-                                </Button>
-                                <Drawer
-                                    anchor="top"
-                                    transitionDuration={500}
-                                    {...bindPopover(drawerPopupState)}
-                                    PaperProps={{
-                                        sx: {
-                                            boxShadow: 'none',
-                                            height: '100%',
-                                            backgroundColor: '#3F69FF',
-                                        },
-                                    }}
-                                    sx={{
-                                        zIndex: 5000,
-                                    }}
-                                >
-                                    <DrawerHeader>
-                                        <Button
-                                            onClick={drawerPopupState.close}
+                                    >
+                                        <Icon
+                                            name="menu"
                                             sx={{
-                                                padding: '0 26px !important',
+                                                color: isDarkMode
+                                                    ? theme.palette.text.secondary
+                                                    : theme.palette.text.primary,
+                                            }}
+                                        />
+                                    </Button>
+                                    <Drawer
+                                        anchor="top"
+                                        transitionDuration={500}
+                                        {...bindPopover(drawerPopupState)}
+                                        PaperProps={{
+                                            sx: {
+                                                boxShadow: 'none',
+                                                height: '100%',
+                                                backgroundColor: '#3F69FF',
+                                            },
+                                        }}
+                                        sx={{
+                                            zIndex: 5000,
+                                        }}
+                                    >
+                                        <DrawerHeader>
+                                            <Button
+                                                onClick={drawerPopupState.close}
+                                                sx={{
+                                                    padding: '0 26px !important',
+                                                }}
+                                            >
+                                                <Icon color={theme.palette.text.secondary} name="close" />
+                                            </Button>
+                                            <Link
+                                                href="/home"
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
+                                            >
+                                                <AppName isDarkMode={true} />
+                                            </Link>
+                                        </DrawerHeader>
+                                        <Slide
+                                            direction="down"
+                                            in={drawerPopupState.isOpen}
+                                            mountOnEnter
+                                            unmountOnExit
+                                            timeout={{
+                                                enter: 1500,
+                                                exit: 300,
                                             }}
                                         >
-                                            <Icon color={theme.palette.text.secondary} name="close" />
-                                        </Button>
+                                            <Box
+                                                component="div"
+                                                m={3}
+                                                sx={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                }}
+                                            >
+                                                {menuOptions.map((option) => (
+                                                    <Typography
+                                                        variant="h4"
+                                                        color={theme.palette.text.secondary}
+                                                        key={option}
+                                                    >
+                                                        <ListItemButton
+                                                            href={`#${option}`}
+                                                            onClick={drawerPopupState.close}
+                                                            sx={{
+                                                                display: 'flex',
+                                                                justifyContent: 'center',
+                                                            }}
+                                                        >
+                                                            {option}
+                                                        </ListItemButton>
+                                                    </Typography>
+                                                ))}
+                                            </Box>
+                                        </Slide>
+                                    </Drawer>
+                                    <Stack spacing={Spacing.Header} direction="row" alignItems="center">
                                         <Link
                                             href="/home"
                                             style={{
                                                 textDecoration: 'none',
                                             }}
                                         >
-                                            <AppName isDarkMode={true} />
+                                            <AppName isDarkMode={isDarkMode} />
                                         </Link>
-                                    </DrawerHeader>
-                                    <Slide
-                                        direction="down"
-                                        in={drawerPopupState.isOpen}
-                                        mountOnEnter
-                                        unmountOnExit
-                                        timeout={{
-                                            enter: 1500,
-                                            exit: 300,
-                                        }}
-                                    >
-                                        <Box
-                                            component="div"
-                                            m={3}
-                                            sx={{
-                                                display: 'flex',
-                                                flexDirection: 'column',
+                                    </Stack>
+                                    {contactUsButton}
+                                </>
+                            ) : null}
+                            {!sm ? (
+                                <>
+                                    <Stack spacing={Spacing.Header} direction="row" alignItems="center">
+                                        <Link
+                                            href="/home"
+                                            style={{
+                                                textDecoration: 'none',
                                             }}
                                         >
-                                            {menuOptions.map((option) => (
-                                                <Typography
-                                                    variant="h4"
-                                                    color={theme.palette.text.secondary}
-                                                    key={option}
-                                                >
-                                                    <ListItemButton
-                                                        href={`#${option}`}
-                                                        onClick={drawerPopupState.close}
-                                                        sx={{
-                                                            display: 'flex',
-                                                            justifyContent: 'center',
-                                                        }}
-                                                    >
-                                                        {option}
-                                                    </ListItemButton>
-                                                </Typography>
-                                            ))}
-                                        </Box>
-                                    </Slide>
-                                </Drawer>
-                                <Stack spacing={Spacing.Header} direction="row" alignItems="center">
-                                    <Link
-                                        href="/home"
-                                        style={{
-                                            textDecoration: 'none',
-                                        }}
-                                    >
-                                        <AppName isDarkMode={isDarkMode} />
-                                    </Link>
-                                </Stack>
-                                {contactUsButton}
-                            </>
-                        ) : null}
-                        {!sm ? (
-                            <>
-                                <Stack spacing={Spacing.Header} direction="row" alignItems="center">
-                                    <Link
-                                        href="/home"
-                                        style={{
-                                            textDecoration: 'none',
-                                        }}
-                                    >
-                                        <AppName isDarkMode={isDarkMode} />
-                                    </Link>
-                                </Stack>
-                                {/* Empty <div> required so that the last section of the grid for
+                                            <AppName isDarkMode={isDarkMode} />
+                                        </Link>
+                                    </Stack>
+                                    {/* Empty <div> required so that the last section of the grid for
                                 location and account can align itself to the right */}
-                                <div />
+                                    <div />
+                                    <Box
+                                        component="div"
+                                        sx={{
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                        }}
+                                    >
+                                        {menuOptions.map((option) => (
+                                            <ListItemButton
+                                                key={option}
+                                                onClick={(): void => {
+                                                    const scrollContainer = document.querySelector('#pageLayout')
+
+                                                    const myElement = document.querySelector(`[id="${option}"]`)
+
+                                                    // @ts-expect-error The property does exist.
+                                                    const topPos = myElement ? myElement.offsetTop : 0
+
+                                                    if (scrollContainer) {
+                                                        scrollContainer.scrollTop = topPos
+                                                    }
+                                                }}
+                                                sx={{
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    backgroundColor: 'transparent !important',
+                                                }}
+                                            >
+                                                <Typography
+                                                    color={
+                                                        isDarkMode
+                                                            ? theme.palette.text.secondary
+                                                            : theme.palette.text.primary
+                                                    }
+                                                >
+                                                    {option}
+                                                </Typography>
+                                            </ListItemButton>
+                                        ))}
+                                        {contactUsButton}
+                                    </Box>
+                                </>
+                            ) : null}
+                            <Drawer
+                                anchor="right"
+                                {...bindPopover(contactUsDrawerPopupState)}
+                                PaperProps={{
+                                    sx: {
+                                        boxShadow: 'none',
+                                        width: sm ? '100%' : '40%',
+                                        backgroundColor: 'white',
+                                    },
+                                }}
+                            >
                                 <Box
                                     component="div"
                                     sx={{
                                         display: 'flex',
-                                        flexDirection: 'row',
+                                        justifyContent: 'space-between',
                                     }}
                                 >
-                                    {menuOptions.map((option) => (
-                                        <ListItemButton
-                                            key={option}
-                                            href={`#${option}`}
+                                    {currentStep.id === 'Project' ? (
+                                        <Button
+                                            onClick={(): void => gotoStep('Info')}
+                                            variant="text"
                                             sx={{
-                                                display: 'flex',
-                                                justifyContent: 'center',
+                                                padding: '20px !important',
+                                                backgroundColor: 'transparent !important',
                                             }}
                                         >
-                                            <Typography
-                                                color={
-                                                    isDarkMode
-                                                        ? theme.palette.text.secondary
-                                                        : theme.palette.text.primary
-                                                }
-                                            >
-                                                {option}
-                                            </Typography>
-                                        </ListItemButton>
-                                    ))}
-                                    {contactUsButton}
-                                </Box>
-                            </>
-                        ) : null}
-                        <Drawer
-                            anchor="right"
-                            {...bindPopover(contactUsDrawerPopupState)}
-                            PaperProps={{
-                                sx: {
-                                    boxShadow: 'none',
-                                    width: sm ? '100%' : '40%',
-                                    backgroundColor: 'white',
-                                },
-                            }}
-                        >
-                            <Box
-                                component="div"
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                }}
-                            >
-                                {currentStep.id === 'Project' ? (
+                                            <Icon color="black" name="arrow_back" />
+                                        </Button>
+                                    ) : null}
                                     <Button
-                                        onClick={(): void => gotoStep('Info')}
+                                        onClick={(): void => {
+                                            contactUsDrawerPopupState.close()
+
+                                            gotoStep('Info')
+                                        }}
                                         variant="text"
                                         sx={{
                                             padding: '20px !important',
                                             backgroundColor: 'transparent !important',
                                         }}
                                     >
-                                        <Icon color="black" name="arrow_back" />
+                                        <Icon color="black" name="close" />
                                     </Button>
-                                ) : null}
-                                <Button
-                                    onClick={(): void => {
-                                        contactUsDrawerPopupState.close()
-
-                                        gotoStep('Info')
-                                    }}
-                                    variant="text"
+                                </Box>
+                                <Box
+                                    component="div"
+                                    my={sm ? 1 : 3}
+                                    mx={sm ? 3 : 5}
                                     sx={{
-                                        padding: '20px !important',
-                                        backgroundColor: 'transparent !important',
+                                        height: '100%',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
                                     }}
                                 >
-                                    <Icon color="black" name="close" />
-                                </Button>
-                            </Box>
-                            <Box
-                                component="div"
-                                my={sm ? 1 : 3}
-                                mx={sm ? 3 : 5}
-                                sx={{
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <JourneyProviderContext.Provider value={value}>
-                                    <FormProvider {...form}>
-                                        <form>{currentStep.renderStep()}</form>
-                                    </FormProvider>
-                                </JourneyProviderContext.Provider>
-                                <Typography m={2} variant="caption">
-                                    {t('forms:contact_us.email')}
-                                </Typography>
-                            </Box>
-                        </Drawer>
-                    </Box>
-                </HeaderRoot>
-            </AppBar>
-        </div>
+                                    <JourneyProviderContext.Provider value={value}>
+                                        <FormProvider {...form}>
+                                            <form>{currentStep.renderStep()}</form>
+                                        </FormProvider>
+                                    </JourneyProviderContext.Provider>
+                                    <Typography m={2} variant="caption">
+                                        {t('forms:contact_us.email')}
+                                    </Typography>
+                                </Box>
+                            </Drawer>
+                        </Box>
+                    </HeaderRoot>
+                </AppBar>
+            </div>
+        </Box>
     )
 }
 

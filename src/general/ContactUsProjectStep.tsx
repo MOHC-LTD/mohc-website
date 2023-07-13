@@ -21,9 +21,9 @@ const ContactUsProjectStep: FunctionComponent = () => {
             </Typography>
             <TextField
                 field={{
-                    label: t('forms:contact_us.project_label') || undefined,
+                    label: t('forms:contact_us.project_label') as string,
                     name: 'project',
-                    required: t('forms:general.required_error') || undefined,
+                    required: t('forms:general.required_error') as string,
                     type: 'text',
                     validation: {
                         maxLength: 30,
@@ -32,9 +32,9 @@ const ContactUsProjectStep: FunctionComponent = () => {
             />
             <TextField
                 field={{
-                    label: t('forms:contact_us.budget_label') || undefined,
+                    label: t('forms:contact_us.budget_label') as string,
                     name: 'budget',
-                    required: t('forms:general.required_error') || undefined,
+                    required: t('forms:general.required_error') as string,
                     type: 'text',
                     validation: {
                         maxLength: 30,
@@ -48,7 +48,7 @@ const ContactUsProjectStep: FunctionComponent = () => {
                     justifyContent: 'center',
                 }}
             >
-                <Button onClick={(): void => gotoStep('Complete')} variant="contained" color="info">
+                <Button type="submit" onClick={(): void => gotoStep('Complete')} variant="contained" color="info">
                     {t('forms:submit')}
                 </Button>
             </Box>
