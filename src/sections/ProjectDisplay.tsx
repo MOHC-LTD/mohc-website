@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useRef } from 'react'
+import { FunctionComponent, useRef } from 'react'
 
 import { Box, Divider, Typography } from '@mui/material'
 import { motion, Variants } from 'framer-motion'
@@ -13,12 +13,7 @@ import { fontFamilyConfig } from 'src/theme/theme.default'
 /**
  * Small image banner.
  */
-const ProjectDisplay: FunctionComponent<PropsWithChildren<IProjectNavigationFields>> = ({
-    project,
-    title,
-    footer,
-    sectionId,
-}) => {
+const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, title, footer, sectionId }) => {
     const { height, ref } = useResizeDetector()
 
     const { ref: inViewRef, inView } = useInView()
@@ -57,8 +52,6 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<IProjectNavigationFiel
             />
             <div ref={ref}>
                 {project?.map((page, index) => {
-                    const navigationImage: any = page.fields.navigationImage
-
                     return (
                         <motion.div
                             id="ref"
@@ -72,15 +65,18 @@ const ProjectDisplay: FunctionComponent<PropsWithChildren<IProjectNavigationFiel
                             ref={scrollRef}
                         >
                             <motion.div variants={cardVariants}>
-                                <ProjectDrawer
-                                    image={navigationImage?.fields.file.url}
-                                    width={navigationImage?.fields.file.details.image?.width}
-                                    height={navigationImage?.fields.file.details.image?.height}
-                                    title={page.fields.navigationTitle as string}
-                                    description={page.fields.navigationDescription as string}
-                                    page={page.fields.slug as string}
-                                    isInverted={index % 2 == 0 ? true : false}
-                                />
+                                {page.fields.navigationImage &&
+                                page.fields.navigationImage.fields.file.details.image ? (
+                                    <ProjectDrawer
+                                        image={page.fields.navigationImage.fields.file.url}
+                                        width={page.fields.navigationImage.fields.file.details.image.width}
+                                        height={page.fields.navigationImage.fields.file.details.image.height}
+                                        title={page.fields.navigationTitle as string}
+                                        description={page.fields.navigationDescription as string}
+                                        page={page.fields.slug as string}
+                                        isInverted={index % 2 == 0 ? true : false}
+                                    />
+                                ) : null}
                             </motion.div>
                         </motion.div>
                     )

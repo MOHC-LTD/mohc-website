@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { ContainerProps } from '@mui/material'
 import { Typography } from '@mui/material'
@@ -11,7 +11,7 @@ interface AppNameProps extends Except<ContainerProps, 'sx'> {
     isDarkMode?: boolean
 }
 
-const AppName: FunctionComponent<PropsWithChildren<AppNameProps>> = ({ isDarkMode = false }) => {
+const AppName: FunctionComponent<AppNameProps> = ({ isDarkMode = false }) => {
     const { t } = useTranslation()
 
     return (

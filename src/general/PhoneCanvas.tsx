@@ -1,4 +1,4 @@
-import { FunctionComponent, lazy, PropsWithChildren, Suspense } from 'react'
+import { FunctionComponent, lazy, Suspense } from 'react'
 
 import { Canvas } from '@react-three/fiber'
 
@@ -8,7 +8,7 @@ interface PhoneCanvasProps {
     lg?: boolean
 }
 
-const PhoneCanvas: FunctionComponent<PropsWithChildren<PhoneCanvasProps>> = ({ lg }) => {
+const PhoneCanvas: FunctionComponent<PhoneCanvasProps> = ({ lg }) => {
     return (
         <Canvas
             camera={{

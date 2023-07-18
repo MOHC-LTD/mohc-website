@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useEffect } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
@@ -17,7 +17,7 @@ interface HeadingWithImageProps {
 /**
  * Heading with image section.
  */
-const HeadingWithImage: FunctionComponent<PropsWithChildren<HeadingWithImageProps>> = ({ title, subtitle, image }) => {
+const HeadingWithImage: FunctionComponent<HeadingWithImageProps> = ({ title, subtitle, image }) => {
     useEffect(() => {
         const setMargin = (): void => {
             const container = document.querySelector('#container')

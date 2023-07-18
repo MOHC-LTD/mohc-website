@@ -1,25 +1,13 @@
-import { FunctionComponent, PropsWithChildren, useRef } from 'react'
+import { FunctionComponent, useRef } from 'react'
 
 import { Box, styled, Typography } from '@mui/material'
 import { motion, Variants } from 'framer-motion'
 import { useResizeDetector } from 'react-resize-detector'
 
-import { IImage } from 'src/@types/contentful'
+import { IImageAndTextFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
 import CustomImage from 'src/sections/CustomImage'
 import { theme } from 'src/theme/theme.default'
-
-interface ImageAndTextProps {
-    title: string
-    description: string
-    image: IImage
-    backgroundColor?: string
-    isDarkMode?: boolean
-    isAnimated?: boolean
-    isInverted?: boolean
-    fadeType?: string
-    sectionId?: string
-}
 
 interface ImageBoxProps {
     isInverted?: boolean
@@ -43,11 +31,12 @@ const ImageBox = styled(motion.div, {
 /**
  * Section to display an image and text component.
  */
-const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
+const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
     title,
     description,
     image,
     backgroundColor,
+    backgroundImage,
     isDarkMode,
     isAnimated,
     isInverted,
@@ -77,7 +66,13 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
     }
 
     const content = (
-        <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor} fadeType={fadeType}>
+        <Section
+            maxWidth="xl"
+            id={sectionId}
+            backgroundColor={backgroundColor}
+            fadeType={fadeType}
+            backgroundImage={backgroundImage}
+        >
             <Box
                 component="div"
                 sx={{
@@ -111,13 +106,13 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         [theme.breakpoints.up('md')]: {
                             order: isInverted ? 2 : 1,
                             maxWidth: '50%',
-                            padding: '40px',
+                            padding: isInverted ? '40px 0 40px 80px' : '40px 80px 40px 0',
                         },
                     }}
                 >
                     {!sm ? (
                         <Typography
-                            variant="h3"
+                            variant="h5"
                             color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
                         >
                             {title}
@@ -131,9 +126,11 @@ const ImageAndText: FunctionComponent<PropsWithChildren<ImageAndTextProps>> = ({
                         {description}
                     </Typography>
                 </Box>
-                <ImageBox variants={cardVariants} isInverted={isInverted}>
-                    <CustomImage image={image} ref={scrollRef} />
-                </ImageBox>
+                {image ? (
+                    <ImageBox variants={cardVariants} isInverted={isInverted}>
+                        <CustomImage image={image} ref={scrollRef} />
+                    </ImageBox>
+                ) : null}
             </Box>
         </Section>
     )

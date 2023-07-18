@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useState } from 'react'
+import { FunctionComponent, useState } from 'react'
 
 import { Box, Button, Typography } from '@mui/material'
 import { useResizeDetector } from 'react-resize-detector'
@@ -21,12 +21,7 @@ interface TabDetailsProps {
 /**
  * Section to display a tabbed view of options that render a description when clicked.
  */
-const TabDetails: FunctionComponent<PropsWithChildren<TabDetailsProps>> = ({
-    title,
-    subtitle,
-    tabItems,
-    sectionId,
-}) => {
+const TabDetails: FunctionComponent<TabDetailsProps> = ({ title, subtitle, tabItems, sectionId }) => {
     const [activeListItem, setActiveListItem] = useState(tabItems[0])
 
     const { width, ref } = useResizeDetector()

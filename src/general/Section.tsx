@@ -3,6 +3,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import { Box, Container, ContainerProps } from '@mui/material'
 import ellipse from 'assets/ellipse.png'
 import ellipseDarkMode from 'assets/ellipse-darkmode.png'
+import { Asset } from 'contentful'
 import Image from 'next/image'
 import { Except } from 'type-fest'
 
@@ -16,6 +17,7 @@ interface SectionProps extends Except<ContainerProps, 'sx'> {
     isDarkMode?: boolean
     hasEllipse?: boolean
     snap?: boolean
+    backgroundImage?: Asset
 }
 
 /**
@@ -30,6 +32,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
     fadeType = 'none',
     snap = false,
     backgroundColor = theme.palette.background.default,
+    backgroundImage,
     ...props
 }) => {
     let background = backgroundColor
@@ -64,6 +67,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
         <Box
             component="div"
             sx={{
+                backgroundImage: `url(https:${backgroundImage?.fields.file.url})!important`,
                 background: background,
                 scrollSnapAlign: snap ? 'start' : 'none',
             }}

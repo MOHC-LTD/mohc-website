@@ -1,36 +1,23 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { Document } from '@contentful/rich-text-types'
 import { Box, Typography } from '@mui/material'
-import { Asset } from 'contentful'
 import Image from 'next/image'
 import { useResizeDetector } from 'react-resize-detector'
 
+import { IMobileImagesAndTextFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
-import TriButton from 'src/interactive/buttons/TriButton'
 import { theme } from 'src/theme/theme.default'
-
-interface MobileImagesAndTextProps {
-    title: string
-    description: Document
-    images: Asset[]
-    buttonText?: string
-    backgroundColor?: string
-    fadeType?: string
-    isInverted?: boolean
-    sectionId?: string
-}
 
 /**
  * Section to display an image and text component.
  */
-const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTextProps>> = ({
+const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
     title,
     description,
     images,
-    buttonText,
     backgroundColor,
+    isDarkMode = false,
     fadeType,
     isInverted = false,
     sectionId,
@@ -55,92 +42,99 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                     }}
                 >
                     {sm ? (
-                        <Typography variant="h3" mb={2}>
+                        <Typography
+                            variant="h5"
+                            mb={2}
+                            color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                        >
                             {title}
                         </Typography>
                     ) : null}
-                    <Box
-                        component="div"
-                        sx={{
-                            display: 'flex',
-                            [theme.breakpoints.up('md')]: {
-                                order: 2,
-                            },
-                        }}
-                    >
+                    {images ? (
                         <Box
                             component="div"
                             sx={{
-                                maxWidth: '50%',
+                                display: 'flex',
                                 [theme.breakpoints.up('md')]: {
-                                    display: 'flex',
-                                    flexDirection: 'column',
+                                    order: 2,
                                 },
                             }}
                         >
-                            <Image
-                                alt={images[0].fields.title}
-                                src={`https:${images[0].fields.file.url}`}
-                                width={images[0].fields.file.details.image?.width}
-                                height={images[0].fields.file.details.image?.height}
-                                style={{
-                                    maxWidth: '100%',
-                                    height: 'auto',
-                                    marginBottom: '20px',
+                            <Box
+                                component="div"
+                                sx={{
+                                    maxWidth: '50%',
+                                    [theme.breakpoints.up('md')]: {
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                    },
                                 }}
-                            />
-                            <Image
-                                alt={images[1].fields.title}
-                                src={`https:${images[1].fields.file.url}`}
-                                width={images[1].fields.file.details.image?.width}
-                                height={images[1].fields.file.details.image?.height}
-                                style={{
-                                    maxWidth: '100%',
-                                    height: 'auto',
+                            >
+                                <Image
+                                    alt={images[0].fields.title}
+                                    src={`https:${images[0].fields.file.url}`}
+                                    width={images[0].fields.file.details.image?.width}
+                                    height={images[0].fields.file.details.image?.height}
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: 'auto',
+                                        marginBottom: '20px',
+                                    }}
+                                />
+                                <Image
+                                    alt={images[1].fields.title}
+                                    src={`https:${images[1].fields.file.url}`}
+                                    width={images[1].fields.file.details.image?.width}
+                                    height={images[1].fields.file.details.image?.height}
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: 'auto',
+                                    }}
+                                />
+                            </Box>
+                            <Box
+                                component="div"
+                                sx={{
+                                    maxWidth: '50%',
+                                    marginLeft: '20px',
+                                    marginTop: '100px',
+                                    [theme.breakpoints.up('md')]: {
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                    },
                                 }}
-                            />
+                            >
+                                <Image
+                                    alt={images[2].fields.title}
+                                    src={`https:${images[2].fields.file.url}`}
+                                    width={images[2].fields.file.details.image?.width}
+                                    height={images[2].fields.file.details.image?.height}
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: 'auto',
+                                        marginBottom: '20px',
+                                    }}
+                                />
+                                <Image
+                                    alt={images[3].fields.title}
+                                    src={`https:${images[3].fields.file.url}`}
+                                    width={images[3].fields.file.details.image?.width}
+                                    height={images[3].fields.file.details.image?.height}
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: 'auto',
+                                    }}
+                                />
+                            </Box>
                         </Box>
-                        <Box
-                            component="div"
-                            sx={{
-                                maxWidth: '50%',
-                                marginLeft: '20px',
-                                marginTop: '100px',
-                                [theme.breakpoints.up('md')]: {
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                },
-                            }}
-                        >
-                            <Image
-                                alt={images[2].fields.title}
-                                src={`https:${images[2].fields.file.url}`}
-                                width={images[2].fields.file.details.image?.width}
-                                height={images[2].fields.file.details.image?.height}
-                                style={{
-                                    maxWidth: '100%',
-                                    height: 'auto',
-                                    marginBottom: '20px',
-                                }}
-                            />
-                            <Image
-                                alt={images[3].fields.title}
-                                src={`https:${images[3].fields.file.url}`}
-                                width={images[3].fields.file.details.image?.width}
-                                height={images[3].fields.file.details.image?.height}
-                                style={{
-                                    maxWidth: '100%',
-                                    height: 'auto',
-                                }}
-                            />
-                        </Box>
-                    </Box>
+                    ) : null}
                     <Box
                         component="div"
                         sx={{
                             maxWidth: '100%',
                             display: 'flex',
                             flexDirection: 'column',
+                            color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
                             [theme.breakpoints.up('md')]: {
                                 position: 'sticky',
                                 top: 0,
@@ -151,9 +145,8 @@ const MobileImagesAndText: FunctionComponent<PropsWithChildren<MobileImagesAndTe
                             },
                         }}
                     >
-                        {!sm ? <Typography variant="h3">{title}</Typography> : null}
-                        {documentToReactComponents(description)}
-                        {buttonText ? <TriButton variant="secondary">{buttonText}</TriButton> : null}
+                        {!sm ? <Typography variant="h5">{title}</Typography> : null}
+                        {description ? documentToReactComponents(description) : null}
                     </Box>
                 </Box>
             </Section>

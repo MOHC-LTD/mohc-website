@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { StaticImageData } from 'next/dist/client/image'
@@ -22,11 +22,7 @@ interface ColumnImagesAndTextProps {
 /**
  * Section to display images with description in two columns.
  */
-const ColumnImagesAndText: FunctionComponent<PropsWithChildren<ColumnImagesAndTextProps>> = ({
-    title,
-    details,
-    sectionId,
-}) => {
+const ColumnImagesAndText: FunctionComponent<ColumnImagesAndTextProps> = ({ title, details, sectionId }) => {
     return (
         <Section maxWidth="xl" id={sectionId}>
             <Box

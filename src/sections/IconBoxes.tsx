@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useRef } from 'react'
+import { FunctionComponent, useRef } from 'react'
 
 import { Typography } from '@mui/material'
 import { Box } from '@mui/material'
@@ -67,13 +67,7 @@ const IconBox: FunctionComponent<IconBoxProps> = ({ box, color, isDarkMode }) =>
 /**
  * Section to display an image and text component.
  */
-const IconBoxes: FunctionComponent<PropsWithChildren<IconBoxesProps>> = ({
-    title,
-    color,
-    isDarkMode,
-    boxDetails,
-    sectionId,
-}) => {
+const IconBoxes: FunctionComponent<IconBoxesProps> = ({ title, color, isDarkMode, boxDetails, sectionId }) => {
     const { width, ref } = useResizeDetector()
 
     const sm = width && width < theme.breakpoints.values.md

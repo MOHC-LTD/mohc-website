@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
@@ -24,7 +24,7 @@ interface HeadingProps {
 /**
  * Heading section.
  */
-const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
+const Heading: FunctionComponent<HeadingProps> = ({
     title,
     subtitle,
     sector,
@@ -111,31 +111,35 @@ const Heading: FunctionComponent<PropsWithChildren<HeadingProps>> = ({
                     >
                         {subtitle}
                     </Typography>
-                    <Box
-                        component="div"
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Typography
-                            variant="body1"
-                            color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
-                        >
-                            {t('general:sector')}
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            color={isDarkMode ? color : theme.palette.text.primary}
+                    {sector ? (
+                        <Box
+                            component="div"
                             sx={{
-                                backgroundColor: isDarkMode ? theme.palette.background.default : theme.palette.divider,
-                                padding: '8px',
-                                margin: '8px',
+                                display: 'flex',
+                                alignItems: 'center',
                             }}
                         >
-                            {sector}
-                        </Typography>
-                    </Box>
+                            <Typography
+                                variant="body1"
+                                color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                            >
+                                {t('general:sector')}
+                            </Typography>
+                            <Typography
+                                variant="body1"
+                                color={isDarkMode ? color : theme.palette.text.primary}
+                                sx={{
+                                    backgroundColor: isDarkMode
+                                        ? theme.palette.background.default
+                                        : theme.palette.divider,
+                                    padding: '8px',
+                                    margin: '8px',
+                                }}
+                            >
+                                {sector}
+                            </Typography>
+                        </Box>
+                    ) : null}
                 </Box>
                 {image ? (
                     <Box

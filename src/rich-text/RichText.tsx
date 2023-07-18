@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useCallback, useMemo, useState } from 'react'
+import { FunctionComponent, useCallback, useMemo, useState } from 'react'
 
 import { Typography } from '@mui/material'
 import { createEditor, Descendant } from 'slate'
@@ -17,7 +17,7 @@ interface RichTextProps {
     variant?: RichTextTypographyVariant
 }
 
-const RichText: FunctionComponent<PropsWithChildren<RichTextProps>> = ({ value, variant = 'body1' }) => {
+const RichText: FunctionComponent<RichTextProps> = ({ value, variant = 'body1' }) => {
     const key = useMemo(() => {
         if (value === null) {
             return ''

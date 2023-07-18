@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { FormProvider, useForm } from 'react-hook-form'
@@ -14,7 +14,7 @@ interface ContactUsProps {
     sectionId?: string
 }
 
-const ContactUs: FunctionComponent<PropsWithChildren<ContactUsProps>> = ({ sectionId }) => {
+const ContactUs: FunctionComponent<ContactUsProps> = ({ sectionId }) => {
     const { t } = useTranslation()
 
     const form = useForm()

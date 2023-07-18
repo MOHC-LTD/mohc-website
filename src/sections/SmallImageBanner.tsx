@@ -1,19 +1,15 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { Box } from '@mui/material'
-import { Asset } from 'contentful'
 import Image from 'next/image'
 
+import { ISmallImageBannerFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
-
-interface SmallImageBannerProps {
-    images: Asset[]
-}
 
 /**
  * Small image banner.
  */
-const SmallImageBanner: FunctionComponent<PropsWithChildren<SmallImageBannerProps>> = ({ images }) => {
+const SmallImageBanner: FunctionComponent<ISmallImageBannerFields> = ({ images }) => {
     return (
         <Section maxWidth="xl">
             <Box
@@ -24,7 +20,7 @@ const SmallImageBanner: FunctionComponent<PropsWithChildren<SmallImageBannerProp
                     alignItems: 'center',
                 }}
             >
-                {images.map((image) => (
+                {images?.map((image) => (
                     <Image
                         key={image.fields.title}
                         alt={image.fields.title}

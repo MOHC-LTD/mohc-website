@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import Link from 'next/link'
@@ -16,7 +16,7 @@ interface TextWithLinkProps {
 /**
  * Section to display a text and link component.
  */
-const TextWithLink: FunctionComponent<PropsWithChildren<TextWithLinkProps>> = ({ text, linkText, link, sectionId }) => {
+const TextWithLink: FunctionComponent<TextWithLinkProps> = ({ text, linkText, link, sectionId }) => {
     return (
         <Section maxWidth="xl" backgroundColor={theme.palette.primary.main} id={sectionId}>
             <Box

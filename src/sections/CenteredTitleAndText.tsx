@@ -1,46 +1,52 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { Box, Typography } from '@mui/material'
 
+import { ICenteredTitleAndTextFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
-import { RichTextTypographyVariant } from 'src/rich-text/RichText'
 import { theme } from 'src/theme/theme.default'
-
-interface CenteredTitleAndTextProps {
-    title: string
-    text?: string
-    backgroundColor?: string
-    titleVariant?: RichTextTypographyVariant
-    textVariant?: RichTextTypographyVariant
-    sectionId?: string
-}
 
 /**
  * Section to display a centered title and text component.
  */
-const CenteredTitleAndText: FunctionComponent<PropsWithChildren<CenteredTitleAndTextProps>> = ({
+const CenteredTitleAndText: FunctionComponent<ICenteredTitleAndTextFields> = ({
     title,
     text,
     backgroundColor = theme.palette.background.default,
-    titleVariant = 'h3',
+    titleVariant = 'h5',
     textVariant = 'body1',
+    isCentered = true,
+    isDarkMode = false,
     sectionId,
 }) => {
     return (
         <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor}>
             <Box
                 component="div"
+                my={5}
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
+                    alignItems: isCentered ? 'center' : 'flex-start',
+                    [theme.breakpoints.up('md')]: {
+                        maxWidth: isCentered ? '100%' : '65%',
+                    },
                 }}
             >
-                <Typography variant={titleVariant} align="center">
+                <Typography
+                    mb={2}
+                    variant={titleVariant}
+                    align={isCentered ? 'center' : 'left'}
+                    color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                >
                     {title}
                 </Typography>
                 {text ? (
-                    <Typography variant={textVariant} align="center">
+                    <Typography
+                        variant={textVariant}
+                        align={isCentered ? 'center' : 'left'}
+                        color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                    >
                         {text}
                     </Typography>
                 ) : null}

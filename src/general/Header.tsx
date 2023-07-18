@@ -2,7 +2,6 @@ import {
     type ReactNode,
     createContext,
     FunctionComponent,
-    PropsWithChildren,
     useCallback,
     useContext,
     useId,
@@ -101,7 +100,7 @@ const contactUsSteps: ContactUsStepConfig[] = [
     },
 ]
 
-const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ order = 0, menuOptions, isDarkMode = false }) => {
+const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDarkMode = false }) => {
     const { t } = useTranslation()
 
     const { width, ref } = useResizeDetector()

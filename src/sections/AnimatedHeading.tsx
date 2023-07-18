@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import { Box, styled, Typography } from '@mui/material'
 import { Asset } from 'contentful'
@@ -129,7 +129,7 @@ const BlackRectangle = styled(motion.div, {
 /**
  * Animated heading section.
  */
-const AnimatedHeading: FunctionComponent<PropsWithChildren<AnimatedHeadingProps>> = ({ title, image }) => {
+const AnimatedHeading: FunctionComponent<AnimatedHeadingProps> = ({ title, image }) => {
     return (
         <Section maxWidth="xl" isFullScreen>
             <motion.div variants={container} initial="hidden" animate="show" exit="exit">

@@ -2,11 +2,8 @@ import { FunctionComponent, PropsWithChildren, useState } from 'react'
 
 import { ButtonBase, Collapse, collapseClasses, Stack, styled, Typography } from '@mui/material'
 
+import { IAccordionItemFields } from 'src/@types/contentful'
 import ExpandIcon from 'src/general/ExpandIcon'
-
-interface AccordionItemProps {
-    heading: string
-}
 
 const AccordionItemRoot = styled('div', {
     name: 'AccordionItemRoot',
@@ -30,15 +27,15 @@ const AccordionButton = styled(ButtonBase, {
     width: '100%',
 })) as typeof ButtonBase
 
-const AccordionItem: FunctionComponent<PropsWithChildren<AccordionItemProps>> = ({ children, heading }) => {
+const AccordionItem: FunctionComponent<PropsWithChildren<IAccordionItemFields>> = ({ children, header }) => {
     const [expanded, setExpanded] = useState(false)
 
     return (
         <AccordionItemRoot>
-            {heading ? (
+            {header ? (
                 <AccordionButton component="div" role="button" onClick={(): void => setExpanded(!expanded)}>
                     <Typography pr={2} variant="subtitle1">
-                        {heading}
+                        {header}
                     </Typography>
                     <ExpandIcon expanded={expanded} />
                 </AccordionButton>
@@ -51,7 +48,5 @@ const AccordionItem: FunctionComponent<PropsWithChildren<AccordionItemProps>> = 
         </AccordionItemRoot>
     )
 }
-
-export type { AccordionItemProps }
 
 export default AccordionItem

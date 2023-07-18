@@ -309,7 +309,7 @@ const options: ThemeOptions = {
     palette: {
         ...palette,
         background: {
-            default: '#F5F5F5',
+            default: '#fff',
             paper: '#FBF0E8',
         },
         text: {
@@ -412,7 +412,7 @@ theme = createTheme(theme, {
             lineHeight: 1.3,
             fontSize: rem(32),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(54),
+                fontSize: rem(42),
             },
         },
         h4: {
@@ -421,7 +421,7 @@ theme = createTheme(theme, {
             lineHeight: 1.3,
             fontSize: rem(32),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(54),
+                fontSize: rem(42),
             },
         },
         h5: {
@@ -430,7 +430,7 @@ theme = createTheme(theme, {
             lineHeight: 1.2,
             fontSize: rem(22),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(28),
+                fontSize: rem(32),
             },
         },
         h6: {
@@ -439,7 +439,7 @@ theme = createTheme(theme, {
             lineHeight: 1.3,
             fontSize: rem(22),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(28),
+                fontSize: rem(32),
             },
         },
         subtitle1: {

@@ -1,28 +1,19 @@
-import { FunctionComponent, PropsWithChildren, useState } from 'react'
+import { FunctionComponent, useState } from 'react'
 
 import { Box, Button, Typography } from '@mui/material'
-import { Asset } from 'contentful'
 import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 import { useResizeDetector } from 'react-resize-detector'
 
+import { IDeviceViewFields } from 'src/@types/contentful'
 import Icon from 'src/general/Icon'
 import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
-interface DeviceViewProps {
-    desktopImage?: Asset
-    desktopAlt?: string
-    mobileImage?: Asset
-    mobileAlt?: string
-    sectionId?: string
-    backgroundColor?: string
-}
-
 /**
  * Section to display device frame options for images. Toggle between tablet and mobile.
  */
-const DeviceView: FunctionComponent<PropsWithChildren<DeviceViewProps>> = ({
+const DeviceView: FunctionComponent<IDeviceViewFields> = ({
     desktopImage,
     mobileImage,
     sectionId,

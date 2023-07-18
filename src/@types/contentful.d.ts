@@ -13,8 +13,14 @@ export interface IAccordionFields {
     /** Title */
     title?: string | undefined
 
+    /** Subtitle */
+    subtitle?: Document | undefined
+
     /** AccordionItem */
     accordionItem?: Entry<{ [fieldId: string]: unknown }>[] | undefined
+
+    /** Is full width */
+    isFullWidth?: boolean | undefined
 }
 
 export interface IAccordion extends Entry<IAccordionFields> {
@@ -59,31 +65,6 @@ export interface IAccordionItem extends Entry<IAccordionItemFields> {
     }
 }
 
-export interface IAnimatedHeadingFields {
-    /** Title */
-    title?: string | undefined
-
-    /** Image */
-    image?: Asset | undefined
-}
-
-export interface IAnimatedHeading extends Entry<IAnimatedHeadingFields> {
-    sys: {
-        id: string
-        type: string
-        createdAt: string
-        updatedAt: string
-        locale: string
-        contentType: {
-            sys: {
-                id: 'animatedHeading'
-                linkType: 'ContentType'
-                type: 'Link'
-            }
-        }
-    }
-}
-
 export interface ICenteredTitleAndTextFields {
     /** Section ID */
     sectionId?: string | undefined
@@ -92,16 +73,48 @@ export interface ICenteredTitleAndTextFields {
     title?: string | undefined
 
     /** Title variant */
-    titleVariant?: string | undefined
+    titleVariant?:
+        | 'button'
+        | 'caption'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6'
+        | 'subtitle1'
+        | 'subtitle2'
+        | 'body1'
+        | 'body2'
+        | undefined
 
     /** Text */
     text?: string | undefined
 
     /** Text variant */
-    textVariant?: string | undefined
+    textVariant?:
+        | 'button'
+        | 'caption'
+        | 'h1'
+        | 'h2'
+        | 'h3'
+        | 'h4'
+        | 'h5'
+        | 'h6'
+        | 'subtitle1'
+        | 'subtitle2'
+        | 'body1'
+        | 'body2'
+        | undefined
 
     /** Background color */
     backgroundColor?: string | undefined
+
+    /** Is dark mode */
+    isDarkMode?: boolean | undefined
+
+    /** Is centered */
+    isCentered?: boolean | undefined
 }
 
 export interface ICenteredTitleAndText extends Entry<ICenteredTitleAndTextFields> {
@@ -156,14 +169,26 @@ export interface IFullWidthImageFields {
     /** Section ID */
     sectionId?: string | undefined
 
-    /** Background color */
-    backgroundColor?: string | undefined
+    /** Title */
+    title?: string | undefined
 
-    /** Fade type */
-    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
+    /** Description */
+    description?: Document | undefined
 
     /** Image */
     image?: IImage | undefined
+
+    /** Background color */
+    backgroundColor?: string | undefined
+
+    /** Background image */
+    backgroundImage?: Asset | undefined
+
+    /** Is dark mode */
+    isDarkMode?: boolean | undefined
+
+    /** Fade type */
+    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
 }
 
 export interface IFullWidthImage extends Entry<IFullWidthImageFields> {
@@ -176,6 +201,40 @@ export interface IFullWidthImage extends Entry<IFullWidthImageFields> {
         contentType: {
             sys: {
                 id: 'fullWidthImage'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
+export interface IFullWidthImageHeaderFields {
+    /** Title */
+    title?: string | undefined
+
+    /** Image */
+    image?: IImage | undefined
+
+    /** Color */
+    color?: string | undefined
+
+    /** Fade type */
+    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
+
+    /** Is dark mode */
+    isDarkMode?: boolean | undefined
+}
+
+export interface IFullWidthImageHeader extends Entry<IFullWidthImageHeaderFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'fullWidthImageHeader'
                 linkType: 'ContentType'
                 type: 'Link'
             }
@@ -330,40 +389,6 @@ export interface IIconBox extends Entry<IIconBoxFields> {
     }
 }
 
-export interface IIconBoxesFields {
-    /** Title */
-    title?: string | undefined
-
-    /** Section ID */
-    sectionId?: string | undefined
-
-    /** Color */
-    color?: string | undefined
-
-    /** Is dark mode */
-    isDarkMode?: boolean | undefined
-
-    /** Icon box */
-    iconBox?: IIconBox[] | undefined
-}
-
-export interface IIconBoxes extends Entry<IIconBoxesFields> {
-    sys: {
-        id: string
-        type: string
-        createdAt: string
-        updatedAt: string
-        locale: string
-        contentType: {
-            sys: {
-                id: 'iconBoxes'
-                linkType: 'ContentType'
-                type: 'Link'
-            }
-        }
-    }
-}
-
 export interface IImageFields {
     /** Static Image */
     staticImage?: Asset | undefined
@@ -401,6 +426,9 @@ export interface IImageAndTextFields {
 
     /** Background color */
     backgroundColor?: string | undefined
+
+    /** Background image */
+    backgroundImage?: Asset | undefined
 
     /** Is Dark Mode */
     isDarkMode?: boolean | undefined
@@ -460,6 +488,56 @@ export interface IImageSlider extends Entry<IImageSliderFields> {
     }
 }
 
+export interface IListFields {
+    /** Title */
+    title?: string | undefined
+
+    /** List items */
+    listItems?: IListItem[] | undefined
+}
+
+export interface IList extends Entry<IListFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'list'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
+export interface IListItemFields {
+    /** Title */
+    title?: string | undefined
+
+    /** Subtitle */
+    subtitle?: string | undefined
+}
+
+export interface IListItem extends Entry<IListItemFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'listItem'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
 export interface IMobileImagesAndTextFields {
     /** Section ID */
     sectionId?: string | undefined
@@ -475,6 +553,9 @@ export interface IMobileImagesAndTextFields {
 
     /** Background color */
     backgroundColor?: string | undefined
+
+    /** Is dark mode */
+    isDarkMode?: boolean | undefined
 
     /** Fade type */
     fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
@@ -540,9 +621,65 @@ export interface IPage extends Entry<IPageFields> {
     }
 }
 
+export interface IPageCardFields {
+    /** Title */
+    title?: string | undefined
+
+    /** Description */
+    description?: Document | undefined
+
+    /** Link text */
+    linkText?: string | undefined
+
+    /** Link (slug) */
+    link?: string | undefined
+
+    /** Image */
+    image?: Asset | undefined
+}
+
+export interface IPageCard extends Entry<IPageCardFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'pageCard'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
+export interface IPageNavigationFields {
+    /** Page card */
+    pageCard?: IPageCard[] | undefined
+}
+
+export interface IPageNavigation extends Entry<IPageNavigationFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'pageNavigation'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
 export interface IProjectNavigationFields {
     /** Project */
-    project?: Entry<{ [fieldId: string]: unknown }>[] | undefined
+    project?: IPage[] | undefined
 
     /** Title */
     title?: string | undefined
@@ -604,12 +741,6 @@ export interface ITextColumnFields {
 
     /** Column 2 title */
     column2Title?: string | undefined
-
-    /** Column 1 content */
-    column1Content?: Document | undefined
-
-    /** Column 2 content */
-    column2Content?: Document | undefined
 
     /** Text Column 1 Content */
     textColumn1Content?: ITextColumnTextBlock | ITextColumnList | undefined
@@ -682,51 +813,84 @@ export interface ITextColumnTextBlock extends Entry<ITextColumnTextBlockFields> 
     }
 }
 
+export interface IWorkPageFields {
+    /** slug */
+    slug?: string | undefined
+
+    /** section */
+    section?: Entry<{ [fieldId: string]: unknown }>[] | undefined
+}
+
+export interface IWorkPage extends Entry<IWorkPageFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'workPage'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
 export type CONTENT_TYPE =
     | 'accordion'
     | 'accordionItem'
-    | 'animatedHeading'
     | 'centeredTitleAndText'
     | 'deviceView'
     | 'fullWidthImage'
+    | 'fullWidthImageHeader'
     | 'heading'
     | 'heroBanner'
     | 'homePage'
     | 'iconBox'
-    | 'iconBoxes'
     | 'image'
     | 'imageAndText'
     | 'imageSlider'
+    | 'list'
+    | 'listItem'
     | 'mobileImagesAndText'
     | 'page'
+    | 'pageCard'
+    | 'pageNavigation'
     | 'projectNavigation'
     | 'smallImageBanner'
     | 'textColumn'
     | 'textColumnList'
     | 'textColumnTextBlock'
+    | 'workPage'
 
 export type IEntry =
     | IAccordion
     | IAccordionItem
-    | IAnimatedHeading
     | ICenteredTitleAndText
     | IDeviceView
     | IFullWidthImage
+    | IFullWidthImageHeader
     | IHeading
     | IHeroBanner
     | IHomePage
     | IIconBox
-    | IIconBoxes
     | IImage
     | IImageAndText
     | IImageSlider
+    | IList
+    | IListItem
     | IMobileImagesAndText
     | IPage
+    | IPageCard
+    | IPageNavigation
     | IProjectNavigation
     | ISmallImageBanner
     | ITextColumn
     | ITextColumnList
     | ITextColumnTextBlock
+    | IWorkPage
 
 export type LOCALE_CODE = 'en-US'
 

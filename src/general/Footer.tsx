@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent } from 'react'
 
 import isPropValid from '@emotion/is-prop-valid'
 import { Box, Stack, styled, Typography } from '@mui/material'
@@ -31,7 +31,7 @@ const FooterRoot = styled('footer', {
     scrollSnapAlign: 'start',
 }))
 
-const Footer: FunctionComponent<PropsWithChildren<FooterProps>> = ({ order = 0 }) => {
+const Footer: FunctionComponent<FooterProps> = ({ order = 0 }) => {
     const { t } = useTranslation()
 
     return (
