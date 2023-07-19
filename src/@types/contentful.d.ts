@@ -591,6 +591,9 @@ export interface IPageFields {
     /** Navigation description */
     navigationDescription?: string | undefined
 
+    /** Keywords */
+    keywords?: string[] | undefined
+
     /** slug */
     slug?: string | undefined
 

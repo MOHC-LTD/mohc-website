@@ -43,7 +43,9 @@ const FullWidthImageHeading: FunctionComponent<FullWidthImageHeadingProps> = ({
                     id="title"
                     mb={4}
                     sx={{
-                        maxWidth: '65%',
+                        [theme.breakpoints.up('md')]: {
+                            maxWidth: '65%',
+                        },
                     }}
                 >
                     <Typography

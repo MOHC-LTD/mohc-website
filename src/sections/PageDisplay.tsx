@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 import { IPageCardFields, IPageNavigationFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
+import { theme } from 'src/theme/theme.default'
 
 /**
  * Small image banner.
@@ -18,6 +19,10 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
                 component="div"
                 sx={{
                     display: 'flex',
+                    flexDirection: 'column',
+                    [theme.breakpoints.up('md')]: {
+                        flexDirection: 'row',
+                    },
                 }}
             >
                 {pageCard?.map((card) => {
@@ -29,7 +34,9 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
                             p={2}
                             key={title}
                             sx={{
-                                width: '50%',
+                                [theme.breakpoints.up('md')]: {
+                                    width: '50%',
+                                },
                             }}
                         >
                             <Image
@@ -42,7 +49,7 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
                                     height: 'auto',
                                 }}
                             />
-                            <Typography variant="h5" mb={1}>
+                            <Typography variant="h5" my={1}>
                                 {title}
                             </Typography>
                             {description ? documentToReactComponents(description) : null}

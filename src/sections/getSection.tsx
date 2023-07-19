@@ -59,13 +59,19 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         component="div"
                         sx={{
                             display: 'flex',
+                            flexDirection: 'column',
+                            [theme.breakpoints.up('md')]: {
+                                flexDirection: 'row',
+                            },
                         }}
                     >
                         <Box
                             component="div"
                             mr={5}
                             sx={{
-                                width: '35%',
+                                [theme.breakpoints.up('md')]: {
+                                    width: '35%',
+                                },
                             }}
                         >
                             <Typography mb={2} variant="h3">
@@ -75,7 +81,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         </Box>
                         <Accordion
                             sx={{
-                                width: '65%',
+                                [theme.breakpoints.up('md')]: {
+                                    width: '65%',
+                                },
                             }}
                         >
                             {accordionItem?.map((item) => {
@@ -341,9 +349,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         }
 
         case 'projectNavigation': {
-            const { project, title, footer, sectionId }: IProjectNavigationFields = section.fields
+            const { project, title, sectionId }: IProjectNavigationFields = section.fields
 
-            return <ProjectDisplay project={project} title={title} footer={footer} sectionId={sectionId} />
+            return <ProjectDisplay project={project} title={title} sectionId={sectionId} />
         }
 
         case 'pageNavigation': {

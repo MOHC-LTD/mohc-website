@@ -1,9 +1,8 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
-import { Box, Typography } from '@mui/material'
+import { Box, Chip, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
 
 import { theme } from 'src/theme/theme.default'
 
@@ -14,7 +13,7 @@ interface ProjectDrawerProps {
     page: string
     title?: string
     description?: string
-    detailsList?: string[]
+    keywords?: string[]
     isMobile?: boolean
     isInverted?: boolean
 }
@@ -31,9 +30,8 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
     page,
     title,
     description,
+    keywords,
 }) => {
-    const { t } = useTranslation()
-
     return (
         <Box
             component="div"
@@ -72,14 +70,26 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                 <Typography mb={2} variant="body2" color={theme.palette.text.primary}>
                     {description}
                 </Typography>
-                <Link
-                    href={`/project/${page}`}
-                    style={{
-                        textDecoration: 'none',
+                <Box
+                    component="div"
+                    mb={2}
+                    sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
                     }}
                 >
-                    <Typography variant="body1">{t('project:view_project')}</Typography>
-                </Link>
+                    {keywords?.map((word) => (
+                        <Chip
+                            variant="outlined"
+                            key={word}
+                            label={word}
+                            sx={{
+                                marginRight: '10px',
+                                marginBottom: '10px',
+                            }}
+                        />
+                    ))}
+                </Box>
             </Box>
             <Box
                 component="div"
@@ -95,21 +105,23 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                     },
                 }}
             >
-                <Image
-                    src={`https:${image}`}
-                    width={width}
-                    height={height}
-                    alt={title || ''}
-                    style={{
-                        display: 'block',
-                        position: 'relative',
-                        width: '100%',
-                        height: 'auto',
-                        minWidth: 0,
-                        objectFit: 'contain',
-                    }}
-                    loading="lazy"
-                />
+                <Link href={`/project/${page}`}>
+                    <Image
+                        src={`https:${image}`}
+                        width={width}
+                        height={height}
+                        alt={title || ''}
+                        style={{
+                            display: 'block',
+                            position: 'relative',
+                            width: '100%',
+                            height: 'auto',
+                            minWidth: 0,
+                            objectFit: 'contain',
+                        }}
+                        loading="lazy"
+                    />
+                </Link>
             </Box>
         </Box>
     )
