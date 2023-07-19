@@ -118,7 +118,7 @@ const TypingAnimation: FunctionComponent = () => {
                         onClick={(): void => {
                             const scrollContainer = document.querySelector('#pageLayout')
 
-                            const myElement = document.querySelector('[id="Our work in healthcare"]')
+                            const myElement = document.querySelector('[id="Featured work"]')
 
                             // @ts-expect-error The property does exist.
                             const topPos = myElement ? myElement.offsetTop : 0
