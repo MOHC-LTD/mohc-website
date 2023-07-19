@@ -51,15 +51,16 @@ const Accordion = styled('div', {
 const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode => {
     switch (section.sys.contentType.sys.id) {
         case 'accordion': {
-            const { title, subtitle, accordionItem }: IAccordionFields = section.fields
+            const { title, subtitle, accordionItem, backgroundColor, isDarkMode }: IAccordionFields = section.fields
 
             return (
-                <Section maxWidth="xl">
+                <Section maxWidth="xl" backgroundColor={backgroundColor}>
                     <Box
                         component="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
+                            color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
                             [theme.breakpoints.up('md')]: {
                                 flexDirection: 'row',
                             },
@@ -87,10 +88,10 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                             }}
                         >
                             {accordionItem?.map((item) => {
-                                const { header, content }: IAccordionItemFields = item.fields
+                                const { header, content, icon }: IAccordionItemFields = item.fields
 
                                 return (
-                                    <AccordionItem key={header} header={header}>
+                                    <AccordionItem key={header} header={header} icon={icon}>
                                         {content ? documentToReactComponents(content) : null}
                                     </AccordionItem>
                                 )

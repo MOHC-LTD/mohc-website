@@ -1,9 +1,10 @@
 import { FunctionComponent, PropsWithChildren, useState } from 'react'
 
-import { ButtonBase, Collapse, collapseClasses, Stack, styled, Typography } from '@mui/material'
+import { Box, ButtonBase, Collapse, collapseClasses, Stack, styled, Typography } from '@mui/material'
 
 import { IAccordionItemFields } from 'src/@types/contentful'
 import ExpandIcon from 'src/general/ExpandIcon'
+import Icon from 'src/general/Icon'
 
 const AccordionItemRoot = styled('div', {
     name: 'AccordionItemRoot',
@@ -27,16 +28,34 @@ const AccordionButton = styled(ButtonBase, {
     width: '100%',
 })) as typeof ButtonBase
 
-const AccordionItem: FunctionComponent<PropsWithChildren<IAccordionItemFields>> = ({ children, header }) => {
+const AccordionItem: FunctionComponent<PropsWithChildren<IAccordionItemFields>> = ({ children, header, icon }) => {
     const [expanded, setExpanded] = useState(false)
 
     return (
         <AccordionItemRoot>
             {header ? (
                 <AccordionButton component="div" role="button" onClick={(): void => setExpanded(!expanded)}>
-                    <Typography pr={2} variant="subtitle1">
-                        {header}
-                    </Typography>
+                    <Box
+                        component="div"
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        {icon ? (
+                            <Icon
+                                name={icon}
+                                filled={false}
+                                size="large"
+                                sx={{
+                                    marginRight: '20px',
+                                }}
+                            />
+                        ) : null}
+                        <Typography pr={2} variant="subtitle1">
+                            {header}
+                        </Typography>
+                    </Box>
                     <ExpandIcon expanded={expanded} />
                 </AccordionButton>
             ) : undefined}

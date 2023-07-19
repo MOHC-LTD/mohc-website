@@ -21,6 +21,12 @@ export interface IAccordionFields {
 
     /** Is full width */
     isFullWidth?: boolean | undefined
+
+    /** Background color */
+    backgroundColor?: string | undefined
+
+    /** isDarkMode */
+    isDarkMode?: boolean | undefined
 }
 
 export interface IAccordion extends Entry<IAccordionFields> {
@@ -46,6 +52,9 @@ export interface IAccordionItemFields {
 
     /** Content */
     content?: Document | undefined
+
+    /** Icon */
+    icon?: string | undefined
 }
 
 export interface IAccordionItem extends Entry<IAccordionItemFields> {
