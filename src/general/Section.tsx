@@ -16,7 +16,6 @@ interface SectionProps extends Except<ContainerProps, 'sx'> {
     isFullScreen?: boolean
     isDarkMode?: boolean
     hasEllipse?: boolean
-    snap?: boolean
     backgroundImage?: Asset
 }
 
@@ -30,7 +29,6 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
     isDarkMode = false,
     hasEllipse = false,
     fadeType = 'none',
-    snap = false,
     backgroundColor = theme.palette.background.default,
     backgroundImage,
     ...props
@@ -69,7 +67,6 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
             sx={{
                 backgroundImage: `url(https:${backgroundImage?.fields.file.url})!important`,
                 background: background,
-                scrollSnapAlign: snap ? 'start' : 'none',
             }}
         >
             <Container

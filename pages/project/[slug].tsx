@@ -44,12 +44,7 @@ const Page: NextPageWithLayout<Props> = ({ page, pages }) => {
 
     return (
         <PageLayout title={page.navigationTitle} menuOptions={[...menuOptions]}>
-            <Box
-                component="div"
-                sx={{
-                    scrollSnapAlign: 'start',
-                }}
-            >
+            <Box component="div">
                 {page.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
                 ))}
@@ -79,7 +74,7 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
 
     const page = await ContentService.instance.getPageBySlug(slug || '')
 
-    const pages = await ContentService.instance.getProjectNavigation()
+    const pages = await ContentService.instance.getEntriesByType<IPageFields>('page')
 
     if (!page) {
         return {
@@ -105,7 +100,7 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
     return {
         props: {
             page: page.fields,
-            pages: pages.fields.project?.map((project) => ({
+            pages: pages.map((project) => ({
                 navigationTitle: project.fields.navigationTitle as string,
                 slug: project.fields.slug as string,
             })),

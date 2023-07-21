@@ -28,7 +28,6 @@ const FooterRoot = styled('footer', {
     height: theme.spacing(GeneralConfig.ToolbarHeight),
     top: theme.spacing(GeneralConfig.ToolbarHeight * order),
     zIndex: theme.zIndex.tooltip,
-    scrollSnapAlign: 'start',
 }))
 
 const Footer: FunctionComponent<FooterProps> = ({ order = 0 }) => {

@@ -24,7 +24,7 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
 
     const [currentProject, setCurrentProject] = useState(0)
 
-    const projects = pages || []
+    const projects = pages?.sort((a, b) => a.navigationTitle.localeCompare(b.navigationTitle)) || []
 
     useEffect(() => {
         setCurrentProject(() => {

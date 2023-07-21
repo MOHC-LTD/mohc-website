@@ -37,12 +37,7 @@ const Page: NextPageWithLayout<Props> = ({ page }) => {
 
     return (
         <PageLayout title={page.navigationTitle} menuOptions={[...menuOptions]}>
-            <Box
-                component="div"
-                sx={{
-                    scrollSnapAlign: 'start',
-                }}
-            >
+            <Box component="div">
                 {page.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
                 ))}

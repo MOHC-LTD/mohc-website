@@ -22,13 +22,7 @@ const Banner3D: FunctionComponent = () => {
 
     return (
         <div ref={ref}>
-            <Section
-                maxWidth="xl"
-                isFullScreen={sm ? false : true}
-                backgroundColor="#E7F2FF"
-                fadeType="bottom"
-                snap={true}
-            >
+            <Section maxWidth="xl" isFullScreen={sm ? false : true} backgroundColor="#E7F2FF" fadeType="bottom">
                 <Box
                     component="div"
                     sx={{

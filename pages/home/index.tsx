@@ -31,12 +31,7 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
         <PageLayout title="Home" menuOptions={[...menuOptions]}>
             <Banner3D />
             <TypingAnimation />
-            <Box
-                component="div"
-                sx={{
-                    scrollSnapAlign: 'start',
-                }}
-            >
+            <Box component="div">
                 {props?.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
                 ))}

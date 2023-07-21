@@ -14,7 +14,7 @@ const TypingAnimation: FunctionComponent = () => {
 
     return (
         <div ref={ref}>
-            <Section maxWidth="xl" isFullScreen snap={true}>
+            <Section maxWidth="xl" isFullScreen>
                 <Box
                     component="div"
                     sx={{

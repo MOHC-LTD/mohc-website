@@ -154,12 +154,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
     )
 
     return (
-        <Box
-            component="div"
-            sx={{
-                scrollSnapAlign: 'start',
-            }}
-        >
+        <Box component="div">
             <div ref={ref}>
                 <AppBar
                     sx={{

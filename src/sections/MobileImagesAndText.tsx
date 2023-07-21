@@ -137,7 +137,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                             color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
                             [theme.breakpoints.up('md')]: {
                                 position: 'sticky',
-                                top: 0,
+                                top: 70,
                                 height: '100%',
                                 maxWidth: '50%',
                                 padding: isInverted ? '40px 80px 40px 0' : '40px 0 40px 80px',

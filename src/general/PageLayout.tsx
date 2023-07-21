@@ -25,9 +25,6 @@ const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({ tit
         sx={{
             height: 'calc(100vh - 70px)',
             top: '70px',
-            overflowY: 'scroll',
-            scrollSnapType: 'y mandatory',
-            scrollBehavior: 'smooth',
         }}
     >
         {title ? <PageTitle>{title}</PageTitle> : null}
