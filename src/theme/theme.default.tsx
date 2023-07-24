@@ -16,7 +16,7 @@ import { FontFamilyConfig, Palette, ThemeOptionsComponents } from 'src/theme/typ
 import { assertColor } from 'src/theme/utils/assertColor'
 
 const fontFamilyConfig: FontFamilyConfig = {
-    name: 'sofia-pro',
+    name: 'Indivisible',
     weights: {
         light: 300,
         regular: 400,

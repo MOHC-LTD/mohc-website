@@ -52,7 +52,7 @@ const AccordionItem: FunctionComponent<PropsWithChildren<IAccordionItemFields>> 
                                 }}
                             />
                         ) : null}
-                        <Typography pr={2} variant="subtitle1">
+                        <Typography pr={2} variant="body1">
                             {header}
                         </Typography>
                     </Box>
