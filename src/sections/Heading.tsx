@@ -39,7 +39,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
     const { t } = useTranslation()
 
     return (
-        <Section maxWidth="xl" backgroundColor={color} fadeType={fadeType}>
+        <Section maxWidth="xl" isFullScreen backgroundColor={color} fadeType={fadeType}>
             <Box
                 component="div"
                 sx={{
@@ -48,9 +48,10 @@ const Heading: FunctionComponent<HeadingProps> = ({
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     [theme.breakpoints.up('md')]: {
                         flexDirection: 'row',
+                        justifyContent: 'space-between',
                         alignItems: 'center',
                         minHeight: '500px',
                     },
@@ -63,7 +64,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
                     sx={{
                         order: 2,
                         [theme.breakpoints.up('md')]: {
-                            maxWidth: '50%',
+                            maxWidth: '40%',
                             order: 1,
                         },
                     }}
@@ -143,6 +144,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
                 </Box>
                 {image ? (
                     <Box
+                        mb={2}
                         component="div"
                         sx={{
                             position: 'relative',
@@ -151,7 +153,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
                             [theme.breakpoints.up('md')]: {
                                 display: 'flex',
                                 height: 'fit-content',
-                                maxWidth: '45%',
+                                maxWidth: '55%',
                                 order: 2,
                             },
                         }}

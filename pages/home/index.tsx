@@ -6,9 +6,7 @@ import type { GetStaticProps } from 'next'
 import { IHomePageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
 import PageLayout from 'src/general/PageLayout'
-import Banner3D from 'src/sections/Banner3D'
 import { getSection } from 'src/sections/getSection'
-import TypingAnimation from 'src/sections/TypingAnimation'
 import { NextPageWithLayout } from 'src/types'
 import ContentService from 'src/util/ContentService'
 
@@ -29,8 +27,6 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
 
     return (
         <PageLayout title="Home" menuOptions={[...menuOptions]}>
-            <Banner3D />
-            <TypingAnimation />
             <Box component="div">
                 {props?.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
