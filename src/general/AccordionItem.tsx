@@ -3,7 +3,6 @@ import { FunctionComponent, PropsWithChildren, useState } from 'react'
 import { Box, ButtonBase, Collapse, collapseClasses, Stack, styled, Typography } from '@mui/material'
 
 import { IAccordionItemFields } from 'src/@types/contentful'
-import ExpandIcon from 'src/general/ExpandIcon'
 import Icon from 'src/general/Icon'
 
 const AccordionItemRoot = styled('div', {
@@ -57,7 +56,7 @@ const AccordionItem: FunctionComponent<PropsWithChildren<IAccordionItemFields>> 
                             {header}
                         </Typography>
                     </Box>
-                    <ExpandIcon expanded={expanded} />
+                    <Icon name={expanded ? 'remove' : 'add'} />
                 </AccordionButton>
             ) : undefined}
             <Collapse in={expanded}>
