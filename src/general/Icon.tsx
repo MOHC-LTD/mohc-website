@@ -11,10 +11,13 @@ interface IconProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'size'> {
     filled?: boolean
     color?: Color | 'inherit' | string
     size?: IconSize
+    weight?: IconWeight
 }
 
 // TODO: change to sm/md/lg/xl
 type IconSize = number | 'inherit' | 'small' | 'medium' | 'large' | 'extra-large'
+
+type IconWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700
 
 interface FontSizes {
     fontSize: number | string
@@ -48,7 +51,7 @@ const pickerButtonClasses = generateUtilityClasses('PickerButton', ['root', 'sel
 
 const Icon = styled(
     forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
-        const { name, color: _, size: __, filled: ___, ...rest } = props
+        const { name, color: _, size: __, filled: ___, weight: ____, ...rest } = props
 
         return (
             <span role="img" {...rest} ref={ref}>
@@ -59,12 +62,12 @@ const Icon = styled(
     {
         name: 'Icon',
     }
-)(({ theme, color, size = 'medium', filled = true }) => ({
+)(({ theme, color, size = 'medium', filled = true, weight = 400 }) => ({
     fontFamily: '"Material Symbols Rounded"',
     fontWeight: 'normal',
     fontStyle: 'normal',
     fontSize: iconOptions[size].fontSize,
-    fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'opsz' ${iconOptions[size].opsz}`,
+    fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'opsz' ${iconOptions[size].opsz}, 'wght' ${weight}`,
     textRendering: 'optimizeLegibility',
     display: 'inline-block',
     lineHeight: 1,

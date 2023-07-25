@@ -47,6 +47,7 @@ const AccordionItem: FunctionComponent<PropsWithChildren<IAccordionItemFields>> 
                                 name={icon}
                                 filled={false}
                                 size="large"
+                                weight={200}
                                 sx={{
                                     marginRight: '20px',
                                 }}
