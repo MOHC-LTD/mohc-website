@@ -294,18 +294,8 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                     {menuOptions.map((option) => (
                                         <ListItemButton
                                             key={option}
-                                            onClick={(): void => {
-                                                const scrollContainer = document.querySelector('#pageLayout')
-
-                                                const myElement = document.querySelector(`[id="${option}"]`)
-
-                                                // @ts-expect-error The property does exist.
-                                                const topPos = myElement ? myElement.offsetTop : 0
-
-                                                if (scrollContainer) {
-                                                    scrollContainer.scrollTop = topPos
-                                                }
-                                            }}
+                                            href={`#${option}`}
+                                            onClick={drawerPopupState.close}
                                             sx={{
                                                 display: 'flex',
                                                 justifyContent: 'center',

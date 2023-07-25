@@ -7,6 +7,7 @@ import { IHomePageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
 import PageLayout from 'src/general/PageLayout'
 import { getSection } from 'src/sections/getSection'
+import TypingAnimation from 'src/sections/TypingAnimation'
 import { NextPageWithLayout } from 'src/types'
 import ContentService from 'src/util/ContentService'
 
@@ -26,13 +27,29 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
         .filter((notUndefined) => notUndefined !== undefined) as string[]
 
     return (
-        <PageLayout title="Home" menuOptions={[...menuOptions]}>
-            <Box component="div">
+        <Box
+            component="div"
+            sx={{
+                position: 'absolute',
+                backgroundColor: '#fff',
+                '@keyframes screen': {
+                    '0%': {
+                        top: 0,
+                    },
+                    '100%': {
+                        top: 'calc(-100vh + 70px)',
+                    },
+                },
+                animation: 'screen 2s 2s forwards',
+            }}
+        >
+            <PageLayout title="Home" menuOptions={[...menuOptions]}>
+                <TypingAnimation />
                 {props?.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
                 ))}
-            </Box>
-        </PageLayout>
+            </PageLayout>
+        </Box>
     )
 }
 

@@ -15,7 +15,7 @@ const CustomDocument = (): ReactElement => (
                 rel="stylesheet"
                 // This has to be on a single line so that the compiler can optimize the font
                 // eslint-disable-next-line max-len
-                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..40,400,0..1,0&display=block"
+                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..40,100..700,0..1,0&display=block"
             />
         </Head>
         <body>
