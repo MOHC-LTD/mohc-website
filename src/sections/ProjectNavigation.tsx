@@ -4,6 +4,7 @@ import { Box, Typography } from '@mui/material'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
+import IconLink from 'src/general/IconLink'
 import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
@@ -78,14 +79,9 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                     ) : null}
                     {currentProject === projects.length - 1 ? (
                         <>
-                            <Link
-                                href={`/project/${projects[0].slug}`}
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                            >
+                            <IconLink href={`/project/${projects[0].slug}`}>
                                 <Typography variant="h5">{t('project:next_project')}</Typography>
-                            </Link>
+                            </IconLink>
                             <Typography variant="body1">{projects[0].navigationTitle as string}</Typography>
                         </>
                     ) : null}

@@ -129,6 +129,14 @@ const components: ThemeOptionsComponents = {
                         [`&.${buttonClasses.disabled}`]: {
                             backgroundColor: alpha(theme.palette.background.paper, 0),
                         },
+                        [`&:hover, &:active, &.${buttonClasses.focusVisible}`]: {
+                            border: 'none',
+                            backgroundColor: 'transparent',
+                        },
+                        [`&:active, &.${buttonClasses.focusVisible}`]: {
+                            border: 'none',
+                            backgroundColor: 'transparent',
+                        },
                     },
                     [`.${circularProgressClasses.root}`]: {
                         color: theme.palette[color].main,

@@ -62,6 +62,7 @@ const HeaderRoot = styled(AppBar, {
     backdropFilter: 'saturate(180%) blur(20px)',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     color: theme.palette.text.primary,
     padding: theme.spacing(0, Spacing.Header),
     top: theme.spacing(GeneralConfig.ToolbarHeight * order),
@@ -108,6 +109,8 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
     const { width, ref } = useResizeDetector()
 
     const sm = width && width < theme.breakpoints.values.md
+
+    const md = width && width < theme.breakpoints.values.lg
 
     const drawerPopupState = usePopupState({
         popupId: useId(),
@@ -165,12 +168,12 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                         gap={Spacing.Header}
                         gridTemplateColumns="max-content 1fr max-content"
                         alignItems="center"
-                        justifyContent="center"
                         width={1}
                     >
-                        {sm ? (
+                        {md ? (
                             <>
                                 <Button
+                                    variant="text"
                                     onClick={drawerPopupState.open}
                                     sx={{
                                         padding: '0 !important',
@@ -193,6 +196,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                         sx: {
                                             boxShadow: 'none',
                                             height: '100%',
+                                            width: sm ? '100%' : '40%',
                                             backgroundColor: '#3F69FF',
                                         },
                                     }}
@@ -270,7 +274,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                 {contactUsButton}
                             </>
                         ) : null}
-                        {!sm ? (
+                        {!md ? (
                             <>
                                 <Stack spacing={Spacing.Header} direction="row" alignItems="center">
                                     <Link

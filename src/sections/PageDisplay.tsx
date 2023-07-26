@@ -3,9 +3,9 @@ import { FunctionComponent } from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { IPageCardFields, IPageNavigationFields } from 'src/@types/contentful'
+import IconLink from 'src/general/IconLink'
 import Section from 'src/general/Section'
 import { theme } from 'src/theme/theme.default'
 
@@ -53,14 +53,9 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
                                 {title}
                             </Typography>
                             {description ? documentToReactComponents(description) : null}
-                            <Link
-                                href={`/work/${link}`}
-                                style={{
-                                    textDecoration: 'none',
-                                }}
-                            >
+                            <IconLink href={`/work/${link}`}>
                                 <Typography>{linkText}</Typography>
-                            </Link>
+                            </IconLink>
                         </Box>
                     )
                 })}
