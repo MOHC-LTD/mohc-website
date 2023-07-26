@@ -112,7 +112,7 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                 >
                     {!sm ? (
                         <Typography
-                            variant="h5"
+                            variant="h3"
                             color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
                         >
                             {title}

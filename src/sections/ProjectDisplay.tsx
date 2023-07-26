@@ -34,7 +34,7 @@ const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, 
 
     return (
         <Section maxWidth="xl" id={sectionId}>
-            <Typography mb={2} variant="h5">
+            <Typography mb={2} variant="h2">
                 {title}
             </Typography>
             <div ref={ref}>

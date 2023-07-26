@@ -49,7 +49,7 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
                                     height: 'auto',
                                 }}
                             />
-                            <Typography variant="h5" my={1}>
+                            <Typography variant="h3" my={1}>
                                 {title}
                             </Typography>
                             {description ? documentToReactComponents(description) : null}

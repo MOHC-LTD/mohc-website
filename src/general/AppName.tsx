@@ -5,7 +5,7 @@ import { Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { Except } from 'type-fest'
 
-import { theme } from 'src/theme/theme.default'
+import { fontFamilyConfig, theme } from 'src/theme/theme.default'
 
 interface AppNameProps extends Except<ContainerProps, 'sx'> {
     isDarkMode?: boolean
@@ -16,11 +16,12 @@ const AppName: FunctionComponent<AppNameProps> = ({ isDarkMode = false }) => {
 
     return (
         <Typography
-            variant="h5"
+            variant="h2"
             whiteSpace="nowrap"
             color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
             sx={{
                 marginBottom: 0,
+                fontWeight: fontFamilyConfig.weights.medium,
             }}
         >
             {t('home:header.name')}

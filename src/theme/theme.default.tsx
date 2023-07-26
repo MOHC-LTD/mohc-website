@@ -16,10 +16,10 @@ import { FontFamilyConfig, Palette, ThemeOptionsComponents } from 'src/theme/typ
 import { assertColor } from 'src/theme/utils/assertColor'
 
 const fontFamilyConfig: FontFamilyConfig = {
-    name: 'Indivisible',
+    name: 'indivisible',
     weights: {
         light: 300,
-        regular: 400,
+        regular: 500,
         medium: 600,
         bold: 700,
     },
@@ -390,56 +390,56 @@ theme = createTheme(theme, {
         fontWeightBold: fontFamilyConfig.weights.bold,
         h1: {
             fontFamily: fontFamilyConfig.name,
-            fontWeight: fontFamilyConfig.weights.bold,
-            lineHeight: 1.3,
-            fontSize: rem(38),
+            fontWeight: fontFamilyConfig.weights.regular,
+            lineHeight: 1.1,
+            fontSize: rem(36),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(84),
+                fontSize: rem(42),
             },
         },
         h2: {
             fontFamily: fontFamilyConfig.name,
             fontWeight: fontFamilyConfig.weights.regular,
-            lineHeight: 0.9,
-            fontSize: rem(38),
+            lineHeight: 1.2,
+            fontSize: rem(30),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(84),
+                fontSize: rem(36),
             },
         },
         h3: {
             fontFamily: fontFamilyConfig.name,
-            fontWeight: fontFamilyConfig.weights.bold,
+            fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 1.3,
-            fontSize: rem(32),
+            fontSize: rem(26),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(42),
+                fontSize: rem(30),
             },
         },
         h4: {
             fontFamily: fontFamilyConfig.name,
-            fontWeight: fontFamilyConfig.weights.medium,
+            fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 1.3,
-            fontSize: rem(32),
+            fontSize: rem(20),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(42),
+                fontSize: rem(26),
             },
         },
         h5: {
             fontFamily: fontFamilyConfig.name,
-            fontWeight: fontFamilyConfig.weights.bold,
-            lineHeight: 1.2,
-            fontSize: rem(22),
+            fontWeight: fontFamilyConfig.weights.regular,
+            lineHeight: 1.4,
+            fontSize: rem(20),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(32),
+                fontSize: rem(20),
             },
         },
         h6: {
             fontFamily: fontFamilyConfig.name,
-            fontWeight: fontFamilyConfig.weights.medium,
-            lineHeight: 1.3,
-            fontSize: rem(22),
+            fontWeight: fontFamilyConfig.weights.bold,
+            lineHeight: 1.4,
+            fontSize: rem(20),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(32),
+                fontSize: rem(20),
             },
         },
         subtitle1: {
@@ -460,7 +460,7 @@ theme = createTheme(theme, {
             lineHeight: 1.5,
             fontSize: rem(18),
             [theme.breakpoints.up('lg')]: {
-                fontSize: rem(20),
+                fontSize: rem(18),
             },
         },
         body2: {

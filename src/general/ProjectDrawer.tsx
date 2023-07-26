@@ -64,7 +64,7 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                     },
                 }}
             >
-                <Typography mb={2} variant="h3" color={theme.palette.text.primary}>
+                <Typography my={2} variant="h3" color={theme.palette.text.primary}>
                     {title}
                 </Typography>
                 <Typography mb={2} variant="body2" color={theme.palette.text.primary}>

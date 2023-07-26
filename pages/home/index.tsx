@@ -30,6 +30,7 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
         <Box
             component="div"
             sx={{
+                width: '100%',
                 position: 'absolute',
                 backgroundColor: '#fff',
                 '@keyframes screen': {

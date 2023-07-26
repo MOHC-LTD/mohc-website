@@ -8,10 +8,10 @@ const ContactUsCompleteStep: FunctionComponent = () => {
 
     return (
         <>
-            <Typography align="center" mb={2} variant="h5">
+            <Typography align="center" mb={2} variant="h3">
                 {t('forms:contact_us.thank_you_title')}
             </Typography>
-            <Typography mb={5} align="center" variant="body2">
+            <Typography mb={5} align="center" variant="body1">
                 {t('forms:contact_us.thank_you_subtitle')}
             </Typography>
         </>

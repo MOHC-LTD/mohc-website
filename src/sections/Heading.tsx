@@ -71,7 +71,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
                 >
                     <Typography
                         mb={1}
-                        variant="h3"
+                        variant="h1"
                         color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
                         sx={{
                             '@keyframes fonts': {
@@ -94,7 +94,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
                             },
                             fontFamily: fontFamily ?? fontFamilyConfig.name,
                             fontStyle: fontFamily && fontStyle ? fontStyle : 'normal',
-                            fontWeight: fontFamily && fontWeight ? fontWeight : '700',
+                            fontWeight: fontFamily && fontWeight ? fontWeight : '500',
                             whiteSpace: fontFamily ? 'nowrap' : 'normal',
                             overflow: fontFamily ? 'hidden' : 'visible',
                             animationName: fontFamily ? 'fonts' : null,

@@ -75,7 +75,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                 },
                             }}
                         >
-                            <Typography mb={2} variant="h3">
+                            <Typography mb={2} variant="h2">
                                 {title}
                             </Typography>
                             {subtitle ? documentToReactComponents(subtitle) : null}
@@ -132,7 +132,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                         },
                                     }}
                                 >
-                                    <Typography variant="h5">
+                                    <Typography variant="h2">
                                         {section.fields[`column${number}Title`] as string}
                                     </Typography>
                                     {documentToReactComponents(textColumn?.fields.textBlock as Document)}
@@ -147,7 +147,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                         },
                                     }}
                                 >
-                                    <Typography variant="h5">
+                                    <Typography variant="h2">
                                         {section.fields[`column${number}Title`] as string}
                                     </Typography>
                                     <Box
@@ -209,7 +209,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                             },
                         }}
                     >
-                        <Typography variant="h5">{title}</Typography>
+                        <Typography variant="h3">{title}</Typography>
                         {description ? documentToReactComponents(description) : null}
                     </Box>
                     {image ? <CustomImage image={image} /> : null}
@@ -366,7 +366,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
 
             return (
                 <Section maxWidth="xl">
-                    <Typography mb={4} variant="h5">
+                    <Typography mb={4} variant="h3">
                         {title as string}
                     </Typography>
                     {listItems ? (

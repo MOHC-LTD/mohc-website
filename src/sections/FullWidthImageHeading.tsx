@@ -50,7 +50,7 @@ const FullWidthImageHeading: FunctionComponent<FullWidthImageHeadingProps> = ({
                 >
                     <Typography
                         mb={1}
-                        variant="h4"
+                        variant="h1"
                         color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
                     >
                         {title}

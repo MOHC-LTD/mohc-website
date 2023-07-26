@@ -66,7 +66,11 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
             component="div"
             sx={{
                 backgroundImage: `url(https:${backgroundImage?.fields.file.url})!important`,
+                backgroundRepeat: 'no-repeat !important',
+                backgroundSize: 'cover !important',
                 background: background,
+                display: 'flex',
+                justifyContent: 'center',
             }}
         >
             <Container
@@ -82,11 +86,8 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                     [theme.breakpoints.down('md')]: {
                         height: isFullScreen && 'calc(100vh - 69px)',
                     },
-                    px: {
-                        xl: '140px',
-                    },
                 }}
-                maxWidth={maxWidth === 'xl' ? false : maxWidth}
+                maxWidth={maxWidth}
                 {...props}
             >
                 {hasEllipse ? (

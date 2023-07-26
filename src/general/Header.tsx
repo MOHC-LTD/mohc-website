@@ -165,6 +165,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                         gap={Spacing.Header}
                         gridTemplateColumns="max-content 1fr max-content"
                         alignItems="center"
+                        justifyContent="center"
                         width={1}
                     >
                         {sm ? (

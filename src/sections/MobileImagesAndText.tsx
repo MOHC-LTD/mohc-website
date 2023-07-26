@@ -43,7 +43,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                 >
                     {sm ? (
                         <Typography
-                            variant="h5"
+                            variant="h3"
                             mb={2}
                             color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
                         >
@@ -145,7 +145,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                             },
                         }}
                     >
-                        {!sm ? <Typography variant="h5">{title}</Typography> : null}
+                        {!sm ? <Typography variant="h3">{title}</Typography> : null}
                         {description ? documentToReactComponents(description) : null}
                     </Box>
                 </Box>

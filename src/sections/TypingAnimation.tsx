@@ -50,6 +50,7 @@ const TypingAnimation: FunctionComponent = () => {
                                 '100%': {
                                     width: '24ch',
                                     border: 'none',
+                                    display: 'none',
                                 },
                             },
 
