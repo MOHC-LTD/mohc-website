@@ -375,7 +375,10 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                             sx={{
                                 display: 'flex',
                                 flexWrap: 'wrap',
-                                maxWidth: `${100 - (8 - listItems.length) * 12.5}%`,
+                                maxWidth: '100%',
+                                [theme.breakpoints.up('md')]: {
+                                    maxWidth: `${100 - (8 - listItems.length) * 12.5}%`,
+                                },
                             }}
                         >
                             {listItems?.map((listItem) => {
@@ -386,9 +389,12 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                         component="div"
                                         key={listItemTitle}
                                         mb={2}
-                                        pr={1}
+                                        pr={2}
                                         sx={{
-                                            width: `${100 / (listItems.length / 2)}%`,
+                                            width: '50%',
+                                            [theme.breakpoints.up('md')]: {
+                                                width: `${100 / (listItems.length / 2)}%`,
+                                            },
                                         }}
                                     >
                                         <Typography variant="subtitle2">{listItemTitle}</Typography>

@@ -55,11 +55,9 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'flex-start',
-                        margin: '20px 0',
                         order: 1,
                         [theme.breakpoints.up('md')]: {
                             order: 2,
-                            margin: '20px 80px',
                         },
                     }}
                 >
