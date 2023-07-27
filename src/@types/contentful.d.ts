@@ -251,6 +251,28 @@ export interface IFullWidthImageHeader extends Entry<IFullWidthImageHeaderFields
     }
 }
 
+export interface IHeaderLinksFields {
+    /** link */
+    link?: IWorkPage[] | undefined
+}
+
+export interface IHeaderLinks extends Entry<IHeaderLinksFields> {
+    sys: {
+        id: string
+        type: string
+        createdAt: string
+        updatedAt: string
+        locale: string
+        contentType: {
+            sys: {
+                id: 'headerLinks'
+                linkType: 'ContentType'
+                type: 'Link'
+            }
+        }
+    }
+}
+
 export interface IHeadingFields {
     /** Title */
     title?: string | undefined
@@ -307,37 +329,6 @@ export interface IHeading extends Entry<IHeadingFields> {
         contentType: {
             sys: {
                 id: 'heading'
-                linkType: 'ContentType'
-                type: 'Link'
-            }
-        }
-    }
-}
-
-export interface IHeroBannerFields {
-    /** Title */
-    title?: string | undefined
-
-    /** Subtitle */
-    subtitle?: string | undefined
-
-    /** Image */
-    image?: Asset | undefined
-
-    /** Slug */
-    slug?: string | undefined
-}
-
-export interface IHeroBanner extends Entry<IHeroBannerFields> {
-    sys: {
-        id: string
-        type: string
-        createdAt: string
-        updatedAt: string
-        locale: string
-        contentType: {
-            sys: {
-                id: 'heroBanner'
                 linkType: 'ContentType'
                 type: 'Link'
             }
@@ -829,6 +820,9 @@ export interface IWorkPageFields {
     /** slug */
     slug?: string | undefined
 
+    /** Display name */
+    displayName?: string | undefined
+
     /** section */
     section?: Entry<{ [fieldId: string]: unknown }>[] | undefined
 }
@@ -857,8 +851,8 @@ export type CONTENT_TYPE =
     | 'deviceView'
     | 'fullWidthImage'
     | 'fullWidthImageHeader'
+    | 'headerLinks'
     | 'heading'
-    | 'heroBanner'
     | 'homePage'
     | 'iconBox'
     | 'image'
@@ -884,8 +878,8 @@ export type IEntry =
     | IDeviceView
     | IFullWidthImage
     | IFullWidthImageHeader
+    | IHeaderLinks
     | IHeading
-    | IHeroBanner
     | IHomePage
     | IIconBox
     | IImage

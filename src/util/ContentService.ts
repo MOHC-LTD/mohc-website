@@ -2,7 +2,13 @@
 import { createClient, Entry } from 'contentful'
 import { config } from 'dotenv'
 
-import { IHomePageFields, IPageFields, IProjectNavigationFields, IWorkPageFields } from 'src/@types/contentful'
+import {
+    IHeaderLinksFields,
+    IHomePageFields,
+    IPageFields,
+    IProjectNavigationFields,
+    IWorkPageFields,
+} from 'src/@types/contentful'
 
 declare global {
     interface ProcessEnv {
@@ -64,6 +70,15 @@ export default class ContentService {
     async getProjectNavigation(): Promise<Entry<IProjectNavigationFields>> {
         const entries = await this.client.getEntries<IProjectNavigationFields>({
             content_type: 'projectNavigation',
+        })
+
+        return entries.items[0]
+    }
+
+    async getHeaderLinks(): Promise<Entry<IHeaderLinksFields>> {
+        const entries = await this.client.getEntries<IHeaderLinksFields>({
+            content_type: 'headerLinks',
+            include: 3,
         })
 
         return entries.items[0]

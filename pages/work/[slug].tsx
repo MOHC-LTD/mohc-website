@@ -12,8 +12,14 @@ import { getSection } from 'src/sections/getSection'
 import { NextPageWithLayout } from 'src/types'
 import ContentService from 'src/util/ContentService'
 
+interface HeaderLink {
+    slug?: string
+    displayName?: string
+}
+
 interface Props {
     page: IPageFields
+    headerLinks?: HeaderLink[]
 }
 
 const getImagePlaceholderBase64 = async (url: string): Promise<string> => {
@@ -24,19 +30,9 @@ const getImagePlaceholderBase64 = async (url: string): Promise<string> => {
     return base64
 }
 
-const Page: NextPageWithLayout<Props> = ({ page }) => {
-    const menuOptions: string[] = page.section
-        ?.map((section) => {
-            if (section.fields.sectionId) {
-                return section.fields.sectionId
-            }
-
-            return undefined
-        })
-        .filter((notUndefined) => notUndefined !== undefined) as string[]
-
+const Page: NextPageWithLayout<Props> = ({ page, headerLinks }) => {
     return (
-        <PageLayout title={page.navigationTitle} menuOptions={[...menuOptions]}>
+        <PageLayout title={page.navigationTitle} menuOptions={headerLinks}>
             <Box component="div">
                 {page.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
@@ -66,6 +62,8 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
 
     const page = await ContentService.instance.getWorkPageBySlug(slug || '')
 
+    const headerLinks = await ContentService.instance.getHeaderLinks()
+
     if (!page) {
         return {
             notFound: true,
@@ -90,6 +88,10 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
     return {
         props: {
             page: page.fields,
+            headerLinks: headerLinks.fields.link?.map((link) => ({
+                slug: link.fields.slug,
+                displayName: link.fields.displayName,
+            })),
         },
     }
 }

@@ -26,10 +26,15 @@ import Icon from 'src/general/Icon'
 import { GeneralConfig, Spacing } from 'src/general/utils/config'
 import { theme } from 'src/theme/theme.default'
 
+interface MenuOptions {
+    slug?: string
+    displayName?: string
+}
+
 interface HeaderProps {
     disableStickyShadow?: boolean
     order?: number
-    menuOptions: string[]
+    menuOptions?: MenuOptions[]
     color?: string
     isDarkMode?: boolean
 }
@@ -240,21 +245,21 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                                 flexDirection: 'column',
                                             }}
                                         >
-                                            {menuOptions.map((option) => (
+                                            {menuOptions?.map((option) => (
                                                 <Typography
                                                     variant="h4"
                                                     color={theme.palette.text.secondary}
-                                                    key={option}
+                                                    key={option.displayName}
                                                 >
                                                     <ListItemButton
-                                                        href={`#${option}`}
+                                                        href={`/work/${option.slug}`}
                                                         onClick={drawerPopupState.close}
                                                         sx={{
                                                             display: 'flex',
                                                             justifyContent: 'center',
                                                         }}
                                                     >
-                                                        {option}
+                                                        {option.displayName}
                                                     </ListItemButton>
                                                 </Typography>
                                             ))}
@@ -296,10 +301,10 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                         flexDirection: 'row',
                                     }}
                                 >
-                                    {menuOptions.map((option) => (
+                                    {menuOptions?.map((option) => (
                                         <ListItemButton
-                                            key={option}
-                                            href={`#${option}`}
+                                            key={option.displayName}
+                                            href={`/work/${option.slug}`}
                                             onClick={drawerPopupState.close}
                                             sx={{
                                                 display: 'flex',
@@ -314,7 +319,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                                         : theme.palette.text.primary
                                                 }
                                             >
-                                                {option}
+                                                {option.displayName}
                                             </Typography>
                                         </ListItemButton>
                                     ))}

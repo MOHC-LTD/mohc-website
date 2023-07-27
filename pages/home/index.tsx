@@ -11,21 +11,17 @@ import TypingAnimation from 'src/sections/TypingAnimation'
 import { NextPageWithLayout } from 'src/types'
 import ContentService from 'src/util/ContentService'
 
-interface Props {
-    props: IHomePageFields
+interface HeaderLink {
+    slug?: string
+    displayName?: string
 }
 
-const Page: NextPageWithLayout<Props> = ({ props }) => {
-    const menuOptions = props.section
-        ?.map((section) => {
-            if (section.fields.sectionId) {
-                return section.fields.sectionId as string
-            }
+interface Props {
+    props: IHomePageFields
+    headerLinks?: HeaderLink[]
+}
 
-            return undefined
-        })
-        .filter((notUndefined) => notUndefined !== undefined) as string[]
-
+const Page: NextPageWithLayout<Props> = ({ props, headerLinks }) => {
     return (
         <Box
             component="div"
@@ -44,7 +40,7 @@ const Page: NextPageWithLayout<Props> = ({ props }) => {
                 animation: 'screen 2s 2s forwards',
             }}
         >
-            <PageLayout title="Home" menuOptions={[...menuOptions]}>
+            <PageLayout title="Home" menuOptions={headerLinks}>
                 <TypingAnimation />
                 {props?.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
@@ -59,6 +55,8 @@ Page.getLayout = (page): ReactNode => <DefaultThemeProvider>{page}</DefaultTheme
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const props = await ContentService.instance.getHomePageBySlug('home')
 
+    const headerLinks = await ContentService.instance.getHeaderLinks()
+
     if (!props) {
         return {
             notFound: true,
@@ -68,6 +66,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     return {
         props: {
             props: props.fields,
+            headerLinks: headerLinks.fields.link?.map((link) => ({
+                slug: link.fields.slug,
+                displayName: link.fields.displayName,
+            })),
         },
     }
 }

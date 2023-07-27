@@ -6,9 +6,14 @@ import Footer from 'src/general/Footer'
 import { Header } from 'src/general/Header'
 import PageTitle from 'src/general/PageTitle'
 
+interface menuOptions {
+    slug?: string
+    displayName?: string
+}
+
 interface PageLayoutProps {
     title?: string
-    menuOptions: string[]
+    menuOptions?: menuOptions[]
 }
 
 /**
