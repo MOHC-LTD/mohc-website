@@ -1,11 +1,10 @@
-import { FunctionComponent, useCallback, useEffect } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import i18n from 'i18next'
 import { enableMapSet } from 'immer'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import Router from 'next/router'
 import { initReactI18next } from 'react-i18next'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
@@ -29,15 +28,9 @@ i18n.use(initReactI18next).init({
 })
 
 const CustomApp: FunctionComponent<CustomAppProps> = ({ Component, pageProps, router }) => {
-    const resetWindowScrollPosition = useCallback(() => window.scrollTo(0, 0), [])
-
     useEffect(() => {
-        Router.events.on('routeChangeComplete', resetWindowScrollPosition)
-
-        return () => {
-            Router.events.off('routeChangeComplete', resetWindowScrollPosition)
-        }
-    }, [resetWindowScrollPosition])
+        window.history.scrollRestoration = 'manual'
+    }, [])
 
     return (
         <>
