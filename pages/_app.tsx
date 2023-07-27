@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import i18n from 'i18next'
@@ -27,38 +27,46 @@ i18n.use(initReactI18next).init({
     },
 })
 
-const CustomApp: FunctionComponent<CustomAppProps> = ({ Component, pageProps, router }) => (
-    <>
-        <Head>
-            <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </Head>
-        <QueryClientProvider client={queryClient} contextSharing={true}>
-            <ReactQueryDevtools initialIsOpen={false} />
-            <AnimatePresence mode={'wait'}>
-                <motion.div
-                    initial={{
-                        opacity: 0,
-                    }}
-                    animate={{
-                        opacity: 1,
-                    }}
-                    transition={{
-                        duration: 0.75,
-                    }}
-                    exit={{
-                        opacity: 0,
-                    }}
-                >
-                    {Component.getLayout ? (
-                        Component.getLayout(<Component key={router.pathname} {...pageProps} />, pageProps)
-                    ) : (
-                        <Component key={router.pathname} {...pageProps} />
-                    )}
-                </motion.div>
-            </AnimatePresence>
-        </QueryClientProvider>
-    </>
-)
+const CustomApp: FunctionComponent<CustomAppProps> = ({ Component, pageProps, router }) => {
+    useEffect(() => {
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0)
+        })
+    })
+
+    return (
+        <>
+            <Head>
+                <meta name="viewport" content="initial-scale=1, width=device-width" />
+            </Head>
+            <QueryClientProvider client={queryClient} contextSharing={true}>
+                <ReactQueryDevtools initialIsOpen={false} />
+                <AnimatePresence mode={'wait'}>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                        }}
+                        animate={{
+                            opacity: 1,
+                        }}
+                        transition={{
+                            duration: 0.75,
+                        }}
+                        exit={{
+                            opacity: 0,
+                        }}
+                    >
+                        {Component.getLayout ? (
+                            Component.getLayout(<Component key={router.pathname} {...pageProps} />, pageProps)
+                        ) : (
+                            <Component key={router.pathname} {...pageProps} />
+                        )}
+                    </motion.div>
+                </AnimatePresence>
+            </QueryClientProvider>
+        </>
+    )
+}
 
 export type { CustomAppProps }
 
