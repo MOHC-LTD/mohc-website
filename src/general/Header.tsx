@@ -300,17 +300,19 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                     sx={{
                                         display: 'flex',
                                         flexDirection: 'row',
+                                        alignItems: 'center',
                                     }}
                                 >
                                     {menuOptions?.map((option) => (
-                                        <ListItemButton
+                                        <Link
                                             key={option.displayName}
                                             href={`/work/${option.slug}`}
                                             onClick={drawerPopupState.close}
-                                            sx={{
+                                            style={{
                                                 display: 'flex',
                                                 justifyContent: 'center',
-                                                backgroundColor: 'transparent !important',
+                                                paddingRight: '30px',
+                                                textDecoration: 'none',
                                             }}
                                         >
                                             <Typography
@@ -322,7 +324,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                             >
                                                 {option.displayName}
                                             </Typography>
-                                        </ListItemButton>
+                                        </Link>
                                     ))}
                                     {contactUsButton}
                                 </Box>
