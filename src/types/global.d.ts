@@ -5,3 +5,7 @@ declare module '*SVG' {
 }
 
 declare module '*.png'
+
+declare module 'darkmode-js'
+
+declare module 'three'

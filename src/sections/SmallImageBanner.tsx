@@ -30,6 +30,7 @@ const SmallImageBanner: FunctionComponent<ISmallImageBannerFields> = ({ images }
                         style={{
                             maxWidth: '15%',
                             height: 'fit-content',
+                            mixBlendMode: 'normal',
                         }}
                     />
                 ))}

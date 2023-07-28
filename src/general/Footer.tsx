@@ -42,9 +42,19 @@ const Footer: FunctionComponent<FooterProps> = ({ order = 0 }) => {
                 gridTemplateColumns="max-content 1fr max-content"
                 alignItems="center"
                 width={1}
+                sx={{
+                    backgroundColor: '#101010 !important',
+                }}
             >
                 <Stack spacing={Spacing.Header} direction="row" alignItems="center">
-                    <Typography variant="body2" marginBottom={0}>
+                    <Typography
+                        variant="body2"
+                        marginBottom={0}
+                        sx={{
+                            color: '#fff !important',
+                            backgroundColor: '#101010 !important',
+                        }}
+                    >
                         {t('home:footer.name')}
                     </Typography>
                 </Stack>

@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect } from 'react'
 
+import Darkmode from 'darkmode-js'
 import { AnimatePresence, motion } from 'framer-motion'
 import i18n from 'i18next'
 import { enableMapSet } from 'immer'
@@ -11,6 +12,9 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { resources } from 'src/translations/resources'
 import { NextPageWithLayout } from 'src/types'
+
+// eslint-disable-next-line no-restricted-imports
+import '../styles.css'
 
 interface CustomAppProps extends AppProps {
     Component: NextPageWithLayout
@@ -26,6 +30,23 @@ i18n.use(initReactI18next).init({
         en: resources,
     },
 })
+
+const options = {
+    bottom: '50px',
+    right: '30px',
+    time: '0.5s',
+    mixColor: '#fff',
+    backgroundColor: '#fff',
+    buttonColorDark: '#212121',
+    buttonColorLight: '#fff',
+    saveInCookies: false,
+    label: '🌓',
+    autoMatchOsTheme: true,
+}
+
+const darkmode = new Darkmode(options)
+
+darkmode.showWidget()
 
 const CustomApp: FunctionComponent<CustomAppProps> = ({ Component, pageProps, router }) => {
     useEffect(() => {

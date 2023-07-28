@@ -51,7 +51,12 @@ const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, 
                             }}
                             ref={scrollRef}
                         >
-                            <motion.div variants={cardVariants}>
+                            <motion.div
+                                variants={cardVariants}
+                                style={{
+                                    backgroundColor: '#fff',
+                                }}
+                            >
                                 {page.fields.navigationImage &&
                                 page.fields.navigationImage.fields.file.details.image ? (
                                     <ProjectDrawer

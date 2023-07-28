@@ -156,6 +156,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                 margin: '10px',
                 borderRadius: '10px',
                 textTransform: 'none',
+                color: '#fff !important',
             }}
             onClick={contactUsDrawerPopupState.open}
         >
