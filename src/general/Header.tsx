@@ -10,7 +10,7 @@ import {
 } from 'react'
 
 import isPropValid from '@emotion/is-prop-valid'
-import { AppBar, Box, Button, Drawer, ListItemButton, Slide, Stack, styled, Typography } from '@mui/material'
+import { AppBar, Box, Button, Drawer, Slide, Stack, styled, Typography } from '@mui/material'
 import { assert } from '@sindresorhus/is'
 import { bindPopover, usePopupState } from 'material-ui-popup-state/hooks'
 import Link from 'next/link'
@@ -247,22 +247,21 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                             }}
                                         >
                                             {menuOptions?.map((option) => (
-                                                <Typography
-                                                    variant="h4"
-                                                    color={theme.palette.text.secondary}
+                                                <Link
+                                                    href={`/work/${option.slug}`}
+                                                    onClick={drawerPopupState.close}
                                                     key={option.displayName}
+                                                    style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        textDecoration: 'none',
+                                                        paddingBottom: '30px',
+                                                    }}
                                                 >
-                                                    <ListItemButton
-                                                        href={`/work/${option.slug}`}
-                                                        onClick={drawerPopupState.close}
-                                                        sx={{
-                                                            display: 'flex',
-                                                            justifyContent: 'center',
-                                                        }}
-                                                    >
+                                                    <Typography variant="h4" color={theme.palette.text.secondary}>
                                                         {option.displayName}
-                                                    </ListItemButton>
-                                                </Typography>
+                                                    </Typography>
+                                                </Link>
                                             ))}
                                         </Box>
                                     </Slide>
@@ -316,6 +315,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                             }}
                                         >
                                             <Typography
+                                                variant="h5"
                                                 color={
                                                     isDarkMode
                                                         ? theme.palette.text.secondary
@@ -337,7 +337,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                 sx: {
                                     boxShadow: 'none',
                                     width: sm ? '100%' : '40%',
-                                    backgroundColor: 'white',
+                                    backgroundColor: '#fff',
                                 },
                             }}
                         >
