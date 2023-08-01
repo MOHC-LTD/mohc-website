@@ -4,7 +4,7 @@ import { Box, Button, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import TextField from 'src/form/fields/TextField'
-import { useJourney } from 'src/general/Header'
+import { useJourney } from 'src/general/ContactUsDrawer'
 
 const ContactUsProjectStep: FunctionComponent = () => {
     const { t } = useTranslation()
@@ -19,28 +19,30 @@ const ContactUsProjectStep: FunctionComponent = () => {
             <Typography mb={5} align="center" variant="body1">
                 {t('forms:contact_us.subtitle')}
             </Typography>
-            <TextField
-                field={{
-                    label: t('forms:contact_us.project_label') as string,
-                    name: 'project',
-                    required: t('forms:general.required_error') as string,
-                    type: 'text',
-                    validation: {
-                        maxLength: 30,
-                    },
-                }}
-            />
-            <TextField
-                field={{
-                    label: t('forms:contact_us.budget_label') as string,
-                    name: 'budget',
-                    required: t('forms:general.required_error') as string,
-                    type: 'text',
-                    validation: {
-                        maxLength: 30,
-                    },
-                }}
-            />
+            <Box component="div" mb={4}>
+                <TextField
+                    field={{
+                        name: 'project',
+                        required: t('forms:general.required_error') as string,
+                        type: 'text',
+                    }}
+                    multiline
+                    label={t('forms:contact_us.project_label') as string}
+                />
+            </Box>
+            <Box component="div" mb={6}>
+                <TextField
+                    field={{
+                        name: 'budget',
+                        required: t('forms:general.required_error') as string,
+                        type: 'text',
+                        validation: {
+                            maxLength: 30,
+                        },
+                    }}
+                    label={t('forms:contact_us.budget_label') as string}
+                />
+            </Box>
             <Box
                 component="div"
                 sx={{

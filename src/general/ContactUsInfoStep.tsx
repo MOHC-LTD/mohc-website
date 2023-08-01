@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import EmailField from 'src/form/fields/EmailField'
 import NameField from 'src/form/fields/NameField'
-import { useJourney } from 'src/general/Header'
+import { useJourney } from 'src/general/ContactUsDrawer'
 
 const ContactUsInfoStep: FunctionComponent = () => {
     const { t } = useTranslation()
@@ -20,37 +20,43 @@ const ContactUsInfoStep: FunctionComponent = () => {
             <Typography mb={5} align="center" variant="body1">
                 {t('forms:contact_us.subtitle')}
             </Typography>
-            <NameField
-                field={{
-                    label: t('forms:first_name.label') as string,
-                    name: 'first_name',
-                    required: t('forms:first_name.required_error') as string,
-                    type: 'name',
-                    validation: {
-                        maxLength: 30,
-                    },
-                }}
-                autoComplete="given-name"
-            />
-            <NameField
-                field={{
-                    label: t('forms:last_name.label') as string,
-                    name: 'last_name',
-                    required: t('forms:last_name.required_error') as string,
-                    type: 'name',
-                    validation: {
-                        maxLength: 30,
-                    },
-                }}
-                autoComplete="family-name"
-            />
-            <EmailField
-                field={{
-                    label: t('forms:email.label') as string,
-                    name: 'email',
-                    type: 'email',
-                }}
-            />
+            <Box component="div" mb={4}>
+                <NameField
+                    field={{
+                        name: 'first_name',
+                        required: t('forms:first_name.required_error') as string,
+                        type: 'name',
+                        validation: {
+                            maxLength: 30,
+                        },
+                    }}
+                    label={t('forms:first_name.label') as string}
+                    autoComplete="given-name"
+                />
+            </Box>
+            <Box component="div" mb={4}>
+                <NameField
+                    field={{
+                        name: 'last_name',
+                        required: t('forms:last_name.required_error') as string,
+                        type: 'name',
+                        validation: {
+                            maxLength: 30,
+                        },
+                    }}
+                    label={t('forms:last_name.label') as string}
+                    autoComplete="family-name"
+                />
+            </Box>
+            <Box component="div" mb={6}>
+                <EmailField
+                    field={{
+                        name: 'email',
+                        type: 'email',
+                    }}
+                    label={t('forms:email.label') as string}
+                />
+            </Box>
             <Box
                 component="div"
                 sx={{

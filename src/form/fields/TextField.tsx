@@ -30,6 +30,10 @@ interface TextFieldProps extends AllowedMUITextFieldProps {
      */
     field: TextFieldFieldConfigs
     /**
+     * Field label.
+     */
+    label?: string
+    /**
      * Additional validation rules.
      */
     rules?: Except<RegisterOptions, 'required' | 'minLength' | 'maxLength'>
@@ -102,7 +106,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
     endAdornment,
     ...props
 }) => {
-    const { field, ...rest } = props
+    const { field, label, ...rest } = props
 
     const { t } = useTranslation()
 
@@ -161,7 +165,9 @@ const TextField: FunctionComponent<TextFieldProps> = ({
                 id={getFormFieldId(field.name)}
                 value={textfieldValue || ''}
                 placeholder={field.placeholder}
+                variant="standard"
                 name={field.name}
+                label={label}
                 error={!!error}
                 fullWidth
                 onChange={(event): void => {

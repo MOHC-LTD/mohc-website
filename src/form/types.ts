@@ -68,6 +68,7 @@ type FormFieldProps<TFieldConfig extends FieldConfig, TFieldProps = unknown> = O
     'value' | 'onChange' | 'onBlur' | 'ref'
 > & {
     field: TFieldConfig
+    label: string
 }
 
 /**

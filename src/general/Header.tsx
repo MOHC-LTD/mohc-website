@@ -1,28 +1,16 @@
-import {
-    type ReactNode,
-    createContext,
-    FunctionComponent,
-    useCallback,
-    useContext,
-    useId,
-    useMemo,
-    useState,
-} from 'react'
+import { FunctionComponent, useId } from 'react'
 
 import isPropValid from '@emotion/is-prop-valid'
-import { AppBar, Box, Button, Drawer, Slide, Stack, styled, Typography } from '@mui/material'
-import { assert } from '@sindresorhus/is'
-import { bindPopover, usePopupState } from 'material-ui-popup-state/hooks'
+import { AppBar, Box, Button, Stack, styled, Typography } from '@mui/material'
+import { usePopupState } from 'material-ui-popup-state/hooks'
 import Link from 'next/link'
-import { FormProvider, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useResizeDetector } from 'react-resize-detector'
 
 import AppName from 'src/general/AppName'
-import { ContactUsCompleteStep } from 'src/general/ContactUsCompleteStep'
-import { ContactUsInfoStep } from 'src/general/ContactUsInfoStep'
-import { ContactUsProjectStep } from 'src/general/ContactUsProjectStep'
+import { ContactUsDrawer } from 'src/general/ContactUsDrawer'
 import Icon from 'src/general/Icon'
+import { MobileHeaderDrawer } from 'src/general/MobileHeaderDrawer'
 import { GeneralConfig, Spacing } from 'src/general/utils/config'
 import { theme } from 'src/theme/theme.default'
 
@@ -43,20 +31,6 @@ interface HeaderRootProps {
     order: number
 }
 
-interface ContactUsStepConfig {
-    id: string | undefined
-    renderStep: () => ReactNode
-}
-
-interface ContactUsProviderContextValue {
-    currentStep: ContactUsStepConfig
-    gotoStep: GotoStep
-}
-
-interface GotoStep {
-    (stepId: string | undefined): void
-}
-
 const HeaderRoot = styled(AppBar, {
     name: 'HeaderRoot',
     shouldForwardProp: isPropValid,
@@ -74,39 +48,6 @@ const HeaderRoot = styled(AppBar, {
     zIndex: theme.zIndex.tooltip,
     backfaceVisibility: 'hidden',
 }))
-
-const DrawerHeader = styled('div', {
-    name: 'DrawerHeader',
-})(() => ({
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(2.5, 1),
-}))
-
-const JourneyProviderContext = createContext<ContactUsProviderContextValue | undefined>(undefined)
-
-const useJourney = (): ContactUsProviderContextValue => {
-    const value = useContext(JourneyProviderContext)
-
-    assert.plainObject(value)
-
-    return value
-}
-
-const contactUsSteps: ContactUsStepConfig[] = [
-    {
-        id: 'Info',
-        renderStep: (): ReactNode => <ContactUsInfoStep />,
-    },
-    {
-        id: 'Project',
-        renderStep: (): ReactNode => <ContactUsProjectStep />,
-    },
-    {
-        id: 'Complete',
-        renderStep: (): ReactNode => <ContactUsCompleteStep />,
-    },
-]
 
 const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDarkMode = false }) => {
     const { t } = useTranslation()
@@ -126,26 +67,6 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
         popupId: useId(),
         variant: 'dialog',
     })
-
-    const form = useForm()
-
-    const [currentStep, setCurrentStep] = useState(contactUsSteps[0])
-
-    const gotoStep = useCallback<GotoStep>((stepId) => {
-        const newStep = contactUsSteps.find((step) => step.id === stepId)
-
-        if (newStep) {
-            setCurrentStep(newStep)
-        }
-    }, [])
-
-    const value = useMemo<ContactUsProviderContextValue>(
-        () => ({
-            currentStep,
-            gotoStep,
-        }),
-        [currentStep, gotoStep]
-    )
 
     const contactUsButton = (
         <Button
@@ -194,78 +115,11 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                         }}
                                     />
                                 </Button>
-                                <Drawer
-                                    anchor="top"
-                                    transitionDuration={500}
-                                    {...bindPopover(drawerPopupState)}
-                                    PaperProps={{
-                                        sx: {
-                                            boxShadow: 'none',
-                                            height: '100%',
-                                            width: sm ? '100%' : '40%',
-                                            backgroundColor: '#3F69FF',
-                                        },
-                                    }}
-                                    sx={{
-                                        zIndex: 5000,
-                                    }}
-                                >
-                                    <DrawerHeader>
-                                        <Button
-                                            onClick={drawerPopupState.close}
-                                            sx={{
-                                                padding: '0 26px !important',
-                                            }}
-                                        >
-                                            <Icon color={theme.palette.text.secondary} name="close" />
-                                        </Button>
-                                        <Link
-                                            href="/home"
-                                            style={{
-                                                textDecoration: 'none',
-                                            }}
-                                        >
-                                            <AppName isDarkMode={true} />
-                                        </Link>
-                                    </DrawerHeader>
-                                    <Slide
-                                        direction="down"
-                                        in={drawerPopupState.isOpen}
-                                        mountOnEnter
-                                        unmountOnExit
-                                        timeout={{
-                                            enter: 1500,
-                                            exit: 300,
-                                        }}
-                                    >
-                                        <Box
-                                            component="div"
-                                            m={3}
-                                            sx={{
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                            }}
-                                        >
-                                            {menuOptions?.map((option) => (
-                                                <Link
-                                                    href={`/work/${option.slug}`}
-                                                    onClick={drawerPopupState.close}
-                                                    key={option.displayName}
-                                                    style={{
-                                                        display: 'flex',
-                                                        justifyContent: 'center',
-                                                        textDecoration: 'none',
-                                                        paddingBottom: '30px',
-                                                    }}
-                                                >
-                                                    <Typography variant="h4" color={theme.palette.text.secondary}>
-                                                        {option.displayName}
-                                                    </Typography>
-                                                </Link>
-                                            ))}
-                                        </Box>
-                                    </Slide>
-                                </Drawer>
+                                <MobileHeaderDrawer
+                                    state={drawerPopupState}
+                                    menuOptions={menuOptions}
+                                    isMobile={sm || false}
+                                />
                                 <Stack spacing={Spacing.Header} direction="row" alignItems="center">
                                     <Link
                                         href="/home"
@@ -330,73 +184,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                 </Box>
                             </>
                         ) : null}
-                        <Drawer
-                            anchor="right"
-                            {...bindPopover(contactUsDrawerPopupState)}
-                            PaperProps={{
-                                sx: {
-                                    boxShadow: 'none',
-                                    width: sm ? '100%' : '40%',
-                                    backgroundColor: '#fff',
-                                },
-                            }}
-                        >
-                            <Box
-                                component="div"
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                }}
-                            >
-                                {currentStep.id === 'Project' ? (
-                                    <Button
-                                        onClick={(): void => gotoStep('Info')}
-                                        variant="text"
-                                        sx={{
-                                            padding: '20px !important',
-                                            backgroundColor: 'transparent !important',
-                                        }}
-                                    >
-                                        <Icon color="black" name="arrow_back" />
-                                    </Button>
-                                ) : null}
-                                <Button
-                                    onClick={(): void => {
-                                        contactUsDrawerPopupState.close()
-
-                                        gotoStep('Info')
-                                    }}
-                                    variant="text"
-                                    sx={{
-                                        padding: '20px !important',
-                                        backgroundColor: 'transparent !important',
-                                    }}
-                                >
-                                    <Icon color="black" name="close" />
-                                </Button>
-                            </Box>
-                            <Box
-                                component="div"
-                                my={sm ? 1 : 3}
-                                mx={sm ? 3 : 5}
-                                sx={{
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <JourneyProviderContext.Provider value={value}>
-                                    <FormProvider {...form}>
-                                        <form>{currentStep.renderStep()}</form>
-                                    </FormProvider>
-                                </JourneyProviderContext.Provider>
-                                <Typography m={2} variant="caption">
-                                    {t('forms:contact_us.email')}
-                                </Typography>
-                            </Box>
-                        </Drawer>
+                        <ContactUsDrawer state={contactUsDrawerPopupState} isMobile={sm || false} />
                     </Box>
                 </HeaderRoot>
             </div>
@@ -406,4 +194,4 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
 
 export type { HeaderProps }
 
-export { Header, useJourney }
+export { Header }

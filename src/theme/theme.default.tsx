@@ -1,14 +1,4 @@
-import {
-    alpha,
-    buttonClasses,
-    circularProgressClasses,
-    createTheme,
-    darken,
-    iconButtonClasses,
-    inputBaseClasses,
-    outlinedInputClasses,
-    ThemeOptions,
-} from '@mui/material'
+import { alpha, buttonClasses, circularProgressClasses, createTheme, darken, ThemeOptions } from '@mui/material'
 import { rem } from 'polished'
 
 import { GeneralConfig, Spacing } from 'src/general/utils/config'
@@ -166,89 +156,6 @@ const components: ThemeOptionsComponents = {
         styleOverrides: {
             root: ({ theme }) => ({
                 color: theme.palette.text.primary,
-            }),
-        },
-    },
-    MuiOutlinedInput: {
-        styleOverrides: {
-            adornedEnd: ({ theme }) => ({
-                paddingRight: theme.spacing(1.5),
-            }),
-            adornedStart: ({ theme }) => ({
-                paddingLeft: theme.spacing(1.5),
-            }),
-            input: ({ theme }) => ({
-                '&[type="password"]': {
-                    fontFamily: 'Verdana',
-                    letterSpacing: theme.spacing(0.25),
-                },
-                border: 'none',
-                boxSizing: 'border-box',
-                height: theme.spacing(GeneralConfig.InputHeight),
-                padding: theme.spacing(Spacing.InputVertical, Spacing.InputHorizontal),
-                textOverflow: 'ellipsis',
-                color: theme.palette.text.primary,
-                [`&.${outlinedInputClasses.disabled}`]: {
-                    WebkitTextFillColor: 'unset',
-                    color: alpha(theme.palette.text.primary, theme.palette.action.disabledOpacity),
-                },
-            }),
-            inputAdornedEnd: ({ theme }) => ({
-                paddingRight: theme.spacing(1.5),
-            }),
-            inputAdornedStart: ({ theme }) => ({
-                paddingLeft: theme.spacing(1.5),
-            }),
-            multiline: ({ theme }) => ({
-                padding: theme.spacing(0),
-            }),
-            notchedOutline: ({ theme }) => ({
-                border: 'none',
-                borderBottom: '1px solid black',
-                borderRadius: 0,
-                // Default hover
-                [`.${inputBaseClasses.root}.${outlinedInputClasses.root}:hover &`]: {
-                    borderBottom: `2px solid ${theme.palette.text.primary}`,
-                },
-                // Default focused
-                [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.focused} &`]: {
-                    borderBottom: `2px solid ${theme.palette.text.primary}`,
-                },
-                // Default disabled
-                [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.disabled} &`]: {
-                    backgroundColor: theme.palette.action.hover,
-                    borderBottom: 'none',
-                },
-                // Error
-                [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.error} &`]: {
-                    borderBottom: `2px solid ${theme.palette.error.main}`,
-                },
-                // Error hover
-                [`.${inputBaseClasses.root}.${outlinedInputClasses.root}.${outlinedInputClasses.error}:hover &`]: {
-                    borderBottom: `2px solid ${theme.palette.error.main}`,
-                },
-                // Error focused
-                [`.${inputBaseClasses.root}.${outlinedInputClasses.root}` +
-                `.${outlinedInputClasses.error}.${outlinedInputClasses.focused} &`]: {
-                    borderBottom: `2px solid ${theme.palette.error.main}`,
-                },
-                // Error disabled
-                [`.${inputBaseClasses.root}.${outlinedInputClasses.root}` +
-                `.${outlinedInputClasses.error}.${outlinedInputClasses.disabled} &`]: {
-                    backgroundColor: theme.palette.action.disabledBackground,
-                    borderBottom: 'none',
-                },
-            }),
-            root: ({ theme }) => ({
-                maxWidth: '100%',
-                minHeight: theme.spacing(GeneralConfig.InputHeight),
-                marginBottom: '50px',
-                [`.${iconButtonClasses.edgeStart}`]: {
-                    margin: theme.spacing(0, -1),
-                },
-                [`.${iconButtonClasses.edgeEnd}`]: {
-                    margin: theme.spacing(0, -1),
-                },
             }),
         },
     },
