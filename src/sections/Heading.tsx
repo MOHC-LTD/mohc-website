@@ -2,8 +2,8 @@ import { FunctionComponent } from 'react'
 
 import { Box, Typography } from '@mui/material'
 import { Asset } from 'contentful'
-import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
+import { useResizeDetector } from 'react-resize-detector'
 
 import Section from 'src/general/Section'
 import { fontFamilyConfig, theme } from 'src/theme/theme.default'
@@ -38,145 +38,149 @@ const Heading: FunctionComponent<HeadingProps> = ({
 }) => {
     const { t } = useTranslation()
 
+    const { width, ref } = useResizeDetector()
+
+    const sm = width && width < theme.breakpoints.values.md
+
     return (
-        <Section maxWidth="xl" isFullScreen backgroundColor={color} fadeType={fadeType}>
-            <Box
-                component="div"
-                sx={{
-                    minHeight: '300px',
-                    maxHeight: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    [theme.breakpoints.up('md')]: {
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        minHeight: '500px',
-                    },
-                }}
-            >
+        <div ref={ref}>
+            <Section maxWidth="xl" isFullScreen={sm ? false : true} backgroundColor={color} fadeType={fadeType}>
                 <Box
                     component="div"
-                    id="title"
-                    mr={2}
                     sx={{
-                        order: 2,
+                        minHeight: '300px',
+                        maxHeight: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
                         [theme.breakpoints.up('md')]: {
-                            maxWidth: '40%',
-                            order: 1,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            minHeight: '500px',
                         },
                     }}
                 >
-                    <Typography
-                        mb={1}
-                        variant="h1"
-                        color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                    <Box
+                        component="div"
+                        id="title"
+                        mr={2}
                         sx={{
-                            '@keyframes fonts': {
-                                '0%': {
-                                    fontFamily: 'baskerville-pt',
-                                    fontStyle: 'italic',
-                                    width: '100%',
-                                },
-                                '33%': {
-                                    width: 0,
-                                },
-                                '66%': {
-                                    width: 0,
-                                },
-                                '100%': {
-                                    fontFamily: fontFamilyConfig.name,
-                                    fontStyle: 'normal',
-                                    width: '100%',
-                                },
+                            order: 2,
+                            [theme.breakpoints.up('md')]: {
+                                maxWidth: '40%',
+                                order: 1,
                             },
-                            fontFamily: fontFamily ?? fontFamilyConfig.name,
-                            fontStyle: fontFamily && fontStyle ? fontStyle : 'normal',
-                            fontWeight: fontFamily && fontWeight ? fontWeight : '500',
-                            whiteSpace: fontFamily ? 'nowrap' : 'normal',
-                            overflow: fontFamily ? 'hidden' : 'visible',
-                            animationName: fontFamily ? 'fonts' : null,
-                            animationDuration: '1.5s',
-                            animationDelay: '1.5s',
-                            animationFillMode: 'forwards',
                         }}
                     >
-                        {title}
-                    </Typography>
-                    <Typography
-                        mb={1}
-                        variant="body1"
-                        color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
-                    >
-                        {subtitle}
-                    </Typography>
-                    {sector ? (
-                        <Box
-                            component="div"
+                        <Typography
+                            mb={1}
+                            variant="h1"
+                            color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
                             sx={{
-                                display: 'flex',
-                                alignItems: 'center',
+                                '@keyframes fonts': {
+                                    '0%': {
+                                        fontFamily: 'baskerville-pt',
+                                        fontStyle: 'italic',
+                                        width: '100%',
+                                    },
+                                    '33%': {
+                                        width: 0,
+                                    },
+                                    '66%': {
+                                        width: 0,
+                                    },
+                                    '100%': {
+                                        fontFamily: fontFamilyConfig.name,
+                                        fontStyle: 'normal',
+                                        width: '100%',
+                                    },
+                                },
+                                fontFamily: fontFamily ?? fontFamilyConfig.name,
+                                fontStyle: fontFamily && fontStyle ? fontStyle : 'normal',
+                                fontWeight: fontFamily && fontWeight ? fontWeight : '500',
+                                whiteSpace: fontFamily ? 'nowrap' : 'normal',
+                                overflow: fontFamily ? 'hidden' : 'visible',
+                                animationName: fontFamily ? 'fonts' : null,
+                                animationDuration: '1.5s',
+                                animationDelay: '1.5s',
+                                animationFillMode: 'forwards',
                             }}
                         >
-                            <Typography
-                                variant="body1"
-                                color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
-                            >
-                                {t('general:sector')}
-                            </Typography>
-                            <Typography
-                                variant="body1"
-                                color={isDarkMode ? color : theme.palette.text.primary}
+                            {title}
+                        </Typography>
+                        <Typography
+                            mb={1}
+                            variant="body1"
+                            color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                        >
+                            {subtitle}
+                        </Typography>
+                        {sector ? (
+                            <Box
+                                component="div"
                                 sx={{
-                                    backgroundColor: isDarkMode
-                                        ? theme.palette.background.default
-                                        : theme.palette.divider,
-                                    padding: '8px',
-                                    margin: '8px',
+                                    display: 'flex',
+                                    alignItems: 'center',
                                 }}
                             >
-                                {sector}
-                            </Typography>
+                                <Typography
+                                    variant="body1"
+                                    color={isDarkMode ? theme.palette.background.default : theme.palette.text.primary}
+                                >
+                                    {t('general:sector')}
+                                </Typography>
+                                <Typography
+                                    variant="body1"
+                                    color={isDarkMode ? color : theme.palette.text.primary}
+                                    sx={{
+                                        backgroundColor: isDarkMode
+                                            ? theme.palette.background.default
+                                            : theme.palette.divider,
+                                        padding: '8px',
+                                        margin: '8px',
+                                    }}
+                                >
+                                    {sector}
+                                </Typography>
+                            </Box>
+                        ) : null}
+                    </Box>
+                    {image ? (
+                        <Box
+                            mb={2}
+                            component="div"
+                            sx={{
+                                position: 'relative',
+                                maxWidth: '100%',
+                                order: 1,
+                                [theme.breakpoints.up('md')]: {
+                                    display: 'flex',
+                                    height: 'fit-content',
+                                    maxWidth: '55%',
+                                    order: 2,
+                                },
+                            }}
+                        >
+                            <video
+                                src={`https:${image.fields.file.url}`}
+                                autoPlay
+                                muted
+                                playsInline
+                                loop
+                                style={{
+                                    maxWidth: '100%',
+                                    width: 'auto',
+                                    height: 'auto',
+                                    borderRadius: '16px',
+                                }}
+                            />
                         </Box>
                     ) : null}
                 </Box>
-                {image ? (
-                    <Box
-                        mb={2}
-                        component="div"
-                        sx={{
-                            position: 'relative',
-                            maxWidth: '100%',
-                            order: 1,
-                            [theme.breakpoints.up('md')]: {
-                                display: 'flex',
-                                height: 'fit-content',
-                                maxWidth: '55%',
-                                order: 2,
-                            },
-                        }}
-                    >
-                        <Image
-                            {...('placeholder' in image.fields.file && {
-                                blurDataURL: image.fields.file.placeholder as string,
-                                placeholder: 'blur',
-                            })}
-                            alt={image.fields.title}
-                            src={`https:${image.fields.file.url}`}
-                            width={image.fields.file.details.image?.width}
-                            height={image.fields.file.details.image?.height}
-                            style={{
-                                maxWidth: '100%',
-                                width: 'auto',
-                                height: 'auto',
-                            }}
-                        />
-                    </Box>
-                ) : null}
-            </Box>
-        </Section>
+            </Section>
+        </div>
     )
 }
 
