@@ -350,9 +350,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         }
 
         case 'projectNavigation': {
-            const { project, title, sectionId }: IProjectNavigationFields = section.fields
+            const { project, title, sectionId, isCarousel }: IProjectNavigationFields = section.fields
 
-            return <ProjectDisplay project={project} title={title} sectionId={sectionId} />
+            return <ProjectDisplay project={project} title={title} isCarousel={isCarousel} sectionId={sectionId} />
         }
 
         case 'pageNavigation': {

@@ -9,3 +9,5 @@ declare module '*.png'
 declare module 'darkmode-js'
 
 declare module 'three'
+
+declare module 'react-swipeable-views'

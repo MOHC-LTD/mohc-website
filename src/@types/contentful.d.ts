@@ -692,6 +692,9 @@ export interface IProjectNavigationFields {
 
     /** Section ID */
     sectionId?: string | undefined
+
+    /** Is carousel */
+    isCarousel?: boolean | undefined
 }
 
 /** Add project pages in the order you would like them to appear in the navigation. */
