@@ -13,6 +13,7 @@ import { EmailFieldConfig, NameFieldConfig, TextAreaFieldConfig, TextFieldConfig
 import { getDescribedBy } from 'src/form/utils/getDescribedBy'
 import { getFormFieldId } from 'src/form/utils/getFormFieldId'
 import { getValidateRules } from 'src/form/utils/getValidateRules'
+import { Color } from 'src/theme/types'
 
 type TextFieldFieldConfigs = TextFieldConfig | TextAreaFieldConfig | EmailFieldConfig | NameFieldConfig
 
@@ -33,6 +34,10 @@ interface TextFieldProps extends AllowedMUITextFieldProps {
      * Field label.
      */
     label?: string
+    /**
+     * Field color.
+     */
+    color?: Color
     /**
      * Additional validation rules.
      */
@@ -106,7 +111,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
     endAdornment,
     ...props
 }) => {
-    const { field, label, ...rest } = props
+    const { field, label, color, ...rest } = props
 
     const { t } = useTranslation()
 
@@ -170,6 +175,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
                 label={label}
                 error={!!error}
                 fullWidth
+                color={color}
                 onChange={(event): void => {
                     if (readOnly) {
                         return

@@ -1,25 +1,19 @@
 import { FunctionComponent } from 'react'
 
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import EmailField from 'src/form/fields/EmailField'
 import NameField from 'src/form/fields/NameField'
 import { useJourney } from 'src/general/ContactUsProvider'
 
-const ContactUsInfoStep: FunctionComponent = () => {
+const ContactUsFooterInfoStep: FunctionComponent = () => {
     const { t } = useTranslation()
 
     const { gotoStep } = useJourney()
 
     return (
         <>
-            <Typography align="center" mb={2} variant="h3">
-                {t('forms:contact_us.name')}
-            </Typography>
-            <Typography mb={5} align="center" variant="body1">
-                {t('forms:contact_us.subtitle')}
-            </Typography>
             <Box component="div" mb={4}>
                 <NameField
                     field={{
@@ -30,6 +24,7 @@ const ContactUsInfoStep: FunctionComponent = () => {
                             maxLength: 30,
                         },
                     }}
+                    color="secondary"
                     label={t('forms:first_name.label') as string}
                     autoComplete="given-name"
                 />
@@ -44,6 +39,7 @@ const ContactUsInfoStep: FunctionComponent = () => {
                             maxLength: 30,
                         },
                     }}
+                    color="secondary"
                     label={t('forms:last_name.label') as string}
                     autoComplete="family-name"
                 />
@@ -54,6 +50,7 @@ const ContactUsInfoStep: FunctionComponent = () => {
                         name: 'email',
                         type: 'email',
                     }}
+                    color="secondary"
                     label={t('forms:email.label') as string}
                 />
             </Box>
@@ -61,10 +58,19 @@ const ContactUsInfoStep: FunctionComponent = () => {
                 component="div"
                 sx={{
                     display: 'flex',
-                    justifyContent: 'center',
+                    justifyContent: 'flex-end',
                 }}
             >
-                <Button type="submit" onClick={(): void => gotoStep('Project')} variant="contained" color="info">
+                <Button
+                    type="submit"
+                    onClick={(): void => gotoStep('Project')}
+                    variant="contained"
+                    color="secondary"
+                    sx={{
+                        borderRadius: '25px',
+                        padding: '5px 40px',
+                    }}
+                >
                     {t('forms:next')}
                 </Button>
             </Box>
@@ -72,4 +78,4 @@ const ContactUsInfoStep: FunctionComponent = () => {
     )
 }
 
-export { ContactUsInfoStep }
+export { ContactUsFooterInfoStep }

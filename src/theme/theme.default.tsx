@@ -154,9 +154,13 @@ const components: ThemeOptionsComponents = {
     },
     MuiFormLabel: {
         styleOverrides: {
-            root: ({ theme }) => ({
-                color: theme.palette.text.primary,
-            }),
+            root: ({ ownerState: { color }, theme }) => {
+                assertColor(color, 'FormLabel')
+
+                return {
+                    color: theme.palette[color].main,
+                }
+            },
         },
     },
 }

@@ -1,35 +1,54 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 
 import { Box, Typography } from '@mui/material'
-import { FormProvider, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import EmailField from 'src/form/fields/EmailField'
-import NameField from 'src/form/fields/NameField'
+import { ContactUsFooterCompleteStep } from 'src/general/ContactUsFooterCompleteStep'
+import { ContactUsFooterInfoStep } from 'src/general/ContactUsFooterInfoStep'
+import { ContactUsFooterProjectStep } from 'src/general/ContactUsFooterProjectStep'
+import { ContactUsProvider } from 'src/general/ContactUsProvider'
 import Section from 'src/general/Section'
-import TriButton from 'src/interactive/buttons/TriButton'
 import { theme } from 'src/theme/theme.default'
 
 interface ContactUsProps {
     sectionId?: string
 }
 
+interface ContactUsStepConfig {
+    id: string | undefined
+    renderStep: () => ReactNode
+}
+
+const contactUsSteps: ContactUsStepConfig[] = [
+    {
+        id: 'Info',
+        renderStep: (): ReactNode => <ContactUsFooterInfoStep />,
+    },
+    {
+        id: 'Project',
+        renderStep: (): ReactNode => <ContactUsFooterProjectStep />,
+    },
+    {
+        id: 'Complete',
+        renderStep: (): ReactNode => <ContactUsFooterCompleteStep />,
+    },
+]
+
 const ContactUs: FunctionComponent<ContactUsProps> = ({ sectionId }) => {
     const { t } = useTranslation()
 
-    const form = useForm()
-
     return (
-        <Section maxWidth="xl" backgroundColor="#E7F2FF" id={sectionId}>
+        <Section maxWidth="xl" backgroundColor="#3F69FF" id={sectionId}>
             <Box
                 component="div"
-                my={4}
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     [theme.breakpoints.up('md')]: {
                         flexDirection: 'row',
                         justifyContent: 'space-between',
+                        alignItems: 'center',
+                        minHeight: '350px',
                     },
                 }}
             >
@@ -45,55 +64,23 @@ const ContactUs: FunctionComponent<ContactUsProps> = ({ sectionId }) => {
                         },
                     }}
                 >
-                    <Typography variant="h5" color={theme.palette.text.primary} marginBottom="20px">
+                    <Typography variant="h5" color={theme.palette.text.secondary} marginBottom="20px">
                         {t('home:contact_us.title')}
                     </Typography>
-                    <Typography variant="body1" color={theme.palette.text.primary}>
+                    <Typography variant="body1" color={theme.palette.text.secondary}>
                         {t('home:contact_us.subtitle')}
                     </Typography>
                 </Box>
                 <Box
                     component="div"
                     sx={{
+                        width: '100%',
                         [theme.breakpoints.up('md')]: {
-                            maxWidth: '50%',
+                            width: '50%',
                         },
                     }}
                 >
-                    <FormProvider {...form}>
-                        <form>
-                            <NameField
-                                field={{
-                                    label: t('forms:first_name.label') || undefined,
-                                    name: 'first_name',
-                                    required: t('forms:first_name.required_error') || undefined,
-                                    type: 'name',
-                                    validation: {
-                                        maxLength: 30,
-                                    },
-                                }}
-                            />
-                            <NameField
-                                field={{
-                                    label: t('forms:last_name.label') || undefined,
-                                    name: 'last_name',
-                                    required: t('forms:last_name.required_error') || undefined,
-                                    type: 'name',
-                                    validation: {
-                                        maxLength: 30,
-                                    },
-                                }}
-                            />
-                            <EmailField
-                                field={{
-                                    label: t('forms:email.label') || undefined,
-                                    name: 'email',
-                                    type: 'email',
-                                }}
-                            />
-                            <TriButton type="submit">{t('forms:submit')}</TriButton>
-                        </form>
-                    </FormProvider>
+                    <ContactUsProvider steps={contactUsSteps} />
                 </Box>
             </Box>
         </Section>

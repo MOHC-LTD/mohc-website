@@ -1,15 +1,13 @@
-import { type ReactNode, createContext, FunctionComponent, useCallback, useContext, useMemo, useState } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 
-import { Box, Button, Drawer, Typography } from '@mui/material'
-import { assert } from '@sindresorhus/is'
+import { Box, Drawer, Typography } from '@mui/material'
 import { bindPopover, PopupState } from 'material-ui-popup-state/hooks'
-import { FormProvider, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 import { ContactUsCompleteStep } from 'src/general/ContactUsCompleteStep'
 import { ContactUsInfoStep } from 'src/general/ContactUsInfoStep'
 import { ContactUsProjectStep } from 'src/general/ContactUsProjectStep'
-import Icon from 'src/general/Icon'
+import { ContactUsProvider } from 'src/general/ContactUsProvider'
 
 interface ContactUsDrawerProps {
     state: PopupState
@@ -19,25 +17,6 @@ interface ContactUsDrawerProps {
 interface ContactUsStepConfig {
     id: string | undefined
     renderStep: () => ReactNode
-}
-
-interface ContactUsProviderContextValue {
-    currentStep: ContactUsStepConfig
-    gotoStep: GotoStep
-}
-
-interface GotoStep {
-    (stepId: string | undefined): void
-}
-
-const JourneyProviderContext = createContext<ContactUsProviderContextValue | undefined>(undefined)
-
-const useJourney = (): ContactUsProviderContextValue => {
-    const value = useContext(JourneyProviderContext)
-
-    assert.plainObject(value)
-
-    return value
 }
 
 const contactUsSteps: ContactUsStepConfig[] = [
@@ -58,25 +37,7 @@ const contactUsSteps: ContactUsStepConfig[] = [
 const ContactUsDrawer: FunctionComponent<ContactUsDrawerProps> = ({ state, isMobile }) => {
     const { t } = useTranslation()
 
-    const form = useForm()
-
-    const [currentStep, setCurrentStep] = useState(contactUsSteps[0])
-
-    const gotoStep = useCallback<GotoStep>((stepId) => {
-        const newStep = contactUsSteps.find((step) => step.id === stepId)
-
-        if (newStep) {
-            setCurrentStep(newStep)
-        }
-    }, [])
-
-    const value = useMemo<ContactUsProviderContextValue>(
-        () => ({
-            currentStep,
-            gotoStep,
-        }),
-        [currentStep, gotoStep]
-    )
+    // Const { currentStep, gotoStep } = useJourney()
 
     return (
         <Drawer
@@ -92,40 +53,6 @@ const ContactUsDrawer: FunctionComponent<ContactUsDrawerProps> = ({ state, isMob
         >
             <Box
                 component="div"
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                }}
-            >
-                {currentStep.id === 'Project' ? (
-                    <Button
-                        onClick={(): void => gotoStep('Info')}
-                        variant="text"
-                        sx={{
-                            padding: '20px !important',
-                            backgroundColor: 'transparent !important',
-                        }}
-                    >
-                        <Icon color="black" name="arrow_back" />
-                    </Button>
-                ) : null}
-                <Button
-                    onClick={(): void => {
-                        state.close()
-
-                        gotoStep('Info')
-                    }}
-                    variant="text"
-                    sx={{
-                        padding: '20px !important',
-                        backgroundColor: 'transparent !important',
-                    }}
-                >
-                    <Icon color="black" name="close" />
-                </Button>
-            </Box>
-            <Box
-                component="div"
                 my={isMobile ? 1 : 3}
                 mx={isMobile ? 3 : 5}
                 sx={{
@@ -136,11 +63,7 @@ const ContactUsDrawer: FunctionComponent<ContactUsDrawerProps> = ({ state, isMob
                     alignItems: 'center',
                 }}
             >
-                <JourneyProviderContext.Provider value={value}>
-                    <FormProvider {...form}>
-                        <form>{currentStep.renderStep()}</form>
-                    </FormProvider>
-                </JourneyProviderContext.Provider>
+                <ContactUsProvider state={state} steps={contactUsSteps} />
                 <Typography m={2} variant="caption">
                     {t('forms:contact_us.email')}
                 </Typography>
@@ -149,4 +72,4 @@ const ContactUsDrawer: FunctionComponent<ContactUsDrawerProps> = ({ state, isMob
     )
 }
 
-export { ContactUsDrawer, useJourney }
+export { ContactUsDrawer }

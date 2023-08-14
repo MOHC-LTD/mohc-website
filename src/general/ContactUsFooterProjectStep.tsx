@@ -1,24 +1,18 @@
 import { FunctionComponent } from 'react'
 
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import TextField from 'src/form/fields/TextField'
 import { useJourney } from 'src/general/ContactUsProvider'
 
-const ContactUsProjectStep: FunctionComponent = () => {
+const ContactUsFooterProjectStep: FunctionComponent = () => {
     const { t } = useTranslation()
 
     const { gotoStep } = useJourney()
 
     return (
         <>
-            <Typography align="center" mb={2} variant="h3">
-                {t('forms:contact_us.name')}
-            </Typography>
-            <Typography mb={5} align="center" variant="body1">
-                {t('forms:contact_us.subtitle')}
-            </Typography>
             <Box component="div" mb={4}>
                 <TextField
                     field={{
@@ -27,6 +21,7 @@ const ContactUsProjectStep: FunctionComponent = () => {
                         type: 'text',
                     }}
                     multiline
+                    color="secondary"
                     label={t('forms:contact_us.project_label') as string}
                 />
             </Box>
@@ -40,6 +35,7 @@ const ContactUsProjectStep: FunctionComponent = () => {
                             maxLength: 30,
                         },
                     }}
+                    color="secondary"
                     label={t('forms:contact_us.budget_label') as string}
                 />
             </Box>
@@ -47,10 +43,19 @@ const ContactUsProjectStep: FunctionComponent = () => {
                 component="div"
                 sx={{
                     display: 'flex',
-                    justifyContent: 'center',
+                    justifyContent: 'flex-end',
                 }}
             >
-                <Button type="submit" onClick={(): void => gotoStep('Complete')} variant="contained" color="info">
+                <Button
+                    type="submit"
+                    onClick={(): void => gotoStep('Complete')}
+                    variant="contained"
+                    color="secondary"
+                    sx={{
+                        borderRadius: '25px',
+                        padding: '5px 40px',
+                    }}
+                >
                     {t('forms:submit')}
                 </Button>
             </Box>
@@ -58,4 +63,4 @@ const ContactUsProjectStep: FunctionComponent = () => {
     )
 }
 
-export { ContactUsProjectStep }
+export { ContactUsFooterProjectStep }

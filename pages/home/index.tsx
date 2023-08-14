@@ -6,6 +6,7 @@ import type { GetStaticProps } from 'next'
 import { IHomePageFields } from 'src/@types/contentful'
 import DefaultThemeProvider from 'src/general/DefaultThemeProvider'
 import PageLayout from 'src/general/PageLayout'
+import ContactUs from 'src/sections/ContactUs'
 import { getSection } from 'src/sections/getSection'
 import TypingAnimation from 'src/sections/TypingAnimation'
 import { NextPageWithLayout } from 'src/types'
@@ -45,6 +46,7 @@ const Page: NextPageWithLayout<Props> = ({ props, headerLinks }) => {
                 {props?.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
                 ))}
+                <ContactUs />
             </PageLayout>
         </Box>
     )

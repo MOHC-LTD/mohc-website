@@ -73,9 +73,9 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
             color="info"
             variant="contained"
             sx={{
-                padding: '5px 10px !important',
+                padding: '5px 15px !important',
                 margin: '10px',
-                borderRadius: '10px',
+                borderRadius: '25px',
                 textTransform: 'none',
                 color: '#fff !important',
             }}
