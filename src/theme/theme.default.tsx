@@ -293,7 +293,7 @@ const options: ThemeOptions = {
             sm: 0,
             md: 768,
             lg: 1024,
-            xl: 1240,
+            xl: 1400,
         },
     },
 }
