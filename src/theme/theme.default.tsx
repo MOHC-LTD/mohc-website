@@ -1,4 +1,12 @@
-import { alpha, buttonClasses, circularProgressClasses, createTheme, darken, ThemeOptions } from '@mui/material'
+import {
+    alpha,
+    buttonClasses,
+    circularProgressClasses,
+    createTheme,
+    darken,
+    inputClasses,
+    ThemeOptions,
+} from '@mui/material'
 import { rem } from 'polished'
 
 import { GeneralConfig, Spacing } from 'src/general/utils/config'
@@ -159,6 +167,23 @@ const components: ThemeOptionsComponents = {
 
                 return {
                     color: theme.palette[color].main,
+                }
+            },
+        },
+    },
+    MuiInput: {
+        styleOverrides: {
+            root: ({ ownerState: { color }, theme }) => {
+                assertColor(color, 'FormLabel')
+
+                return {
+                    borderBottom: `1px solid ${theme.palette[color].main} !important`,
+                    [`&:hover, &:active, ${inputClasses.focused}`]: {
+                        borderBottom: `1px solid ${theme.palette[color].main} !important`,
+                    },
+                    ['&:before']: {
+                        borderBottom: `1px solid ${theme.palette[color].main} !important`,
+                    },
                 }
             },
         },

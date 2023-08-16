@@ -34,7 +34,7 @@ i18n.use(initReactI18next).init({
 const options = {
     bottom: '50px',
     right: '30px',
-    time: '0.5s',
+    time: '0.0s',
     mixColor: '#fff',
     backgroundColor: '#fff',
     buttonColorDark: '#212121',
