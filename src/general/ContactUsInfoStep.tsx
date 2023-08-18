@@ -64,8 +64,18 @@ const ContactUsInfoStep: FunctionComponent = () => {
                     justifyContent: 'center',
                 }}
             >
-                <Button type="submit" onClick={(): void => gotoStep('Project')} variant="contained" color="info">
-                    {t('forms:next')}
+                <Button
+                    type="submit"
+                    onClick={(): void => gotoStep('Project')}
+                    variant="contained"
+                    color="info"
+                    sx={{
+                        borderRadius: '25px',
+                        padding: '5px 40px',
+                        textTransform: 'none',
+                    }}
+                >
+                    <Typography>{t('forms:next')}</Typography>
                 </Button>
             </Box>
         </>

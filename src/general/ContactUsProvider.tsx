@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, FunctionComponent, useCallback, useContext, useMemo, useState } from 'react'
+import { createContext, FunctionComponent, useCallback, useContext, useMemo, useState } from 'react'
 
 import { Box, Button } from '@mui/material'
 import { assert } from '@sindresorhus/is'
@@ -6,15 +6,11 @@ import { PopupState } from 'material-ui-popup-state/hooks'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import Icon from 'src/general/Icon'
+import { ContactUsStepConfig } from 'src/general/types/contact-us'
 
 interface ContactUsProviderProps {
     state?: PopupState
     steps: ContactUsStepConfig[]
-}
-
-interface ContactUsStepConfig {
-    id: string | undefined
-    renderStep: () => ReactNode
 }
 
 interface ContactUsProviderContextValue {

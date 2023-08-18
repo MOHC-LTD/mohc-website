@@ -443,6 +443,18 @@
             }
         },
         {
+            "files": ["**/types/*.ts", "types.ts", "*.d.ts"],
+            "rules": {
+                "unicorn/prefer-top-level-await": "off",
+                "unicorn/filename-case": [
+                    "error",
+                    {
+                        "case": "kebabCase"
+                    }
+                ]
+            }
+        },
+        {
             "files": ["**/*.stories.ts", "**/*.stories.tsx"],
             "rules": {
                 "consistent-default-export-name/default-export-match-filename": "off",

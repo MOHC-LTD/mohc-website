@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 
-import { Box, Button } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import EmailField from 'src/form/fields/EmailField'
@@ -69,9 +69,10 @@ const ContactUsFooterInfoStep: FunctionComponent = () => {
                     sx={{
                         borderRadius: '25px',
                         padding: '5px 40px',
+                        textTransform: 'none',
                     }}
                 >
-                    {t('forms:next')}
+                    <Typography>{t('forms:next')}</Typography>
                 </Button>
             </Box>
         </>

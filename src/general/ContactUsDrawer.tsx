@@ -8,15 +8,11 @@ import { ContactUsCompleteStep } from 'src/general/ContactUsCompleteStep'
 import { ContactUsInfoStep } from 'src/general/ContactUsInfoStep'
 import { ContactUsProjectStep } from 'src/general/ContactUsProjectStep'
 import { ContactUsProvider } from 'src/general/ContactUsProvider'
+import { ContactUsStepConfig } from 'src/general/types/contact-us'
 
 interface ContactUsDrawerProps {
     state: PopupState
     isMobile: boolean
-}
-
-interface ContactUsStepConfig {
-    id: string | undefined
-    renderStep: () => ReactNode
 }
 
 const contactUsSteps: ContactUsStepConfig[] = [

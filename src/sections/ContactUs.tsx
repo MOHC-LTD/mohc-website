@@ -8,15 +8,11 @@ import { ContactUsFooterInfoStep } from 'src/general/ContactUsFooterInfoStep'
 import { ContactUsFooterProjectStep } from 'src/general/ContactUsFooterProjectStep'
 import { ContactUsProvider } from 'src/general/ContactUsProvider'
 import Section from 'src/general/Section'
+import { ContactUsStepConfig } from 'src/general/types/contact-us'
 import { theme } from 'src/theme/theme.default'
 
 interface ContactUsProps {
     sectionId?: string
-}
-
-interface ContactUsStepConfig {
-    id: string | undefined
-    renderStep: () => ReactNode
 }
 
 const contactUsSteps: ContactUsStepConfig[] = [

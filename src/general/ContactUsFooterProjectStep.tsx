@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 
-import { Box, Button } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import TextField from 'src/form/fields/TextField'
@@ -54,9 +54,10 @@ const ContactUsFooterProjectStep: FunctionComponent = () => {
                     sx={{
                         borderRadius: '25px',
                         padding: '5px 40px',
+                        textTransform: 'none',
                     }}
                 >
-                    {t('forms:submit')}
+                    <Typography>{t('forms:submit')}</Typography>
                 </Button>
             </Box>
         </>
