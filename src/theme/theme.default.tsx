@@ -17,8 +17,8 @@ const fontFamilyConfig: FontFamilyConfig = {
     name: 'indivisible',
     weights: {
         light: 300,
-        regular: 500,
-        medium: 600,
+        regular: 400,
+        medium: 500,
         bold: 700,
     },
 }
