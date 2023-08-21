@@ -18,6 +18,7 @@ const IconLink: FunctionComponent<PropsWithChildren<IconLinkProps>> = ({ href, c
             style={{
                 textDecoration: 'none',
                 display: 'flex',
+                color: '#3F69FF',
             }}
         >
             {children}

@@ -334,7 +334,7 @@ theme = createTheme(theme, {
         fontWeightBold: fontFamilyConfig.weights.bold,
         h1: {
             fontFamily: fontFamilyConfig.name,
-            fontWeight: fontFamilyConfig.weights.regular,
+            fontWeight: fontFamilyConfig.weights.medium,
             lineHeight: 1.1,
             fontSize: rem(36),
             [theme.breakpoints.up('lg')]: {
@@ -343,7 +343,8 @@ theme = createTheme(theme, {
         },
         h2: {
             fontFamily: fontFamilyConfig.name,
-            fontWeight: fontFamilyConfig.weights.regular,
+            fontWeight: fontFamilyConfig.weights.medium,
+            fontStyle: 'normal',
             lineHeight: 1.2,
             fontSize: rem(30),
             [theme.breakpoints.up('lg')]: {
