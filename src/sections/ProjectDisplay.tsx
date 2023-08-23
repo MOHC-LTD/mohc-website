@@ -12,7 +12,7 @@ import { IProjectNavigationFields } from 'src/@types/contentful'
 import IconLink from 'src/general/IconLink'
 import ProjectDrawer from 'src/general/ProjectDrawer'
 import Section from 'src/general/Section'
-import { theme } from 'src/theme/theme.default'
+import { fontFamilyConfig, theme } from 'src/theme/theme.default'
 
 /**
  * Small image banner.
@@ -91,11 +91,18 @@ const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, 
                                         }}
                                         loading="lazy"
                                     />
-                                    <Typography my={2} variant="h3" color={theme.palette.text.primary}>
+                                    <Typography
+                                        my={2}
+                                        variant="h3"
+                                        color={theme.palette.text.primary}
+                                        fontWeight={fontFamilyConfig.weights.medium}
+                                    >
                                         {page.fields.navigationTitle}
                                     </Typography>
                                     <IconLink href={`/project/${page.fields.slug}`}>
-                                        <Typography>{t('home:our_work.view_project')}</Typography>
+                                        <Typography fontWeight={fontFamilyConfig.weights.medium}>
+                                            {t('home:our_work.view_project')}
+                                        </Typography>
                                     </IconLink>
                                 </Box>
                             ))}

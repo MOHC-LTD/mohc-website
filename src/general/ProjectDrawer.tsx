@@ -4,7 +4,7 @@ import { Box, Chip, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { theme } from 'src/theme/theme.default'
+import { fontFamilyConfig, theme } from 'src/theme/theme.default'
 
 interface ProjectDrawerProps {
     image: string
@@ -64,7 +64,12 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                     },
                 }}
             >
-                <Typography my={2} variant="h3" color={theme.palette.text.primary}>
+                <Typography
+                    my={2}
+                    variant="h3"
+                    color={theme.palette.text.primary}
+                    fontWeight={fontFamilyConfig.weights.medium}
+                >
                     {title}
                 </Typography>
                 <Typography mb={2} variant="body2" color={theme.palette.text.primary}>

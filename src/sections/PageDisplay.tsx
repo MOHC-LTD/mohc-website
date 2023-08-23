@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { IPageCardFields, IPageNavigationFields } from 'src/@types/contentful'
 import IconLink from 'src/general/IconLink'
 import Section from 'src/general/Section'
-import { theme } from 'src/theme/theme.default'
+import { fontFamilyConfig, theme } from 'src/theme/theme.default'
 
 /**
  * Small image banner.
@@ -49,12 +49,12 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
                                     height: 'auto',
                                 }}
                             />
-                            <Typography variant="h3" my={1}>
+                            <Typography variant="h3" my={1} fontWeight={fontFamilyConfig.weights.medium}>
                                 {title}
                             </Typography>
                             {description ? documentToReactComponents(description) : null}
                             <IconLink href={`/work/${link}`}>
-                                <Typography>{linkText}</Typography>
+                                <Typography fontWeight={fontFamilyConfig.weights.medium}>{linkText}</Typography>
                             </IconLink>
                         </Box>
                     )
