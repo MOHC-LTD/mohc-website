@@ -49,7 +49,7 @@ const Accordion = styled('div', {
 })
 
 const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode => {
-    switch (section.sys.contentType.sys.id) {
+    switch (section.sys.contentType?.sys.id) {
         case 'accordion': {
             const { title, subtitle, accordionItem, backgroundColor, isDarkMode }: IAccordionFields = section.fields
 

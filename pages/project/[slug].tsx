@@ -83,6 +83,7 @@ const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) 
     if (page.fields.section) {
         for await (const section of page.fields.section) {
             if (
+                section.fields &&
                 section.fields.image &&
                 is.plainObject(section.fields.image) &&
                 is.plainObject(section.fields.image.fields) &&
