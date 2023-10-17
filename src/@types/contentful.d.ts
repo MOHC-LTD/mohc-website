@@ -4,6 +4,9 @@ import { Asset, Entry } from 'contentful'
 import { Document } from '@contentful/rich-text-types'
 
 export interface IAccordionFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Section ID */
     sectionId?: string | undefined
 
@@ -75,6 +78,9 @@ export interface IAccordionItem extends Entry<IAccordionItemFields> {
 }
 
 export interface ICenteredTitleAndTextFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Section ID */
     sectionId?: string | undefined
 
@@ -143,21 +149,39 @@ export interface ICenteredTitleAndText extends Entry<ICenteredTitleAndTextFields
     }
 }
 
-export interface IDeviceViewFields {
+export interface IComparisonSliderFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Section ID */
     sectionId?: string | undefined
 
-    /** Desktop Image */
-    desktopImage?: Asset | undefined
+    /** Title */
+    title?: string | undefined
 
-    /** Mobile Image */
-    mobileImage?: Asset | undefined
+    /** Description */
+    description?: Document | undefined
+
+    /** Top image */
+    topImage?: Asset | undefined
+
+    /** Bottom image */
+    bottomImage?: Asset | undefined
 
     /** Background color */
     backgroundColor?: string | undefined
+
+    /** Background image */
+    backgroundImage?: Asset | undefined
+
+    /** Is dark mode */
+    isDarkMode?: boolean | undefined
+
+    /** Fade type */
+    fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
 }
 
-export interface IDeviceView extends Entry<IDeviceViewFields> {
+export interface IComparisonSlider extends Entry<IComparisonSliderFields> {
     sys: {
         id: string
         type: string
@@ -166,7 +190,7 @@ export interface IDeviceView extends Entry<IDeviceViewFields> {
         locale: string
         contentType: {
             sys: {
-                id: 'deviceView'
+                id: 'comparisonSlider'
                 linkType: 'ContentType'
                 type: 'Link'
             }
@@ -175,6 +199,9 @@ export interface IDeviceView extends Entry<IDeviceViewFields> {
 }
 
 export interface IFullWidthImageFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Section ID */
     sectionId?: string | undefined
 
@@ -218,6 +245,9 @@ export interface IFullWidthImage extends Entry<IFullWidthImageFields> {
 }
 
 export interface IFullWidthImageHeaderFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Title */
     title?: string | undefined
 
@@ -274,6 +304,9 @@ export interface IHeaderLinks extends Entry<IHeaderLinksFields> {
 }
 
 export interface IHeadingFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Title */
     title?: string | undefined
 
@@ -415,6 +448,9 @@ export interface IImage extends Entry<IImageFields> {
 }
 
 export interface IImageAndTextFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Title */
     title?: string | undefined
 
@@ -489,6 +525,9 @@ export interface IImageSlider extends Entry<IImageSliderFields> {
 }
 
 export interface IListFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Title */
     title?: string | undefined
 
@@ -539,6 +578,9 @@ export interface IListItem extends Entry<IListItemFields> {
 }
 
 export interface IMobileImagesAndTextFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Section ID */
     sectionId?: string | undefined
 
@@ -659,6 +701,9 @@ export interface IPageCard extends Entry<IPageCardFields> {
 }
 
 export interface IPageNavigationFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Page card */
     pageCard?: IPageCard[] | undefined
 }
@@ -681,6 +726,9 @@ export interface IPageNavigation extends Entry<IPageNavigationFields> {
 }
 
 export interface IProjectNavigationFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Project */
     project?: IPage[] | undefined
 
@@ -717,6 +765,9 @@ export interface IProjectNavigation extends Entry<IProjectNavigationFields> {
 }
 
 export interface ISmallImageBannerFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Images */
     images?: Asset[] | undefined
 }
@@ -739,6 +790,9 @@ export interface ISmallImageBanner extends Entry<ISmallImageBannerFields> {
 }
 
 export interface ITextColumnFields {
+    /** Display name */
+    displayName?: string | undefined
+
     /** Section ID */
     sectionId?: string | undefined
 
@@ -851,7 +905,7 @@ export type CONTENT_TYPE =
     | 'accordion'
     | 'accordionItem'
     | 'centeredTitleAndText'
-    | 'deviceView'
+    | 'comparisonSlider'
     | 'fullWidthImage'
     | 'fullWidthImageHeader'
     | 'headerLinks'
@@ -878,7 +932,7 @@ export type IEntry =
     | IAccordion
     | IAccordionItem
     | ICenteredTitleAndText
-    | IDeviceView
+    | IComparisonSlider
     | IFullWidthImage
     | IFullWidthImageHeader
     | IHeaderLinks

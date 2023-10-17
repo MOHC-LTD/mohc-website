@@ -9,6 +9,7 @@ import {
     IAccordionFields,
     IAccordionItemFields,
     ICenteredTitleAndTextFields,
+    IComparisonSliderFields,
     IDeviceViewFields,
     IFullWidthImageFields,
     IFullWidthImageHeaderFields,
@@ -26,6 +27,7 @@ import {
 import AccordionItem from 'src/general/AccordionItem'
 import Section from 'src/general/Section'
 import CenteredTitleAndText from 'src/sections/CenteredTitleAndText'
+import ComparisonSlider from 'src/sections/ComparisonSlider'
 import CustomImage from 'src/sections/CustomImage'
 import DeviceView from 'src/sections/DeviceView'
 import FullWidthImageHeading from 'src/sections/FullWidthImageHeading'
@@ -405,6 +407,34 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         </Box>
                     ) : null}
                 </Section>
+            )
+        }
+
+        case 'comparisonSlider': {
+            const {
+                title,
+                sectionId,
+                description,
+                topImage,
+                bottomImage,
+                backgroundColor,
+                backgroundImage,
+                isDarkMode,
+                fadeType,
+            }: IComparisonSliderFields = section.fields
+
+            return (
+                <ComparisonSlider
+                    title={title}
+                    description={description}
+                    topImage={topImage}
+                    bottomImage={bottomImage}
+                    backgroundColor={backgroundColor}
+                    backgroundImage={backgroundImage}
+                    isDarkMode={isDarkMode}
+                    fadeType={fadeType}
+                    sectionId={sectionId}
+                />
             )
         }
 
