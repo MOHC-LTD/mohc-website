@@ -37,6 +37,24 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
         return null
     }
 
+    if (image.fields.staticImage?.fields.file.url.includes('video')) {
+        return (
+            <video
+                src={`https:${image.fields.staticImage?.fields.file.url}`}
+                autoPlay
+                muted
+                playsInline
+                loop
+                style={{
+                    maxWidth: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                    borderRadius: '16px',
+                }}
+            />
+        )
+    }
+
     return (
         <>
             {image.fields.staticImage ? (
