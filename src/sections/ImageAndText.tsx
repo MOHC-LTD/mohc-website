@@ -19,7 +19,6 @@ const ImageBox = styled(motion.div, {
 })<ImageBoxProps>(({ isInverted }) => ({
     position: 'relative',
     maxWidth: '100%',
-    maxHeight: 'calc(100vh - 200px)',
     order: 1,
     [theme.breakpoints.up('md')]: {
         order: isInverted ? 1 : 2,
