@@ -10,7 +10,6 @@ import {
     IAccordionItemFields,
     ICenteredTitleAndTextFields,
     IComparisonSliderFields,
-    IDeviceViewFields,
     IFullWidthImageFields,
     IFullWidthImageHeaderFields,
     IHeadingFields,
@@ -29,7 +28,6 @@ import Section from 'src/general/Section'
 import CenteredTitleAndText from 'src/sections/CenteredTitleAndText'
 import ComparisonSlider from 'src/sections/ComparisonSlider'
 import CustomImage from 'src/sections/CustomImage'
-import DeviceView from 'src/sections/DeviceView'
 import FullWidthImageHeading from 'src/sections/FullWidthImageHeading'
 import Heading from 'src/sections/Heading'
 import ImageAndText from 'src/sections/ImageAndText'
@@ -297,12 +295,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     sectionId={sectionId}
                 />
             )
-        }
-
-        case 'deviceView': {
-            const { desktopImage, backgroundColor }: IDeviceViewFields = section.fields
-
-            return <DeviceView desktopImage={desktopImage} backgroundColor={backgroundColor} />
         }
 
         case 'imageSlider': {
