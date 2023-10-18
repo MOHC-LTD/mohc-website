@@ -212,7 +212,14 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         <Typography variant="h3">{title}</Typography>
                         {description ? documentToReactComponents(description) : null}
                     </Box>
-                    {image ? <CustomImage image={image} /> : null}
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        {image ? <CustomImage image={image} /> : null}
+                    </Box>
                 </Section>
             )
         }
