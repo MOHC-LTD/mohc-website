@@ -19,10 +19,12 @@ const ImageBox = styled(motion.div, {
 })<ImageBoxProps>(({ isInverted }) => ({
     position: 'relative',
     maxWidth: '100%',
+    display: 'flex',
+    justifyContent: 'center',
     order: 1,
     [theme.breakpoints.up('md')]: {
         order: isInverted ? 1 : 2,
-        display: 'flex',
+        justifyContent: 'space-evenly',
         height: 'fit-content',
         maxWidth: '50%',
     },
@@ -81,6 +83,7 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                     [theme.breakpoints.up('md')]: {
                         alignItems: 'center',
                         flexDirection: 'row',
+                        justifyContent: 'space-evenly',
                     },
                 }}
             >
@@ -130,7 +133,17 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                     <ImageBox variants={cardVariants} isInverted={isInverted}>
                         <CustomImage image={image} ref={scrollRef} />
                     </ImageBox>
-                ) : null}
+                ) : (
+                    <Box
+                        sx={{
+                            width: '50%',
+                            order: 1,
+                            [theme.breakpoints.up('md')]: {
+                                order: isInverted ? 1 : 2,
+                            },
+                        }}
+                    />
+                )}
             </Box>
         </Section>
     )

@@ -47,6 +47,7 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                 loop
                 style={{
                     maxWidth: '100%',
+                    maxHeight: 'calc(100vh - 150px)',
                     width: 'auto',
                     height: 'auto',
                     borderRadius: '16px',
@@ -65,7 +66,9 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                     height={image?.fields.staticImage.fields.file.details.image?.height}
                     style={{
                         maxWidth: '100%',
+                        maxHeight: 'calc(100vh - 150px)',
                         height: 'auto',
+                        width: 'auto',
                     }}
                 />
             ) : null}
@@ -81,7 +84,9 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                         top: 0,
                         left: 0,
                         maxWidth: '100%',
+                        maxHeight: 'calc(100vh - 150px)',
                         height: 'auto',
+                        width: 'auto',
                     }}
                 />
             ) : null}

@@ -17,6 +17,7 @@ interface SectionProps extends Except<ContainerProps, 'sx'> {
     isDarkMode?: boolean
     hasEllipse?: boolean
     backgroundImage?: Asset
+    hasMinHeight?: boolean
 }
 
 /**
@@ -31,6 +32,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
     fadeType = 'none',
     backgroundColor = theme.palette.background.default,
     backgroundImage,
+    hasMinHeight = false,
     ...props
 }) => {
     let background = backgroundColor
@@ -80,6 +82,7 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
                         sm: Spacing.Body / 5,
                         md: Spacing.Body,
                     },
+                    minHeight: hasMinHeight ? '600px' : 0,
                     [theme.breakpoints.up('md')]: {
                         height: isFullScreen && 'calc(100vh - 69px)',
                     },

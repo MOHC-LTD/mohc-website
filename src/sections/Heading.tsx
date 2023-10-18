@@ -44,7 +44,13 @@ const Heading: FunctionComponent<HeadingProps> = ({
 
     return (
         <div ref={ref}>
-            <Section maxWidth="xl" isFullScreen={sm ? false : true} backgroundColor={color} fadeType={fadeType}>
+            <Section
+                maxWidth="xl"
+                isFullScreen={sm ? false : true}
+                backgroundColor={color}
+                fadeType={fadeType}
+                hasMinHeight
+            >
                 <Box
                     component="div"
                     sx={{
@@ -153,11 +159,13 @@ const Heading: FunctionComponent<HeadingProps> = ({
                             component="div"
                             sx={{
                                 position: 'relative',
+                                display: 'flex',
+                                justifyContent: 'center',
                                 maxWidth: '100%',
                                 order: 1,
                                 [theme.breakpoints.up('md')]: {
-                                    display: 'flex',
                                     height: 'fit-content',
+                                    justifyContent: 'space-evenly',
                                     maxWidth: '55%',
                                     order: 2,
                                 },
@@ -171,6 +179,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
                                 loop
                                 style={{
                                     maxWidth: '100%',
+                                    maxHeight: 'calc(100vh - 100px)',
                                     width: 'auto',
                                     height: 'auto',
                                     borderRadius: '16px',
