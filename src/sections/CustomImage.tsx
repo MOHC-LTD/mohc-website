@@ -50,7 +50,7 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                     maxHeight: 'calc(100vh - 150px)',
                     width: 'auto',
                     height: 'auto',
-                    borderRadius: '36px',
+                    borderRadius: '16px',
                 }}
             />
         )
@@ -69,7 +69,6 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                         maxHeight: 'calc(100vh - 150px)',
                         height: 'auto',
                         width: 'auto',
-                        borderRadius: '36px',
                     }}
                 />
             ) : null}
@@ -88,7 +87,6 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                         maxHeight: 'calc(100vh - 150px)',
                         height: 'auto',
                         width: 'auto',
-                        borderRadius: '36px',
                     }}
                 />
             ) : null}
