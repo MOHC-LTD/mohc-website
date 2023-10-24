@@ -47,6 +47,7 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
                                 style={{
                                     maxWidth: '100%',
                                     height: 'auto',
+                                    borderRadius: '22px',
                                 }}
                             />
                             <Typography variant="h3" my={1} fontWeight={fontFamilyConfig.weights.medium}>

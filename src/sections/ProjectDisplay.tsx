@@ -74,7 +74,13 @@ const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, 
                             }}
                         >
                             {project?.map((page) => (
-                                <Box component="div" key={page.fields.navigationTitle}>
+                                <Box
+                                    component="div"
+                                    key={page.fields.navigationTitle}
+                                    sx={{
+                                        paddingRight: '20px',
+                                    }}
+                                >
                                     <Image
                                         src={`https:${page.fields.navigationImage?.fields.file.url}`}
                                         width={page.fields.navigationImage?.fields.file.details.image?.width}
@@ -87,7 +93,7 @@ const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, 
                                             height: 'auto',
                                             minWidth: 0,
                                             objectFit: 'contain',
-                                            paddingRight: '20px',
+                                            borderRadius: '22px',
                                         }}
                                         loading="lazy"
                                     />

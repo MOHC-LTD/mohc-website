@@ -190,6 +190,7 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                             verticalAlign: 'middle',
                             userSelect: 'none',
                             pointerEvents: 'none',
+                            borderRadius: '22px',
                         }}
                         draggable="false"
                         src={topImage?.fields.file.url}
@@ -208,6 +209,7 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                             verticalAlign: 'middle',
                             userSelect: 'none',
                             pointerEvents: 'none',
+                            borderRadius: '22px',
                         }}
                         draggable="false"
                         src={bottomImage?.fields.file.url}

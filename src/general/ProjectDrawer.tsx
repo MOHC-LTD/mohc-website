@@ -123,6 +123,7 @@ const ProjectDrawer: FunctionComponent<PropsWithChildren<ProjectDrawerProps>> = 
                             height: 'auto',
                             minWidth: 0,
                             objectFit: 'contain',
+                            borderRadius: '22px',
                         }}
                         loading="lazy"
                     />

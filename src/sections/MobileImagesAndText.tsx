@@ -79,6 +79,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                         maxWidth: '100%',
                                         height: 'auto',
                                         marginBottom: '20px',
+                                        borderRadius: '22px',
                                     }}
                                 />
                                 <Image
@@ -89,6 +90,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                     style={{
                                         maxWidth: '100%',
                                         height: 'auto',
+                                        borderRadius: '22px',
                                     }}
                                 />
                             </Box>
@@ -113,6 +115,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                         maxWidth: '100%',
                                         height: 'auto',
                                         marginBottom: '20px',
+                                        borderRadius: '22px',
                                     }}
                                 />
                                 <Image
@@ -123,6 +126,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                     style={{
                                         maxWidth: '100%',
                                         height: 'auto',
+                                        borderRadius: '22px',
                                     }}
                                 />
                             </Box>
