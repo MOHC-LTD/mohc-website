@@ -20,6 +20,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
     isDarkMode = false,
     fadeType,
     isInverted = false,
+    hasBorder,
     sectionId,
 }) => {
     const { width, ref } = useResizeDetector()
@@ -80,6 +81,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                         height: 'auto',
                                         marginBottom: '20px',
                                         borderRadius: '22px',
+                                        border: hasBorder ? '6px solid black' : 'none',
                                     }}
                                 />
                                 <Image
@@ -91,6 +93,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                         maxWidth: '100%',
                                         height: 'auto',
                                         borderRadius: '22px',
+                                        border: hasBorder ? '6px solid black' : 'none',
                                     }}
                                 />
                             </Box>
@@ -116,6 +119,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                         height: 'auto',
                                         marginBottom: '20px',
                                         borderRadius: '22px',
+                                        border: hasBorder ? '6px solid black' : 'none',
                                     }}
                                 />
                                 <Image
@@ -127,6 +131,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                         maxWidth: '100%',
                                         height: 'auto',
                                         borderRadius: '22px',
+                                        border: hasBorder ? '6px solid black' : 'none',
                                     }}
                                 />
                             </Box>

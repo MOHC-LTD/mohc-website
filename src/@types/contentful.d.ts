@@ -179,6 +179,9 @@ export interface IComparisonSliderFields {
 
     /** Fade type */
     fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
+
+    /** Has border */
+    hasBorder?: boolean | undefined
 }
 
 export interface IComparisonSlider extends Entry<IComparisonSliderFields> {
@@ -225,6 +228,9 @@ export interface IFullWidthImageFields {
 
     /** Fade type */
     fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
+
+    /** Has border */
+    hasBorder?: boolean | undefined
 }
 
 export interface IFullWidthImage extends Entry<IFullWidthImageFields> {
@@ -478,6 +484,9 @@ export interface IImageAndTextFields {
     /** Fade type */
     fadeType?: 'none' | 'top' | 'bottom' | 'both' | undefined
 
+    /** Has border */
+    hasBorder?: boolean | undefined
+
     /** Section ID */
     sectionId?: string | undefined
 }
@@ -604,6 +613,9 @@ export interface IMobileImagesAndTextFields {
 
     /** Is inverted */
     isInverted?: boolean | undefined
+
+    /** Has border */
+    hasBorder?: boolean | undefined
 }
 
 export interface IMobileImagesAndText extends Entry<IMobileImagesAndTextFields> {

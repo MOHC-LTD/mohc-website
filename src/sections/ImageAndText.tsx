@@ -43,6 +43,7 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
     isAnimated,
     isInverted,
     fadeType,
+    hasBorder,
     sectionId,
 }) => {
     const { width, ref } = useResizeDetector()
@@ -131,7 +132,7 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                 </Box>
                 {image ? (
                     <ImageBox variants={cardVariants} isInverted={isInverted}>
-                        <CustomImage image={image} ref={scrollRef} />
+                        <CustomImage image={image} ref={scrollRef} hasBorder={hasBorder} />
                     </ImageBox>
                 ) : (
                     <Box

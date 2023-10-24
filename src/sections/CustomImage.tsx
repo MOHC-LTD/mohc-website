@@ -8,6 +8,7 @@ import { IImage } from 'src/@types/contentful'
 interface CustomImageProps {
     image: IImage
     ref?: RefObject<HTMLInputElement>
+    hasBorder?: boolean
 }
 
 const useParallax = (value: MotionValue<number>, distance: number): MotionValue => {
@@ -23,7 +24,7 @@ const useParallax = (value: MotionValue<number>, distance: number): MotionValue 
 /**
  * Section to display an image and text component.
  */
-const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((props, ref) => {
+const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((props, ref, hasBorder = false) => {
     const { image } = props
 
     const { scrollYProgress } = useScroll({
@@ -51,6 +52,7 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                     width: 'auto',
                     height: 'auto',
                     borderRadius: '22px',
+                    border: hasBorder ? '6px solid black' : 'none',
                 }}
             />
         )
@@ -70,6 +72,7 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                         height: 'auto',
                         width: 'auto',
                         borderRadius: '22px',
+                        border: hasBorder ? '6px solid black' : 'none',
                     }}
                 />
             ) : null}
@@ -89,6 +92,7 @@ const CustomImage = forwardRef<RefObject<HTMLInputElement>, CustomImageProps>((p
                         height: 'auto',
                         width: 'auto',
                         borderRadius: '22px',
+                        border: hasBorder ? '6px solid black' : 'none',
                     }}
                 />
             ) : null}

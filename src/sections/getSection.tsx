@@ -186,6 +186,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                 backgroundColor,
                 backgroundImage,
                 fadeType,
+                hasBorder,
                 isDarkMode,
                 title,
                 description,
@@ -218,7 +219,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                             justifyContent: 'center',
                         }}
                     >
-                        {image ? <CustomImage image={image} /> : null}
+                        {image ? <CustomImage image={image} hasBorder={hasBorder} /> : null}
                     </Box>
                 </Section>
             )
@@ -234,6 +235,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                 isDarkMode,
                 fadeType,
                 isInverted,
+                hasBorder,
             }: IMobileImagesAndTextFields = section.fields
 
             return (
@@ -246,6 +248,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     isDarkMode={isDarkMode}
                     fadeType={fadeType}
                     isInverted={isInverted}
+                    hasBorder={hasBorder}
                 />
             )
         }
@@ -285,6 +288,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                 isAnimated,
                 isInverted,
                 fadeType,
+                hasBorder,
                 sectionId,
             }: IImageAndTextFields = section.fields
 
@@ -299,6 +303,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     isAnimated={isAnimated}
                     isInverted={isInverted}
                     fadeType={fadeType}
+                    hasBorder={hasBorder}
                     sectionId={sectionId}
                 />
             )
@@ -420,6 +425,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                 backgroundImage,
                 isDarkMode,
                 fadeType,
+                hasBorder,
             }: IComparisonSliderFields = section.fields
 
             return (
@@ -432,6 +438,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     backgroundImage={backgroundImage}
                     isDarkMode={isDarkMode}
                     fadeType={fadeType}
+                    hasBorder={hasBorder}
                     sectionId={sectionId}
                 />
             )

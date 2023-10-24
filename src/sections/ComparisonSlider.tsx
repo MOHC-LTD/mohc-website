@@ -18,6 +18,7 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
     backgroundImage,
     isDarkMode,
     fadeType,
+    hasBorder,
     sectionId,
 }) => {
     const [isResizing, setIsResizing] = useState(false)
@@ -191,6 +192,7 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                             userSelect: 'none',
                             pointerEvents: 'none',
                             borderRadius: '22px',
+                            border: hasBorder ? '6px solid black' : 'none',
                         }}
                         draggable="false"
                         src={topImage?.fields.file.url}
@@ -210,6 +212,7 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                             userSelect: 'none',
                             pointerEvents: 'none',
                             borderRadius: '22px',
+                            border: hasBorder ? '6px solid black' : 'none',
                         }}
                         draggable="false"
                         src={bottomImage?.fields.file.url}
