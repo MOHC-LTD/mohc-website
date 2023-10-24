@@ -22,6 +22,8 @@ import {
     IProjectNavigationFields,
     ISmallImageBannerFields,
     ITextColumnFields,
+    ITextColumnList,
+    ITextColumnTextBlock,
 } from 'src/@types/contentful'
 import AccordionItem from 'src/general/AccordionItem'
 import Section from 'src/general/Section'
@@ -119,9 +121,12 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         }}
                     >
                         {[1, 2].map((number) => {
-                            const textColumn: any = section.fields[`textColumn${number}Content`]
+                            const textColumn = section.fields[`textColumn${number}Content`] as
+                                | ITextColumnTextBlock
+                                | ITextColumnList
+                                | undefined
 
-                            return !textColumn?.fields.listItems ? (
+                            return (textColumn as ITextColumnTextBlock)?.fields.textBlock ? (
                                 <Box
                                     component="div"
                                     key={number}
@@ -135,7 +140,9 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                     <Typography variant="h2">
                                         {section.fields[`column${number}Title`] as string}
                                     </Typography>
-                                    {documentToReactComponents(textColumn?.fields.textBlock as Document)}
+                                    {documentToReactComponents(
+                                        (textColumn as ITextColumnTextBlock)?.fields.textBlock as Document
+                                    )}
                                 </Box>
                             ) : (
                                 <Box
@@ -159,18 +166,20 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                         }}
                                     >
                                         <Box component="div">
-                                            {textColumn?.fields?.listItems?.map((item: any) => (
+                                            {(textColumn as ITextColumnList)?.fields?.listItems?.map((item: string) => (
                                                 <Typography mb={2} key={item}>
                                                     {item}
                                                 </Typography>
                                             ))}
                                         </Box>
                                         <Box component="div">
-                                            {textColumn?.fields?.listItems2?.map((item: any) => (
-                                                <Typography mb={2} key={item}>
-                                                    {item}
-                                                </Typography>
-                                            ))}
+                                            {(textColumn as ITextColumnList)?.fields?.listItems2?.map(
+                                                (item: string) => (
+                                                    <Typography mb={2} key={item}>
+                                                        {item}
+                                                    </Typography>
+                                                )
+                                            )}
                                         </Box>
                                     </Box>
                                 </Box>

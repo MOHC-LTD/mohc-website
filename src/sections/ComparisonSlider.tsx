@@ -23,25 +23,27 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
 }) => {
     const [isResizing, setIsResizing] = useState(false)
 
-    const topImageRef = useRef<any>()
+    const topImageRef = useRef<HTMLElement>()
 
-    const handleRef = useRef<any>()
+    const handleRef = useRef<HTMLElement>()
 
-    const setPositioning = useCallback((x: any) => {
-        const { left, width } = topImageRef.current.getBoundingClientRect()
+    const setPositioning = useCallback((x: number) => {
+        if (topImageRef.current && handleRef.current) {
+            const { left, width } = topImageRef.current.getBoundingClientRect()
 
-        const handleWidth = handleRef.current.offsetWidth
+            const handleWidth = handleRef.current.offsetWidth
 
-        if (x >= left && x <= width + left - handleWidth) {
-            handleRef.current.style.left = `${((x - left) / width) * 100}%`
+            if (x >= left && x <= width + left - handleWidth) {
+                handleRef.current.style.left = `${((x - left) / width) * 100}%`
 
-            topImageRef.current.style.clipPath = `inset(0 ${100 - ((x - left) / width) * 100}% 0 0)`
+                topImageRef.current.style.clipPath = `inset(0 ${100 - ((x - left) / width) * 100}% 0 0)`
+            }
         }
     }, [])
 
     const handleResize = useCallback(
-        (event: any) => {
-            if (event.clientX) {
+        (event: MouseEvent | TouchEvent) => {
+            if (event instanceof MouseEvent) {
                 setPositioning(event.clientX)
             } else if (event.touches[0] && event.touches[0].clientX) {
                 setPositioning(event.touches[0].clientX)
@@ -52,11 +54,13 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
 
     // Set initial positioning on component mount
     useEffect(() => {
-        const { left, width } = topImageRef.current.getBoundingClientRect()
+        if (topImageRef.current && handleRef.current) {
+            const { left, width } = topImageRef.current.getBoundingClientRect()
 
-        const handleWidth = handleRef.current.offsetWidth
+            const handleWidth = handleRef.current.offsetWidth
 
-        setPositioning(width / 2 + left - handleWidth / 2)
+            setPositioning(width / 2 + left - handleWidth / 2)
+        }
     }, [setPositioning])
 
     const handleResizeEnd = useCallback(() => {
@@ -73,14 +77,18 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
 
     const onKeyDown = useCallback(
         (event: KeyboardEvent) => {
-            const { offsetLeft, offsetParent } = handleRef.current
+            if (handleRef.current) {
+                const { offsetLeft, offsetParent } = handleRef.current
 
-            if (event.code === 'ArrowLeft') {
-                setPositioning(offsetLeft + offsetParent.offsetLeft - 10)
-            }
+                if (offsetParent instanceof HTMLElement) {
+                    if (event.code === 'ArrowLeft') {
+                        setPositioning(offsetLeft + offsetParent.offsetLeft - 10)
+                    }
 
-            if (event.code === 'ArrowRight') {
-                setPositioning(offsetLeft + offsetParent.offsetLeft + 10)
+                    if (event.code === 'ArrowRight') {
+                        setPositioning(offsetLeft + offsetParent.offsetLeft + 10)
+                    }
+                }
             }
         },
         [setPositioning]

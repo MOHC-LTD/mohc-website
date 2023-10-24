@@ -37,9 +37,9 @@ const ImageList = styled(motion.ul, {
 })
 
 const ImageSlider: FunctionComponent<IImageSliderFields> = ({ images }) => {
-    const sliderRef = useRef<any>(null)
+    const sliderRef = useRef<HTMLElement>(null)
 
-    const slidesRef = useRef<any>(null)
+    const slidesRef = useRef<HTMLUListElement>(null)
 
     const [sliderWidth, setSliderWidths] = useState(0)
 
@@ -57,20 +57,25 @@ const ImageSlider: FunctionComponent<IImageSliderFields> = ({ images }) => {
 
     useEffect(() => {
         const measureSliderWidth = (): void => {
-            setSliderWidths(sliderRef.current.clientWidth)
+            if (sliderRef.current) {
+                setSliderWidths(sliderRef.current.clientWidth)
+            }
         }
 
         const measureSlidesWidth = (): void => {
-            const slidesNode = slidesRef.current.childNodes
+            if (slidesRef.current) {
+                const slidesNode = slidesRef.current.childNodes
 
-            const slidesArray = [...slidesNode]
+                const slidesArray = [...slidesNode]
 
-            const slidesSumWidth: any = slidesArray.reduce(
-                (accumulator, node: any) => accumulator + node.clientWidth,
-                0
-            )
+                const slidesSumWidth: number = slidesArray.reduce(
+                    (accumulator, node: ChildNode) =>
+                        accumulator + (node instanceof HTMLElement ? node.clientWidth : 0),
+                    0
+                )
 
-            setSlidesWidths(slidesSumWidth)
+                setSlidesWidths(slidesSumWidth)
+            }
         }
 
         measureSliderWidth()
