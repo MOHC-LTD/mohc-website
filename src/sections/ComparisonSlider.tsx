@@ -181,13 +181,17 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                         height: '100%',
                         width: '100%',
                         top: 0,
+                        display: 'flex',
+                        justifyContent: 'center',
                     }}
                 >
                     <img
                         style={{
-                            height: '100%',
+                            maxWidth: '100%',
+                            maxHeight: 'calc(100vh - 150px)',
+                            height: 'auto',
+                            width: 'auto',
                             objectFit: 'cover',
-                            width: '100%',
                             verticalAlign: 'middle',
                             userSelect: 'none',
                             pointerEvents: 'none',
@@ -202,12 +206,16 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                 <Box
                     sx={{
                         overflow: 'hidden',
+                        display: 'flex',
+                        justifyContent: 'center',
                     }}
                 >
                     <img
                         style={{
-                            width: '100%',
+                            maxWidth: '100%',
+                            maxHeight: 'calc(100vh - 150px)',
                             height: 'auto',
+                            width: 'auto',
                             verticalAlign: 'middle',
                             userSelect: 'none',
                             pointerEvents: 'none',
