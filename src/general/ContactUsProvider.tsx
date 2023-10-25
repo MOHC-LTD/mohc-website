@@ -62,7 +62,6 @@ const ContactUsProvider: FunctionComponent<ContactUsProviderProps> = ({ state, s
                 <form>
                     {state ? (
                         <Box
-                            component="div"
                             sx={{
                                 display: 'flex',
                                 justifyContent: 'space-between',

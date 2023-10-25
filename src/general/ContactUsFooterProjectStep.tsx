@@ -13,7 +13,7 @@ const ContactUsFooterProjectStep: FunctionComponent = () => {
 
     return (
         <>
-            <Box component="div" mb={4}>
+            <Box mb={4}>
                 <TextField
                     field={{
                         name: 'project',
@@ -25,7 +25,7 @@ const ContactUsFooterProjectStep: FunctionComponent = () => {
                     label={t('forms:contact_us.project_label') as string}
                 />
             </Box>
-            <Box component="div" mb={6}>
+            <Box mb={6}>
                 <TextField
                     field={{
                         name: 'budget',
@@ -40,7 +40,6 @@ const ContactUsFooterProjectStep: FunctionComponent = () => {
                 />
             </Box>
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     justifyContent: 'flex-end',

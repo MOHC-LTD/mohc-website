@@ -52,7 +52,6 @@ const Heading: FunctionComponent<HeadingProps> = ({
                 hasMinHeight
             >
                 <Box
-                    component="div"
                     sx={{
                         minHeight: '300px',
                         maxHeight: '100%',
@@ -69,7 +68,6 @@ const Heading: FunctionComponent<HeadingProps> = ({
                     }}
                 >
                     <Box
-                        component="div"
                         id="title"
                         mr={2}
                         sx={{
@@ -125,7 +123,6 @@ const Heading: FunctionComponent<HeadingProps> = ({
                         </Typography>
                         {sector ? (
                             <Box
-                                component="div"
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
@@ -156,7 +153,6 @@ const Heading: FunctionComponent<HeadingProps> = ({
                     {image ? (
                         <Box
                             mb={2}
-                            component="div"
                             sx={{
                                 position: 'relative',
                                 display: 'flex',

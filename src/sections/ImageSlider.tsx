@@ -95,13 +95,11 @@ const ImageSlider: FunctionComponent<IImageSliderFields> = ({ images }) => {
 
     return (
         <Box
-            component="div"
             sx={{
                 background: 'black',
             }}
         >
             <Box
-                component="div"
                 ref={sliderRef}
                 id="slides"
                 sx={{

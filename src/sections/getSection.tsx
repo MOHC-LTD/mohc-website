@@ -58,7 +58,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             return (
                 <Section maxWidth="xl" backgroundColor={backgroundColor}>
                     <Box
-                        component="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -69,7 +68,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                         }}
                     >
                         <Box
-                            component="div"
                             mr={5}
                             sx={{
                                 [theme.breakpoints.up('md')]: {
@@ -110,7 +108,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             return (
                 <Section maxWidth="xl" id={sectionId}>
                     <Box
-                        component="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -128,7 +125,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
 
                             return (textColumn as ITextColumnTextBlock)?.fields.textBlock ? (
                                 <Box
-                                    component="div"
                                     key={number}
                                     sx={{
                                         marginBottom: '20px',
@@ -146,7 +142,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                 </Box>
                             ) : (
                                 <Box
-                                    component="div"
                                     sx={{
                                         marginBottom: '20px',
                                         [theme.breakpoints.up('md')]: {
@@ -158,21 +153,20 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                                         {section.fields[`column${number}Title`] as string}
                                     </Typography>
                                     <Box
-                                        component="div"
                                         mt={2}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'space-between',
                                         }}
                                     >
-                                        <Box component="div">
+                                        <Box>
                                             {(textColumn as ITextColumnList)?.fields?.listItems?.map((item: string) => (
                                                 <Typography mb={2} key={item}>
                                                     {item}
                                                 </Typography>
                                             ))}
                                         </Box>
-                                        <Box component="div">
+                                        <Box>
                                             {(textColumn as ITextColumnList)?.fields?.listItems2?.map(
                                                 (item: string) => (
                                                     <Typography mb={2} key={item}>
@@ -210,7 +204,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     fadeType={fadeType}
                 >
                     <Box
-                        component="div"
                         mb={4}
                         sx={{
                             color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
@@ -386,7 +379,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     </Typography>
                     {listItems ? (
                         <Box
-                            component="div"
                             sx={{
                                 display: 'flex',
                                 flexWrap: 'wrap',
@@ -401,7 +393,6 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
 
                                 return (
                                     <Box
-                                        component="div"
                                         key={listItemTitle}
                                         mb={2}
                                         pr={2}

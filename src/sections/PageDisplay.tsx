@@ -16,7 +16,6 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
     return (
         <Section maxWidth="xl">
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -30,7 +29,6 @@ const PageDisplay: FunctionComponent<IPageNavigationFields> = ({ pageCard }) => 
 
                     return (
                         <Box
-                            component="div"
                             p={2}
                             key={title}
                             sx={{

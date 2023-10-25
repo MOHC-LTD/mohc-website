@@ -12,7 +12,6 @@ const TypingAnimation: FunctionComponent = () => {
     return (
         <Section maxWidth="xl" isFullScreen>
             <Box
-                component="div"
                 sx={{
                     height: '100%',
                     display: 'flex',
@@ -23,7 +22,6 @@ const TypingAnimation: FunctionComponent = () => {
             >
                 <div />
                 <Box
-                    component="div"
                     sx={{
                         display: 'grid',
                         placeItems: 'center',
@@ -70,7 +68,6 @@ const TypingAnimation: FunctionComponent = () => {
                     </Typography>
                 </Box>
                 <Box
-                    component="div"
                     sx={{
                         background: 'transparent !important',
                         '@keyframes bouncey': {

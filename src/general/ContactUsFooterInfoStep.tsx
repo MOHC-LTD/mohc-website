@@ -14,7 +14,7 @@ const ContactUsFooterInfoStep: FunctionComponent = () => {
 
     return (
         <>
-            <Box component="div" mb={4}>
+            <Box mb={4}>
                 <NameField
                     field={{
                         name: 'first_name',
@@ -29,7 +29,7 @@ const ContactUsFooterInfoStep: FunctionComponent = () => {
                     autoComplete="given-name"
                 />
             </Box>
-            <Box component="div" mb={4}>
+            <Box mb={4}>
                 <NameField
                     field={{
                         name: 'last_name',
@@ -44,7 +44,7 @@ const ContactUsFooterInfoStep: FunctionComponent = () => {
                     autoComplete="family-name"
                 />
             </Box>
-            <Box component="div" mb={6}>
+            <Box mb={6}>
                 <EmailField
                     field={{
                         name: 'email',
@@ -55,7 +55,6 @@ const ContactUsFooterInfoStep: FunctionComponent = () => {
                 />
             </Box>
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     justifyContent: 'flex-end',

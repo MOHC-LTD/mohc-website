@@ -9,7 +9,6 @@ const ContactUsFooterCompleteStep: FunctionComponent = () => {
     return (
         <Box
             m={3}
-            component="div"
             sx={{
                 display: 'flex',
                 flexDirection: 'column',

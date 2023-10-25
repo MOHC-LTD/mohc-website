@@ -36,7 +36,6 @@ const ContactUs: FunctionComponent<ContactUsProps> = ({ sectionId }) => {
     return (
         <Section maxWidth="xl" backgroundColor="#3F69FF" id={sectionId}>
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -49,7 +48,6 @@ const ContactUs: FunctionComponent<ContactUsProps> = ({ sectionId }) => {
                 }}
             >
                 <Box
-                    component="div"
                     mb={2}
                     sx={{
                         [theme.breakpoints.up('md')]: {
@@ -68,7 +66,6 @@ const ContactUs: FunctionComponent<ContactUsProps> = ({ sectionId }) => {
                     </Typography>
                 </Box>
                 <Box
-                    component="div"
                     sx={{
                         width: '100%',
                         [theme.breakpoints.up('md')]: {

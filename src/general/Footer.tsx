@@ -36,7 +36,6 @@ const Footer: FunctionComponent<FooterProps> = ({ order = 0 }) => {
     return (
         <FooterRoot order={order}>
             <Box
-                component="div"
                 display="grid"
                 gap={Spacing.Header}
                 gridTemplateColumns="max-content 1fr max-content"

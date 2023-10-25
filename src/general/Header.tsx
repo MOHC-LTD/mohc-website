@@ -86,11 +86,10 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
     )
 
     return (
-        <Box component="div">
+        <Box>
             <div ref={ref}>
                 <HeaderRoot order={order}>
                     <Box
-                        component="div"
                         display="grid"
                         gap={Spacing.Header}
                         gridTemplateColumns="max-content 1fr max-content"
@@ -149,7 +148,6 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                 location and account can align itself to the right */}
                                 <div />
                                 <Box
-                                    component="div"
                                     sx={{
                                         display: 'flex',
                                         flexDirection: 'row',

@@ -74,7 +74,6 @@ const MobileHeaderDrawer: FunctionComponent<MobileHeaderDrawerProps> = ({ state,
                 }}
             >
                 <Box
-                    component="div"
                     m={3}
                     sx={{
                         display: 'flex',

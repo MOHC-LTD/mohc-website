@@ -36,7 +36,6 @@ const SmallImageBanner: FunctionComponent<ISmallImageBannerFields> = ({ images }
         <div ref={ref}>
             {md ? (
                 <Box
-                    component="div"
                     sx={{
                         overflow: 'hidden',
                         width: '100%',
@@ -67,14 +66,12 @@ const SmallImageBanner: FunctionComponent<ISmallImageBannerFields> = ({ images }
             ) : (
                 <Section maxWidth="xl">
                     <Box
-                        component="div"
                         sx={{
                             maxWidth: '100%',
                             overflowX: 'hidden',
                         }}
                     >
                         <Box
-                            component="div"
                             sx={{
                                 display: 'flex',
                                 justifyContent: 'space-between',

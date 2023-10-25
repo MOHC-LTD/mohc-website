@@ -77,7 +77,6 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
             backgroundImage={backgroundImage}
         >
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -99,7 +98,6 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                     </Typography>
                 ) : null}
                 <Box
-                    component="div"
                     sx={{
                         maxWidth: '100%',
                         height: '100%',

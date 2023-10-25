@@ -20,7 +20,7 @@ const ContactUsInfoStep: FunctionComponent = () => {
             <Typography mb={5} align="center" variant="body1">
                 {t('forms:contact_us.subtitle')}
             </Typography>
-            <Box component="div" mb={4}>
+            <Box mb={4}>
                 <NameField
                     field={{
                         name: 'first_name',
@@ -34,7 +34,7 @@ const ContactUsInfoStep: FunctionComponent = () => {
                     autoComplete="given-name"
                 />
             </Box>
-            <Box component="div" mb={4}>
+            <Box mb={4}>
                 <NameField
                     field={{
                         name: 'last_name',
@@ -48,7 +48,7 @@ const ContactUsInfoStep: FunctionComponent = () => {
                     autoComplete="family-name"
                 />
             </Box>
-            <Box component="div" mb={6}>
+            <Box mb={6}>
                 <EmailField
                     field={{
                         name: 'email',
@@ -58,7 +58,6 @@ const ContactUsInfoStep: FunctionComponent = () => {
                 />
             </Box>
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',

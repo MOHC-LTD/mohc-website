@@ -19,7 +19,7 @@ const ContactUsProjectStep: FunctionComponent = () => {
             <Typography mb={5} align="center" variant="body1">
                 {t('forms:contact_us.subtitle')}
             </Typography>
-            <Box component="div" mb={4}>
+            <Box mb={4}>
                 <TextField
                     field={{
                         name: 'project',
@@ -30,7 +30,7 @@ const ContactUsProjectStep: FunctionComponent = () => {
                     label={t('forms:contact_us.project_label') as string}
                 />
             </Box>
-            <Box component="div" mb={6}>
+            <Box mb={6}>
                 <TextField
                     field={{
                         name: 'budget',
@@ -44,7 +44,6 @@ const ContactUsProjectStep: FunctionComponent = () => {
                 />
             </Box>
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',

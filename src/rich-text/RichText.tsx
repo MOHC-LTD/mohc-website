@@ -33,7 +33,7 @@ const RichText: FunctionComponent<RichTextProps> = ({ value, variant = 'body1' }
     const renderLeaf = useCallback((renderProps: RenderLeafProps) => <Leaf {...renderProps} />, [])
 
     return (
-        <Typography component="div" variant={variant}>
+        <Typography variant={variant}>
             <Slate key={key} editor={editor} value={value}>
                 <ContentContainer>
                     <Editable readOnly renderElement={renderElement} renderLeaf={renderLeaf} />

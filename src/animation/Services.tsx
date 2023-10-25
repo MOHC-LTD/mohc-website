@@ -74,7 +74,6 @@ const Services: FunctionComponent = () => {
         <div ref={ref}>
             <Section maxWidth="xl" id="Services">
                 <Box
-                    component="div"
                     sx={{
                         marginBottom: '50px',
                     }}
@@ -85,7 +84,6 @@ const Services: FunctionComponent = () => {
                     <Typography variant="body1">{t('home:services.subtitle')}</Typography>
                 </Box>
                 <Box
-                    component="div"
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -97,7 +95,6 @@ const Services: FunctionComponent = () => {
                     }}
                 >
                     <Box
-                        component="div"
                         sx={{
                             background: theme.palette.background.default,
                             border: '3px dashed black',
@@ -132,7 +129,6 @@ const Services: FunctionComponent = () => {
                         </Typography>
                     </Box>
                     <Box
-                        component="div"
                         sx={{
                             border: '1px black',
                             borderStyle: 'none solid',
@@ -187,7 +183,6 @@ const Services: FunctionComponent = () => {
                         />
                     </Box>
                     <Box
-                        component="div"
                         sx={{
                             background: 'black',
                             borderRadius: '50%',
@@ -218,7 +213,6 @@ const Services: FunctionComponent = () => {
                         </Typography>
                     </Box>
                     <Box
-                        component="div"
                         sx={{
                             border: '1px black',
                             borderStyle: 'none solid',
@@ -272,7 +266,6 @@ const Services: FunctionComponent = () => {
                         />
                     </Box>
                     <Box
-                        component="div"
                         sx={{
                             background: theme.palette.background.default,
                             border: '3px solid black',

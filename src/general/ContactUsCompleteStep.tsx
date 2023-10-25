@@ -10,7 +10,6 @@ const ContactUsCompleteStep: FunctionComponent = () => {
 
     return (
         <Box
-            component="div"
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -18,7 +17,6 @@ const ContactUsCompleteStep: FunctionComponent = () => {
             }}
         >
             <Box
-                component="div"
                 sx={{
                     position: 'relative',
                     display: 'flex',

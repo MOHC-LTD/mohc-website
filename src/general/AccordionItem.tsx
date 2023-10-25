@@ -35,7 +35,6 @@ const AccordionItem: FunctionComponent<PropsWithChildren<IAccordionItemFields>> 
             {header ? (
                 <AccordionButton component="div" role="button" onClick={(): void => setExpanded(!expanded)}>
                     <Box
-                        component="div"
                         sx={{
                             display: 'flex',
                             alignItems: 'center',

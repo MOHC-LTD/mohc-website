@@ -46,7 +46,6 @@ const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, 
         <div ref={ref}>
             {isCarousel ? (
                 <Box
-                    component="div"
                     sx={{
                         overflow: 'hidden',
                         width: '100%',
@@ -75,7 +74,6 @@ const ProjectDisplay: FunctionComponent<IProjectNavigationFields> = ({ project, 
                         >
                             {project?.map((page) => (
                                 <Box
-                                    component="div"
                                     key={page.fields.navigationTitle}
                                     sx={{
                                         paddingRight: '20px',

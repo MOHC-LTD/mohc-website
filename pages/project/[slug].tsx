@@ -40,7 +40,7 @@ const getImagePlaceholderBase64 = async (url: string): Promise<string> => {
 const Page: NextPageWithLayout<Props> = ({ page, pages, headerLinks }) => {
     return (
         <PageLayout title={page.navigationTitle} menuOptions={headerLinks}>
-            <Box component="div">
+            <Box>
                 {page.section?.map((section) => (
                     <Fragment key={section.sys.id}>{getSection(section)}</Fragment>
                 ))}

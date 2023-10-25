@@ -132,7 +132,6 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
             id={sectionId}
         >
             <Box
-                component="div"
                 mb={4}
                 sx={{
                     color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,

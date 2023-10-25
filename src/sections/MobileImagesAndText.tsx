@@ -31,7 +31,6 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
         <div ref={ref}>
             <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor} fadeType={fadeType}>
                 <Box
-                    component="div"
                     sx={{
                         position: 'relative',
                         overflow: 'visible',
@@ -53,7 +52,6 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                     ) : null}
                     {images ? (
                         <Box
-                            component="div"
                             sx={{
                                 display: 'flex',
                                 [theme.breakpoints.up('md')]: {
@@ -62,7 +60,6 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                             }}
                         >
                             <Box
-                                component="div"
                                 sx={{
                                     maxWidth: '50%',
                                     [theme.breakpoints.up('md')]: {
@@ -98,7 +95,6 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                                 />
                             </Box>
                             <Box
-                                component="div"
                                 sx={{
                                     maxWidth: '50%',
                                     marginLeft: '20px',
@@ -138,7 +134,6 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                         </Box>
                     ) : null}
                     <Box
-                        component="div"
                         sx={{
                             maxWidth: '100%',
                             display: 'flex',

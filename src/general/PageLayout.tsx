@@ -23,7 +23,6 @@ interface PageLayoutProps {
  */
 const PageLayout: FunctionComponent<PropsWithChildren<PageLayoutProps>> = ({ title, menuOptions, children }) => (
     <Box
-        component="div"
         id="pageLayout"
         width={1}
         position="relative"

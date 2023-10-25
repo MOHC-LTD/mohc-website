@@ -65,7 +65,6 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
 
     return (
         <Box
-            component="div"
             sx={{
                 backgroundImage: `url(https:${backgroundImage?.fields.file.url})!important`,
                 backgroundRepeat: 'no-repeat !important',

@@ -31,7 +31,7 @@ const StuckSentinel: FunctionComponent<StuckSentinelProps> = ({ SentinelElement,
 
     return (
         <>
-            {SentinelElement ? <SentinelElement ref={ref} /> : <Box component="div" {...props} ref={ref} />}
+            {SentinelElement ? <SentinelElement ref={ref} /> : <Box {...props} ref={ref} />}
             {children({
                 stuck: !inView && !!entry,
             })}

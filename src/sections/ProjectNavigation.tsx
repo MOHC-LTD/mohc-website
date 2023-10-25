@@ -40,7 +40,6 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
     return (
         <Section maxWidth="xl">
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -51,7 +50,6 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                 }}
             >
                 <Box
-                    component="div"
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',

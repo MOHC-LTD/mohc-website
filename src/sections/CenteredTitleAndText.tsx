@@ -22,7 +22,6 @@ const CenteredTitleAndText: FunctionComponent<ICenteredTitleAndTextFields> = ({
     return (
         <Section maxWidth="xl" id={sectionId} backgroundColor={backgroundColor}>
             <Box
-                component="div"
                 my={5}
                 sx={{
                     display: 'flex',

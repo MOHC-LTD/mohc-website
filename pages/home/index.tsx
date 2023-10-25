@@ -25,7 +25,6 @@ interface Props {
 const Page: NextPageWithLayout<Props> = ({ props, headerLinks }) => {
     return (
         <Box
-            component="div"
             sx={{
                 width: '100%',
                 position: 'absolute',

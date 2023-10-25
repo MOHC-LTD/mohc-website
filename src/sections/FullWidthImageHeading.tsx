@@ -28,7 +28,6 @@ const FullWidthImageHeading: FunctionComponent<FullWidthImageHeadingProps> = ({
     return (
         <Section maxWidth="xl" backgroundColor={color} fadeType={fadeType}>
             <Box
-                component="div"
                 sx={{
                     minHeight: '300px',
                     maxHeight: '100%',
@@ -39,7 +38,6 @@ const FullWidthImageHeading: FunctionComponent<FullWidthImageHeadingProps> = ({
                 }}
             >
                 <Box
-                    component="div"
                     id="title"
                     mb={4}
                     sx={{
@@ -58,7 +56,6 @@ const FullWidthImageHeading: FunctionComponent<FullWidthImageHeadingProps> = ({
                 </Box>
                 {image ? (
                     <Box
-                        component="div"
                         sx={{
                             maxWidth: '100%',
                         }}

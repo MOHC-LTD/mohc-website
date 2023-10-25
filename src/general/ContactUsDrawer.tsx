@@ -48,7 +48,6 @@ const ContactUsDrawer: FunctionComponent<ContactUsDrawerProps> = ({ state, isMob
             }}
         >
             <Box
-                component="div"
                 my={isMobile ? 1 : 3}
                 mx={isMobile ? 3 : 5}
                 sx={{

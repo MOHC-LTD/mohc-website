@@ -26,7 +26,6 @@ const ColumnImagesAndText: FunctionComponent<ColumnImagesAndTextProps> = ({ titl
     return (
         <Section maxWidth="xl" id={sectionId}>
             <Box
-                component="div"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -35,7 +34,6 @@ const ColumnImagesAndText: FunctionComponent<ColumnImagesAndTextProps> = ({ titl
             >
                 {title ? <Typography variant="h3">{title}</Typography> : null}
                 <Box
-                    component="div"
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -45,7 +43,6 @@ const ColumnImagesAndText: FunctionComponent<ColumnImagesAndTextProps> = ({ titl
                     }}
                 >
                     <Box
-                        component="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -69,7 +66,6 @@ const ColumnImagesAndText: FunctionComponent<ColumnImagesAndTextProps> = ({ titl
                         <Typography variant="body1">{details[0].description}</Typography>
                     </Box>
                     <Box
-                        component="div"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
