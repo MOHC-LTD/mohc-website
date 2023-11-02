@@ -87,16 +87,6 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                     },
                 }}
             >
-                {sm ? (
-                    <Typography
-                        mb={2}
-                        variant="h3"
-                        align="center"
-                        color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
-                    >
-                        {title}
-                    </Typography>
-                ) : null}
                 <Box
                     sx={{
                         maxWidth: '100%',
@@ -112,14 +102,13 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                         },
                     }}
                 >
-                    {!sm ? (
-                        <Typography
-                            variant="h3"
-                            color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
-                        >
-                            {title}
-                        </Typography>
-                    ) : null}
+                    <Typography
+                        mt={sm ? 2 : 0}
+                        variant="h3"
+                        color={isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary}
+                    >
+                        {title}
+                    </Typography>
                     <Typography
                         mt={2}
                         variant="body1"
