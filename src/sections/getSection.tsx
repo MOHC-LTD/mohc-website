@@ -203,18 +203,20 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     backgroundImage={backgroundImage as Asset}
                     fadeType={fadeType}
                 >
-                    <Box
-                        mb={4}
-                        sx={{
-                            color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
-                            [theme.breakpoints.up('md')]: {
-                                maxWidth: '65%',
-                            },
-                        }}
-                    >
-                        <Typography variant="h3">{title}</Typography>
-                        {description ? documentToReactComponents(description) : null}
-                    </Box>
+                    {title || description ? (
+                        <Box
+                            mb={4}
+                            sx={{
+                                color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
+                                [theme.breakpoints.up('md')]: {
+                                    maxWidth: '65%',
+                                },
+                            }}
+                        >
+                            <Typography variant="h3">{title}</Typography>
+                            {description ? documentToReactComponents(description) : null}
+                        </Box>
+                    ) : null}
                     <Box
                         sx={{
                             display: 'flex',
