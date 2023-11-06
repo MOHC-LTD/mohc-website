@@ -336,38 +336,26 @@ theme = createTheme(theme, {
             fontFamily: fontFamilyConfig.name,
             fontWeight: fontFamilyConfig.weights.medium,
             lineHeight: 1.1,
-            fontSize: rem(36),
-            [theme.breakpoints.up('lg')]: {
-                fontSize: rem(42),
-            },
+            fontSize: 'clamp(36px, 4vw, 42px)',
         },
         h2: {
             fontFamily: fontFamilyConfig.name,
             fontWeight: fontFamilyConfig.weights.medium,
             fontStyle: 'normal',
             lineHeight: 1.2,
-            fontSize: rem(30),
-            [theme.breakpoints.up('lg')]: {
-                fontSize: rem(36),
-            },
+            fontSize: 'clamp(30px, 4vw, 36px)',
         },
         h3: {
             fontFamily: fontFamilyConfig.name,
             fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 1.3,
-            fontSize: rem(26),
-            [theme.breakpoints.up('lg')]: {
-                fontSize: rem(30),
-            },
+            fontSize: 'clamp(26px, 4vw, 30px)',
         },
         h4: {
             fontFamily: fontFamilyConfig.name,
             fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 1.3,
-            fontSize: rem(20),
-            [theme.breakpoints.up('lg')]: {
-                fontSize: rem(26),
-            },
+            fontSize: 'clamp(20px, 4vw, 26px)',
         },
         h5: {
             fontFamily: fontFamilyConfig.name,
@@ -412,10 +400,7 @@ theme = createTheme(theme, {
             fontFamily: fontFamilyConfig.name,
             fontWeight: fontFamilyConfig.weights.regular,
             lineHeight: 1.4,
-            fontSize: rem(14),
-            [theme.breakpoints.up('lg')]: {
-                fontSize: rem(16),
-            },
+            fontSize: 'clamp(14px, 4vw, 16px)',
         },
     },
 })
