@@ -6,7 +6,7 @@ const ReactEmptyRender = null
  * Reusable theme spacing value for all elements.
  */
 const enum Spacing {
-    Body = 24,
+    Body = 8,
     Page = 6,
     General = 4,
     Header = 4,

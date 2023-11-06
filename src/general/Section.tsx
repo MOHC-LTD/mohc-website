@@ -77,16 +77,14 @@ const Section: FunctionComponent<PropsWithChildren<SectionProps>> = ({
             <Container
                 id="container"
                 sx={{
-                    py: {
-                        sm: Spacing.Body / 5,
-                        md: Spacing.Body,
-                    },
                     minHeight: hasMinHeight ? '600px' : 0,
                     [theme.breakpoints.up('md')]: {
                         height: isFullScreen && 'calc(100vh - 69px)',
+                        py: Spacing.Body,
                     },
                     [theme.breakpoints.down('md')]: {
                         height: isFullScreen && 'calc(100vh - 69px)',
+                        py: Spacing.Body - 2,
                     },
                 }}
                 maxWidth={maxWidth}
