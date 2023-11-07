@@ -7,9 +7,9 @@ import Icon from 'src/general/Icon'
 
 const AccordionItemRoot = styled('div', {
     name: 'AccordionItemRoot',
-})(({ theme }) => ({
-    borderBottom: `1px solid ${theme.palette.primary.main}`,
-    borderTop: `1px solid ${theme.palette.primary.main}`,
+})(() => ({
+    borderBottom: '1px solid rgb(16, 16, 16, 0.2)',
+    borderTop: '1px solid rgb(16, 16, 16, 0.2)',
     [`.${collapseClasses.root}`]: {
         // Clip only the y axis
         clipPath: 'inset(0 -100vw)',
