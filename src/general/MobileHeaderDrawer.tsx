@@ -55,7 +55,7 @@ const MobileHeaderDrawer: FunctionComponent<MobileHeaderDrawerProps> = ({ state,
                     <Icon color={theme.palette.text.secondary} name="close" />
                 </Button>
                 <Link
-                    href="/home"
+                    href="/"
                     style={{
                         textDecoration: 'none',
                     }}

@@ -121,7 +121,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                                 />
                                 <Stack spacing={Spacing.Header} direction="row" alignItems="center">
                                     <Link
-                                        href="/home"
+                                        href="/"
                                         style={{
                                             textDecoration: 'none',
                                         }}
@@ -136,7 +136,7 @@ const Header: FunctionComponent<HeaderProps> = ({ order = 0, menuOptions, isDark
                             <>
                                 <Stack spacing={Spacing.Header} direction="row" alignItems="center">
                                     <Link
-                                        href="/home"
+                                        href="/"
                                         style={{
                                             textDecoration: 'none',
                                         }}
