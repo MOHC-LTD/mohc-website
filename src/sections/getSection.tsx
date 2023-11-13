@@ -1,13 +1,9 @@
 import { ReactNode } from 'react'
 
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { Document } from '@contentful/rich-text-types'
-import { Box, styled, Typography } from '@mui/material'
-import { Asset, Entry } from 'contentful'
+import { Entry } from 'contentful'
 
 import {
     IAccordionFields,
-    IAccordionItemFields,
     ICenteredTitleAndTextFields,
     IComparisonSliderFields,
     IFullWidthImageFields,
@@ -16,39 +12,25 @@ import {
     IImageAndTextFields,
     IImageSliderFields,
     IListFields,
-    IListItemFields,
     IMobileImagesAndTextFields,
     IPageNavigationFields,
     IProjectNavigationFields,
     ISmallImageBannerFields,
-    ITextColumnFields,
-    ITextColumnList,
-    ITextColumnTextBlock,
 } from 'src/@types/contentful'
-import AccordionItem from 'src/general/AccordionItem'
-import Section from 'src/general/Section'
+import Accordion from 'src/sections/Accordion'
 import CenteredTitleAndText from 'src/sections/CenteredTitleAndText'
 import ComparisonSlider from 'src/sections/ComparisonSlider'
-import CustomImage from 'src/sections/CustomImage'
+import FullWidthImage from 'src/sections/FullWidthImage'
 import FullWidthImageHeading from 'src/sections/FullWidthImageHeading'
 import Heading from 'src/sections/Heading'
 import ImageAndText from 'src/sections/ImageAndText'
 import ImageSlider from 'src/sections/ImageSlider'
+import List from 'src/sections/List'
 import MobileImagesAndText from 'src/sections/MobileImagesAndText'
 import PageDisplay from 'src/sections/PageDisplay'
 import ProjectDisplay from 'src/sections/ProjectDisplay'
 import SmallImageBanner from 'src/sections/SmallImageBanner'
-import { theme } from 'src/theme/theme.default'
-
-const Accordion = styled('div', {
-    name: 'Accordion',
-})({
-    '& > :not(:last-child)': {
-        borderBottom: 'none',
-    },
-
-    position: 'relative',
-})
+import TextColumn from 'src/sections/TextColumn'
 
 const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode => {
     switch (section.sys.contentType?.sys.id) {
@@ -56,132 +38,18 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             const { title, subtitle, accordionItem, backgroundColor, isDarkMode }: IAccordionFields = section.fields
 
             return (
-                <Section maxWidth="xl" backgroundColor={backgroundColor}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
-                            [theme.breakpoints.up('md')]: {
-                                flexDirection: 'row',
-                            },
-                        }}
-                    >
-                        <Box
-                            mr={5}
-                            sx={{
-                                [theme.breakpoints.up('md')]: {
-                                    width: '35%',
-                                },
-                            }}
-                        >
-                            <Typography mb={2} variant="h2">
-                                {title}
-                            </Typography>
-                            {subtitle ? documentToReactComponents(subtitle) : null}
-                        </Box>
-                        <Accordion
-                            sx={{
-                                [theme.breakpoints.up('md')]: {
-                                    width: '65%',
-                                },
-                            }}
-                        >
-                            {accordionItem?.map((item) => {
-                                const { header, content, icon }: IAccordionItemFields = item.fields
-
-                                return (
-                                    <AccordionItem key={header} header={header} icon={icon}>
-                                        {content ? documentToReactComponents(content) : null}
-                                    </AccordionItem>
-                                )
-                            })}
-                        </Accordion>
-                    </Box>
-                </Section>
+                <Accordion
+                    title={title}
+                    subtitle={subtitle}
+                    accordionItem={accordionItem}
+                    backgroundColor={backgroundColor}
+                    isDarkMode={isDarkMode}
+                />
             )
         }
 
         case 'textColumn': {
-            const { sectionId }: ITextColumnFields = section.fields
-
-            return (
-                <Section maxWidth="xl" id={sectionId}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            [theme.breakpoints.up('md')]: {
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                            },
-                        }}
-                    >
-                        {[1, 2].map((number) => {
-                            const textColumn = section.fields[`textColumn${number}Content`] as
-                                | ITextColumnTextBlock
-                                | ITextColumnList
-                                | undefined
-
-                            return (textColumn as ITextColumnTextBlock)?.fields.textBlock ? (
-                                <Box
-                                    key={number}
-                                    sx={{
-                                        marginBottom: '20px',
-                                        [theme.breakpoints.up('md')]: {
-                                            width: '40%',
-                                        },
-                                    }}
-                                >
-                                    <Typography variant="h2">
-                                        {section.fields[`column${number}Title`] as string}
-                                    </Typography>
-                                    {documentToReactComponents(
-                                        (textColumn as ITextColumnTextBlock)?.fields.textBlock as Document
-                                    )}
-                                </Box>
-                            ) : (
-                                <Box
-                                    sx={{
-                                        marginBottom: '20px',
-                                        [theme.breakpoints.up('md')]: {
-                                            width: '40%',
-                                        },
-                                    }}
-                                >
-                                    <Typography variant="h2">
-                                        {section.fields[`column${number}Title`] as string}
-                                    </Typography>
-                                    <Box
-                                        mt={2}
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                        }}
-                                    >
-                                        <Box>
-                                            {(textColumn as ITextColumnList)?.fields?.listItems?.map((item: string) => (
-                                                <Typography mb={2} key={item}>
-                                                    {item}
-                                                </Typography>
-                                            ))}
-                                        </Box>
-                                        <Box>
-                                            {(textColumn as ITextColumnList)?.fields?.listItems2?.map(
-                                                (item: string) => (
-                                                    <Typography mb={2} key={item}>
-                                                        {item}
-                                                    </Typography>
-                                                )
-                                            )}
-                                        </Box>
-                                    </Box>
-                                </Box>
-                            )
-                        })}
-                    </Box>
-                </Section>
-            )
+            return <TextColumn section={section} />
         }
 
         case 'fullWidthImage': {
@@ -197,35 +65,16 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
             }: IFullWidthImageFields = section.fields
 
             return (
-                <Section
-                    maxWidth="xl"
+                <FullWidthImage
                     backgroundColor={backgroundColor}
-                    backgroundImage={backgroundImage as Asset}
+                    backgroundImage={backgroundImage}
                     fadeType={fadeType}
-                >
-                    {title || description ? (
-                        <Box
-                            mb={4}
-                            sx={{
-                                color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.primary,
-                                [theme.breakpoints.up('md')]: {
-                                    maxWidth: '65%',
-                                },
-                            }}
-                        >
-                            <Typography variant="h3">{title}</Typography>
-                            {description ? documentToReactComponents(description) : null}
-                        </Box>
-                    ) : null}
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        {image ? <CustomImage image={image} hasBorder={hasBorder} /> : null}
-                    </Box>
-                </Section>
+                    hasBorder={hasBorder}
+                    isDarkMode={isDarkMode}
+                    title={title}
+                    description={description}
+                    image={image}
+                />
             )
         }
 
@@ -374,46 +223,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
         case 'list': {
             const { title, listItems }: IListFields = section.fields
 
-            return (
-                <Section maxWidth="xl">
-                    <Typography mb={4} variant="h3">
-                        {title as string}
-                    </Typography>
-                    {listItems ? (
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                maxWidth: '100%',
-                                [theme.breakpoints.up('md')]: {
-                                    maxWidth: `${100 - (8 - listItems.length) * 12.5}%`,
-                                },
-                            }}
-                        >
-                            {listItems?.map((listItem) => {
-                                const { title: listItemTitle, subtitle }: IListItemFields = listItem.fields
-
-                                return (
-                                    <Box
-                                        key={listItemTitle}
-                                        mb={2}
-                                        pr={2}
-                                        sx={{
-                                            width: '50%',
-                                            [theme.breakpoints.up('md')]: {
-                                                width: `${100 / (listItems.length / 2)}%`,
-                                            },
-                                        }}
-                                    >
-                                        <Typography variant="subtitle2">{listItemTitle}</Typography>
-                                        <Typography variant="body1">{subtitle}</Typography>
-                                    </Box>
-                                )
-                            })}
-                        </Box>
-                    ) : null}
-                </Section>
-            )
+            return <List title={title} listItems={listItems} />
         }
 
         case 'comparisonSlider': {
