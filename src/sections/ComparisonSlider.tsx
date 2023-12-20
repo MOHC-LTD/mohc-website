@@ -195,7 +195,6 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                     <img
                         style={{
                             maxWidth: '100%',
-                            maxHeight: 'calc(100vh - 150px)',
                             height: 'auto',
                             width: 'auto',
                             objectFit: 'cover',
@@ -220,7 +219,6 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                     <img
                         style={{
                             maxWidth: '100%',
-                            maxHeight: 'calc(100vh - 150px)',
                             height: 'auto',
                             width: 'auto',
                             verticalAlign: 'middle',
