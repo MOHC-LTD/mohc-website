@@ -1,6 +1,6 @@
 .darkmode-layer,
 .darkmode-toggle {
-    z-index: 500;
+    z-index: 1600;
 }
 
 body.darkmode--activated img,
@@ -39,6 +39,18 @@ body.darkmode--activated .MuiFormLabel-root {
 body.darkmode--activated .MuiInput-root {
     color: #000 !important;
     border-bottom: 1px solid #000 !important;
+}
+
+.darkmode--activated .MuiCardMedia-root {
+    background-blend-mode: difference !important;
+}
+
+body.darkmode--activated .MuiAppBar-root,
+body.darkmode--activated footer,
+body.darkmode--activated footer .MuiBox-root,
+body.darkmode--activated footer p {
+    background-color: #fff !important;
+    color: #000 !important;
 }
 
 body.darkmode--activated h1,
