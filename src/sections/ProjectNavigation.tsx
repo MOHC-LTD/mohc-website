@@ -66,6 +66,7 @@ const ProjectNavigation: FunctionComponent<Props> = ({ pages }) => {
                                 href={`/project/${projects[currentProject + 1].slug}`}
                                 style={{
                                     textDecoration: 'none',
+                                    color: '#3F69FF',
                                 }}
                             >
                                 <Typography variant="h5">{t('project:next_project')}</Typography>
