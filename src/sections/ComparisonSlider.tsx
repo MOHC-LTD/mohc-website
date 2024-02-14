@@ -140,7 +140,7 @@ const ComparisonSlider: FunctionComponent<IComparisonSliderFields> = ({
                     },
                 }}
             >
-                <Typography variant="h3">{title}</Typography>
+                <Typography variant="h2">{title}</Typography>
                 {description ? documentToReactComponents(description) : null}
             </Box>
             <Box

@@ -140,7 +140,7 @@ const MobileImagesAndText: FunctionComponent<IMobileImagesAndTextFields> = ({
                             },
                         }}
                     >
-                        <Typography variant="h3" mt={sm ? 2 : 0}>
+                        <Typography variant="h2" mt={sm ? 2 : 0}>
                             {title}
                         </Typography>
                         {description ? documentToReactComponents(description) : null}
