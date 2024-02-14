@@ -60,7 +60,7 @@ const FullWidthImageHeading: FunctionComponent<FullWidthImageHeadingProps> = ({
                             maxWidth: '100%',
                         }}
                     >
-                        <CustomImage image={image} />
+                        <CustomImage image={image} priority={true} />
                     </Box>
                 ) : null}
             </Box>
