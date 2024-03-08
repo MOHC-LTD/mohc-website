@@ -8,6 +8,7 @@ import { IImageAndTextFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
 import CustomImage from 'src/sections/CustomImage'
 import { theme } from 'src/theme/theme.default'
+import Lottie from 'react-lottie'
 
 interface ImageBoxProps {
     isInverted?: boolean
@@ -45,12 +46,22 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
     fadeType,
     hasBorder,
     sectionId,
+    jsonAnimation,
 }) => {
     const { width, ref } = useResizeDetector()
 
     const sm = width && width < theme.breakpoints.values.md
 
     const scrollRef = useRef(null)
+
+    const AnimationOptions = {
+        loop: true,
+        autoplay: true,
+        path: jsonAnimation?.fields.file.url,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+        },
+    }
 
     const cardVariants: Variants = {
         offscreen: {
@@ -121,7 +132,9 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                     <ImageBox variants={cardVariants} isInverted={isInverted}>
                         <CustomImage image={image} ref={scrollRef} hasBorder={hasBorder} />
                     </ImageBox>
-                ) : (
+                ) : null}
+                {jsonAnimation && !image ? <Lottie options={AnimationOptions} /> : null}
+                {!image && !jsonAnimation && (
                     <Box
                         sx={{
                             width: '50%',

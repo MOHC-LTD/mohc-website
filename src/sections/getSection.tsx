@@ -143,6 +143,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                 fadeType,
                 hasBorder,
                 sectionId,
+                jsonAnimation,
             }: IImageAndTextFields = section.fields
 
             return (
@@ -158,6 +159,7 @@ const getSection = (section: Entry<{ [fieldId: string]: unknown }>): ReactNode =
                     fadeType={fadeType}
                     hasBorder={hasBorder}
                     sectionId={sectionId}
+                    jsonAnimation={jsonAnimation}
                 />
             )
         }

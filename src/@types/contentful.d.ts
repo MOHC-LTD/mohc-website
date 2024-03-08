@@ -489,6 +489,9 @@ export interface IImageAndTextFields {
 
     /** Section ID */
     sectionId?: string | undefined
+
+    /** JSON animation */
+    jsonAnimation?: Asset | undefined
 }
 
 export interface IImageAndText extends Entry<IImageAndTextFields> {
