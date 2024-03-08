@@ -2,13 +2,13 @@ import { FunctionComponent, useRef } from 'react'
 
 import { Box, styled, Typography } from '@mui/material'
 import { motion, Variants } from 'framer-motion'
+import { useLottie } from 'lottie-react'
 import { useResizeDetector } from 'react-resize-detector'
 
 import { IImageAndTextFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
 import CustomImage from 'src/sections/CustomImage'
 import { theme } from 'src/theme/theme.default'
-import { useLottie } from 'lottie-react'
 
 interface ImageBoxProps {
     isInverted?: boolean
@@ -137,7 +137,7 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                     </ImageBox>
                 ) : null}
                 {jsonAnimation && !image ? View : null}
-                {!image && !jsonAnimation && (
+                {!image && !jsonAnimation ? (
                     <Box
                         sx={{
                             width: '50%',
@@ -147,7 +147,7 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                             },
                         }}
                     />
-                )}
+                ) : null}
             </Box>
         </Section>
     )

@@ -394,7 +394,9 @@
                 "require-await": "off",
                 "@typescript-eslint/require-await": "error",
 
-                "@typescript-eslint/explicit-function-return-type": "error"
+                "@typescript-eslint/explicit-function-return-type": "error",
+
+                "@typescript-eslint/ban-ts-comment": "off"
             }
         },
         {
