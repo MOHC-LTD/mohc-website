@@ -8,7 +8,7 @@ import { IImageAndTextFields } from 'src/@types/contentful'
 import Section from 'src/general/Section'
 import CustomImage from 'src/sections/CustomImage'
 import { theme } from 'src/theme/theme.default'
-import Lottie from 'react-lottie'
+import { useLottie } from 'lottie-react'
 
 interface ImageBoxProps {
     isInverted?: boolean
@@ -62,6 +62,9 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
             preserveAspectRatio: 'xMidYMid slice',
         },
     }
+
+    // @ts-ignore
+    const { View } = useLottie(AnimationOptions)
 
     const cardVariants: Variants = {
         offscreen: {
@@ -133,7 +136,7 @@ const ImageAndText: FunctionComponent<IImageAndTextFields> = ({
                         <CustomImage image={image} ref={scrollRef} hasBorder={hasBorder} />
                     </ImageBox>
                 ) : null}
-                {jsonAnimation && !image ? <Lottie options={AnimationOptions} /> : null}
+                {jsonAnimation && !image ? View : null}
                 {!image && !jsonAnimation && (
                     <Box
                         sx={{
